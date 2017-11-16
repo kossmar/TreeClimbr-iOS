@@ -20,6 +20,8 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+		0DCE2F451FBD3C8E001A30EA /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F431FBD3C8D001A30EA /* Tree.swift */; };
+		0DCE2F461FBD3C8E001A30EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F441FBD3C8E001A30EA /* User.swift */; };
 		75059C49F2F75CB31650C046 /* Pods_TreeClimbrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AE6086C11264BE12EBB0554 /* Pods_TreeClimbrUITests.framework */; };
 		EEA46AE392412F150DE3A973 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8608E5B0B1158D969FC2093B /* Pods_TreeClimbr.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+		0DCE2F431FBD3C8D001A30EA /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		0DCE2F441FBD3C8E001A30EA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18826BA604B9F9072043F67B /* Pods-TreeClimbr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.release.xcconfig"; sourceTree = "<group>"; };
 		33F7A75F323C9331EF28B67B /* Pods-TreeClimbr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.debug.xcconfig"; sourceTree = "<group>"; };
 		36831CD0FEE0DE473AC6CE12 /* Pods_TreeClimbrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,8 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				0DCE2F431FBD3C8D001A30EA /* Tree.swift */,
+				0DCE2F441FBD3C8E001A30EA /* User.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				0DCE2F011FBCDE44001A30EA /* ViewController.swift */,
 				0DCE2F031FBCDE44001A30EA /* Main.storyboard */,
@@ -478,7 +484,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				0DCE2F451FBD3C8E001A30EA /* Tree.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0DCE2F461FBD3C8E001A30EA /* User.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
