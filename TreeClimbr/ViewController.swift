@@ -31,19 +31,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //MARK: Tap gesture methods
     func setupTap() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationTapped(tapGestureRecognizer:)))
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
         mapView.isUserInteractionEnabled = true
         mapView.addGestureRecognizer(longPressGestureRecognizer)
     }
     
-    @objc func locationTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        let touchPoint = tapGestureRecognizer.location(in: mapView)
+    @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
+        let touchPoint = longPressGestureRecognizer.location(in: mapView)
         let annCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = annCoordinates
+        annotation.title = "x"
         mapView.addAnnotation(annotation)
     }
     
+    //MARK: Setup map features
     func userLocationSetup() {
         locationManager.requestWhenInUseAuthorization()
         
@@ -51,19 +53,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.distanceFilter = 0.1
             locationManager.delegate = self
+            mapView.delegate = self
         }
         
         locationManager.startUpdatingLocation()
-        
-        //TEST STUFF
-//        let location : CLLocationCoordinate2D = locationManager.location!.coordinate
-//        lat = location.latitude
-//        long = location.longitude
-//
-//        myAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//        myAnnotation.title = "MY TREE"
-//        myAnnotation.subtitle = "🌴🌴🌴🌴🌴"
-//        mapView.addAnnotation(myAnnotation)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -75,5 +68,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.showsUserLocation = true
     }
     
+    
+    //MARK: Map view functions
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // go to tree creation
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is MKPointAnnotation){
+            return nil
+        }
+        
+        var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
+        if annView == nil {
+            annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
+            annView!.canShowCallout = true
+        } else {
+            annView!.annotation = annotation
+        }
+        annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
+        return annView
+    }
 }
+
 
