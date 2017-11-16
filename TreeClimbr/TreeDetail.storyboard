@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qG-qF-Dga">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,16 +9,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tree Detail View Controller-->
         <scene sceneID="d3n-SN-eZi">
             <objects>
-                <viewController id="8qG-qF-Dga" sceneMemberID="viewController">
+                <viewController id="8qG-qF-Dga" customClass="TreeDetailViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fb3-La-uMy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlh-AI-CIS" customClass="BasicTreeInfoView" customModule="TreeClimbr" customModuleProvider="target">
+                                <rect key="frame" x="10" y="30" width="355" height="125"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="125" id="xuJ-Ku-p9S"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CKX-F6-1Qy" firstAttribute="trailing" secondItem="hlh-AI-CIS" secondAttribute="trailing" constant="10" id="bVD-lQ-GlZ"/>
+                            <constraint firstItem="hlh-AI-CIS" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" constant="10" id="kdv-c0-Nuu"/>
+                            <constraint firstItem="hlh-AI-CIS" firstAttribute="top" secondItem="CKX-F6-1Qy" secondAttribute="top" constant="10" id="nma-XB-g15"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CKX-F6-1Qy"/>
                     </view>
+                    <connections>
+                        <outlet property="basicTreeInfoView" destination="hlh-AI-CIS" id="PO9-xP-gEI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yz-rx-Lya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
