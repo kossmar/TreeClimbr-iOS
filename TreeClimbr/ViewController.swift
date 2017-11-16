@@ -71,7 +71,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
-    //MARK: Map view functions
+    //MARK: Map view delegate functions
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // go to tree creation
     }
@@ -102,6 +102,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         annView!.image = scaledImage
         return annView!
     }
+    
 }
 
 
