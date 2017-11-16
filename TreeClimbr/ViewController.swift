@@ -41,7 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let annCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = annCoordinates
-        annotation.title = "x"
+        annotation.title = "SUPER LIT TREE TO CLIMB"
         mapView.addAnnotation(annotation)
     }
     
@@ -87,7 +87,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annView!.annotation = annotation
         }
         annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
-        return annView
+        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
+        annView!.image!.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        annView!.image = scaledImage
+        return annView!
     }
 }
 
