@@ -1,7 +1,6 @@
 import Foundation
-import RealmSwift
 
-class Tree: Object {
+class Tree {
     @objc dynamic var treeId = ""
     @objc dynamic var treeName = ""
     @objc dynamic var treeSpecies = ""
@@ -13,10 +12,7 @@ class Tree: Object {
     @objc dynamic var treePopularity = 0
     //We will have to save photos as NSData
     @objc dynamic var treePhotoData: NSData? = nil
-    @objc dynamic var user: User!
 
-    //  Uncomment next line when we are ready to build reviews
-   // let reviews = LinkingObjects(fromType: Review.self, property: "tree")
 
 }
 
