@@ -37,6 +37,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
+        //Possibly add an alert to let users add tree name
+        
         let touchPoint = longPressGestureRecognizer.location(in: mapView)
         let annCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         let annotation = MKPointAnnotation()
