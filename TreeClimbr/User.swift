@@ -1,10 +1,10 @@
 import Foundation
-import RealmSwift
+//import RealmSwift
 
-class User : Object {
+class User {
     @objc dynamic var userId = ""
     @objc dynamic var userName = ""
     
-    let trees = LinkingObjects(fromType: Tree.self, property: "user")
+  //  let trees = LinkingObjects(fromType: Tree.self, property: "user")
 }
 
