@@ -92,6 +92,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if annView == nil {
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
+            //add info button
+            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+            annView!.rightCalloutAccessoryView = detailButton
         } else {
             annView!.annotation = annotation
         }
