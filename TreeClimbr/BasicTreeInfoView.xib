@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,12 +17,54 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BasicTreeInfoView" customModule="TreeClimbr" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kpP-H5-IN0">
+                    <rect key="frame" x="0.0" y="0.0" width="157" height="125"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tree Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-a3-zqX">
+                            <rect key="frame" x="0.0" y="0.0" width="86.5" height="26.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqg-c0-LYG">
+                            <rect key="frame" x="0.0" y="26.5" width="35.5" height="30.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3GJ-2C-xfU">
+                            <rect key="frame" x="0.0" y="57" width="157" height="50"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HD3-UP-1hr">
+                            <rect key="frame" x="0.0" y="107" width="69.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bKk-2U-a1Q">
+                    <rect key="frame" x="260" y="10" width="105" height="105"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="bKk-2U-a1Q" secondAttribute="height" multiplier="1:1" id="KlC-ii-8Ak"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="kpP-H5-IN0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LGV-V9-TjR"/>
+                <constraint firstAttribute="bottom" secondItem="bKk-2U-a1Q" secondAttribute="bottom" constant="10" id="RD4-Xr-XmN"/>
+                <constraint firstAttribute="trailing" secondItem="bKk-2U-a1Q" secondAttribute="trailing" constant="10" id="bU2-4h-Nib"/>
+                <constraint firstItem="kpP-H5-IN0" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="cCa-D6-MUE"/>
+                <constraint firstItem="kpP-H5-IN0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="naf-Jv-KBO"/>
+                <constraint firstItem="bKk-2U-a1Q" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="qqq-R9-RNv"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="280" y="-134"/>
+            <point key="canvasLocation" x="337.5" y="-137.5"/>
         </view>
     </objects>
 </document>
