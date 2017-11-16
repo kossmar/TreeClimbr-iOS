@@ -19,8 +19,10 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+
 		0DF22D751FBE554F00F71C87 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D741FBE554F00F71C87 /* SignUpView.storyboard */; };
 		0DF22D771FBE557900F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D761FBE557900F71C87 /* SignUpViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +61,10 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+
 		0DF22D741FBE554F00F71C87 /* SignUpView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
 		0DF22D761FBE557900F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,12 +174,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DCE2F271FBCDE44001A30EA /* Build configuration list for PBXNativeTarget "TreeClimbrTests" */;
 			buildPhases = (
-				551B4644CBFC6C21BD880D5C /* [CP] Check Pods Manifest.lock */,
 				0DCE2F0C1FBCDE44001A30EA /* Sources */,
 				0DCE2F0D1FBCDE44001A30EA /* Frameworks */,
 				0DCE2F0E1FBCDE44001A30EA /* Resources */,
-				18C722F9FB685AC4F0E67FF1 /* [CP] Embed Pods Frameworks */,
-				A3E3982C3AF8A1397E943E7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,12 +192,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DCE2F2A1FBCDE44001A30EA /* Build configuration list for PBXNativeTarget "TreeClimbrUITests" */;
 			buildPhases = (
-				A7E451E09C998B333E270BC4 /* [CP] Check Pods Manifest.lock */,
 				0DCE2F171FBCDE44001A30EA /* Sources */,
 				0DCE2F181FBCDE44001A30EA /* Frameworks */,
 				0DCE2F191FBCDE44001A30EA /* Resources */,
-				F82FCABC4516B7CBE7841864 /* [CP] Embed Pods Frameworks */,
-				DAC73157E5AADB52FB798273 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -285,6 +283,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
 
 /* Begin PBXShellScriptBuildPhase section */
 		18C722F9FB685AC4F0E67FF1 /* [CP] Embed Pods Frameworks */ = {
@@ -384,6 +383,7 @@
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
+
 
 /* Begin PBXSourcesBuildPhase section */
 		0DCE2EF81FBCDE44001A30EA /* Sources */ = {
