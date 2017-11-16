@@ -1,10 +1,15 @@
 import Foundation
-import RealmSwift
 
-class User : Object {
-    @objc dynamic var userId = ""
-    @objc dynamic var userName = ""
+class User: NSObject {
+    var name: String = ""
+    var email: String = ""
+    var uid: String = ""
     
-    let trees = LinkingObjects(fromType: Tree.self, property: "user")
+    init(name:String,  email:String, uid:String)
+    {
+        self.name = name;
+        self.email = email;
+        self.uid = uid;
+    }
 }
 
