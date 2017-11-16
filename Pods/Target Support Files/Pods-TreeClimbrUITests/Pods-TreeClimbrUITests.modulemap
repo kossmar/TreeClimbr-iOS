@@ -1,0 +1,6 @@
+framework module Pods_TreeClimbrUITests {
+  umbrella header "Pods-TreeClimbrUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
