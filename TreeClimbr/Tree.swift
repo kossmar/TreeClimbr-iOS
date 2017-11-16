@@ -13,6 +13,5 @@ class Tree {
     //We will have to save photos as NSData
     @objc dynamic var treePhotoData: NSData? = nil
 
-
 }
 
