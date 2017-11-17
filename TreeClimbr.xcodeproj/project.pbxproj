@@ -23,6 +23,7 @@
 		0DF22D971FBEA64800F71C87 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D941FBEA64600F71C87 /* Login.storyboard */; };
 		0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D951FBEA64600F71C87 /* LoginViewController.swift */; };
 		0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */; };
+		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0DF22D941FBEA64600F71C87 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0DF22D951FBEA64600F71C87 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
+				E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */,
 				0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */,
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
@@ -398,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
+				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
