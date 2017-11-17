@@ -12,7 +12,7 @@
 		0DBF01AD1FBF862200ACBB61 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01AB1FBF862200ACBB61 /* Tree.swift */; };
 		0DBF01AE1FBF862200ACBB61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01AC1FBF862200ACBB61 /* User.swift */; };
 		0DBF01B31FBF88ED00ACBB61 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01B21FBF88EC00ACBB61 /* AppData.swift */; };
-		0DBF01B51FBF891900ACBB61 /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01B41FBF891900ACBB61 /* RegisterClass.swift */; };
+		0DBF01B71FBF8F1B00ACBB61 /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
 		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
 		0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F031FBCDE44001A30EA /* Main.storyboard */; };
@@ -56,7 +56,7 @@
 		0DBF01AC1FBF862200ACBB61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0DBF01AF1FBF868B00ACBB61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0DBF01B21FBF88EC00ACBB61 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
-		0DBF01B41FBF891900ACBB61 /* RegisterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
+		0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DCE2F011FBCDE44001A30EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
-				0DBF01B41FBF891900ACBB61 /* RegisterClass.swift */,
+				0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */,
 				0DBF01AB1FBF862200ACBB61 /* Tree.swift */,
 				0DBF01AC1FBF862200ACBB61 /* User.swift */,
 				0DBF01B21FBF88EC00ACBB61 /* AppData.swift */,
@@ -507,7 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DBF01B51FBF891900ACBB61 /* RegisterClass.swift in Sources */,
+				0DBF01B71FBF8F1B00ACBB61 /* RegisterClass.swift in Sources */,
 				0DBF01AD1FBF862200ACBB61 /* Tree.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
