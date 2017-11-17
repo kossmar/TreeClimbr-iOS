@@ -18,7 +18,7 @@ class AppData: NSObject {
         FirebaseApp.configure();
         
 
-        dataNode = Database.database().reference().child("data");
+
         usersNode = Database.database().reference().child("users");
     }
     
