@@ -19,6 +19,10 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+
+		0DF22D751FBE554F00F71C87 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D741FBE554F00F71C87 /* SignUpView.storyboard */; };
+		0DF22D771FBE557900F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D761FBE557900F71C87 /* SignUpViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+
+		0DF22D741FBE554F00F71C87 /* SignUpView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
+		0DF22D761FBE557900F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,8 @@
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
 				0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */,
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
+				0DF22D741FBE554F00F71C87 /* SignUpView.storyboard */,
+				0DF22D761FBE557900F71C87 /* SignUpViewController.swift */,
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
@@ -252,6 +262,7 @@
 				0DCE2F301FBCDEF1001A30EA /* TreeList.storyboard in Resources */,
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
+				0DF22D751FBE554F00F71C87 /* SignUpView.storyboard in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
 				0DCE2F2E1FBCDEE6001A30EA /* TreeDetail.storyboard in Resources */,
 			);
@@ -273,6 +284,107 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+
+/* Begin PBXShellScriptBuildPhase section */
+		18C722F9FB685AC4F0E67FF1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		551B4644CBFC6C21BD880D5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TreeClimbrTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3E3982C3AF8A1397E943E7F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7E451E09C998B333E270BC4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TreeClimbrUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAC73157E5AADB52FB798273 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F82FCABC4516B7CBE7841864 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+
 /* Begin PBXSourcesBuildPhase section */
 		0DCE2EF81FBCDE44001A30EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -280,6 +392,7 @@
 			files = (
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0DF22D771FBE557900F71C87 /* SignUpViewController.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
