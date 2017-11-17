@@ -18,6 +18,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var userCoordinate = CLLocationCoordinate2D()
     var myAnnotation = MKPointAnnotation()
     
+    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+    
     var lat = 0.0
     var long = 0.0
     
@@ -27,6 +29,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         setupTap()
         userLocationSetup()
         
+    }
+    
+    //MARK: Segue Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //FIX
     }
     
     //MARK: Tap gesture methods
@@ -93,7 +100,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
             //add info button
-            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+//            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
             annView!.rightCalloutAccessoryView = detailButton
         } else {
             annView!.annotation = annotation

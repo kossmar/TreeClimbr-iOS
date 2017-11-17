@@ -9,13 +9,27 @@
 import UIKit
 
 class TreeNewViewController: UIViewController {
-
+    @IBOutlet weak var treeImageView: UIImageView!
+    @IBOutlet weak var treeNameLabel: UILabel!
+    @IBOutlet weak var treeNameTextField: UITextField!
+    @IBOutlet weak var TreeDescTextView: UITextView!
+    @IBOutlet weak var photoCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        treeImageView.layer.cornerRadius = treeImageView.frame.size.height/2
 
-        // Do any additional setup after loading the view.
     }
-
+    
+    //MARK: VC Buttons
+    @IBAction func addPhoto(_ sender: UIButton) {
+    }
+    
+    @IBAction func save(_ sender: UIButton) {
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
