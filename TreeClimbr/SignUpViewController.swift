@@ -1,15 +1,14 @@
-//
-//  SignUpViewController.swift
-//  TreeClimbr
-//
-//  Created by Mar Koss on 2017-11-16.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,14 +21,12 @@ class SignUpViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - Actions
+    
+    @IBAction func registerNewUserPressed(_ sender: UIButton) {
     }
-    */
-
+    
+    @IBAction func goToLoginClickedPressed(_ sender: Any) {
+    }
+    
 }
