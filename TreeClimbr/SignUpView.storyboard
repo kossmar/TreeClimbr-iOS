@@ -55,6 +55,9 @@
                                         <state key="normal" title="Start Your Journey!">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerNewUserClicked:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="xpw-bR-K83"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGb-ra-5cZ">
                                         <rect key="frame" x="0.0" y="420" width="355" height="33"/>
@@ -69,6 +72,9 @@
                                                 <rect key="frame" x="205" y="0.0" width="150" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Log In"/>
+                                                <connections>
+                                                    <action selector="goToLoginClicked:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="B5j-Z0-Lrr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -84,6 +90,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ijt-MG-L4K"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="F9U-tr-miC" id="EYW-55-ufg"/>
+                        <outlet property="passwordTextField" destination="SPV-1b-i6g" id="pB9-hw-PRL"/>
+                        <outlet property="usernameTextField" destination="O0p-yH-cwz" id="VpS-wI-ppz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xma-Zm-PrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
