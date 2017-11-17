@@ -56,7 +56,7 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="registerNewUserClicked:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="xpw-bR-K83"/>
+                                            <action selector="registerNewUserPressed:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="Pgc-2D-c3u"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGb-ra-5cZ">
@@ -73,7 +73,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Log In"/>
                                                 <connections>
-                                                    <action selector="goToLoginClicked:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="B5j-Z0-Lrr"/>
+                                                    <action selector="goToLoginClickedPressed:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="Y0q-8V-eWG"/>
                                                 </connections>
                                             </button>
                                         </subviews>

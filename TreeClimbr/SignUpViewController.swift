@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
     @IBAction func registerNewUserPressed(_ sender: UIButton) {
     }
     
-    @IBAction func goToLoginClickedPressed(_ sender: Any) {
+    @IBAction func goToLoginClickedPressed(_ sender: UIButton) {
     }
     
 }
