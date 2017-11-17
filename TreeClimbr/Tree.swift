@@ -1,22 +1,28 @@
 import Foundation
 import RealmSwift
 
-class Tree: Object {
-    @objc dynamic var treeId = ""
-    @objc dynamic var treeName = ""
-    @objc dynamic var treeSpecies = ""
-    @objc dynamic var treeRating = 0.0
-    @objc dynamic var treeDescription = ""
-    @objc dynamic var treeHowToFind = ""
-    @objc dynamic var treeLatitude = 0.0
-    @objc dynamic var treeLongitude = 0.0
-    @objc dynamic var treePopularity = 0
-    //We will have to save photos as NSData
-    @objc dynamic var treePhotoData: NSData? = nil
-    @objc dynamic var user: User!
-
-    //  Uncomment next line when we are ready to build reviews
-   // let reviews = LinkingObjects(fromType: Review.self, property: "tree")
-
+class Tree: NSObject {
+    var treeId: String
+    var treeName: String
+    var treeSpecies: String?
+    var treeRating: Double? = 0.0
+    var treeDescription: String?
+    var treeHowToFind: String?
+    var treeLatitude: Double = 0.0
+    var treeLongitude: Double = 0.0
+    var treePopularity: Int? = 0
+    var treePhotoData: NSData
+    
+    init(id: String, name: String, species: String?, rating: Double?, description: String?, howTofind: String?, treeLat: Double, treeLong: Double, popularity: Int?, photo: NSData) {
+        self.treeId = id
+        self.treeName = name
+        self.treeSpecies = species
+        self.treeRating = rating
+        self.treeDescription = description
+        self.treeHowToFind = howTofind
+        self.treeLatitude = treeLat
+        self.treeLongitude = treeLong
+        self.treePopularity = popularity
+        self.treePhotoData = photo
+    }
 }
-
