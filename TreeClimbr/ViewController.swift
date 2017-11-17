@@ -37,14 +37,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
-        //Possibly add an alert to let users add tree name
-        
-        let touchPoint = longPressGestureRecognizer.location(in: mapView)
-        let annCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = annCoordinates
-        annotation.title = "SUPER LIT TREE TO CLIMB"
-        mapView.addAnnotation(annotation)
+        let nameAlertCon = UIAlertController(title: "Name Entry", message: "Enter a name for your tree!", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        nameAlertCon.addTextField(configurationHandler: nil)
+        let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
+        let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default)
+        { (action) in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = annCoordinates
+            annotation.title = nameAlertCon.textFields?.first?.text
+            self.mapView.addAnnotation(annotation)
+        }
+        nameAlertCon.addAction(confirmAction)
+        nameAlertCon.addAction(cancelAction)
+        self.present(nameAlertCon, animated: true, completion: nil)
     }
     
     //MARK: Setup map features
@@ -85,6 +92,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if annView == nil {
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
+            //add info button
+            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+            annView!.rightCalloutAccessoryView = detailButton
         } else {
             annView!.annotation = annotation
         }
