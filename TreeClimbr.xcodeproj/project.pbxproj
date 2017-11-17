@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07E9E18AE2D61957FDAE3AE9 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B2AE7EE0B0CEFAC5CEFFDE /* Pods_TreeClimbr.framework */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
+		0DBF01A01FBF7D5200ACBB61 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019F1FBF7D5200ACBB61 /* GoogleService-Info.plist */; };
+		0DBF01A51FBF7DDA00ACBB61 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01A31FBF7DD900ACBB61 /* Tree.swift */; };
+		0DBF01A61FBF7DDA00ACBB61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01A41FBF7DDA00ACBB61 /* User.swift */; };
+		0DBF01A81FBF7EB800ACBB61 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01A71FBF7EB700ACBB61 /* AppData.swift */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
 		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
 		0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F031FBCDE44001A30EA /* Main.storyboard */; };
@@ -48,6 +52,10 @@
 /* Begin PBXFileReference section */
 		08E431C76B791DFAA73D67B4 /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
+		0DBF019F1FBF7D5200ACBB61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0DBF01A31FBF7DD900ACBB61 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		0DBF01A41FBF7DDA00ACBB61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0DBF01A71FBF7EB700ACBB61 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DCE2F011FBCDE44001A30EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +140,8 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				0DBF01A31FBF7DD900ACBB61 /* Tree.swift */,
+				0DBF01A41FBF7DDA00ACBB61 /* User.swift */,
 				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
 				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
@@ -144,8 +154,10 @@
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
 				0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */,
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
+				0DBF01A71FBF7EB700ACBB61 /* AppData.swift */,
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
+				0DBF019F1FBF7D5200ACBB61 /* GoogleService-Info.plist */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
 			);
 			path = TreeClimbr;
@@ -315,6 +327,7 @@
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
+				0DBF01A01FBF7D5200ACBB61 /* GoogleService-Info.plist in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
 				0DCE2F2E1FBCDEE6001A30EA /* TreeDetail.storyboard in Resources */,
 			);
@@ -493,9 +506,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DBF01A51FBF7DDA00ACBB61 /* Tree.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				0DBF01A81FBF7EB800ACBB61 /* AppData.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0DBF01A61FBF7DDA00ACBB61 /* User.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
 			);
