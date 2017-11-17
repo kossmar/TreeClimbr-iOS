@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>284898511763-88tve78e5psh593dr0s4vfsbp8loqbh8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.284898511763-88tve78e5psh593dr0s4vfsbp8loqbh8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDx3wqYZPewa3pgfR1p9oJWJHaUb1IEFZ4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>284898511763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.markoss.TreeClimbr</string>
+	<key>PROJECT_ID</key>
+	<string>climbr-f1fe2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>climbr-f1fe2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:284898511763:ios:a4fb24d0e6f066f6</string>
+	<key>DATABASE_URL</key>
+	<string>https://climbr-f1fe2.firebaseio.com</string>
+</dict>
+</plist>
