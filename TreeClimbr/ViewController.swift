@@ -31,11 +31,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //MARK: Tap gesture methods
     func setupTap() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationTapped(tapGestureRecognizer:)))
         mapView.isUserInteractionEnabled = true
         mapView.addGestureRecognizer(longPressGestureRecognizer)
     }
     
+
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
         let nameAlertCon = UIAlertController(title: "Name Entry", message: "Enter a name for your tree!", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -54,7 +55,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.present(nameAlertCon, animated: true, completion: nil)
     }
     
-    //MARK: Setup map features
     func userLocationSetup() {
         locationManager.requestWhenInUseAuthorization()
         
@@ -62,10 +62,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.distanceFilter = 0.1
             locationManager.delegate = self
-            mapView.delegate = self
         }
         
         locationManager.startUpdatingLocation()
+        
+        //TEST STUFF
+//        let location : CLLocationCoordinate2D = locationManager.location!.coordinate
+//        lat = location.latitude
+//        long = location.longitude
+//
+//        myAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//        myAnnotation.title = "MY TREE"
+//        myAnnotation.subtitle = "🌴🌴🌴🌴🌴"
+//        mapView.addAnnotation(myAnnotation)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -77,6 +86,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.showsUserLocation = true
     }
     
+
     
     //MARK: Map view delegate functions
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -112,7 +122,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         annView!.image = scaledImage
         return annView!
     }
-    
 }
-
 

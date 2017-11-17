@@ -1,4 +1,5 @@
 import Foundation
+import RealmSwift
 
 class Tree: NSObject {
     var treeId: String

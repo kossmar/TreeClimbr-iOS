@@ -1,10 +1,4 @@
-//
-//  SignUpViewController.swift
-//  TreeClimbr
-//
-//  Created by Mar Koss on 2017-11-16.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 
