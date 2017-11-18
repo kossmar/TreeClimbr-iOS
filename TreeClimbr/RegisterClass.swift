@@ -1,20 +1,19 @@
-
-
-
 import UIKit
 import Firebase
-import FirebaseAuth
+//import FirebaseAuth
 
 
 class RegisterClass: NSObject
 {
     
-    class func registerMethod(inpView: UIViewController, inpName: String, inpEmail: String, inpPassword: String)
+    //   static var sharedInstance = RegisterClass()
+    
+    class func registerMethod(inpName: String, inpEmail: String, inpPassword: String)
     {
-        Auth.auth().createUser   (withEmail: inpEmail,
-                                  password: inpPassword)
+        Auth.auth().createUser (withEmail: inpEmail,
+                                password: inpPassword)
         { (onlineUser, error) in
-            if ( error == nil)
+            if (error == nil)
             {
                 let changeRequest = onlineUser?.createProfileChangeRequest()
                 changeRequest?.displayName = inpName
@@ -46,6 +45,8 @@ class RegisterClass: NSObject
                             
                             
                             // add alert to confirm register?
+//                            AlertShow.show(inpView: self, titleStr: "Yay!", messageStr: "You're now registered")
+                            print("registered!")
                             
                             
                         }
@@ -53,7 +54,7 @@ class RegisterClass: NSObject
             }
             else
             {
-                print("Error")
+                print("\(error)")
                 //                AlertShow.show(inpView: inpView, titleStr: "Error", messageStr: error.debugDescription);
             }
         }

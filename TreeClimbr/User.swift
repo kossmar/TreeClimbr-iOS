@@ -1,9 +1,9 @@
 import Foundation
 
 class User: NSObject, NSCoding {
-    var name: String = ""
-    var email: String = ""
-    var uid: String = ""
+    var name: String
+    var email: String
+    var uid: String 
     
     init(name:String,  email:String, uid:String)
     {

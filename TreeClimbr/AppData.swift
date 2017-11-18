@@ -4,18 +4,18 @@ import FirebaseDatabase
 
 class AppData: NSObject {
     
-    static let sharedInstance = AppData();
+    static let sharedInstance = AppData()
     
     public var curUser: User!
 
-    public var usersNode: DatabaseReference;
+    public var usersNode: DatabaseReference
     
 
     public override init()
     {
-        FirebaseApp.configure();
+//        FirebaseApp.configure()
         
-        usersNode = Database.database().reference().child("users");
+        usersNode = Database.database().reference().child("users")
     }
     
     
