@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
@@ -17,6 +17,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     let imagePickerController = UIImagePickerController()
     var photoArr = Array<UIImage>()
+//    var pickedImag
     
     
     override func viewDidLoad() {
@@ -26,6 +27,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         treeImageView.layer.cornerRadius = treeImageView.frame.width * 0.5
         treeImageView.clipsToBounds = true
         
+        
+        setupTap()
         setup()
         
 
@@ -63,7 +66,29 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     func setup() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-        imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePickerController.delegate = self //as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+    }
+    
+    //MARK: Tap gestures
+    func setupTap() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(tapGestureRecognizer:)))
+        treeImageView.isUserInteractionEnabled = true
+        treeImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+        imagePickerController.allowsEditing = true
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            treeImageView.contentMode = .scaleToFill
+            treeImageView.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 
     /*
