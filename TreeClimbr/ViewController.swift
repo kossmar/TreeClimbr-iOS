@@ -20,16 +20,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        performSegue(withIdentifier: "CheckIdentity", sender: view)
-        
+
         setupTap()
         userLocationSetup()
-        
-        if Auth.auth().currentUser == nil {
-            performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if AppData.sharedInstance.curUser == nil {
+            performSegue(withIdentifier: "CheckIdentity", sender: self)
         }
-        
     }
     
     //MARK: Segue Methods
