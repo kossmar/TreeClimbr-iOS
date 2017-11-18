@@ -12,6 +12,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var locationManager = CLLocationManager()
     var userCoordinate = CLLocationCoordinate2D()
     var myAnnotation = MKPointAnnotation()
+    var treeLocation = CLLocationCoordinate2D()
     
 //    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
     
@@ -33,9 +34,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     //MARK: Segue Methods
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        //FIX
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "EditTree" {
+            guard let treeVC = segue.destination as? TreeNewViewController else{
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            treeVC.coordinate = treeLocation
+        }
+    }
     
     //MARK: Tap gesture methods
     func setupTap() {
@@ -65,6 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
         let annotation = MKPointAnnotation()
         annotation.coordinate = annCoordinates
+        treeLocation = annCoordinates
         performSegue(withIdentifier: "EditTree", sender: view)
         annotation.title = "MyTree" //title from tree new vc
         self.mapView.addAnnotation(annotation)
