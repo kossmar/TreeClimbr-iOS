@@ -9,23 +9,26 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
-
+    
     //MARK: Actions
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        
+        guard let email = emailField.text, let password = passwordField.text else {
+            AlertShow.show(inpView: self,
+                           titleStr: "Oopies!",
+                           messageStr: "Please Fill Out All Required Fields")
+            return
+        }
+        
+        LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password)
+        
+//        dismiss(animated: true, completion: nil)
+        view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

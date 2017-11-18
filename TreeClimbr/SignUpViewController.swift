@@ -35,7 +35,8 @@ class SignUpViewController: UIViewController {
         RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password)
     }
     
-    @IBAction func goToLoginClickedPressed(_ sender: UIButton) {
+    @IBAction func goToLoginPressed(_ sender: UIButton) {
+
         
     }
     
