@@ -16,6 +16,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
     let imagePickerController = UIImagePickerController()
+    var photoArr = Array<UIImage>()
     
     
     override func viewDidLoad() {
@@ -30,22 +31,17 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     }
     
-    //MARK: VC Buttons
+    //MARK: VC buttons
     @IBAction func addPhoto(_ sender: UIButton) {
         imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
         imagePickerController.allowsEditing = true
         self.present(imagePickerController, animated: true, completion: nil)
+        // add photo should go to collection view
     }
     
     @IBAction func save(_ sender: UIButton) {
         //save details
         dismiss(animated: true, completion: nil)
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: Collection view delegates
@@ -64,7 +60,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         photoCollectionView.dataSource = self
         imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
-    
 
     /*
     // MARK: - Navigation
