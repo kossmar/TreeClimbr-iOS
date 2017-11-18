@@ -23,7 +23,16 @@
 		0DF22D971FBEA64800F71C87 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D941FBEA64600F71C87 /* Login.storyboard */; };
 		0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D951FBEA64600F71C87 /* LoginViewController.swift */; };
 		0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */; };
+		22069F8397656E85143983BB /* Pods_TreeClimbrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */; };
+		6FC054FD743C5A5CEA4AAC9A /* Pods_TreeClimbrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */; };
+		A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
+		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
+		E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */; };
+		E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C31FBFBB5F006ABDAB /* User.swift */; };
+		E6CE28C91FBFBB5F006ABDAB /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C41FBFBB5F006ABDAB /* AppData.swift */; };
+		E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C51FBFBB5F006ABDAB /* Tree.swift */; };
+		E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +75,22 @@
 		0DF22D941FBEA64600F71C87 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0DF22D951FBEA64600F71C87 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		22A5D969B4E14DA4F60801B7 /* Pods-TreeClimbrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		618A31AA0F04F5BAEE52A1BF /* Pods-TreeClimbr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.debug.xcconfig"; sourceTree = "<group>"; };
+		6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.release.xcconfig"; sourceTree = "<group>"; };
+		BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNewViewController.swift; sourceTree = "<group>"; };
+		E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
+		E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertShow.swift; sourceTree = "<group>"; };
+		E6CE28C31FBFBB5F006ABDAB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E6CE28C41FBFBB5F006ABDAB /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		E6CE28C51FBFBB5F006ABDAB /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD9C6F42900DD93E9DC4842B /* Pods-TreeClimbr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FC054FD743C5A5CEA4AAC9A /* Pods_TreeClimbrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22069F8397656E85143983BB /* Pods_TreeClimbrUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +128,8 @@
 				0DCE2F131FBCDE44001A30EA /* TreeClimbrTests */,
 				0DCE2F1E1FBCDE44001A30EA /* TreeClimbrUITests */,
 				0DCE2EFD1FBCDE44001A30EA /* Products */,
+				9FAA233217A5572C1098103F /* Pods */,
+				484DE440CE7AFA1FBF020362 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +146,11 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
+				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
+				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
+				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
 				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
 				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
@@ -132,6 +166,7 @@
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
+				E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
 			);
 			path = TreeClimbr;
@@ -155,6 +190,29 @@
 			path = TreeClimbrUITests;
 			sourceTree = "<group>";
 		};
+		484DE440CE7AFA1FBF020362 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */,
+				617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */,
+				2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FAA233217A5572C1098103F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				618A31AA0F04F5BAEE52A1BF /* Pods-TreeClimbr.debug.xcconfig */,
+				FD9C6F42900DD93E9DC4842B /* Pods-TreeClimbr.release.xcconfig */,
+				22A5D969B4E14DA4F60801B7 /* Pods-TreeClimbrTests.debug.xcconfig */,
+				7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */,
+				BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */,
+				6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,9 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DCE2F241FBCDE44001A30EA /* Build configuration list for PBXNativeTarget "TreeClimbr" */;
 			buildPhases = (
+				AF4794507172BB7CB1E64794 /* [CP] Check Pods Manifest.lock */,
 				0DCE2EF81FBCDE44001A30EA /* Sources */,
 				0DCE2EF91FBCDE44001A30EA /* Frameworks */,
 				0DCE2EFA1FBCDE44001A30EA /* Resources */,
+				6A063A0D5FC49B6CE8EB9F29 /* [CP] Embed Pods Frameworks */,
+				EDFC16F2C7AC127410304F40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +336,7 @@
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
+				E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
 				0DCE2F2E1FBCDEE6001A30EA /* TreeDetail.storyboard in Resources */,
 			);
@@ -330,6 +392,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6A063A0D5FC49B6CE8EB9F29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A3E3982C3AF8A1397E943E7F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +449,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AF4794507172BB7CB1E64794 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TreeClimbr-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DAC73157E5AADB52FB798273 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +480,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDFC16F2C7AC127410304F40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F82FCABC4516B7CBE7841864 /* [CP] Embed Pods Frameworks */ = {
@@ -403,9 +522,14 @@
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
+				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
+				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
+				E6CE28C91FBFBB5F006ABDAB /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +693,7 @@
 		};
 		0DCE2F251FBCDE44001A30EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 618A31AA0F04F5BAEE52A1BF /* Pods-TreeClimbr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -583,6 +708,7 @@
 		};
 		0DCE2F261FBCDE44001A30EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD9C6F42900DD93E9DC4842B /* Pods-TreeClimbr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -597,6 +723,7 @@
 		};
 		0DCE2F281FBCDE44001A30EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22A5D969B4E14DA4F60801B7 /* Pods-TreeClimbrTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -613,6 +740,7 @@
 		};
 		0DCE2F291FBCDE44001A30EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -629,6 +757,7 @@
 		};
 		0DCE2F2B1FBCDE44001A30EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -644,6 +773,7 @@
 		};
 		0DCE2F2C1FBCDE44001A30EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
