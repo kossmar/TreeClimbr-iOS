@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WzQ-AT-ITB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WzQ-AT-ITB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -74,6 +74,7 @@
                                                 <state key="normal" title="Log In"/>
                                                 <connections>
                                                     <action selector="goToLoginClickedPressed:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="Y0q-8V-eWG"/>
+                                                    <segue destination="qGu-50-SYN" kind="show" id="Uiy-oC-0NF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -99,6 +100,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xma-Zm-PrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4245.6000000000004" y="-1252.6236881559221"/>
+        </scene>
+        <!--signUpToLogin-->
+        <scene sceneID="N4p-Ya-zzu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="signUpToLogin" id="qGu-50-SYN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0U-bt-vge" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3623" y="-1112"/>
         </scene>
     </scenes>
 </document>
