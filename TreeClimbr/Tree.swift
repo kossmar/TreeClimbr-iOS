@@ -1,7 +1,7 @@
 import Foundation
 
 class Tree: NSObject {
-    var treeId: String?
+//    var treeId: String?
     var treeName: String
     var treeSpecies: String?
     var treeRating: Double? = 0.0
@@ -12,16 +12,18 @@ class Tree: NSObject {
     var treePopularity: Int? = 0
     var treePhotoData: NSData
     
-    init(id: String?, name: String, species: String?, rating: Double?, description: String?, howTofind: String?, treeLat: Double, treeLong: Double, popularity: Int?, photo: NSData) {
-        self.treeId = id
+    
+    init(name: String, description: String?, treeLat: Double, treeLong: Double, photo: NSData) {
+      //  self.treeId = ""
         self.treeName = name
-        self.treeSpecies = species
-        self.treeRating = rating
+        self.treeSpecies = "none"
+        self.treeRating = 0.0
         self.treeDescription = description
-        self.treeHowToFind = howTofind
+        self.treeHowToFind = "none"
         self.treeLatitude = treeLat
         self.treeLongitude = treeLong
-        self.treePopularity = popularity
+        self.treePopularity = 0
         self.treePhotoData = photo
     }
+    
 }
