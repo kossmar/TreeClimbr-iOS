@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
 		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWrite.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
+				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
 				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
 				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
 				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
@@ -524,6 +527,7 @@
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
