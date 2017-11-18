@@ -21,9 +21,16 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-tX-Piz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-PN-MIr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-PN-MIr" userLabel="FavouritesButton">
                                 <rect key="frame" x="284" y="20" width="75" height="66.5"/>
                                 <state key="normal" image="Favourites"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-3D-nnI" userLabel="MyTreesButton">
+                                <rect key="frame" x="16" y="20" width="75" height="66.5"/>
+                                <state key="normal" image="mytreesbutton"/>
+                                <connections>
+                                    <segue destination="EXS-MP-yW1" kind="presentation" id="poX-WJ-aBE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -31,10 +38,14 @@
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2Ic-PO-WRa"/>
                             <constraint firstItem="Lmz-PN-MIr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4R0-Yx-PU3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lmz-PN-MIr" secondAttribute="trailing" constant="16" id="5MP-Gz-teb"/>
+                            <constraint firstItem="gaB-3D-nnI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5WT-zD-W7R"/>
+                            <constraint firstItem="gaB-3D-nnI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="A06-oA-L6Z"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DOI-ul-iKm"/>
+                            <constraint firstItem="gaB-3D-nnI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UBY-Y0-Jxl"/>
                             <constraint firstItem="Lmz-PN-MIr" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.2" id="d6s-b7-qRl"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ezX-Bi-V8a"/>
                             <constraint firstItem="Lmz-PN-MIr" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="hih-Fq-mph"/>
+                            <constraint firstItem="gaB-3D-nnI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="y6P-4a-bgG"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yX3-IB-4Jx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -42,11 +53,20 @@
                     <connections>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="EditTree" id="yvV-7N-ldg"/>
+                        <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+        </scene>
+        <!--TreeList-->
+        <scene sceneID="NqT-mF-3tI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TreeList" id="EXS-MP-yW1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSI-Uy-FfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="783" y="-115"/>
         </scene>
         <!--TreeNew-->
         <scene sceneID="6Tu-QU-VCW">
@@ -54,10 +74,19 @@
                 <viewControllerPlaceholder storyboardName="TreeNew" id="o5z-DZ-vmH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rru-v4-sTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="132"/>
+            <point key="canvasLocation" x="918" y="50"/>
+        </scene>
+        <!--SignUpView-->
+        <scene sceneID="LwC-LY-x55">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUpView" id="Lnf-bO-2Pn" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B6Z-zj-oEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="390"/>
         </scene>
     </scenes>
     <resources>
         <image name="Favourites" width="62" height="72"/>
+        <image name="mytreesbutton" width="56" height="66"/>
     </resources>
 </document>

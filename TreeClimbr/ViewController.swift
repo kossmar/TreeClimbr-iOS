@@ -21,6 +21,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        performSegue(withIdentifier: "CheckIdentity", sender: view)
+        
         setupTap()
         userLocationSetup()
         
