@@ -5,7 +5,7 @@ import Firebase
 
 class LoginClass: NSObject {
     
-    class func loginMethod (inpView: UIViewController, inpEmail: String, inpPassword: String)  {
+    class func loginMethod (inpView: UIViewController, inpEmail: String, inpPassword: String, completion:@escaping () -> Void )  {
         
         Auth.auth().signIn(withEmail: inpEmail,
                            password: inpPassword)
@@ -16,7 +16,10 @@ class LoginClass: NSObject {
                                                            email: user!.email!,
                                                            uid: user!.uid)
                 
-// alert for logged in
+                
+                
+                print("LOGGED IN!")
+                completion()
                 
 //                ReadAll.readData(inpView: inpView);
             }
