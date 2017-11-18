@@ -11,6 +11,8 @@ class AppData: NSObject {
     public var usersNode: DatabaseReference
     public var treeNode: DatabaseReference
     
+    public var treesArr : Array <Tree> = Array <Tree> ()
+    
 
     public override init()
     {
