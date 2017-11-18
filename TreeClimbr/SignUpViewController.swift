@@ -32,11 +32,25 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password)
+//        DispatchQueue.main.async(execute: {() -> Void in
+        
+            RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
+                
+                self.dismiss(animated: true, completion: nil)
+                
+                
+            })
+//        })
+        
+//        if AppData.sharedInstance.curUser != nil {
+//            dismiss(animated: true, completion: nil)
+//
+//        }
+        
     }
     
     @IBAction func goToLoginPressed(_ sender: UIButton) {
-
+        
         
     }
     
