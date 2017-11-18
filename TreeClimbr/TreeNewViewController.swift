@@ -8,12 +8,14 @@
 
 import UIKit
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate {
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
     @IBOutlet weak var TreeDescTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    let imagePickerController = UIImagePickerController()
     
     
     override func viewDidLoad() {
@@ -23,13 +25,16 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         treeImageView.layer.cornerRadius = treeImageView.frame.width * 0.5
         treeImageView.clipsToBounds = true
         
-        setupCV()
+        setup()
         
 
     }
     
     //MARK: VC Buttons
     @IBAction func addPhoto(_ sender: UIButton) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+        imagePickerController.allowsEditing = true
+        self.present(imagePickerController, animated: true, completion: nil)
     }
     
     @IBAction func save(_ sender: UIButton) {
@@ -54,10 +59,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     //MARK: Collection view
-    func setupCV() {
+    func setup() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-        
+        imagePickerController.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
 
