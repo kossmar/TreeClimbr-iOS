@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07E9E18AE2D61957FDAE3AE9 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B2AE7EE0B0CEFAC5CEFFDE /* Pods_TreeClimbr.framework */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
+		0DBF01AD1FBF862200ACBB61 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01AB1FBF862200ACBB61 /* Tree.swift */; };
+		0DBF01AE1FBF862200ACBB61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01AC1FBF862200ACBB61 /* User.swift */; };
+		0DBF01B31FBF88ED00ACBB61 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01B21FBF88EC00ACBB61 /* AppData.swift */; };
+		0DBF01B71FBF8F1B00ACBB61 /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
 		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
 		0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F031FBCDE44001A30EA /* Main.storyboard */; };
@@ -21,6 +25,8 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+		0DEFD5771FBF93D40060A2EF /* AlertShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEFD5761FBF93D40060A2EF /* AlertShow.swift */; };
+		0DEFD5781FBFAC650060A2EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF01AF1FBF868B00ACBB61 /* GoogleService-Info.plist */; };
 		0DF22D971FBEA64800F71C87 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D941FBEA64600F71C87 /* Login.storyboard */; };
 		0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D951FBEA64600F71C87 /* LoginViewController.swift */; };
 		0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */; };
@@ -48,6 +54,11 @@
 /* Begin PBXFileReference section */
 		08E431C76B791DFAA73D67B4 /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
+		0DBF01AB1FBF862200ACBB61 /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		0DBF01AC1FBF862200ACBB61 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0DBF01AF1FBF868B00ACBB61 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0DBF01B21FBF88EC00ACBB61 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DCE2F011FBCDE44001A30EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +77,7 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+		0DEFD5761FBF93D40060A2EF /* AlertShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShow.swift; sourceTree = "<group>"; };
 		0DF22D941FBEA64600F71C87 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0DF22D951FBEA64600F71C87 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -132,8 +144,13 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				0DBF01B61FBF8F1B00ACBB61 /* RegisterClass.swift */,
+				0DBF01AB1FBF862200ACBB61 /* Tree.swift */,
+				0DBF01AC1FBF862200ACBB61 /* User.swift */,
+				0DBF01B21FBF88EC00ACBB61 /* AppData.swift */,
 				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
 				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
+				0DEFD5761FBF93D40060A2EF /* AlertShow.swift */,
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
 				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
@@ -147,6 +164,7 @@
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
+				0DBF01AF1FBF868B00ACBB61 /* GoogleService-Info.plist */,
 			);
 			path = TreeClimbr;
 			sourceTree = "<group>";
@@ -315,6 +333,7 @@
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
+				0DEFD5781FBFAC650060A2EF /* GoogleService-Info.plist in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
 				0DCE2F2E1FBCDEE6001A30EA /* TreeDetail.storyboard in Resources */,
 			);
@@ -493,11 +512,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DBF01B71FBF8F1B00ACBB61 /* RegisterClass.swift in Sources */,
+				0DEFD5771FBF93D40060A2EF /* AlertShow.swift in Sources */,
+				0DBF01AD1FBF862200ACBB61 /* Tree.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0DBF01AE1FBF862200ACBB61 /* User.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
+				0DBF01B31FBF88ED00ACBB61 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
