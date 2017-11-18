@@ -31,21 +31,14 @@ class SignUpViewController: UIViewController {
                            messageStr: "Please Fill Out All Required Fields")
             return
         }
-        
-//        DispatchQueue.main.async(execute: {() -> Void in
-        
+                
             RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
                 
                 self.dismiss(animated: true, completion: nil)
                 
                 
             })
-//        })
-        
-//        if AppData.sharedInstance.curUser != nil {
-//            dismiss(animated: true, completion: nil)
-//
-//        }
+
         
     }
     
