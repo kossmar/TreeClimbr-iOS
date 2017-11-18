@@ -12,7 +12,7 @@ import Firebase
 class ReadTrees: NSObject {
     
     
-    func read() {
+    class func read() {
         if ( Auth.auth().currentUser == nil ) {
             return
         }

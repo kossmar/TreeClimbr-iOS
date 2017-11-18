@@ -22,6 +22,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ReadTrees.read()
         setupTap()
         userLocationSetup()
     }
@@ -53,21 +54,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
-//        let nameAlertCon = UIAlertController(title: "Name Entry", message: "Enter a name for your tree!", preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        nameAlertCon.addTextField(configurationHandler: nil)
-//        let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
-//        let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-//        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default)
-//        { (action) in
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = annCoordinates
-//            annotation.title = nameAlertCon.textFields?.first?.text
-//            self.mapView.addAnnotation(annotation)
-//        }
-//        nameAlertCon.addAction(confirmAction)
-//        nameAlertCon.addAction(cancelAction)
-//        self.present(nameAlertCon, animated: true, completion: nil)
         
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
