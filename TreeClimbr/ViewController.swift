@@ -1,14 +1,9 @@
-//
-//  ViewController.swift
-//  TreeClimbr
-//
-//  Created by Mar Koss on 2017-11-15.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -25,12 +20,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        performSegue(withIdentifier: "CheckIdentity", sender: view)
-        
+
         setupTap()
         userLocationSetup()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if AppData.sharedInstance.curUser == nil {
+            performSegue(withIdentifier: "CheckIdentity", sender: self)
+        }
     }
     
     //MARK: Segue Methods

@@ -41,6 +41,8 @@ class RegisterClass: NSObject
                                 .child(onlineUser!.uid)
                                 .setValue(userDict)
                             
+                            ReadWrite.writeUser();
+
                             
                             
                             
