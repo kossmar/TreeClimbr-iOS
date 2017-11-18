@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var treeImageView: UIImageView!
@@ -18,7 +19,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     let imagePickerController = UIImagePickerController()
     var photoArr = Array<UIImage>()
 //    var pickedImag
-    
+    var coordinate = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         //save details
         let photoData = UIImagePNGRepresentation(treeImageView.image!) as NSData?
         
-        let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: 0.0, treeLong: 0.0, photo: photoData!)
+        let lat = coordinate.latitude
+        let long = coordinate.longitude
+        
+        let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData!)
         
         SaveTree.saveTree(tree: tree)
         

@@ -7,8 +7,8 @@ class Tree: NSObject {
     var treeRating: Double? = 0.0
     var treeDescription: String?
     var treeHowToFind: String?
-    var treeLatitude: Double = 0.0
-    var treeLongitude: Double = 0.0
+    var treeLatitude = Double()
+    var treeLongitude = Double()
     var treePopularity: Int? = 0
     var treePhotoData: NSData
     
