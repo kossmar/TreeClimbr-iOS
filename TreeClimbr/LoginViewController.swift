@@ -23,10 +23,12 @@ class LoginViewController: UIViewController {
             return
         }
         
-        LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password)
         
-//        dismiss(animated: true, completion: nil)
-        view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password, completion: {
+           
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            
+            })
     }
     
     
