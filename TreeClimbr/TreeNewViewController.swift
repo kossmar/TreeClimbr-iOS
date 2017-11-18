@@ -41,6 +41,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func save(_ sender: UIButton) {
         //save details
+        let photoData = UIImagePNGRepresentation(treeImageView.image!) as NSData?
+        
+        let tree = Tree(id: nil, name: treeNameTextField.text!, species: nil, rating: nil, description: TreeDescTextView.text, howTofind: nil, treeLat: 0.0, treeLong: 0.0, popularity: nil, photo: photoData!)
+        SaveTree.saveTree(tree: tree)
+        
         dismiss(animated: true, completion: nil)
     }
     
