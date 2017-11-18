@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="-4245.6000000000004" y="-1252.6236881559221"/>
         </scene>
-        <!--signUpToLogin-->
+        <!--login-->
         <scene sceneID="N4p-Ya-zzu">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="signUpToLogin" id="qGu-50-SYN" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="login" id="qGu-50-SYN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0U-bt-vge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3623" y="-1112"/>
