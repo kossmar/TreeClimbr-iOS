@@ -9,6 +9,7 @@ class AppData: NSObject {
     public var curUser: User!
 
     public var usersNode: DatabaseReference
+    public var treeNode: DatabaseReference
     
 
     public override init()
@@ -16,6 +17,7 @@ class AppData: NSObject {
 //        FirebaseApp.configure()
         
         usersNode = Database.database().reference().child("users")
+        treeNode = Database.database().reference().child("trees")
     }
     
     
