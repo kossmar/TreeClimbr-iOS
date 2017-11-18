@@ -8,17 +8,23 @@
 
 import UIKit
 
-class TreeNewViewController: UIViewController {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
     @IBOutlet weak var TreeDescTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        treeImageView.layer.cornerRadius = treeImageView.frame.size.height/2
+        //set up imageview shape
+        treeImageView.layer.cornerRadius = treeImageView.frame.width * 0.5
+        treeImageView.clipsToBounds = true
+        
+        setupCV()
+        
 
     }
     
@@ -27,12 +33,31 @@ class TreeNewViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
+        //save details
+        dismiss(animated: true, completion: nil)
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Collection view delegates
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCell", for: indexPath)
+        return cell
+    }
+    
+    //MARK: Collection view
+    func setupCV() {
+        photoCollectionView.delegate = self
+        photoCollectionView.dataSource = self
+        
     }
     
 

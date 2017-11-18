@@ -18,7 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var userCoordinate = CLLocationCoordinate2D()
     var myAnnotation = MKPointAnnotation()
     
-    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+//    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
     
     var lat = 0.0
     var long = 0.0
@@ -32,9 +32,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     //MARK: Segue Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //FIX
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        //FIX
+//    }
     
     //MARK: Tap gesture methods
     func setupTap() {
@@ -44,21 +44,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
-        let nameAlertCon = UIAlertController(title: "Name Entry", message: "Enter a name for your tree!", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        nameAlertCon.addTextField(configurationHandler: nil)
+//        let nameAlertCon = UIAlertController(title: "Name Entry", message: "Enter a name for your tree!", preferredStyle: .alert)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        nameAlertCon.addTextField(configurationHandler: nil)
+//        let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
+//        let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
+//        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default)
+//        { (action) in
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = annCoordinates
+//            annotation.title = nameAlertCon.textFields?.first?.text
+//            self.mapView.addAnnotation(annotation)
+//        }
+//        nameAlertCon.addAction(confirmAction)
+//        nameAlertCon.addAction(cancelAction)
+//        self.present(nameAlertCon, animated: true, completion: nil)
+        
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default)
-        { (action) in
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = annCoordinates
-            annotation.title = nameAlertCon.textFields?.first?.text
-            self.mapView.addAnnotation(annotation)
-        }
-        nameAlertCon.addAction(confirmAction)
-        nameAlertCon.addAction(cancelAction)
-        self.present(nameAlertCon, animated: true, completion: nil)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = annCoordinates
+        performSegue(withIdentifier: "EditTree", sender: view)
+        annotation.title = "MyTree" //title from tree new vc
+        self.mapView.addAnnotation(annotation)
     }
     
     //MARK: Setup map features
@@ -100,7 +108,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
             //add info button
-//            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
             annView!.rightCalloutAccessoryView = detailButton
         } else {
             annView!.annotation = annotation
@@ -118,6 +126,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         annView!.image = scaledImage
         return annView!
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView{
+            performSegue(withIdentifier: "EditTree", sender: view)
+        }
     }
     
 }
