@@ -23,6 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidLoad()
 
         ReadTrees.read()
+        setupAnnotations()
         setupTap()
         userLocationSetup()
     }
@@ -86,6 +87,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
+    }
+    
+    func setupAnnotations() {
+        var treeLocArr = Array<MKPointAnnotation>()
+        for tree in AppData.sharedInstance.treesArr{
+            let treeLat = tree.treeLatitude
+            let treeLong = tree.treeLongitude
+//            let treeLoc = CLLocation(latitude: treeLat, longitude: treeLong)
+            let treeAnn = MKPointAnnotation()
+            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+            treeAnn.title = tree.treeName
+            treeLocArr.append(treeAnn)
+        }
+   
+        mapView.addAnnotations(treeLocArr)
+        print("annotations added")
     }
     
     
