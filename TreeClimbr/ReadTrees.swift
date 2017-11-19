@@ -32,7 +32,9 @@ class ReadTrees: NSObject {
                 
                 for any in (value?.allValues)!
                 {
-                    let tree : [String : String] = any as! Dictionary <String, String>;
+                    guard let tree : [String : String] = any as? Dictionary <String, String> else {
+                        return
+                    }
                     
                     let treeName : String = tree["nameKey"]!;
                     let treeDescription : String = tree["descriptionKey"]!;
@@ -65,6 +67,8 @@ class ReadTrees: NSObject {
                     AppData.sharedInstance.treesArr.append(readEntry)
                     
                     print (AppData.sharedInstance.treesArr)
+                    
+                    
                 }
                 
             })
