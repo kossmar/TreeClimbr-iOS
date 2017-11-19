@@ -11,6 +11,8 @@ import UIKit
 class TreeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,14 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyTreeCell", for: indexPath)
         
+        cell.textLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeName
+        cell.detailTextLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeDescription
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return AppData.sharedInstance.treesArr.count
     }
     
     override func didReceiveMemoryWarning() {

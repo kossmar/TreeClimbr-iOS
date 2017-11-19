@@ -22,8 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ReadTrees.read()
-        setupAnnotations()
+//        ReadTrees.read()
+//        setupAnnotations()
         setupTap()
         userLocationSetup()
     }
@@ -35,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    
     //MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -45,6 +46,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             treeVC.coordinate = treeLocation
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ReadTrees.read()
+        setupAnnotations()
     }
     
     //MARK: Tap gesture methods
@@ -90,18 +96,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func setupAnnotations() {
-        var treeLocArr = Array<MKPointAnnotation>()
         for tree in AppData.sharedInstance.treesArr{
+            var treeLocArr = Array<MKPointAnnotation>()
             let treeLat = tree.treeLatitude
             let treeLong = tree.treeLongitude
-//            let treeLoc = CLLocation(latitude: treeLat, longitude: treeLong)
             let treeAnn = MKPointAnnotation()
             treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
             treeAnn.title = tree.treeName
             treeLocArr.append(treeAnn)
+            mapView.addAnnotations(treeLocArr)
         }
-   
-        mapView.addAnnotations(treeLocArr)
         print("annotations added")
     }
     

@@ -19,40 +19,40 @@ class ReadTrees: NSObject {
         
         AppData.sharedInstance.treesArr = Array<Tree>()
         
+        let userID = Auth.auth().currentUser?.uid
+        
         AppData.sharedInstance.treeNode
-            .observeSingleEvent(of: .value, with: { (snapshot) in
-                
+            .child(userID!)
+            .observeSingleEvent (of: .value, with: { (snapshot) in
+              
                 let value = snapshot.value as? NSDictionary;
                 
-                if ( value == nil) {
+                if (value == nil) {
                     return
                 }
                 
                 
-                
                 for any in (value?.allValues)!
                 {
-                    guard let tree : [String : String] = any as? Dictionary <String, String> else {
-                        return
-                    }
+                    let tree : [String : Any] = any as! Dictionary <String, Any>
                     
-                    let treeName : String = tree["nameKey"]!;
-                    let treeDescription : String = tree["descriptionKey"]!;
-                    let treeSpecies : String = tree["speciesKey"]!;
-                    let treeRating : String = tree["ratingKey"]!;
-                    let treeHowToFind : String = tree["howToFindKey"]!;
-                    let treeLatitude : String = tree["latitudeKey"]!;
-                    let treeLongitude : String = tree["longitudeKey"]!;
-                    let treePopularity : String = tree["popularityKey"]!;
+                    let treeDescription = tree["descriptionKey"] as! String
+                    let treeHowToFind = tree["howToFindKey"] as! String
+                    let treeLatitude = tree["latitudeKey"] as! Double
+                    let treeLongitude = tree["longitudeKey"]  as! Double
+                    let treeName : String = tree["nameKey"] as! String
+                    let treePopularity = tree["popularityKey"] as! Int
+                    let treeRating = tree["ratingKey"] as! Double
+                    let treeSpecies : String = tree["speciesKey"] as! String
                     
-                    let treeLat = Double(treeLatitude)
-                    let treeLong = Double(treeLongitude)
+//                    let treeLat = Double(treeLatitude)
+//                    let treeLong = Double(treeLongitude)
                     let treePhoto : NSData = NSData() //this 💩 is fake
                     
                     let readEntry = Tree(name: treeName,
                                          description: treeDescription,
-                                         treeLat: treeLat!,
-                                         treeLong: treeLong!,
+                                         treeLat: treeLatitude,
+                                         treeLong: treeLongitude,
                                          photo: treePhoto)
                     
                     //💩💩💩💩💩💩💩💩💩💩💩💩
