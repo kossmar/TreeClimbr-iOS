@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
+		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
+		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWrite.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
+		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
+		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +180,8 @@
 				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				0DCE2F011FBCDE44001A30EA /* ViewController.swift */,
+				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
+				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
 				0DCE2F031FBCDE44001A30EA /* Main.storyboard */,
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
@@ -547,11 +553,13 @@
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				E6D66C191FC0E2C9001B5C52 /* SaveTree.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
+				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
