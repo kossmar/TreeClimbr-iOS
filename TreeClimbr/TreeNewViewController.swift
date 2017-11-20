@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
@@ -44,7 +44,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func save(_ sender: UIButton) {
-        //save details
         let photoData = UIImagePNGRepresentation(treeImageView.image!) as NSData?
         
         let lat = coordinate.latitude
@@ -57,7 +56,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Collection view delegates
+    //MARK: Collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -67,7 +66,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
-    //MARK: Collection view
     func setup() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
@@ -95,15 +93,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: Textfield delegte
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        treeNameTextField.resignFirstResponder()
+        return true
     }
-    */
 
 }
