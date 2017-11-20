@@ -27,7 +27,7 @@ class SaveTree: NSObject {
         ]
 
         AppData.sharedInstance.treeNode
-            .child(AppData.sharedInstance.curUser!.uid)
+//            .child(AppData.sharedInstance.curUser!.uid)
             .child(tree.treeName)
             .setValue(treeDict)
     }
