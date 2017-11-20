@@ -1,5 +1,3 @@
-
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -14,12 +12,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var myAnnotation = MKPointAnnotation()
     var treeLocation = CLLocationCoordinate2D()
     
+    var handle: AuthStateDidChangeListenerHandle?
+    
 //    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
     
     var lat = 0.0
     var long = 0.0
     
     var treesArr = [Tree]()
+    
+    //MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +32,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         userLocationSetup()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        if AppData.sharedInstance.curUser == nil {
-//            performSegue(withIdentifier: "CheckIdentity", sender: self)
-//        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        Auth.auth().addStateDidChangeListener { auth, user in
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
         }
+        
+        let treesArr = AppData.sharedInstance.treesArr
+        ReadTrees.read()
+        //        setupAnnotations()
+        for tree in treesArr{
+            let treeLat = tree.treeLatitude
+            let treeLong = tree.treeLongitude
+            let treeAnn = MKPointAnnotation()
+            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+            treeAnn.title = tree.treeName
+            self.mapView.addAnnotation(treeAnn)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //        if AppData.sharedInstance.curUser == nil {
+        //            performSegue(withIdentifier: "CheckIdentity", sender: self)
+        //        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     
@@ -62,21 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 //        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        let treesArr = AppData.sharedInstance.treesArr
-        ReadTrees.read()
-//        setupAnnotations()
-        for tree in treesArr{
-            let treeLat = tree.treeLatitude
-            let treeLong = tree.treeLongitude
-            let treeAnn = MKPointAnnotation()
-            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-            treeAnn.title = tree.treeName
-            self.mapView.addAnnotation(treeAnn)
-        }
-    }
+
     
     //MARK: Tap gesture methods
     func setupTap() {
