@@ -50,6 +50,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         let treesArr = AppData.sharedInstance.treesArr
+        let allAnnotations = self.mapView.annotations
+        self.mapView.removeAnnotations(allAnnotations)
         ReadTrees.read(completion: {
             for tree in treesArr{
                 let treeLat = tree.treeLatitude
@@ -170,6 +172,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         })
     }
+    
 }
 
 
