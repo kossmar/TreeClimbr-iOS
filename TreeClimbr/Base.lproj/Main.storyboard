@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -52,8 +53,9 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
-                        <segue destination="o5z-DZ-vmH" kind="presentation" identifier="EditTree" id="yvV-7N-ldg"/>
+                        <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
+                        <segue destination="C35-4q-N1j" kind="presentation" identifier="toTreeDetail" id="wUw-dM-NYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -76,13 +78,21 @@
             </objects>
             <point key="canvasLocation" x="918" y="50"/>
         </scene>
+        <!--TreeDetail-->
+        <scene sceneID="gZi-IG-Cpa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TreeDetail" id="C35-4q-N1j" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXq-Wt-DSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="213"/>
+        </scene>
         <!--SignUpView-->
         <scene sceneID="LwC-LY-x55">
             <objects>
                 <viewControllerPlaceholder storyboardName="SignUpView" id="Lnf-bO-2Pn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6Z-zj-oEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817" y="390"/>
+            <point key="canvasLocation" x="817" y="372"/>
         </scene>
     </scenes>
     <resources>
