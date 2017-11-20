@@ -41,13 +41,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //MARK: Segue Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "EditTree" {
-            guard let treeVC = segue.destination as? TreeNewViewController else{
+        if segue.identifier == "toNewTree" {
+            guard let treeVC = segue.destination as? TreeNewViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
-            
             treeVC.coordinate = treeLocation
         }
+        
+//        if segue.identifier == "toTreeDetail" {
+//            guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
+//                fatalError("Unexpected destination: \(segue.destination)")
+//            }
+//            treeDetailVC.tree = tree
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +84,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let annotation = MKPointAnnotation()
         annotation.coordinate = annCoordinates
         treeLocation = annCoordinates
-        performSegue(withIdentifier: "EditTree", sender: view)
+        performSegue(withIdentifier: "toTreeDetail", sender: view)
         annotation.title = "MyTree" //title from tree new vc
         self.mapView.addAnnotation(annotation)
     }
@@ -156,7 +162,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView{
-            performSegue(withIdentifier: "EditTree", sender: view)
+            performSegue(withIdentifier: "toTreeDetail", sender: view)
         }
     }
     
