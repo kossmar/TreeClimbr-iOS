@@ -32,8 +32,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if AppData.sharedInstance.curUser == nil {
-            performSegue(withIdentifier: "CheckIdentity", sender: self)
+//        if AppData.sharedInstance.curUser == nil {
+//            performSegue(withIdentifier: "CheckIdentity", sender: self)
+//        }
+        
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+                self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+            }
         }
     }
     
@@ -57,6 +63,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         let treesArr = AppData.sharedInstance.treesArr
         ReadTrees.read()
 //        setupAnnotations()
