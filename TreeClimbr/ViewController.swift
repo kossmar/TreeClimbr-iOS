@@ -32,9 +32,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        if AppData.sharedInstance.curUser == nil {
-//            performSegue(withIdentifier: "CheckIdentity", sender: self)
-//        }
+        if AppData.sharedInstance.curUser == nil {
+            performSegue(withIdentifier: "CheckIdentity", sender: self)
+        }
         
         Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
