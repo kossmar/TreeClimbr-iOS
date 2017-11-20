@@ -7,6 +7,7 @@ target 'TreeClimbr' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'FirebaseDatabase'
+  pod 'Firebase/Storage'
 
   # Pods for TreeClimbr
 
