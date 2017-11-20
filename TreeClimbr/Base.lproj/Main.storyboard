@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1M4-12-xwk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,11 +23,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-PN-MIr" userLabel="FavouritesButton">
-                                <rect key="frame" x="284" y="20" width="75" height="66.5"/>
+                                <rect key="frame" x="284" y="64" width="75" height="66.5"/>
                                 <state key="normal" image="Favourites"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-3D-nnI" userLabel="MyTreesButton">
-                                <rect key="frame" x="16" y="20" width="75" height="66.5"/>
+                                <rect key="frame" x="16" y="64" width="75" height="66.5"/>
                                 <state key="normal" image="mytreesbutton"/>
                                 <connections>
                                     <segue destination="EXS-MP-yW1" kind="presentation" id="poX-WJ-aBE"/>
@@ -51,16 +51,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6UE-lB-4bw"/>
                     <connections>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
-                        <segue destination="C35-4q-N1j" kind="presentation" identifier="toTreeDetail" id="wUw-dM-NYP"/>
+                        <segue destination="C35-4q-N1j" kind="show" identifier="toTreeDetail" id="wUw-dM-NYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="476" y="132.68365817091455"/>
         </scene>
         <!--TreeList-->
         <scene sceneID="NqT-mF-3tI">
@@ -68,7 +69,7 @@
                 <viewControllerPlaceholder storyboardName="TreeList" id="EXS-MP-yW1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSI-Uy-FfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="-115"/>
+            <point key="canvasLocation" x="1121.5999999999999" y="-115.14242878560721"/>
         </scene>
         <!--TreeNew-->
         <scene sceneID="6Tu-QU-VCW">
@@ -76,7 +77,7 @@
                 <viewControllerPlaceholder storyboardName="TreeNew" id="o5z-DZ-vmH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rru-v4-sTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918" y="50"/>
+            <point key="canvasLocation" x="1256" y="49.475262368815599"/>
         </scene>
         <!--TreeDetail-->
         <scene sceneID="gZi-IG-Cpa">
@@ -84,7 +85,7 @@
                 <viewControllerPlaceholder storyboardName="TreeDetail" id="C35-4q-N1j" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXq-Wt-DSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="213"/>
+            <point key="canvasLocation" x="1284" y="212.29385307346328"/>
         </scene>
         <!--SignUpView-->
         <scene sceneID="LwC-LY-x55">
@@ -92,7 +93,25 @@
                 <viewControllerPlaceholder storyboardName="SignUpView" id="Lnf-bO-2Pn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6Z-zj-oEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="817" y="372"/>
+            <point key="canvasLocation" x="1156" y="371.51424287856076"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MHC-Cx-TYa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1M4-12-xwk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SyY-2P-kIi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="l1v-bJ-5FH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyO-q5-z3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-330" y="154"/>
         </scene>
     </scenes>
     <resources>
