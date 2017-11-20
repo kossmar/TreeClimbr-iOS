@@ -35,40 +35,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if AppData.sharedInstance.curUser == nil {
-            performSegue(withIdentifier: "CheckIdentity", sender: self)
-        }
-
-        
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
         }
-        
-        let treesArr = AppData.sharedInstance.treesArr
-        ReadTrees.read()
-        //        setupAnnotations()
-        for tree in treesArr{
-            let treeLat = tree.treeLatitude
-            let treeLong = tree.treeLongitude
-            let treeAnn = MKPointAnnotation()
-            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-            treeAnn.title = tree.treeName
-            self.mapView.addAnnotation(treeAnn)
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //        if AppData.sharedInstance.curUser == nil {
-        //            performSegue(withIdentifier: "CheckIdentity", sender: self)
-        //        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //
     }
     
     
@@ -81,17 +62,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             treeVC.coordinate = treeLocation
         }
-        
-//        if segue.identifier == "toTreeDetail" {
-//            guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
-//                fatalError("Unexpected destination: \(segue.destination)")
-//            }
-//            treeDetailVC.tree = tree
-//        }
     }
-    
-
-    
+  
     //MARK: Tap gesture methods
     func setupTap() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
@@ -106,7 +78,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let annotation = MKPointAnnotation()
         annotation.coordinate = annCoordinates
         treeLocation = annCoordinates
-        performSegue(withIdentifier: "toTreeDetail", sender: view)
+        performSegue(withIdentifier: "toNewTree", sender: view)
         annotation.title = "MyTree" //title from tree new vc
         self.mapView.addAnnotation(annotation)
     }
@@ -133,19 +105,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
     }
-    
-//    func setupAnnotations() {
-//        for tree in AppData.sharedInstance.treesArr{
-//            let treeLat = tree.treeLatitude
-//            let treeLong = tree.treeLongitude
-//            let treeAnn = MKPointAnnotation()
-//            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-//            treeAnn.title = tree.treeName
-//            self.mapView.addAnnotation(treeAnn)
-//        }
-//        print("annotations added")
-//    }
-    
     
     //MARK: Map view delegate functions
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -188,7 +147,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        let treesArr = AppData.sharedInstance.treesArr
+        ReadTrees.read()
+        for tree in treesArr{
+            let treeLat = tree.treeLatitude
+            let treeLong = tree.treeLongitude
+            let treeAnn = MKPointAnnotation()
+            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+            treeAnn.title = tree.treeName
+            self.mapView.addAnnotation(treeAnn)
+        }
+    }
 }
 
 
