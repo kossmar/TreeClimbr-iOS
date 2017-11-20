@@ -19,6 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var lat = 0.0
     var long = 0.0
     
+    var treesArr = [Tree]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,8 +51,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let treesArr = AppData.sharedInstance.treesArr
         ReadTrees.read()
-        setupAnnotations()
+//        setupAnnotations()
+        for tree in treesArr{
+            let treeLat = tree.treeLatitude
+            let treeLong = tree.treeLongitude
+            let treeAnn = MKPointAnnotation()
+            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+            treeAnn.title = tree.treeName
+            self.mapView.addAnnotation(treeAnn)
+        }
     }
     
     //MARK: Tap gesture methods
@@ -95,19 +106,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.showsUserLocation = true
     }
     
-    func setupAnnotations() {
-        for tree in AppData.sharedInstance.treesArr{
-            var treeLocArr = Array<MKPointAnnotation>()
-            let treeLat = tree.treeLatitude
-            let treeLong = tree.treeLongitude
-            let treeAnn = MKPointAnnotation()
-            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-            treeAnn.title = tree.treeName
-            treeLocArr.append(treeAnn)
-            mapView.addAnnotations(treeLocArr)
-        }
-        print("annotations added")
-    }
+//    func setupAnnotations() {
+//        for tree in AppData.sharedInstance.treesArr{
+//            let treeLat = tree.treeLatitude
+//            let treeLong = tree.treeLongitude
+//            let treeAnn = MKPointAnnotation()
+//            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+//            treeAnn.title = tree.treeName
+//            self.mapView.addAnnotation(treeAnn)
+//        }
+//        print("annotations added")
+//    }
     
     
     //MARK: Map view delegate functions
@@ -150,6 +159,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             performSegue(withIdentifier: "EditTree", sender: view)
         }
     }
+    
     
 }
 
