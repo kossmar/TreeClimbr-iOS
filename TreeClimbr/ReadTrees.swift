@@ -22,7 +22,6 @@ class ReadTrees: NSObject {
         let userID = Auth.auth().currentUser?.uid
         
         AppData.sharedInstance.treeNode
-            .child(userID!)
             .observeSingleEvent (of: .value, with: { (snapshot) in
               
                 let value = snapshot.value as? NSDictionary;
