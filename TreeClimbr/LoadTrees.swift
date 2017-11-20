@@ -14,7 +14,9 @@ class LoadTrees: NSObject{
     //READ BOTH OFFLINE AND ONLINE
     
     class func readData() {
-        ReadTrees.read()
+        ReadTrees.read(completion: {
+            
+        } )
 
     }
  

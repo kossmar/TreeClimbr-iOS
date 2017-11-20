@@ -14,7 +14,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var handle: AuthStateDidChangeListenerHandle?
     
-//    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+    //    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
     
     var lat = 0.0
     var long = 0.0
@@ -25,14 +25,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        ReadTrees.read()
-//        setupAnnotations()
+        
+        //        ReadTrees.read()
+        //        setupAnnotations()
         setupTap()
         userLocationSetup()
     }
     
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
@@ -40,7 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
         }
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,7 +49,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //
+        let treesArr = AppData.sharedInstance.treesArr
+        ReadTrees.read(completion: {
+            for tree in treesArr{
+                let treeLat = tree.treeLatitude
+                let treeLong = tree.treeLongitude
+                let treeAnn = MKPointAnnotation()
+                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+                treeAnn.title = tree.treeName
+                self.mapView.addAnnotation(treeAnn)
+            }
+        })
     }
     
     
@@ -63,7 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             treeVC.coordinate = treeLocation
         }
     }
-  
+    
     //MARK: Tap gesture methods
     func setupTap() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
@@ -75,12 +85,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = annCoordinates
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = annCoordinates
         treeLocation = annCoordinates
         performSegue(withIdentifier: "toNewTree", sender: view)
-        annotation.title = "MyTree" //title from tree new vc
-        self.mapView.addAnnotation(annotation)
+////        annotation.title = "MyTree" //title from tree new vc
+//        self.mapView.addAnnotation(annotation)
     }
     
     //MARK: Setup map features
@@ -147,17 +157,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         let treesArr = AppData.sharedInstance.treesArr
-        ReadTrees.read()
-        for tree in treesArr{
-            let treeLat = tree.treeLatitude
-            let treeLong = tree.treeLongitude
-            let treeAnn = MKPointAnnotation()
-            treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-            treeAnn.title = tree.treeName
-            self.mapView.addAnnotation(treeAnn)
-        }
+        ReadTrees.read(completion: {
+            for tree in treesArr{
+                let treeLat = tree.treeLatitude
+                let treeLong = tree.treeLongitude
+                let treeAnn = MKPointAnnotation()
+                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+                treeAnn.title = tree.treeName
+                self.mapView.addAnnotation(treeAnn)
+            }
+        })
     }
 }
 
