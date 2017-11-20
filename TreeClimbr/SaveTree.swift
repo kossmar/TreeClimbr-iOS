@@ -95,7 +95,7 @@ class SaveTree: NSObject {
             "latitudeKey": tree.treeLatitude,
             "longitudeKey": tree.treeLongitude,
             "popularityKey":tree.treePopularity!,
-//            "photoKey":
+            "photoKey":photoID
         ]
 
         AppData.sharedInstance.treeNode
