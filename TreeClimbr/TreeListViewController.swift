@@ -4,7 +4,8 @@ import UIKit
 class TreeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-
+    var sourceVC = ViewController()
+    
     
     
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeDetailVC.tree = sender as! Tree
+            treeDetailVC.rootSourceVC = sourceVC
         }
     }
     
@@ -37,9 +39,10 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
         let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
-        cell.textLabel?.text = treeTemp.treeName
-        cell.detailTextLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeDescription
+//        cell.textLabel?.text = treeTemp.treeName
+//        cell.detailTextLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeDescription
         cell.tree = treeTemp
+        cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
         
         return cell
     }
@@ -53,8 +56,11 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         performSegue(withIdentifier: "toTreeDetail", sender: treeTemp)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 125
+    }
 
-    
+ 
  
 
 }

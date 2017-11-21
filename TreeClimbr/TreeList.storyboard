@@ -22,29 +22,28 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTreeTableViewCell" textLabel="GfT-Lt-FlG" detailTextLabel="O8l-97-0yP" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="6iv-ng-4y2" customClass="BasicTreeTableViewCell" customModule="TreeClimbr" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTreeTableViewCell" rowHeight="70" id="6iv-ng-4y2" customClass="BasicTreeTableViewCell" customModule="TreeClimbr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6iv-ng-4y2" id="BpV-I0-sap">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GfT-Lt-FlG">
-                                                    <rect key="frame" x="15" y="15" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O8l-97-0yP">
-                                                    <rect key="frame" x="15" y="38.5" width="44" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugh-Pc-Y4j" customClass="BasicTreeInfoView" customModule="TreeClimbr" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ugh-Pc-Y4j" firstAttribute="top" secondItem="BpV-I0-sap" secondAttribute="top" id="CFj-OU-RdR"/>
+                                                <constraint firstItem="Ugh-Pc-Y4j" firstAttribute="leading" secondItem="BpV-I0-sap" secondAttribute="leading" id="RIh-Xu-GAf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ugh-Pc-Y4j" secondAttribute="trailing" id="Xnm-Qp-4om"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ugh-Pc-Y4j" secondAttribute="bottom" id="yQ5-pc-JRK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="basicTreeInfoView" destination="Ugh-Pc-Y4j" id="H6z-vl-ZcS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -3,6 +3,7 @@ import UIKit
 
 class BasicTreeInfoView: UIView {
     
+    @IBOutlet weak var alphaView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var treeNameLabel: UILabel!
     override init(frame: CGRect) {
@@ -20,6 +21,12 @@ class BasicTreeInfoView: UIView {
         // Called when view is live rendered on Storyboard
         super.prepareForInterfaceBuilder()
         commonInit()
+        
+        
+//
+//        sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
+//        sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
+        
     }
     
     private func commonInit() {
@@ -49,6 +56,9 @@ class BasicTreeInfoView: UIView {
             contentView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
             
+            alphaView.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+//            alphaView.layer.cornerRadius = alphaView.frame.width/2
+
         }
     }
     

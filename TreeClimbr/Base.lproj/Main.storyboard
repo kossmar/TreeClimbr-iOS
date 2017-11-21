@@ -35,7 +35,7 @@
                                                 <rect key="frame" x="0.0" y="82" width="62" height="66"/>
                                                 <state key="normal" image="mytreesbutton"/>
                                                 <connections>
-                                                    <segue destination="EXS-MP-yW1" kind="presentation" id="poX-WJ-aBE"/>
+                                                    <segue destination="EXS-MP-yW1" kind="presentation" identifier="toTreeList" id="poX-WJ-aBE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hau-Kk-nEr">
@@ -75,7 +75,7 @@
                         <outlet property="sideButtonsView" destination="0q5-aI-TA7" id="EPB-QD-7jL"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
-                        <segue destination="C35-4q-N1j" kind="show" identifier="toTreeDetail" id="wUw-dM-NYP"/>
+                        <segue destination="C35-4q-N1j" kind="presentation" identifier="toTreeDetail" id="wUw-dM-NYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
