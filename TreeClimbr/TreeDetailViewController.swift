@@ -22,7 +22,14 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var picturesView: UIView!
     
+    lazy var aboutViewController: AboutViewController = {
+        return childViewControllers.first(where: { (viewController) -> Bool in
+            return viewController is AboutViewController
+        }) as! AboutViewController
+    }()
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tree = tree {
@@ -35,12 +42,13 @@ class TreeDetailViewController: UIViewController {
             toMapButton.tintColor = UIColor.clear
         }
         
-        //setup view container for segmented control
+        //setup child viewcontrollers
+        aboutViewController.tree = tree
         
+        //setup view container for segmented control
         aboutView.isHidden = false
         reviewView.isHidden = true
         picturesView.isHidden = true
-        
     }
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {

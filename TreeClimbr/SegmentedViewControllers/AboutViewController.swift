@@ -15,13 +15,21 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var treeDescTextView: UITextView!
     @IBOutlet weak var coordinateLabel: UILabel!
     
+    var tree : Tree? {
+        didSet {
+            
+            guard let tree = tree else { return }
+            
+            treeDescTextView.text = tree.treeDescription
+            coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         treeDescTextView.isEditable = false
         userLabel.text = "USER"
-        coordinateLabel.text = "-123.97236429734, -30.97236429734"
     }
-
 
 }
