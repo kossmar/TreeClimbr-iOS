@@ -21,10 +21,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var treesArr = [Tree]()
     
+    @IBOutlet weak var sideButtonsView: UIView!
+    
     //MARK: ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup side buttons
+        sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
+        sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
         
         //        ReadTrees.read()
         //        setupAnnotations()
@@ -119,6 +125,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         locationManager.startUpdatingLocation()
     }
+    
+    @IBAction func centerToUser(_ sender: UIButton) {
+        let location = mapView.userLocation
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        self.mapView.setRegion(region, animated: true)
+        self.mapView.userTrackingMode = .follow
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
