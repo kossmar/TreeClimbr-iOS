@@ -3,6 +3,8 @@ import Firebase
 
 
 class SaveTree: NSObject {
+    
+    var tempUrl: URL!
 
     class func saveTree(tree: Tree) {
         print("Saving...")
@@ -31,28 +33,32 @@ class SaveTree: NSObject {
             
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
+                let url = downloadedURL.absoluteString
+               
+                let treeDict: [String : Any] = [
+                    //            "idKey": treeID,
+                    "nameKey": tree.treeName,
+                    "descriptionKey": tree.treeDescription!,
+                    "speciesKey": tree.treeSpecies!,
+                    "ratingKey": tree.treeRating!,
+                    "howToFindKey": tree.treeHowToFind!,
+                    "latitudeKey": tree.treeLatitude,
+                    "longitudeKey": tree.treeLongitude,
+                    "popularityKey":tree.treePopularity!,
+                    "photoKey":url
+                ]
+                
+                AppData.sharedInstance.treeNode
+                    //            .child(AppData.sharedInstance.curUser!.uid)
+                    .child(tree.treeName)
+                    .setValue(treeDict)
             }
             
         })
-     
-        
-        let treeDict: [String : Any] = [
-//            "idKey": treeID,
-            "nameKey": tree.treeName,
-            "descriptionKey": tree.treeDescription!,
-            "speciesKey": tree.treeSpecies!,
-            "ratingKey": tree.treeRating!,
-            "howToFindKey": tree.treeHowToFind!,
-            "latitudeKey": tree.treeLatitude,
-            "longitudeKey": tree.treeLongitude,
-            "popularityKey":tree.treePopularity!,
-            "photoKey":photoID
-        ]
-
-        AppData.sharedInstance.treeNode
-//            .child(AppData.sharedInstance.curUser!.uid)
-            .child(tree.treeName)
-            .setValue(treeDict)
+    }
+    
+    private func saveUrl(url: URL) {
+        tempUrl = url
     }
     
 }
