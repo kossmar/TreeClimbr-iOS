@@ -4,7 +4,7 @@ import UIKit
 class BasicTreeInfoView: UIView {
     
     @IBOutlet var contentView: UIView!
-    
+    @IBOutlet weak var treeNameLabel: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

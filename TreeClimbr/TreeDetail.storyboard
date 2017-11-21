@@ -41,6 +41,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="CKX-F6-1Qy"/>
                     </view>
+                    <connections>
+                        <outlet property="basicTreeInfoView" destination="gnn-0f-9po" id="vG9-Ms-a1U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yz-rx-Lya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
