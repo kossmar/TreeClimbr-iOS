@@ -6,6 +6,7 @@ class BasicTreeInfoView: UIView {
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var treeNameLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

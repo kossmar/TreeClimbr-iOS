@@ -16,6 +16,13 @@ class TreeDetailViewController: UIViewController {
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
     
+    @IBOutlet weak var viewContainer: UIView!
+    
+    @IBOutlet weak var aboutView: UIView!
+    @IBOutlet weak var reviewView: UIView!
+    @IBOutlet weak var picturesView: UIView!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let tree = tree {
@@ -27,6 +34,13 @@ class TreeDetailViewController: UIViewController {
             toMapButton.isEnabled = false
             toMapButton.tintColor = UIColor.clear
         }
+        
+        //setup view container for segmented control
+        
+        aboutView.isHidden = false
+        reviewView.isHidden = true
+        picturesView.isHidden = true
+        
     }
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
@@ -44,5 +58,34 @@ class TreeDetailViewController: UIViewController {
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
+    
+    //MARK: Segment Control
+
+    @IBAction func switchViewAction(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            aboutView.isHidden = false
+            reviewView.isHidden = true
+            picturesView.isHidden = true
+            break
+        case 1:
+            aboutView.isHidden = true
+            reviewView.isHidden = false
+            picturesView.isHidden = true
+            break
+        case 2:
+            aboutView.isHidden = true
+            reviewView.isHidden = true
+            picturesView.isHidden = false
+            break
+        default:
+            aboutView.isHidden = false
+            reviewView.isHidden = true
+            picturesView.isHidden = true
+            break
+        }
+    }
+    
+    
     
 }
