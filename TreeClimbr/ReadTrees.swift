@@ -13,7 +13,8 @@ class ReadTrees: NSObject {
         
 //        let userID = Auth.auth().currentUser?.uid
         
-        AppData.sharedInstance.treeNode
+        AppData.sharedInstance
+            .treeNode
             .observe (.value, with: { (snapshot) in
               
                 let value = snapshot.value as? NSDictionary;
@@ -37,7 +38,7 @@ class ReadTrees: NSObject {
                     let treeSpecies : String = tree["speciesKey"] as! String
                     let treePhotoStr = tree["photoKey"] as! String
                     
-                    let treePhotoURL = URL(fileURLWithPath: treePhotoStr)
+                    let treePhotoURL = URL(string: treePhotoStr)
                     
                     let readTree = Tree(name: treeName,
                                          description: treeDescription,
@@ -52,7 +53,7 @@ class ReadTrees: NSObject {
                     readTree.treeRating = treeRat
                     readTree.treeHowToFind = treeHowToFind
                     readTree.treePopularity = treePop
-                    readTree.treePhotoURL = treePhotoURL
+                    readTree.treePhotoURL = treePhotoURL!
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     

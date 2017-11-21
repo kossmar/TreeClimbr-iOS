@@ -31,8 +31,10 @@ class SaveTree: NSObject {
                 return
             }
             
+            
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
+                metadata.contentType = "image/jpeg"
                 let url = downloadedURL.absoluteString
                
                 let treeDict: [String : Any] = [
