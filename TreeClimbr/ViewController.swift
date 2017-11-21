@@ -85,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
+            treeDetailVC.rootSourceVC = self
 
             let treeObject = sender as! Tree
             treeDetailVC.tree = treeObject
