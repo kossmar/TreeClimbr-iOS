@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="alphaView" destination="yh6-ku-0eu" id="rk6-rB-zsp"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="1FU-l7-RRV"/>
+                <outlet property="treeImageView" destination="v7V-fK-r5a" id="Th0-Um-rWx"/>
                 <outlet property="treeNameLabel" destination="Kf1-a3-zqX" id="CI9-ir-cBr"/>
             </connections>
         </placeholder>
