@@ -14,6 +14,8 @@
 		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
 		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
+		0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */; };
+		0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
 		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
@@ -69,6 +71,8 @@
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
+		0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddReview.storyboard; sourceTree = "<group>"; };
+		0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
 				E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */,
+				0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */,
+				0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */,
 				0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */,
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
 				E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */,
@@ -364,6 +370,7 @@
 				0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */,
 				0DCE2F301FBCDEF1001A30EA /* TreeList.storyboard in Resources */,
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
+				0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */,
 				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
 				E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */,
@@ -551,6 +558,7 @@
 			files = (
 				E6D66C1D1FC0E573001B5C52 /* ReadTrees.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
+				0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */,
