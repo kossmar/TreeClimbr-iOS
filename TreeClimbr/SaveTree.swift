@@ -22,7 +22,7 @@ class SaveTree: NSObject {
         let storageRef = storage.reference()
         let imagesRef = storageRef.child(photoID)
         
-        let photoData = tree.treePhotoData as Data
+        let photoData = tree.treePhotoData! as Data
         
         imagesRef.putData(photoData, metadata: nil, completion: { (metadata, error) in
             
@@ -55,10 +55,6 @@ class SaveTree: NSObject {
             }
             
         })
-    }
-    
-    private func saveUrl(url: URL) {
-        tempUrl = url
     }
     
 }
