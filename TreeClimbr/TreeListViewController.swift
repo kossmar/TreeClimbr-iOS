@@ -1,10 +1,3 @@
-//
-//  TreeListViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-17.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
 
 import UIKit
 
@@ -27,12 +20,26 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         dismiss(animated: true, completion: nil)
     }
     
+    
+    // MARK: Segue Methods
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTreeDetail" {
+            guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            treeDetailVC.tree = sender as! Tree
+        }
+    }
+    
+    
     //MARK: Table view delegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyTreeCell", for: indexPath)
-        
-        cell.textLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeName
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
+        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        cell.textLabel?.text = treeTemp.treeName
         cell.detailTextLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeDescription
+        cell.tree = treeTemp
         
         return cell
     }
@@ -41,20 +48,13 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         return AppData.sharedInstance.treesArr.count
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        performSegue(withIdentifier: "toTreeDetail", sender: treeTemp)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+ 
 
 }
