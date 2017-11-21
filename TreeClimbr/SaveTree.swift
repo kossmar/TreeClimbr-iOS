@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 
+
 class SaveTree: NSObject {
 
     class func saveTree(tree: Tree) {
@@ -78,6 +79,8 @@ class SaveTree: NSObject {
         }
         
         imagesRef.putData(tree.treePhotoData as Data, metadata: nil)
+        
+        
         
 
         

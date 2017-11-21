@@ -56,9 +56,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             for tree in treesArr{
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
-                let treeAnn = MKPointAnnotation()
+                let treeAnn : TreeAnnotation = TreeAnnotation()
                 treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
                 treeAnn.title = tree.treeName
+                treeAnn.tree = tree
                 self.mapView.addAnnotation(treeAnn)
             }
         })
@@ -73,6 +74,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeVC.coordinate = treeLocation
+        }
+        
+        if segue.identifier == "toTreeDetail" {
+            guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+
+            let treeObject = sender as! Tree
+            treeDetailVC.tree = treeObject
+            
         }
     }
     
@@ -121,16 +132,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //MARK: Map view delegate functions
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // go to tree creation
+
     }
     
+    
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if !(annotation is MKPointAnnotation){
+        if !(annotation is TreeAnnotation){
             return nil
         }
         
         var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
         if annView == nil {
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
+//            annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
             //add info button
             let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
@@ -148,14 +163,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         annView!.image = scaledImage
         return annView!
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView{
-            performSegue(withIdentifier: "toTreeDetail", sender: view)
+            let cusView = view.annotation as! TreeAnnotation
+            let treeObject = cusView.tree
+            performSegue(withIdentifier: "toTreeDetail", sender: treeObject)
         }
     }
     
@@ -165,9 +182,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             for tree in treesArr{
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
-                let treeAnn = MKPointAnnotation()
+                let treeAnn: TreeAnnotation = TreeAnnotation()
                 treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
                 treeAnn.title = tree.treeName
+                treeAnn.tree = tree
                 self.mapView.addAnnotation(treeAnn)
             }
         })
