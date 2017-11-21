@@ -2,7 +2,8 @@
 import UIKit
 
 class BasicTreeTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var basicTreeInfoView: BasicTreeInfoView!
+    
     var tree : Tree!
     
     override func awakeFromNib() {

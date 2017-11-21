@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -27,6 +27,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //setup side buttons
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
@@ -89,7 +90,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
             let treeObject = sender as! Tree
             treeDetailVC.tree = treeObject
+            treeDetailVC.fromMapView = true
             
+        }
+        
+        if segue.identifier == "toTreeList" {
+            guard let treeListVC = segue.destination as? TreeListViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            treeListVC.sourceVC = self
         }
     }
     
@@ -170,7 +179,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annView!.annotation = annotation
         }
         annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
-        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.3, y: 0.3))
         let hasAlpha = false
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
         
@@ -206,6 +215,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         })
     }
+    
+    // MARK: - Delegate Functions
+    
+    func focusOnTree(location: CLLocationCoordinate2D) {
+    
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        self.mapView.setRegion(region, animated: true)
+        
+    }
+
     
 }
 
