@@ -52,6 +52,11 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
         cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
         
+        cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
+                                                    completed: { (image, error, cacheType, url) in
+                                                        print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+        })
+        
         return cell
     }
     
