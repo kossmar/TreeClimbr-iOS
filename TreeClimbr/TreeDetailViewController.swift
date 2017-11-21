@@ -1,9 +1,9 @@
-
-
 import UIKit
 import CoreLocation
 import Firebase
 import SDWebImage
+import MapKit
+
 
 protocol MapFocusDelegate {
     func focusOnTree(location: CLLocationCoordinate2D)
@@ -17,6 +17,7 @@ class TreeDetailViewController: UIViewController {
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
+    var distance = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,10 @@ class TreeDetailViewController: UIViewController {
                     print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
             })
             
+          basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
+         
         } else {
+
             print("ERROR")
         }
         if (fromMapView) {
@@ -52,6 +56,16 @@ class TreeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
+    }
+    
+    func distanceFromUser() -> Double {
+        let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)
+        let currentLocation = rootSourceVC.userCoordinate
+        let treePoint = MKMapPointForCoordinate(treeLocation)
+        let currentPoint = MKMapPointForCoordinate(currentLocation)
+        let distance = (MKMetersBetweenMapPoints(treePoint, currentPoint) / 1000)
+        let distanceRound = Double(round(10*distance)/10)
+        return distanceRound
     }
     
 }

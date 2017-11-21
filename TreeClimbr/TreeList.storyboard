@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6iv-ng-4y2" id="BpV-I0-sap">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugh-Pc-Y4j" customClass="BasicTreeInfoView" customModule="TreeClimbr" customModuleProvider="target">
@@ -73,6 +73,7 @@
                         <viewLayoutGuide key="safeArea" id="xla-EM-OGE"/>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="so4-ye-eS6" id="End-TR-Ied"/>
                         <outlet property="tableView" destination="Uqq-mo-bEp" id="yRN-sb-Mdx"/>
                         <segue destination="BJz-du-GAK" kind="presentation" identifier="toTreeDetail" id="l2z-ns-Qc2"/>
                     </connections>

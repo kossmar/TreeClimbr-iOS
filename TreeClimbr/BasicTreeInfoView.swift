@@ -8,6 +8,8 @@ class BasicTreeInfoView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)

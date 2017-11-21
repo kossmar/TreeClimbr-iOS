@@ -1,10 +1,17 @@
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class TreeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     var sourceVC = ViewController()
+    var treeDistance = Double()
+    
+    
+    
     
     
     
@@ -13,6 +20,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
+        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
 
         // Do any additional setup after loading the view.
     }
@@ -31,6 +39,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             treeDetailVC.tree = sender as! Tree
             treeDetailVC.rootSourceVC = sourceVC
+            
         }
     }
     
@@ -39,10 +48,9 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
         let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
-//        cell.textLabel?.text = treeTemp.treeName
-//        cell.detailTextLabel?.text = AppData.sharedInstance.treesArr[indexPath.row].treeDescription
         cell.tree = treeTemp
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
+        cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
         
         return cell
     }
@@ -60,7 +68,17 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         return 125
     }
 
- 
+    // MARK: - Custom Functions
+    
+    func distanceFromUser(_ lat: Double,_ long: Double) -> Double {
+        let treeLocation = CLLocationCoordinate2DMake(lat,long)
+        let currentLocation = sourceVC.userCoordinate
+        let treePoint = MKMapPointForCoordinate(treeLocation)
+        let currentPoint = MKMapPointForCoordinate(currentLocation)
+        let distance = (MKMetersBetweenMapPoints(treePoint, currentPoint) / 1000)
+        let distanceRound = Double(round(10*distance)/10)
+        return distanceRound
+    }
  
 
 }
