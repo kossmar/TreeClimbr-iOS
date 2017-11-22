@@ -4,6 +4,8 @@ import CoreLocation
 import Firebase
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate {
+
+    
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -229,12 +231,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // MARK: - Delegate Functions
     
-    func focusOnTree(location: CLLocationCoordinate2D) {
+    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree) {
     
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        self.mapView.setRegion(region, animated: true)
+        let matching = mapView.annotations.first { (annotation) -> Bool in
+            
+            if let annotation = annotation as? TreeAnnotation {
+                return annotation.tree.treePhotoURL == tree.treePhotoURL
+            }
+            
+            return false
+        }
         
+        if let match = matching {
+            
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+            
+            mapView.setRegion(region, animated: true)
+            mapView.selectAnnotation(match, animated: true)
+            
+//            mapView.showAnnotations([match], animated: true)
+        }
     }
 
     
