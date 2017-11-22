@@ -1,10 +1,4 @@
-//
-//  TreeNewViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-17.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 import CoreLocation
@@ -21,6 +15,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     var photoArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
     var sourceVC = ViewController()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,17 +63,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 //        let treesArr = AppData.sharedInstance.treesArr
         
         SaveTree.saveTree(tree: tree, completion: { success in
-//            ReadTrees.read {
-//                for tree in treesArr{
-//                    let treeLat = tree.treeLatitude
-//                    let treeLong = tree.treeLongitude
-//                    let treeAnn : TreeAnnotation = TreeAnnotation()
-//                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-//                    treeAnn.title = tree.treeName
-//                    treeAnn.tree = tree
-//                    self.sourceVC.mapView.addAnnotation(treeAnn)
-//                }
-//            }
+
              self.dismiss(animated: true, completion: nil)
         })
         
