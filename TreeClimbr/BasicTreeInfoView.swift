@@ -7,6 +7,8 @@ class BasicTreeInfoView: UIView {
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var treeNameLabel: UILabel!
+
+
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
 
