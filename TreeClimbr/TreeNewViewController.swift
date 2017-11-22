@@ -56,7 +56,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
 //        let treesArr = AppData.sharedInstance.treesArr
         
-        SaveTree.saveTree(tree: tree, completion: {
+        SaveTree.saveTree(tree: tree, completion: { success in
 //            ReadTrees.read {
 //                for tree in treesArr{
 //                    let treeLat = tree.treeLatitude
@@ -68,9 +68,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 //                    self.sourceVC.mapView.addAnnotation(treeAnn)
 //                }
 //            }
+             self.dismiss(animated: true, completion: nil)
         })
         
-        dismiss(animated: true, completion: nil)
+   
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {

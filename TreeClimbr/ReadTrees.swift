@@ -4,26 +4,28 @@ import Firebase
 class ReadTrees: NSObject {
     
     
-    class func read(completion: () -> Void) {
+    class func read(completion: @escaping ([Tree]?) -> Void) {
         if ( Auth.auth().currentUser == nil ) {
+            completion(nil)
             return
         }
         
         
-//        let userID = Auth.auth().currentUser?.uid
+        
         
         AppData.sharedInstance
             .treeNode
             .observe (.value, with: { (snapshot) in
-              
+                
                 let value = snapshot.value as? NSDictionary;
                 
                 if (value == nil) {
+                    completion(nil)
                     return
                 }
                 
                 AppData.sharedInstance.treesArr = Array<Tree>()
-
+                
                 
                 for any in (value?.allValues)!
                 {
@@ -44,10 +46,10 @@ class ReadTrees: NSObject {
                     let treePhotoURL = URL(string: treePhotoStr)
                     
                     let readTree = Tree(name: treeName,
-                                         description: treeDescription,
-                                         treeLat: treeLatitude,
-                                         treeLong: treeLongitude,
-                                         photo: nil)
+                                        description: treeDescription,
+                                        treeLat: treeLatitude,
+                                        treeLong: treeLongitude,
+                                        photo: nil)
                     
                     
                     let treeRat = Double(treeRating)
@@ -62,12 +64,13 @@ class ReadTrees: NSObject {
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     
-                    print (AppData.sharedInstance.treesArr)
+//                    print (AppData.sharedInstance.treesArr)
                     
                 }
                 
+                print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
+                completion(AppData.sharedInstance.treesArr)
             })
-     completion()
     }
-
+    
 }

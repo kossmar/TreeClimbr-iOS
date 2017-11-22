@@ -54,11 +54,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let treesArr = AppData.sharedInstance.treesArr
-        let allAnnotations = self.mapView.annotations
-        self.mapView.removeAnnotations(allAnnotations)
-        ReadTrees.read(completion: {
-            for tree in treesArr{
+        super.viewWillAppear(animated)
+    
+        mapView.removeAnnotations(mapView.annotations)
+        
+        ReadTrees.read(completion: { trees in
+            
+            guard
+                let trees = trees
+                else { return }
+            
+            for tree in trees {
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
                 let treeAnn : TreeAnnotation = TreeAnnotation()
@@ -203,9 +209,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         
-        let treesArr = AppData.sharedInstance.treesArr
-        ReadTrees.read(completion: {
-            for tree in treesArr{
+        ReadTrees.read(completion: { trees in
+            
+            guard
+                let trees = trees
+                else { return }
+            
+            for tree in trees {
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
                 let treeAnn: TreeAnnotation = TreeAnnotation()
