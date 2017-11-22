@@ -33,9 +33,10 @@ class SaveTree: NSObject {
                 return
             }
             
-
         let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
         tree.treeID = treeID
+  
+        let creator = Auth.auth().currentUser?.uid
             
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
@@ -52,7 +53,8 @@ class SaveTree: NSObject {
                     "latitudeKey": tree.treeLatitude,
                     "longitudeKey": tree.treeLongitude,
                     "popularityKey":tree.treePopularity!,
-                    "photoKey":url
+                    "photoKey":url,
+                    "creatorKey":creator!
                 ]
                 
                 AppData.sharedInstance.treeNode
@@ -67,9 +69,3 @@ class SaveTree: NSObject {
     }
     
 }
-
-extension UIImage {
-    
-}
-
-

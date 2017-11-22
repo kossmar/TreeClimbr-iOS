@@ -139,6 +139,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         self.mapView.setRegion(region, animated: true)
         self.mapView.userTrackingMode = .follow
+        
     }
     
     
@@ -150,6 +151,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
+        locationManager.stopUpdatingLocation()
     }
     
     //MARK: Map view delegate functions
@@ -160,13 +162,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     }
 
-
-       
-    
-    
-    
-
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is TreeAnnotation){
             return nil
