@@ -6,7 +6,7 @@ import MapKit
 
 
 protocol MapFocusDelegate {
-    func focusOnTree(location: CLLocationCoordinate2D)
+    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
 }
 
 class TreeDetailViewController: UIViewController {
@@ -69,8 +69,10 @@ class TreeDetailViewController: UIViewController {
         let treeLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(tree.treeLatitude, tree.treeLongitude)
         self.delegate = rootSourceVC
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
-            self.rootSourceVC.focusOnTree(location: treeLocation)
+            self.rootSourceVC.focusOnTree(location: treeLocation, tree: self.tree)
         })
+        
+        
         
     }
     
