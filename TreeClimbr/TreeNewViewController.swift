@@ -108,9 +108,17 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            treeImageView.contentMode = .scaleToFill
-            treeImageView.image = pickedImage
+       var pickedImage: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            pickedImage = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            pickedImage = originalImage
+        }
+        
+        if let selectedImage = pickedImage {
+            treeImageView.image = selectedImage
         }
         picker.dismiss(animated: true, completion: nil)
     }
