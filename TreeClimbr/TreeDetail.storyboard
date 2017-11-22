@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qG-qF-Dga">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController id="8qG-qF-Dga" customClass="TreeDetailViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fb3-La-uMy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fsr-sL-UBa">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="WAT-mh-565">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="gN0-q4-sCr">
@@ -37,11 +37,11 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnn-0f-9po" userLabel="BasicTreeInfoView" customClass="BasicTreeInfoView" customModule="TreeClimbr" customModuleProvider="target">
-                                <rect key="frame" x="16" y="64" width="382" height="128"/>
+                                <rect key="frame" x="16" y="64" width="343" height="128"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="czL-H8-tzg">
-                                <rect key="frame" x="90.999999999999986" y="200" width="232.66666666666663" height="29"/>
+                                <rect key="frame" x="91" y="200" width="193.5" height="29"/>
                                 <segments>
                                     <segment title="Photos"/>
                                     <segment title="Reviews"/>
@@ -52,19 +52,19 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEe-4t-ddy">
-                                <rect key="frame" x="16" y="236" width="382" height="480"/>
+                                <rect key="frame" x="16" y="236" width="343" height="411"/>
                                 <connections>
                                     <segue destination="CXB-rD-QPr" kind="embed" id="Tmd-Ip-Mt7"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nz1-XT-Ydk">
-                                <rect key="frame" x="16" y="236" width="382" height="480"/>
+                                <rect key="frame" x="16" y="236" width="343" height="411"/>
                                 <connections>
                                     <segue destination="CuG-42-DZo" kind="embed" id="Rdl-2V-CSJ"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaD-1Q-cqP">
-                                <rect key="frame" x="16" y="236" width="382" height="480"/>
+                                <rect key="frame" x="16" y="236" width="343" height="411"/>
                                 <connections>
                                     <segue destination="rCf-eS-uYt" kind="embed" id="xI5-oI-j1c"/>
                                 </connections>
@@ -115,11 +115,11 @@
             <objects>
                 <viewController id="rCf-eS-uYt" customClass="PhotosViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="scT-ML-PWx">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-S2-nEN">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plH-sr-X5U">
                                     <size key="itemSize" width="50" height="50"/>
@@ -139,7 +139,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
-                                <rect key="frame" x="0.0" y="400" width="382" height="80"/>
+                                <rect key="frame" x="0.0" y="331" width="343" height="80"/>
                                 <color key="backgroundColor" red="0.42053091300000001" green="0.68529901650000002" blue="0.44571341060000003" alpha="0.67356057359999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Add Photo">
@@ -170,27 +170,27 @@
             <objects>
                 <viewController id="CXB-rD-QPr" customClass="AboutViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ex6-Sx-cUk">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YWL-m4-WDg">
-                                <rect key="frame" x="0.0" y="20" width="382" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De5-Qu-z5W">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="153.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="137"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-NH-CUv">
-                                        <rect key="frame" x="0.0" y="153.33333333333331" width="382" height="153.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="137" width="343" height="137"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-Mq-wow">
-                                        <rect key="frame" x="0.0" y="306.66666666666669" width="382" height="153.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="274" width="343" height="137"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -221,38 +221,57 @@
             <objects>
                 <viewController id="CuG-42-DZo" customClass="ReviewViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w9V-9G-Lyh">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ms-c7-rdg">
-                                <rect key="frame" x="16" y="430" width="350" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Add Review"/>
-                                <connections>
-                                    <action selector="reviewAction:" destination="CuG-42-DZo" eventType="touchUpInside" id="5BT-N9-2hP"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pd4-T5-OcV">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="82"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eOH-4s-SgF">
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="82"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ms-c7-rdg">
+                                        <rect key="frame" x="260" y="0.0" width="83" height="82"/>
+                                        <state key="normal" image="commentbutton"/>
+                                        <connections>
+                                            <action selector="addComment:" destination="CuG-42-DZo" eventType="touchUpInside" id="Qj3-R0-eoW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WIk-IP-M75">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="420"/>
+                                <rect key="frame" x="0.0" y="82" width="343" height="329"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WIk-IP-M75" firstAttribute="leading" secondItem="w9V-9G-Lyh" secondAttribute="leading" id="1iA-tB-GTk"/>
-                            <constraint firstAttribute="trailing" secondItem="WIk-IP-M75" secondAttribute="trailing" id="3Oe-Yo-40b"/>
-                            <constraint firstItem="WIk-IP-M75" firstAttribute="top" secondItem="w9V-9G-Lyh" secondAttribute="top" id="Di4-L0-XyY"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="0ms-c7-rdg" secondAttribute="bottom" constant="20" id="FLQ-Q6-hCt"/>
-                            <constraint firstItem="0ms-c7-rdg" firstAttribute="top" secondItem="WIk-IP-M75" secondAttribute="bottom" constant="10" id="JyM-el-APW"/>
-                            <constraint firstItem="0ms-c7-rdg" firstAttribute="trailing" secondItem="w9V-9G-Lyh" secondAttribute="trailingMargin" id="aWo-Id-jEL"/>
-                            <constraint firstItem="0ms-c7-rdg" firstAttribute="leading" secondItem="w9V-9G-Lyh" secondAttribute="leadingMargin" id="dwm-VY-geE"/>
+                            <constraint firstItem="Pd4-T5-OcV" firstAttribute="leading" secondItem="UAe-6b-APd" secondAttribute="leading" id="2Vf-hV-t0B"/>
+                            <constraint firstItem="Pd4-T5-OcV" firstAttribute="top" secondItem="UAe-6b-APd" secondAttribute="top" id="HEh-ba-AL0"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="height" secondItem="w9V-9G-Lyh" secondAttribute="height" multiplier="0.8" id="I1h-Aa-Bxc"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="bottom" secondItem="UAe-6b-APd" secondAttribute="bottom" id="J1r-Qk-NJB"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="trailing" secondItem="UAe-6b-APd" secondAttribute="trailing" id="Ka5-fS-Y88"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="leading" secondItem="UAe-6b-APd" secondAttribute="leading" id="KkA-fw-Wbc"/>
+                            <constraint firstItem="UAe-6b-APd" firstAttribute="trailing" secondItem="Pd4-T5-OcV" secondAttribute="trailing" id="foc-cv-qVq"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="top" secondItem="Pd4-T5-OcV" secondAttribute="bottom" id="xZK-Jk-BNg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UAe-6b-APd"/>
                     </view>
+                    <connections>
+                        <outlet property="addCommentButton" destination="0ms-c7-rdg" id="rnu-Wh-x2b"/>
+                        <outlet property="descTextView" destination="eOH-4s-SgF" id="CNJ-8z-ZpU"/>
+                        <outlet property="tableView" destination="WIk-IP-M75" id="5Oe-i3-nBJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euy-rF-uqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="978" y="499"/>
+            <point key="canvasLocation" x="976.79999999999995" y="498.80059970014997"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="commentbutton" width="62" height="63"/>
+    </resources>
 </document>
