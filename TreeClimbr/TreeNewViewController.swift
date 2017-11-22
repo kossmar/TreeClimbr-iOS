@@ -38,8 +38,13 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         setup()
         
         
-//        treeNameTextField.addTarget(self, action: #selector(textFieldChanged(_:)), for: .valueChanged)
-        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     //MARK: VC buttons
@@ -105,6 +110,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         photoCollectionView.dataSource = self
         imagePickerController.delegate = self //as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         TreeDescTextView.delegate = self
+        treeNameTextField.delegate = self
     }
     
     //MARK: Tap gestures
