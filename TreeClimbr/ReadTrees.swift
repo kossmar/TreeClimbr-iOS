@@ -9,7 +9,6 @@ class ReadTrees: NSObject {
             return
         }
         
-        AppData.sharedInstance.treesArr = Array<Tree>()
         
 //        let userID = Auth.auth().currentUser?.uid
         
@@ -23,6 +22,8 @@ class ReadTrees: NSObject {
                     return
                 }
                 
+                AppData.sharedInstance.treesArr = Array<Tree>()
+
                 
                 for any in (value?.allValues)!
                 {
