@@ -9,12 +9,13 @@
 import UIKit
 import CoreLocation
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var treeImageView: UIImageView!
-    @IBOutlet weak var treeNameLabel: UILabel!
+//    @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
     @IBOutlet weak var TreeDescTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var saveButton: UIButton!
     
     let imagePickerController = UIImagePickerController()
     var photoArr = Array<UIImage>()
@@ -24,15 +25,20 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         //set up imageview shape
         treeImageView.layer.cornerRadius = treeImageView.frame.width/2
+
         treeImageView.clipsToBounds = true
-        
-        TreeDescTextView.layer.cornerRadius = TreeDescTextView.frame.width/50
-        
+
+        saveButton.isEnabled = false
+        setupTextView()
         setupTap()
         setup()
         
+        
+//        treeNameTextField.addTarget(self, action: #selector(textFieldChanged(_:)), for: .valueChanged)
         
     }
     
@@ -70,6 +76,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         })
         
+        if TreeDescTextView.textColor == UIColor.lightGray {
+            TreeDescTextView.text = nil
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -91,6 +101,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
         imagePickerController.delegate = self //as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        TreeDescTextView.delegate = self
     }
     
     //MARK: Tap gestures
@@ -115,12 +126,41 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         picker.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Textview delegate
+    func setupTextView() {
+        
+        TreeDescTextView.text = "Enter description..."
+        TreeDescTextView.textColor = UIColor.lightGray
+        TreeDescTextView.layer.cornerRadius = TreeDescTextView.frame.width/50
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if TreeDescTextView.textColor == UIColor.lightGray {
+            TreeDescTextView.text = nil
+            TreeDescTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if TreeDescTextView.text.isEmpty {
+            TreeDescTextView.text = "Enter description..."
+            TreeDescTextView.textColor = UIColor.lightGray
+        }
+    }
+    
     //MARK: Textfield delegte
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         treeNameTextField.resignFirstResponder()
         return true
     }
     
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        if treeNameTextField.text!.isEmpty{
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
+    }
 }
 
 extension UIImage {
