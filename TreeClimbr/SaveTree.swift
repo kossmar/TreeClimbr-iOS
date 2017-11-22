@@ -1,12 +1,14 @@
 import UIKit
 import Firebase
+import CoreLocation
+import MapKit
 
 
 class SaveTree: NSObject {
     
     var tempUrl: URL!
 
-    class func saveTree(tree: Tree) {
+    class func saveTree(tree: Tree, completion:@escaping () -> Void) {
         print("Saving...")
         if ( Auth.auth().currentUser == nil )
         {
@@ -31,6 +33,9 @@ class SaveTree: NSObject {
                 return
             }
             
+
+        let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
+        tree.treeID = treeID
             
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
@@ -38,7 +43,7 @@ class SaveTree: NSObject {
                 let url = downloadedURL.absoluteString
                
                 let treeDict: [String : Any] = [
-                    //            "idKey": treeID,
+                    "idKey": treeID,
                     "nameKey": tree.treeName,
                     "descriptionKey": tree.treeDescription!,
                     "speciesKey": tree.treeSpecies!,
@@ -52,12 +57,18 @@ class SaveTree: NSObject {
                 
                 AppData.sharedInstance.treeNode
                     //            .child(AppData.sharedInstance.curUser!.uid)
-                    .child(tree.treeName)
+                    .child(tree.treeID!)
                     .setValue(treeDict)
             }
             
+            completion()
+            
         })
     }
+    
+}
+
+extension UIImage {
     
 }
 
