@@ -9,6 +9,7 @@ class BasicTreeInfoView: UIView {
     @IBOutlet weak var treeNameLabel: UILabel!
 
 
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
 

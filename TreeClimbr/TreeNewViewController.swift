@@ -60,27 +60,30 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
         
         
-        let treesArr = AppData.sharedInstance.treesArr
+//        let treesArr = AppData.sharedInstance.treesArr
         
-        SaveTree.saveTree(tree: tree, completion: {
-            ReadTrees.read {
-                for tree in treesArr{
-                    let treeLat = tree.treeLatitude
-                    let treeLong = tree.treeLongitude
-                    let treeAnn : TreeAnnotation = TreeAnnotation()
-                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-                    treeAnn.title = tree.treeName
-                    treeAnn.tree = tree
-                    self.sourceVC.mapView.addAnnotation(treeAnn)
-                }
-            }
+        SaveTree.saveTree(tree: tree, completion: { success in
+//            ReadTrees.read {
+//                for tree in treesArr{
+//                    let treeLat = tree.treeLatitude
+//                    let treeLong = tree.treeLongitude
+//                    let treeAnn : TreeAnnotation = TreeAnnotation()
+//                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+//                    treeAnn.title = tree.treeName
+//                    treeAnn.tree = tree
+//                    self.sourceVC.mapView.addAnnotation(treeAnn)
+//                }
+//            }
+             self.dismiss(animated: true, completion: nil)
         })
         
+
         if TreeDescTextView.textColor == UIColor.lightGray {
             TreeDescTextView.text = nil
         }
         
         dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func cancelAction(_ sender: UIButton) {
@@ -119,9 +122,17 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            treeImageView.contentMode = .scaleToFill
-            treeImageView.image = pickedImage
+       var pickedImage: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            pickedImage = editedImage
+        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            
+            pickedImage = originalImage
+        }
+        
+        if let selectedImage = pickedImage {
+            treeImageView.image = selectedImage
         }
         picker.dismiss(animated: true, completion: nil)
     }

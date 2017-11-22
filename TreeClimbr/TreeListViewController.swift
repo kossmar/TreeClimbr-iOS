@@ -9,6 +9,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var sourceVC = ViewController()
     var treeDistance = Double()
+    var treesArr = Array<Tree>()
     
     
     
@@ -21,6 +22,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+        treesArr = AppData.sharedInstance.treesArr
 
         // Do any additional setup after loading the view.
     }
@@ -47,7 +49,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Table view delegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
-        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        let treeTemp = treesArr[indexPath.row]
         cell.tree = treeTemp
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
         cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
@@ -56,6 +58,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
                                                     completed: { (image, error, cacheType, url) in
                                                         print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
         })
+        
         
         return cell
     }
@@ -67,6 +70,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
         performSegue(withIdentifier: "toTreeDetail", sender: treeTemp)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

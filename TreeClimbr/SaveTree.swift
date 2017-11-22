@@ -8,7 +8,7 @@ class SaveTree: NSObject {
     
     var tempUrl: URL!
 
-    class func saveTree(tree: Tree, completion:@escaping () -> Void) {
+    class func saveTree(tree: Tree, completion: @escaping (Bool) -> Void) {
         print("Saving...")
         if ( Auth.auth().currentUser == nil )
         {
@@ -30,19 +30,20 @@ class SaveTree: NSObject {
             
             if let error = error {
                 print(error)
+                completion(false)
                 return
             }
             
-        let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
-        tree.treeID = treeID
-  
-        let creator = Auth.auth().currentUser?.uid
+            let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
+            tree.treeID = treeID
+            
+            let creator = Auth.auth().currentUser?.uid
             
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
                 metadata.contentType = "image/jpeg"
                 let url = downloadedURL.absoluteString
-               
+                
                 let treeDict: [String : Any] = [
                     "idKey": treeID,
                     "nameKey": tree.treeName,
@@ -63,7 +64,7 @@ class SaveTree: NSObject {
                     .setValue(treeDict)
             }
             
-            completion()
+            completion(true)
             
         })
     }
