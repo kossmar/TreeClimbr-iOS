@@ -43,9 +43,9 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="czL-H8-tzg">
                                 <rect key="frame" x="90.999999999999986" y="200" width="232.66666666666663" height="29"/>
                                 <segments>
-                                    <segment title="About"/>
+                                    <segment title="Photos"/>
                                     <segment title="Reviews"/>
-                                    <segment title="Pictures"/>
+                                    <segment title="More"/>
                                 </segments>
                                 <connections>
                                     <action selector="switchViewAction:" destination="8qG-qF-Dga" eventType="valueChanged" id="zHl-Ij-T3F"/>
@@ -119,7 +119,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-S2-nEN">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plH-sr-X5U">
                                     <size key="itemSize" width="50" height="50"/>
@@ -138,12 +138,24 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
+                                <rect key="frame" x="0.0" y="400" width="382" height="80"/>
+                                <color key="backgroundColor" red="0.42053091300000001" green="0.68529901650000002" blue="0.44571341060000003" alpha="0.67356057359999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Add Photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="vsa-S2-nEN" secondAttribute="bottom" id="81t-4C-0vn"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="vsa-S2-nEN" secondAttribute="bottom" constant="80" id="81t-4C-0vn"/>
+                            <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vsa-S2-nEN" secondAttribute="bottom" id="9l6-Q7-138"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="dce-Nr-haY" secondAttribute="trailing" id="M3d-N4-Ips"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="OK1-uS-h7r"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="vsa-S2-nEN" secondAttribute="trailing" id="U7P-vf-wfQ"/>
+                            <constraint firstItem="dce-Nr-haY" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="Ydw-qK-1nR"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="dce-Nr-haY" secondAttribute="bottom" id="gfh-vp-Jtg"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="top" secondItem="scT-ML-PWx" secondAttribute="top" id="vFP-Vc-IYY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xg-jR-oA1"/>
@@ -151,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047" y="-19"/>
+            <point key="canvasLocation" x="1145" y="-81"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="glo-EI-lFB">
@@ -202,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-ej-7xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="66.666666666666671" y="721.46739130434787"/>
+            <point key="canvasLocation" x="90" y="852"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="Xox-mM-CEU">
@@ -240,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euy-rF-uqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.68115942028987" y="513.58695652173913"/>
+            <point key="canvasLocation" x="978" y="499"/>
         </scene>
     </scenes>
 </document>

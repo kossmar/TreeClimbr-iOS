@@ -60,9 +60,9 @@ class TreeDetailViewController: UIViewController {
         aboutViewController.tree = tree
         
         //setup view container for segmented control
-        aboutView.isHidden = false
+        aboutView.isHidden = true
         reviewView.isHidden = true
-        picturesView.isHidden = true
+        picturesView.isHidden = false
     }
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
@@ -86,9 +86,9 @@ class TreeDetailViewController: UIViewController {
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            aboutView.isHidden = false
+            aboutView.isHidden = true
             reviewView.isHidden = true
-            picturesView.isHidden = true
+            picturesView.isHidden = false
             break
         case 1:
             aboutView.isHidden = true
@@ -96,14 +96,14 @@ class TreeDetailViewController: UIViewController {
             picturesView.isHidden = true
             break
         case 2:
-            aboutView.isHidden = true
-            reviewView.isHidden = true
-            picturesView.isHidden = false
-            break
-        default:
             aboutView.isHidden = false
             reviewView.isHidden = true
             picturesView.isHidden = true
+            break
+        default:
+            aboutView.isHidden = true
+            reviewView.isHidden = true
+            picturesView.isHidden = false
             break
         }
     }
@@ -122,4 +122,9 @@ class TreeDetailViewController: UIViewController {
     }
     
 
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        <#code#>
+    }
+    
+    
 }
