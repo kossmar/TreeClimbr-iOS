@@ -1,15 +1,10 @@
-//
-//  TreeNewViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-17.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
-
 import UIKit
 import CoreLocation
+import ImagePicker
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate {
+
+    
     @IBOutlet weak var treeImageView: UIImageView!
 //    @IBOutlet weak var treeNameLabel: UILabel!
     @IBOutlet weak var treeNameTextField: UITextField!
@@ -17,15 +12,15 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIButton!
     
-    let imagePickerController = UIImagePickerController()
+//    let imagePickerController = UIImagePickerController()
+    let imagePickerController = ImagePickerController()
+    
     var photoArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
     var sourceVC = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         //set up imageview shape
         treeImageView.layer.cornerRadius = treeImageView.frame.width/2
@@ -49,10 +44,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     //MARK: VC buttons
     @IBAction func addPhoto(_ sender: UIButton) {
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
-        imagePickerController.allowsEditing = true
-        self.present(imagePickerController, animated: true, completion: nil)
+//        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+//        imagePickerController.allowsEditing = true
+//        self.present(imagePickerController, animated: true, completion: nil)
         // add photo should go to collection view
+        pickTreePhotos()
     }
     
     @IBAction func save(_ sender: UIButton) {
@@ -64,21 +60,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
         
-        
-//        let treesArr = AppData.sharedInstance.treesArr
-        
         SaveTree.saveTree(tree: tree, completion: { success in
-//            ReadTrees.read {
-//                for tree in treesArr{
-//                    let treeLat = tree.treeLatitude
-//                    let treeLong = tree.treeLongitude
-//                    let treeAnn : TreeAnnotation = TreeAnnotation()
-//                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-//                    treeAnn.title = tree.treeName
-//                    treeAnn.tree = tree
-//                    self.sourceVC.mapView.addAnnotation(treeAnn)
-//                }
-//            }
              self.dismiss(animated: true, completion: nil)
         })
         
@@ -95,6 +77,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: ImagePicker
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
     //MARK: Collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
@@ -108,7 +103,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     func setup() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
-        imagePickerController.delegate = self //as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        imagePickerController.delegate = self
         TreeDescTextView.delegate = self
         treeNameTextField.delegate = self
     }
@@ -122,26 +117,32 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @objc func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
-        imagePickerController.allowsEditing = true
-        self.present(imagePickerController, animated: true, completion: nil)
+        pickTreePhotos()
+//        imagePickerController.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+//        imagePickerController.allowsEditing = true
+//        self.present(imagePickerController, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-       var pickedImage: UIImage?
-        
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            pickedImage = editedImage
-        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            
-            pickedImage = originalImage
-        }
-        
-        if let selectedImage = pickedImage {
-            treeImageView.image = selectedImage
-        }
-        picker.dismiss(animated: true, completion: nil)
+    func pickTreePhotos() {
+        present(imagePickerController, animated: true, completion: nil)
+        imagePickerController.imageLimit = 5
     }
+    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//       var pickedImage: UIImage?
+//
+//        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+//            pickedImage = editedImage
+//        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+//
+//            pickedImage = originalImage
+//        }
+//
+//        if let selectedImage = pickedImage {
+//            treeImageView.image = selectedImage
+//        }
+//        picker.dismiss(animated: true, completion: nil)
+//    }
     
     //MARK: Textview delegate
     func setupTextView() {
