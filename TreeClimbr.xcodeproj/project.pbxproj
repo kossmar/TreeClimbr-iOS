@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */; };
+		0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */; };
+		0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D701FC621A500C84F1D /* Comment.swift */; };
 		0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */; };
 		0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWrite.swift; sourceTree = "<group>"; };
+		0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		0D0D0D701FC621A500C84F1D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeTableViewCell.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
@@ -188,7 +192,9 @@
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
 				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
 				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				0D0D0D701FC621A500C84F1D /* Comment.swift */,
 				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
+				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
 				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
 				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
@@ -589,6 +595,7 @@
 				E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */,
 				0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
+				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
@@ -607,6 +614,7 @@
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
 				E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */,
 				E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */,
+				0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */,
 				E6CE28C91FBFBB5F006ABDAB /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
