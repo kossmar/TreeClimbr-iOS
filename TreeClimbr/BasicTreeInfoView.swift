@@ -1,15 +1,22 @@
 
 import UIKit
+import Firebase
 
 class BasicTreeInfoView: UIView {
     
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var treeNameLabel: UILabel!
+
+
+    @IBOutlet weak var treeImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+       
     }
     
     required init?(coder aDecoder: NSCoder) {

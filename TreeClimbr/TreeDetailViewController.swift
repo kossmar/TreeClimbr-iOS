@@ -1,7 +1,9 @@
-
-
 import UIKit
 import CoreLocation
+import Firebase
+import SDWebImage
+import MapKit
+
 
 protocol MapFocusDelegate {
     func focusOnTree(location: CLLocationCoordinate2D)
@@ -15,6 +17,7 @@ class TreeDetailViewController: UIViewController {
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
+    var distance = Double()
     
     @IBOutlet weak var viewContainer: UIView!
     
@@ -34,7 +37,18 @@ class TreeDetailViewController: UIViewController {
         super.viewDidLoad()
         if let tree = tree {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
-        }else {
+            
+            let url = tree.treePhotoURL
+
+            basicTreeInfoView.treeImageView.sd_setImage(with: url,
+                                                        completed: { (image, error, cacheType, url) in
+                    print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+            })
+            
+          basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
+         
+        } else {
+
             print("ERROR")
         }
         if (fromMapView) {
@@ -58,7 +72,6 @@ class TreeDetailViewController: UIViewController {
             self.rootSourceVC.focusOnTree(location: treeLocation)
         })
         
-        
     }
     
     @IBAction func dismissDetailAction(_ sender: UIBarButtonItem) {
@@ -67,6 +80,7 @@ class TreeDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
     
+
     //MARK: Segment Control
 
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
@@ -96,4 +110,16 @@ class TreeDetailViewController: UIViewController {
     
     
     
+
+    func distanceFromUser() -> Double {
+        let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)
+        let currentLocation = rootSourceVC.userCoordinate
+        let treePoint = MKMapPointForCoordinate(treeLocation)
+        let currentPoint = MKMapPointForCoordinate(currentLocation)
+        let distance = (MKMetersBetweenMapPoints(treePoint, currentPoint) / 1000)
+        let distanceRound = Double(round(10*distance)/10)
+        return distanceRound
+    }
+    
+
 }

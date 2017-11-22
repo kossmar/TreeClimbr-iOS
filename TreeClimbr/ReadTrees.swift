@@ -1,11 +1,3 @@
-//
-//  ReadTrees.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-18.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
-
 import Foundation
 import Firebase
 
@@ -21,7 +13,8 @@ class ReadTrees: NSObject {
         
 //        let userID = Auth.auth().currentUser?.uid
         
-        AppData.sharedInstance.treeNode
+        AppData.sharedInstance
+            .treeNode
             .observe (.value, with: { (snapshot) in
               
                 let value = snapshot.value as? NSDictionary;
@@ -43,30 +36,28 @@ class ReadTrees: NSObject {
                     let treePopularity = tree["popularityKey"] as! Int
                     let treeRating = tree["ratingKey"] as! Double
                     let treeSpecies : String = tree["speciesKey"] as! String
+                    let treePhotoStr = tree["photoKey"] as! String
                     
-//                    let treeLat = Double(treeLatitude)
-//                    let treeLong = Double(treeLongitude)
-                    let treePhoto : NSData = NSData() //this 💩 is fake
+                    let treePhotoURL = URL(string: treePhotoStr)
                     
-                    let readEntry = Tree(name: treeName,
+                    let readTree = Tree(name: treeName,
                                          description: treeDescription,
                                          treeLat: treeLatitude,
                                          treeLong: treeLongitude,
-                                         photo: treePhoto)
+                                         photo: nil)
                     
-                    //💩💩💩💩💩💩💩💩💩💩💩💩
+                    
                     let treeRat = Double(treeRating)
                     let treePop = Int(treePopularity)
-                    readEntry.treeSpecies = treeSpecies
-                    readEntry.treeRating = treeRat
-                    readEntry.treeHowToFind = treeHowToFind
-                    readEntry.treePopularity = treePop
-                    //💩💩💩💩💩💩💩💩💩💩💩💩
+                    readTree.treeSpecies = treeSpecies
+                    readTree.treeRating = treeRat
+                    readTree.treeHowToFind = treeHowToFind
+                    readTree.treePopularity = treePop
+                    readTree.treePhotoURL = treePhotoURL!
                     
-                    AppData.sharedInstance.treesArr.append(readEntry)
+                    AppData.sharedInstance.treesArr.append(readTree)
                     
                     print (AppData.sharedInstance.treesArr)
-                    
                     
                 }
                 
@@ -75,13 +66,3 @@ class ReadTrees: NSObject {
     }
 
 }
-
-//"nameKey": tree.treeName,
-//"descriptionKey": tree.treeDescription!,
-//"speciesKey": tree.treeSpecies!,
-//"ratingKey": tree.treeRating!,
-//"howToFindKey": tree.treeHowToFind!,
-//"latitudeKey": tree.treeLatitude,
-//"longitudeKey": tree.treeLongitude,
-//"popularityKey":tree.treePopularity!,
-

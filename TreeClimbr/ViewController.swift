@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var handle: AuthStateDidChangeListenerHandle?
     
     //    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
-    
+
     var lat = 0.0
     var long = 0.0
     
@@ -33,8 +33,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
         sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
         
-        //        ReadTrees.read()
-        //        setupAnnotations()
         setupTap()
         userLocationSetup()
     }
@@ -87,6 +85,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
+            treeDetailVC.rootSourceVC = self
 
             let treeObject = sender as! Tree
             treeDetailVC.tree = treeObject
@@ -113,12 +112,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = annCoordinates
         treeLocation = annCoordinates
         performSegue(withIdentifier: "toNewTree", sender: view)
-////        annotation.title = "MyTree" //title from tree new vc
-//        self.mapView.addAnnotation(annotation)
+
     }
     
     //MARK: Setup map features
@@ -149,16 +145,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let location = locations[0]
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        userCoordinate = myLocation
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
     }
     
     //MARK: Map view delegate functions
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // go to tree creation
 
+
     }
+
+
+       
+    
+    
+    
 
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
