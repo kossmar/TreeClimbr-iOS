@@ -9,6 +9,7 @@ target 'TreeClimbr' do
   pod 'FirebaseDatabase'
   pod 'Firebase/Storage'
   pod 'SDWebImage', '~> 4.0'
+  pod 'ImagePicker'
 
   # Pods for TreeClimbr
 
