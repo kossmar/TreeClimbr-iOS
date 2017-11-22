@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wm2-MY-3kG">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,34 +16,44 @@
             <objects>
                 <viewController id="wm2-MY-3kG" customClass="TreeNewViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqb-kK-RqU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
-                                <rect key="frame" x="20" y="323" width="335" height="341"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
+                                <rect key="frame" x="78" y="19" width="164" height="165"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="1:1" id="eIV-Dn-keC"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
+                                <rect key="frame" x="20" y="201" width="280" height="342.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tree name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-PS-tfZ" userLabel="NameTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="z6p-PS-tfZ" secondAttribute="height" multiplier="67:6" id="DUR-DJ-v2z"/>
+                                            <constraint firstAttribute="width" secondItem="z6p-PS-tfZ" secondAttribute="height" multiplier="67:6" id="nyU-St-c7r"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldChanged:" destination="wm2-MY-3kG" eventType="editingChanged" id="bkt-87-0JS"/>
+                                        </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L10-cg-qwZ" userLabel="Desription">
-                                        <rect key="frame" x="0.0" y="40" width="335" height="101"/>
+                                        <rect key="frame" x="0.0" y="45" width="280" height="84"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="L10-cg-qwZ" secondAttribute="height" multiplier="335:101" id="Z6D-S7-0Ll"/>
+                                            <constraint firstAttribute="width" secondItem="L10-cg-qwZ" secondAttribute="height" multiplier="335:101" id="beO-Ya-2uN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6J-dD-g8P">
-                                        <rect key="frame" x="0.0" y="151" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="149" width="280" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="z6J-dD-g8P" secondAttribute="height" multiplier="67:6" id="ONi-lr-sWv"/>
+                                            <constraint firstAttribute="width" secondItem="z6J-dD-g8P" secondAttribute="height" multiplier="67:6" id="bBW-oe-lFH"/>
                                         </constraints>
                                         <state key="normal" title="Add Photo"/>
                                         <connections>
@@ -51,10 +61,10 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4zq-KD-bEG">
-                                        <rect key="frame" x="0.0" y="191" width="335" height="70"/>
+                                        <rect key="frame" x="0.0" y="194" width="280" height="58.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="4zq-KD-bEG" secondAttribute="height" multiplier="67:14" id="ulQ-xS-r8A"/>
+                                            <constraint firstAttribute="width" secondItem="4zq-KD-bEG" secondAttribute="height" multiplier="67:14" id="Umf-ue-s5c"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Bx-6R-Kpb">
                                             <size key="itemSize" width="65" height="65"/>
@@ -64,7 +74,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCell" id="2HD-4G-4bi">
-                                                <rect key="frame" x="0.0" y="2.5" width="65" height="65"/>
+                                                <rect key="frame" x="0.0" y="-3.5" width="65" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
@@ -75,9 +85,9 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw2-6z-pt2">
-                                        <rect key="frame" x="0.0" y="271" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="272.5" width="280" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="lw2-6z-pt2" secondAttribute="height" multiplier="67:6" id="LXn-Mq-tR5"/>
+                                            <constraint firstAttribute="width" secondItem="lw2-6z-pt2" secondAttribute="height" multiplier="67:6" id="3vH-2n-25y"/>
                                         </constraints>
                                         <state key="normal" title="Save"/>
                                         <connections>
@@ -85,9 +95,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc9-EQ-krB">
-                                        <rect key="frame" x="0.0" y="311" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="317.5" width="280" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="uc9-EQ-krB" secondAttribute="height" multiplier="67:6" id="2Pu-Zo-IuA"/>
+                                            <constraint firstAttribute="width" secondItem="uc9-EQ-krB" secondAttribute="height" multiplier="67:6" id="M41-2T-ip0"/>
                                         </constraints>
                                         <state key="normal" title="Cancel"/>
                                         <connections>
@@ -96,29 +106,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
-                                <rect key="frame" x="41" y="20" width="293" height="293"/>
-                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="1:1" id="eIV-Dn-keC"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K4Y-12-7cx" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="20" id="0Jp-Jn-XQn"/>
-                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="K4Y-12-7cx" secondAttribute="trailing" constant="20" id="D3S-cL-jdg"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="41" id="HTd-Ut-LGM"/>
-                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="10" id="bkD-2T-WYs"/>
-                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" constant="41" id="cki-kb-cWi"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="qay-G1-NLg"/>
-                            <constraint firstItem="K4Y-12-7cx" firstAttribute="top" secondItem="Rdd-MP-v0O" secondAttribute="bottom" constant="10" id="y51-dm-YKJ"/>
+                            <constraint firstItem="K4Y-12-7cx" firstAttribute="top" secondItem="Rdd-MP-v0O" secondAttribute="bottom" constant="17" id="3Uk-4z-PQI"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" constant="78" id="8xb-2e-6me"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="K4Y-12-7cx" secondAttribute="trailing" constant="20" id="Gsd-cD-dQT"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="20" id="Q2I-Jy-Fzs"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="TTY-jM-fSO"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="78" id="esJ-JS-dks"/>
+                            <constraint firstItem="K4Y-12-7cx" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="20" id="nVZ-as-aOA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQZ-eZ-6zZ"/>
                     </view>
                     <connections>
                         <outlet property="TreeDescTextView" destination="L10-cg-qwZ" id="CvQ-Fd-QVx"/>
                         <outlet property="photoCollectionView" destination="4zq-KD-bEG" id="Crf-kd-KUy"/>
+                        <outlet property="saveButton" destination="lw2-6z-pt2" id="4uu-Lc-qs0"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
                         <outlet property="treeNameTextField" destination="z6p-PS-tfZ" id="d21-W7-dxI"/>
                     </connections>
