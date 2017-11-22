@@ -150,6 +150,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
+    @IBAction func addTreeToUserLoc(_ sender: UIButton){
+        treeLocation = userCoordinate
+        performSegue(withIdentifier: "toNewTree", sender: view)
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]

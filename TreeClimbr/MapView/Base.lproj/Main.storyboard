@@ -22,10 +22,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q5-aI-TA7" userLabel="side buttons view">
-                                <rect key="frame" x="277" y="416" width="82" height="231"/>
+                                <rect key="frame" x="277" y="342" width="82" height="305"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UEF-Eu-ixv">
-                                        <rect key="frame" x="10" y="10" width="62" height="211"/>
+                                        <rect key="frame" x="10" y="10" width="62" height="285"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-PN-MIr" userLabel="FavouritesButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="72"/>
@@ -38,8 +38,15 @@
                                                     <segue destination="EXS-MP-yW1" kind="presentation" identifier="toTreeList" id="poX-WJ-aBE"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-Uf-BN7">
+                                                <rect key="frame" x="0.0" y="158" width="62" height="64"/>
+                                                <state key="normal" image="treeatuserloc"/>
+                                                <connections>
+                                                    <action selector="addTreeToUserLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXr-2h-3aM"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hau-Kk-nEr">
-                                                <rect key="frame" x="0.0" y="158" width="62" height="53"/>
+                                                <rect key="frame" x="0.0" y="232" width="62" height="53"/>
                                                 <state key="normal" image="userlocation"/>
                                                 <connections>
                                                     <action selector="centerToUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oP-NP-N1n"/>
@@ -133,6 +140,7 @@
     <resources>
         <image name="Favourites" width="62" height="72"/>
         <image name="mytreesbutton" width="56" height="66"/>
+        <image name="treeatuserloc" width="56" height="64"/>
         <image name="userlocation" width="52" height="53"/>
     </resources>
 </document>
