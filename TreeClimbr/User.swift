@@ -3,7 +3,8 @@ import Foundation
 class User: NSObject, NSCoding {
     var name: String
     var email: String
-    var uid: String 
+    var uid: String
+    var favouritesArr = Array<String>()
     
     init(name:String,  email:String, uid:String)
     {
