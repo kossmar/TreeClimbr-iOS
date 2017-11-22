@@ -38,6 +38,7 @@ class ReadTrees: NSObject {
                     let treeRating = tree["ratingKey"] as! Double
                     let treeSpecies : String = tree["speciesKey"] as! String
                     let treePhotoStr = tree["photoKey"] as! String
+                    let treeCreator = tree["creatorKey"] as! String
                     
                     let treePhotoURL = URL(string: treePhotoStr)
                     
@@ -56,6 +57,7 @@ class ReadTrees: NSObject {
                     readTree.treePopularity = treePop
                     readTree.treePhotoURL = treePhotoURL!
                     readTree.treeID = treeID
+                    readTree.treeCreator = treeCreator
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     
