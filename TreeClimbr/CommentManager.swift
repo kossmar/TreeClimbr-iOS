@@ -30,6 +30,8 @@ class SaveComment: NSObject {
         completion(true)
 
     }
+    
+    class func loadComments()
 }
 
 
