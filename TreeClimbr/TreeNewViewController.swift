@@ -25,9 +25,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         
         //set up imageview shape
-        treeImageView.layer.cornerRadius = treeImageView.frame.width * 0.5
+        treeImageView.layer.cornerRadius = treeImageView.frame.width/2
         treeImageView.clipsToBounds = true
         
+        TreeDescTextView.layer.cornerRadius = TreeDescTextView.frame.width/50
         
         setupTap()
         setup()
@@ -69,6 +70,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
         })
         
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     

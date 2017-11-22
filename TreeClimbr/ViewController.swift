@@ -162,13 +162,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     }
 
-
-       
-    
-    
-    
-
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is TreeAnnotation){
             return nil

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,47 +19,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
-                                <rect key="frame" x="62" y="34" width="251" height="251"/>
-                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="1:1" id="QnR-fw-CGr"/>
-                                </constraints>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
-                                <rect key="frame" x="37.5" y="292" width="300" height="341"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
+                                <rect key="frame" x="20" y="323" width="335" height="341"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="MyTree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOe-RV-b8b">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="42"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tree name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-PS-tfZ" userLabel="NameTextField">
-                                        <rect key="frame" x="0.0" y="52" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="z6p-PS-tfZ" secondAttribute="height" multiplier="67:6" id="DUR-DJ-v2z"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L10-cg-qwZ" userLabel="Desription">
-                                        <rect key="frame" x="0.0" y="92" width="300" height="94"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <rect key="frame" x="0.0" y="40" width="335" height="101"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="L10-cg-qwZ" secondAttribute="height" multiplier="335:101" id="Z6D-S7-0Ll"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6J-dD-g8P">
-                                        <rect key="frame" x="0.0" y="196" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="151" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="z6J-dD-g8P" secondAttribute="height" multiplier="67:6" id="ONi-lr-sWv"/>
+                                        </constraints>
                                         <state key="normal" title="Add Photo"/>
                                         <connections>
                                             <action selector="addPhoto:" destination="wm2-MY-3kG" eventType="touchUpInside" id="xAg-QP-ZW0"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4zq-KD-bEG">
-                                        <rect key="frame" x="0.0" y="236" width="300" height="65"/>
+                                        <rect key="frame" x="0.0" y="191" width="335" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="EOo-yR-pxs"/>
+                                            <constraint firstAttribute="width" secondItem="4zq-KD-bEG" secondAttribute="height" multiplier="67:14" id="ulQ-xS-r8A"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Bx-6R-Kpb">
                                             <size key="itemSize" width="65" height="65"/>
@@ -68,7 +64,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCell" id="2HD-4G-4bi">
-                                                <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                <rect key="frame" x="0.0" y="2.5" width="65" height="65"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
@@ -79,26 +75,44 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw2-6z-pt2">
-                                        <rect key="frame" x="0.0" y="311" width="300" height="30"/>
+                                        <rect key="frame" x="0.0" y="271" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lw2-6z-pt2" secondAttribute="height" multiplier="67:6" id="LXn-Mq-tR5"/>
+                                        </constraints>
                                         <state key="normal" title="Save"/>
                                         <connections>
                                             <action selector="save:" destination="wm2-MY-3kG" eventType="touchUpInside" id="ORe-vE-rAe"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc9-EQ-krB">
+                                        <rect key="frame" x="0.0" y="311" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="uc9-EQ-krB" secondAttribute="height" multiplier="67:6" id="2Pu-Zo-IuA"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="wm2-MY-3kG" eventType="touchUpInside" id="kd3-C7-HHk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="K4Y-12-7cx" secondAttribute="height" multiplier="300:341" id="i9U-5O-egc"/>
-                                </constraints>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
+                                <rect key="frame" x="41" y="20" width="293" height="293"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="1:1" id="eIV-Dn-keC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K4Y-12-7cx" firstAttribute="centerX" secondItem="eqb-kK-RqU" secondAttribute="centerX" id="6wV-iI-vBg"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="62" id="ANK-vv-alG"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="centerX" secondItem="eqb-kK-RqU" secondAttribute="centerX" id="L72-JW-DBL"/>
-                            <constraint firstItem="K4Y-12-7cx" firstAttribute="top" secondItem="Rdd-MP-v0O" secondAttribute="bottom" constant="7" id="qBI-Xk-pa6"/>
-                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="34" id="ra0-cM-oQb"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" constant="14" id="zUm-Fn-VqL"/>
+                            <constraint firstItem="K4Y-12-7cx" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="20" id="0Jp-Jn-XQn"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="K4Y-12-7cx" secondAttribute="trailing" constant="20" id="D3S-cL-jdg"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="41" id="HTd-Ut-LGM"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="10" id="bkD-2T-WYs"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" constant="41" id="cki-kb-cWi"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="qay-G1-NLg"/>
+                            <constraint firstItem="K4Y-12-7cx" firstAttribute="top" secondItem="Rdd-MP-v0O" secondAttribute="bottom" constant="10" id="y51-dm-YKJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQZ-eZ-6zZ"/>
                     </view>
@@ -106,7 +120,6 @@
                         <outlet property="TreeDescTextView" destination="L10-cg-qwZ" id="CvQ-Fd-QVx"/>
                         <outlet property="photoCollectionView" destination="4zq-KD-bEG" id="Crf-kd-KUy"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
-                        <outlet property="treeNameLabel" destination="OOe-RV-b8b" id="urD-xg-vgt"/>
                         <outlet property="treeNameTextField" destination="z6p-PS-tfZ" id="d21-W7-dxI"/>
                     </connections>
                 </viewController>
@@ -115,4 +128,7 @@
             <point key="canvasLocation" x="48.799999999999997" y="128.18590704647679"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addphoto" width="276" height="276"/>
+    </resources>
 </document>
