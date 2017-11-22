@@ -28,6 +28,7 @@ class ReadTrees: NSObject {
                 {
                     let tree : [String : Any] = any as! Dictionary <String, Any>
                     
+                    let treeID = tree["idKey"] as! String
                     let treeDescription = tree["descriptionKey"] as! String
                     let treeHowToFind = tree["howToFindKey"] as! String
                     let treeLatitude = tree["latitudeKey"] as! Double
@@ -54,6 +55,7 @@ class ReadTrees: NSObject {
                     readTree.treeHowToFind = treeHowToFind
                     readTree.treePopularity = treePop
                     readTree.treePhotoURL = treePhotoURL!
+                    readTree.treeID = treeID
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     

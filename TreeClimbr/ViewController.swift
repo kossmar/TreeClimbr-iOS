@@ -79,6 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeVC.coordinate = treeLocation
+            treeVC.sourceVC = self
         }
         
         if segue.identifier == "toTreeDetail" {
@@ -200,6 +201,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+        
         let treesArr = AppData.sharedInstance.treesArr
         ReadTrees.read(completion: {
             for tree in treesArr{
