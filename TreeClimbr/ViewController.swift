@@ -156,10 +156,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // go to tree creation
-        }
+
+
+    }
+
+
+       
     
     
     
+
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is TreeAnnotation){
@@ -178,7 +184,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             annView!.annotation = annotation
         }
         annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
-        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.3, y: 0.3))
+        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
         let hasAlpha = false
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
         
