@@ -53,20 +53,20 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
         
         
-        let treesArr = AppData.sharedInstance.treesArr
+//        let treesArr = AppData.sharedInstance.treesArr
         
         SaveTree.saveTree(tree: tree, completion: {
-            ReadTrees.read {
-                for tree in treesArr{
-                    let treeLat = tree.treeLatitude
-                    let treeLong = tree.treeLongitude
-                    let treeAnn : TreeAnnotation = TreeAnnotation()
-                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-                    treeAnn.title = tree.treeName
-                    treeAnn.tree = tree
-                    self.sourceVC.mapView.addAnnotation(treeAnn)
-                }
-            }
+//            ReadTrees.read {
+//                for tree in treesArr{
+//                    let treeLat = tree.treeLatitude
+//                    let treeLong = tree.treeLongitude
+//                    let treeAnn : TreeAnnotation = TreeAnnotation()
+//                    treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+//                    treeAnn.title = tree.treeName
+//                    treeAnn.tree = tree
+//                    self.sourceVC.mapView.addAnnotation(treeAnn)
+//                }
+//            }
         })
         
         dismiss(animated: true, completion: nil)

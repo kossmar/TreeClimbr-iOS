@@ -9,6 +9,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     var sourceVC = ViewController()
     var treeDistance = Double()
+    var treesArr = Array<Tree>()
     
     
     
@@ -21,6 +22,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+        treesArr = AppData.sharedInstance.treesArr
 
         // Do any additional setup after loading the view.
     }
@@ -47,7 +49,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: Table view delegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
-        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        let treeTemp = treesArr[indexPath.row]
         cell.tree = treeTemp
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
         cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
