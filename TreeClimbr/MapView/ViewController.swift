@@ -55,6 +55,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
+    @IBAction func logout(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let error as NSError {
+            print (error.localizedDescription)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     

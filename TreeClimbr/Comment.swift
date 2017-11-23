@@ -12,12 +12,12 @@ class Comment: NSObject {
     init(body: String) {
         let date = Date()
         let dateForm = DateFormatter()
-        dateForm.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        dateForm.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let dateStr = dateForm.string(from: date)
         
         self.body = body
         self.timeStamp = dateStr
-        self.userID = Auth.auth().currentUser!.uid // This should be the commenter's user id
+        self.userID = Auth.auth().currentUser!.displayName!
         self.commentID = "\(self.userID)" + "\(self.timeStamp)"
     }
     
