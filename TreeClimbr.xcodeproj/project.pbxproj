@@ -52,6 +52,7 @@
 		E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */; };
 		E6E1E4971FC4D4E2000F42CB /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */; };
 		E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */; };
+		E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		FD9C6F42900DD93E9DC4842B /* Pods-TreeClimbr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
+				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
 				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
 				E6E1E49A1FC616EC000F42CB /* MapView */,
@@ -602,6 +605,7 @@
 				0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */,
+				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */,

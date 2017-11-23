@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ReviewViewController: UIViewController, UITextViewDelegate /*UITableViewDelegate, UITableViewDataSource*/ {
+class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var addCommentButton: UIButton!
+    
+    var commentArr = [Comment]()
     
     
     override func viewDidLoad() {
@@ -63,13 +65,20 @@ class ReviewViewController: UIViewController, UITextViewDelegate /*UITableViewDe
             addCommentButton.isEnabled = true
         }
     }
+    
     //MARK: TableView delegates
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : CommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        
+        cell.userLabel.text = commentArr[indexPath.row].userID
+        cell.timestampLabel.text = "some random time"
+        cell.commentTextView.text = commentArr[indexPath.row].body
+        
+        return cell
+    }
     
 }
