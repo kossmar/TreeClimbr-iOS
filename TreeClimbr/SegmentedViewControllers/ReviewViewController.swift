@@ -24,6 +24,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
                 guard let comments = comments else { return }
                 self.commentArr = comments
                 self.tableView.reloadData()
+                self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
             }
             
 
@@ -57,7 +58,12 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         descTextView.text = "Enter comment..."
         descTextView.textColor = UIColor.lightGray
         addCommentButton.isEnabled = false
-        self.tableView.reloadData()
+        CommentManager.loadComments(tree: tree!) { comments in
+            guard let comments = comments else { return }
+            self.commentArr = comments
+            self.tableView.reloadData()
+            self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
+        }
     }
     
     //MARK: TextView delegates

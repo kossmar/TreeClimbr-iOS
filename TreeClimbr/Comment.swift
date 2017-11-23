@@ -12,7 +12,7 @@ class Comment: NSObject {
     init(body: String) {
         let date = Date()
         let dateForm = DateFormatter()
-        dateForm.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        dateForm.dateFormat = "MM-dd-yyyy HH:mm:ss"
         let dateStr = dateForm.string(from: date)
         
         self.body = body
