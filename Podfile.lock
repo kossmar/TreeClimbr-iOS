@@ -39,6 +39,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
+  - ImagePicker (3.0.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Storage
   - FirebaseDatabase
+  - ImagePicker
   - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
@@ -66,10 +68,11 @@ SPEC CHECKSUMS:
   FirebaseStorage: 0cca42d9b889a0227c3a50121f45a4469fc9eb27
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
+  ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
   leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
-PODFILE CHECKSUM: d940bf06f3f7115f2aa30091491b5dce1a1fcb00
+PODFILE CHECKSUM: 2f324f31f2752ce4d1b88882a2b042acd63e3145
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.beta.2

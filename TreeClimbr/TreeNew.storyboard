@@ -87,14 +87,31 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCell" id="2HD-4G-4bi">
-                                                <rect key="frame" x="0.0" y="2.5" width="65" height="65"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddPhotoCell" id="2HD-4G-4bi" customClass="TreeNewPhotoCollectionViewCell" customModule="TreeClimbr" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="-3.5" width="65" height="65"/>
+
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP0-ce-L5F">
+                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                                        </imageView>
+                                                    </subviews>
                                                 </view>
                                                 <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="IP0-ce-L5F" secondAttribute="bottom" id="GfW-Gq-FMH"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IP0-ce-L5F" secondAttribute="trailing" id="QVC-VN-g27"/>
+                                                    <constraint firstItem="IP0-ce-L5F" firstAttribute="width" secondItem="2HD-4G-4bi" secondAttribute="width" id="gS6-21-7nS"/>
+                                                    <constraint firstItem="IP0-ce-L5F" firstAttribute="top" secondItem="2HD-4G-4bi" secondAttribute="top" id="jve-PY-Euj"/>
+                                                    <constraint firstItem="IP0-ce-L5F" firstAttribute="height" secondItem="2HD-4G-4bi" secondAttribute="height" id="kRJ-4y-yVA"/>
+                                                    <constraint firstItem="IP0-ce-L5F" firstAttribute="leading" secondItem="2HD-4G-4bi" secondAttribute="leading" id="lsQ-5g-EhO"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="treePhotoCell" destination="IP0-ce-L5F" id="OHM-BX-9AA"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -147,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oay-dV-PS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.799999999999997" y="128.18590704647679"/>
+            <point key="canvasLocation" x="48.75" y="127.5"/>
         </scene>
     </scenes>
     <resources>

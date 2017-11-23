@@ -123,10 +123,7 @@ class TreeDetailViewController: UIViewController {
         return distanceRound
     }
     
-
-
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
     
-}
