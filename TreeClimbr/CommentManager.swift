@@ -9,14 +9,17 @@ class CommentManager: NSObject {
         
         if ( Auth.auth().currentUser == nil )
         {
+            completion(false)
             return
         }
         
         
-        let userID = Auth.auth().currentUser?.uid
+        
+        
+//        let userID = Auth.auth().currentUser?.uid
         
         let commentDict: [String : Any] = [
-            "userIDKey": userID!,
+            "userIDKey": comment.userID,
             "bodyKey": comment.body,
             "timeKey": comment.timeStamp,
             "commentIDKey": comment.commentID
@@ -58,7 +61,7 @@ class CommentManager: NSObject {
                     
                     let userID = comment["userIDKey"] as! String
                     let body = comment["bodyKey"] as! String
-                    let timeStamp = comment["timeKey"] as! Date
+                    let timeStamp = comment["timeKey"] as! String
                     let commentID = comment["commentIDKey"] as! String
                     
                     
@@ -74,7 +77,7 @@ class CommentManager: NSObject {
                     
                 }
                 
-                print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
+                print("\(#function) - \(AppData.sharedInstance.commentArr.count)")
                 completion(AppData.sharedInstance.commentArr)
             })
     }

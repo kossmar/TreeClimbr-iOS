@@ -31,6 +31,18 @@ class TreeDetailViewController: UIViewController {
         }) as! AboutViewController
     }()
     
+    lazy var reviewViewController: ReviewViewController = {
+        return childViewControllers.first(where: { (viewController) -> Bool in
+            return viewController is ReviewViewController
+        }) as! ReviewViewController
+    }()
+    
+    lazy var photosViewController: PhotosViewController = {
+        return childViewControllers.first(where: { (viewController) -> Bool in
+            return viewController is PhotosViewController
+        }) as! PhotosViewController
+    }()
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -58,6 +70,8 @@ class TreeDetailViewController: UIViewController {
         
         //setup child viewcontrollers
         aboutViewController.tree = tree
+        reviewViewController.tree = tree
+        photosViewController.tree = tree
         
         //setup view container for segmented control
         aboutView.isHidden = true

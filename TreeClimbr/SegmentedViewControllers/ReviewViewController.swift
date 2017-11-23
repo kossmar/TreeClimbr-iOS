@@ -16,12 +16,25 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     
     var commentArr = [Comment]()
     
+    var tree : Tree? {
+        didSet {
+            guard let tree = tree else { return }
+            CommentManager.loadComments(tree: tree) { (comments) in
+                guard let comments = comments else { return }
+                self.commentArr = comments
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addCommentButton.isEnabled = false
         setupTextView()
+        
+        tableView.delegate = self
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -33,6 +46,10 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
 
     @IBAction func addComment (_ sender: UIButton) {
         //Add review
+        let comment = Comment(body: descTextView.text)
+        CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: TextView delegates
