@@ -31,7 +31,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
