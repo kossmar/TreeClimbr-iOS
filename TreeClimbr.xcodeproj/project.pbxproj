@@ -11,6 +11,7 @@
 		0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */; };
 		0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D701FC621A500C84F1D /* Comment.swift */; };
 		0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D721FC624BF00C84F1D /* CommentManager.swift */; };
+		0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */; };
 		0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */; };
 		0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
@@ -52,7 +53,7 @@
 		E6E1E4971FC4D4E2000F42CB /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */; };
 		E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */; };
 		E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */; };
-		E6E1E49E1FC6516A000F42CB /* TreeNewPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E49D1FC6516A000F42CB /* TreeNewPhotoCollectionViewCell.swift */; };
+		E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0D0D0D701FC621A500C84F1D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0D0D0D721FC624BF00C84F1D /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
+		0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeTableViewCell.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 		E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
-		E6E1E49D1FC6516A000F42CB /* TreeNewPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeNewPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FD9C6F42900DD93E9DC4842B /* Pods-TreeClimbr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,15 +188,16 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
-				E6E1E49D1FC6516A000F42CB /* TreeNewPhotoCollectionViewCell.swift */,
+				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
 				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
 				E6E1E49A1FC616EC000F42CB /* MapView */,
-				E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
 				0D0D0D721FC624BF00C84F1D /* CommentManager.swift */,
+				0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */,
+				E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */,
 				E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */,
 				E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */,
 				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
@@ -610,13 +613,14 @@
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,
 				0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
 				E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */,
 				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
-				E6E1E49E1FC6516A000F42CB /* TreeNewPhotoCollectionViewCell.swift in Sources */,
+				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,

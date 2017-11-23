@@ -128,15 +128,33 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oZq-Dh-1jj">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="basicPhotoCell" id="oZq-Dh-1jj" customClass="BasicPhotoCollectionViewCell" customModule="TreeClimbr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NG9-ib-tgM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="NG9-ib-tgM" firstAttribute="top" secondItem="oZq-Dh-1jj" secondAttribute="top" id="95c-Wt-aps"/>
+                                            <constraint firstAttribute="trailing" secondItem="NG9-ib-tgM" secondAttribute="trailing" id="GZS-FW-JiX"/>
+                                            <constraint firstAttribute="bottom" secondItem="NG9-ib-tgM" secondAttribute="bottom" id="aOk-n9-ub0"/>
+                                            <constraint firstItem="NG9-ib-tgM" firstAttribute="leading" secondItem="oZq-Dh-1jj" secondAttribute="leading" id="mzv-Yk-x2H"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="treePhotoImageView" destination="NG9-ib-tgM" id="37M-AL-F3h"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rCf-eS-uYt" id="sSb-v6-p5b"/>
+                                    <outlet property="delegate" destination="rCf-eS-uYt" id="nLn-d6-dbp"/>
+                                </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
                                 <rect key="frame" x="0.0" y="331" width="343" height="80"/>
@@ -160,6 +178,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xg-jR-oA1"/>
                     </view>
+                    <connections>
+                        <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,7 +271,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7OL-uC-7fI" id="uRg-f7-Hj8">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="202.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5lE-qz-Jaq">

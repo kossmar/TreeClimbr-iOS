@@ -11,6 +11,7 @@ class AppData: NSObject {
     public var usersNode: DatabaseReference
     public var treeNode: DatabaseReference
     public var commentsNode: DatabaseReference
+    public var photosNode: DatabaseReference
     
     public var treesArr : Array <Tree> = Array <Tree> ()
     public var commentArr = Array <Comment> ()
@@ -23,6 +24,8 @@ class AppData: NSObject {
         usersNode = Database.database().reference().child("users")
         treeNode = Database.database().reference().child("trees")
         commentsNode = Database.database().reference().child("comments")
+        photosNode = Database.database().reference().child("photos")
+        
     }
     
     
