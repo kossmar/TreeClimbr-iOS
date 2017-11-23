@@ -42,7 +42,7 @@ class ReadTrees: NSObject {
                     let treeSpecies : String = tree["speciesKey"] as! String
                     let treePhotoStr = tree["photoKey"] as! String
                     let treeCreator = tree["creatorKey"] as! String
-                    let treeComments = tree["commentsKey"] as! Array
+//                    let treeComments = tree["commentsKey"] as! Array
                     
                     let treePhotoURL = URL(string: treePhotoStr)
                     
