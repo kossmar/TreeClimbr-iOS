@@ -10,6 +10,8 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
+    var tree : Tree?
+    
 //    var tree : Tree? {
 //        didSet {
 //            guard let tree = tree else { return }

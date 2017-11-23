@@ -16,12 +16,30 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     
     var commentArr = [Comment]()
     
+    var tree : Tree? {
+        didSet {
+            guard let tree = tree else { return }
+            
+            CommentManager.loadComments(tree: tree) { comments in
+                guard let comments = comments else { return }
+                self.commentArr = comments
+                self.tableView.reloadData()
+            }
+            
+
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addCommentButton.isEnabled = false
         setupTextView()
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -32,7 +50,14 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     }
 
     @IBAction func addComment (_ sender: UIButton) {
-        //Add review
+        let comment = Comment(body: descTextView.text)
+        CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
+            self.view.endEditing(true)
+        }
+        descTextView.text = "Enter comment..."
+        descTextView.textColor = UIColor.lightGray
+        addCommentButton.isEnabled = false
+        self.tableView.reloadData()
     }
     
     //MARK: TextView delegates
@@ -75,10 +100,14 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         let cell : CommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         
         cell.userLabel.text = commentArr[indexPath.row].userID
-        cell.timestampLabel.text = "some random time"
+        cell.timestampLabel.text = commentArr[indexPath.row].timeStamp
         cell.commentTextView.text = commentArr[indexPath.row].body
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     
 }

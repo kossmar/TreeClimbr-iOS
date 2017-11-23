@@ -225,16 +225,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Pd4-T5-OcV">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="82"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="72"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eOH-4s-SgF">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="72"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ms-c7-rdg">
-                                        <rect key="frame" x="260" y="0.0" width="83" height="82"/>
+                                        <rect key="frame" x="260" y="0.0" width="83" height="72"/>
                                         <state key="normal" image="commentbutton"/>
                                         <connections>
                                             <action selector="addComment:" destination="CuG-42-DZo" eventType="touchUpInside" id="Qj3-R0-eoW"/>
@@ -255,7 +255,7 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5lE-qz-Jaq">
                                                     <rect key="frame" x="0.0" y="60" width="343" height="142"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -304,7 +304,7 @@
                             <constraint firstItem="WIk-IP-M75" firstAttribute="trailing" secondItem="UAe-6b-APd" secondAttribute="trailing" id="Ka5-fS-Y88"/>
                             <constraint firstItem="WIk-IP-M75" firstAttribute="leading" secondItem="UAe-6b-APd" secondAttribute="leading" id="KkA-fw-Wbc"/>
                             <constraint firstItem="UAe-6b-APd" firstAttribute="trailing" secondItem="Pd4-T5-OcV" secondAttribute="trailing" id="foc-cv-qVq"/>
-                            <constraint firstItem="WIk-IP-M75" firstAttribute="top" secondItem="Pd4-T5-OcV" secondAttribute="bottom" id="xZK-Jk-BNg"/>
+                            <constraint firstItem="WIk-IP-M75" firstAttribute="top" secondItem="Pd4-T5-OcV" secondAttribute="bottom" constant="10" id="xZK-Jk-BNg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UAe-6b-APd"/>
                     </view>
