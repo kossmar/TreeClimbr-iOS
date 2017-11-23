@@ -12,6 +12,7 @@ class AppData: NSObject {
     public var treeNode: DatabaseReference
     
     public var treesArr : Array <Tree> = Array <Tree> ()
+    public var commentArr = Array <Comment> ()
     
 
     public override init()
@@ -20,6 +21,7 @@ class AppData: NSObject {
         
         usersNode = Database.database().reference().child("users")
         treeNode = Database.database().reference().child("trees")
+        commentNode = treeNode.child("comment")
     }
     
     

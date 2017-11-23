@@ -55,7 +55,8 @@ class SaveTree: NSObject {
                     "longitudeKey": tree.treeLongitude,
                     "popularityKey":tree.treePopularity!,
                     "photoKey":url,
-                    "creatorKey":creator!
+                    "creatorKey":creator!,
+//                    "commentKey": tree.treeComments
                 ]
                 
                 AppData.sharedInstance.treeNode

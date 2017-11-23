@@ -13,6 +13,7 @@ class Tree: NSObject {
     var treePhotoData: NSData?
     var treePhotoURL: URL
     var treeCreator: String?
+    var treeComments = Array<Comment>()
     
     init(name: String, description: String?, treeLat: Double, treeLong: Double, photo: NSData?) {
         self.treeID = ""
