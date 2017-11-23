@@ -8,26 +8,62 @@
 
 import UIKit
 
-class ReviewViewController: UIViewController /*UITableViewDelegate, UITableViewDataSource*/ {
+class ReviewViewController: UIViewController, UITextViewDelegate /*UITableViewDelegate, UITableViewDataSource*/ {
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var addCommentButton: UIButton!
     
-//    var tree : Tree? {
-//        didSet {
-//            guard let tree = tree else { return }
-//
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addCommentButton.isEnabled = false
+        setupTextView()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
-    @IBAction func reviewAction(_ sender: UIButton) {
+    @IBAction func addComment (_ sender: UIButton) {
         //Add review
     }
     
-    //MARK: TableView delegtes
+    //MARK: TextView delegates
+    func setupTextView() {
+        descTextView.text = "Enter comment..."
+        descTextView.textColor = UIColor.lightGray
+        descTextView.delegate = self
+        descTextView.layer.cornerRadius = descTextView.frame.width/50
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if descTextView.textColor == UIColor.lightGray {
+            descTextView.text = nil
+            descTextView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if descTextView.text.isEmpty {
+            descTextView.text = "Enter comment..."
+            descTextView.textColor = UIColor.lightGray
+            addCommentButton.isEnabled = false
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if descTextView.text.isEmpty {
+            addCommentButton.isEnabled = false
+        } else {
+            addCommentButton.isEnabled = true
+        }
+    }
+    //MARK: TableView delegates
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        <#code#>
 //    }
