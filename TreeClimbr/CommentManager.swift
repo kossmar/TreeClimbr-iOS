@@ -16,13 +16,13 @@ class CommentManager: NSObject {
         let userID = Auth.auth().currentUser?.uid
         
         let commentDict: [String : Any] = [
-            "userIDKey": userID,
+            "userIDKey": userID!,
             "bodyKey": comment.body,
             "timeKey": comment.timeStamp,
             "commentIDKey": comment.commentID
         ]
         
-        AppData.sharedInstance.treeNode
+        AppData.sharedInstance.commentsNode
             .child(tree.treeID!)
             .child(comment.commentID)
             .setValue(commentDict)
@@ -31,10 +31,15 @@ class CommentManager: NSObject {
 
     }
     
-    class func loadComments(tree: Tree, completion: @escaping ([Comment]) -> Void) {
+    class func loadComments(tree: Tree, completion: @escaping ([Comment]?) -> Void) {
+        
+        if ( Auth.auth().currentUser == nil ) {
+            completion(nil)
+            return
+        }
         
         AppData.sharedInstance
-            .treeNode.child(tree.treeID)
+            .commentsNode.child(tree.treeID!)
             .observe (.value, with: { (snapshot) in
                 
                 let value = snapshot.value as? NSDictionary;
@@ -53,8 +58,8 @@ class CommentManager: NSObject {
                     
                     let userID = comment["userIDKey"] as! String
                     let body = comment["bodyKey"] as! String
-                    let timeStamp = ["timeKey"] as! Date
-                    let commentID = ["commentIDKey"] as! String
+                    let timeStamp = comment["timeKey"] as! Date
+                    let commentID = comment["commentIDKey"] as! String
                     
                     
                     let readComment = Comment(body: body)
@@ -63,14 +68,14 @@ class CommentManager: NSObject {
                     readComment.timeStamp = timeStamp
 
                     
-                    AppData.sharedInstance.treesArr.append(readComment)
+                    AppData.sharedInstance.commentArr.append(readComment)
                     
                     //                    print (AppData.sharedInstance.treesArr)
                     
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
-                completion(AppData.sharedInstance.treesArr)
+                completion(AppData.sharedInstance.commentArr)
             })
     }
 }
