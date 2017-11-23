@@ -52,7 +52,7 @@ class CommentManager: NSObject {
                     return
                 }
                 
-//                AppData.sharedInstance.treesArr = Array<Tree>()
+                AppData.sharedInstance.commentArr = Array<Comment>()
                 
                 
                 for any in (value?.allValues)!
