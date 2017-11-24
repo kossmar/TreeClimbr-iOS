@@ -81,17 +81,11 @@ class TreeDetailViewController: UIViewController {
         reviewView.isHidden = true
         picturesView.isHidden = false
         
-        //set up button
-        faveButton.contentMode = .scaleAspectFill
-        
-        
-        print ("\(AppData.sharedInstance.curUser)")
+        print ("\(AppData.sharedInstance.favouritesArr)")
     }
     
     @IBAction func favouriteAction(_ sender: UIButton) {
-        guard let currentUser = AppData.sharedInstance.curUser else {return}
-        
-        FavouritesManager.saveFavourite(user: currentUser, tree: self.tree) { success in
+        FavouritesManager.saveFavourite(tree: self.tree) { success in
             return
         }
     }
@@ -115,19 +109,16 @@ class TreeDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let currentUser = AppData.sharedInstance.curUser else {return}
-        FavouritesManager.loadFavourites(user: currentUser, tree: self.tree) { (success) in
+        FavouritesManager.loadFavourites { (success) in
             return
         }
         
-//        let faveArr = AppData.sharedInstance.favouritesArr
-//        if faveArr .contains(self.tree){
-//            self.faveButton.alpha = 0.5
-//            print ("\(faveArr)")
-//        }
-        
         let faveArr = AppData.sharedInstance.favouritesArr
-        print ("\(faveArr)")
+        if faveArr .contains(self.tree){
+            self.faveButton.alpha = 0.0
+            print ("\(AppData.sharedInstance.favouritesArr)")
+        }
+
     }
     
 
@@ -157,9 +148,6 @@ class TreeDetailViewController: UIViewController {
             break
         }
     }
-    
-    
-    
 
     func distanceFromUser() -> Double {
         let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)
