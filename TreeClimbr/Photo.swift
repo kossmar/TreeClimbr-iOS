@@ -13,7 +13,7 @@ class Photo: NSObject {
  
     init(URL: String) {
         self.userID = ""
-        self.photoURL = ""
+        self.photoURL = URL
         let date = Date()
         let dateForm = DateFormatter()
         dateForm.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
