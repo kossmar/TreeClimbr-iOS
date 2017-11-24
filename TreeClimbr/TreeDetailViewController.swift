@@ -80,9 +80,9 @@ class TreeDetailViewController: UIViewController {
                 for photo in photos {
                     group.enter()
                    // let imagesRef = ref.child(tree.treeID!)
-                    let dbref = tree.treeName + "|" + photo.timeStamp
+                 //   let dbref = tree.treeName + "|" + photo.timeStamp
                     
-                    let imagesRef = ref.child(dbref)
+                    let imagesRef = ref.child(photo.imageDBName)
                     
                    imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
                         if let error = error {
