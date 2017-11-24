@@ -33,8 +33,7 @@ class FavouritesManager: NSObject {
     }
     
     class func loadFavourites(completion: @escaping ([Tree]?) -> Void) {
-        
-//        AppData.sharedInstance.favouritesArr = Array<Tree>()
+//        AppData.sharedInstance.favouritesArr.removeAll()
         
         if ( Auth.auth().currentUser == nil ) {
             completion(nil)
@@ -62,6 +61,8 @@ class FavouritesManager: NSObject {
                             completion(nil)
                             return
                         }
+                        
+                        AppData.sharedInstance.favouritesArr = Array<Tree>()
                         
                         for favTree in (allFaveTrees?.keys)!
                         {
@@ -111,6 +112,8 @@ class FavouritesManager: NSObject {
                                         faveTree.treeCreator = treeCreator
                                         
                                         AppData.sharedInstance.favouritesArr.append(faveTree)
+                                        print (" After Append\(AppData.sharedInstance.favouritesArr.count)")
+
                                     })
                             }
                         }

@@ -81,7 +81,7 @@ class TreeDetailViewController: UIViewController {
         reviewView.isHidden = true
         picturesView.isHidden = false
         
-        print ("\(AppData.sharedInstance.favouritesArr)")
+       
     }
     
     @IBAction func favouriteAction(_ sender: UIButton) {
@@ -113,12 +113,13 @@ class TreeDetailViewController: UIViewController {
             return
         }
         
-        let faveArr = AppData.sharedInstance.favouritesArr
-        if faveArr .contains(self.tree){
-            self.faveButton.alpha = 0.0
-            print ("\(AppData.sharedInstance.favouritesArr)")
-        }
-
+//        let faveArr = AppData.sharedInstance.favouritesArr
+//        if faveArr .contains(self.tree){
+//            self.faveButton.alpha = 0.0
+//            print ("\(AppData.sharedInstance.favouritesArr)")
+//        }
+        
+         print ("VIEW WILL APPEAR \(AppData.sharedInstance.favouritesArr.count)")
     }
     
 

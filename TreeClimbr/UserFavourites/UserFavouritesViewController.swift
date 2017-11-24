@@ -24,6 +24,10 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        FavouritesManager.loadFavourites { (success) in
+            return
+        }
     }
 
     @IBAction func doneButton(_ sender: UIButton) {
@@ -41,18 +45,26 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        FavouritesManager.loadFavourites { (success) in
+            guard let self.treesArr = self.treesArr
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // user favourites trees count
-        return 1
+        FavouritesManager.loadFavourites { (success) in
+            return
+        }
+        print ("number of cells \(AppData.sharedInstance.favouritesArr.count)" )
+        return AppData.sharedInstance.favouritesArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
-            let treeTemp = treesArr[indexPath.row]
+            let treeTemp = AppData.sharedInstance.favouritesArr[indexPath.row]
             cell.tree = treeTemp
             cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
             cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
-            
             cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
                                                              completed: { (image, error, cacheType, url) in
                                                                 print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
