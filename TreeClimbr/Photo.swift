@@ -6,15 +6,21 @@ import Foundation
 class Photo: NSObject {
 
     var userID = String()
-    var photoURL : URL
-    var timeStamp: Date
+    var photoURL : String
+    var timeStamp = String()
     var isMain : Bool
+    var photoID = String()
  
-    init(URL: URL) {
-        self.userID = AppData.sharedInstance.curUser.uid
+    init(URL: String) {
+        self.userID = ""
         self.photoURL = URL
-        self.timeStamp = Date()
+        let date = Date()
+        let dateForm = DateFormatter()
+        dateForm.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        let dateStr = dateForm.string(from: date)
+        self.timeStamp = dateStr
         self.isMain = false
+        self.photoID = ""
     }
     
     

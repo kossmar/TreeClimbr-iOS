@@ -18,6 +18,8 @@ class TreeDetailViewController: UIViewController {
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
     var distance = Double()
+    var photoObjArr = Array<Photo>()
+    var imageArr = Array<UIImage>()
     
     @IBOutlet weak var viewContainer: UIView!
     
@@ -51,14 +53,25 @@ class TreeDetailViewController: UIViewController {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
             let url = tree.treePhotoURL
-
+            
             basicTreeInfoView.treeImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
                     print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+                                                            
             })
             
           basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
          
+            PhotoManager.loadPhotos(tree: tree, completion: { photos in
+                
+                guard let photos = photos else {
+                    print("oops no photo object returned")
+                    return
+                }
+                self.photosViewController.photosArr = photos
+                self.photosViewController.photoCollectionView.reloadData()
+            })
+            
         } else {
 
             print("ERROR")
