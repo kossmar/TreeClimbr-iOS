@@ -73,16 +73,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)
+            
+            self.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+                
+                PhotoManager.savePhotos(photos: photos, tree: tree) { success in
+                    print("winners")
+                    
+                }
+            }
+            
         })
         
         
-        self.createNewPhotos(images: imageArr, tree: tree) { (photos) in
-            
-            PhotoManager.savePhotos(photos: photos, tree: tree) { success in
-                print("winners")
-                
-            }
-        }
+
 
         if TreeDescTextView.textColor == UIColor.lightGray {
             TreeDescTextView.text = nil
@@ -186,18 +189,23 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // MARK: - Custom Functions
 
-    func uploadImage(image: UIImage, tree: Tree, completion: @escaping (URL) -> Void) {
+    func uploadImage(image: UIImage, tree: Tree, completion: @escaping (URL, String) -> Void) {
         
         var url: URL?
+        var imageDBName: String?
         
         let photoData = image.jpeg(.low)
         
         let storage = Storage.storage()
-        let photoID: String = tree.treeName + "|" + String(describing: Date())
+    //HERE!
+    //    let imageID: String = tree.treeName + "|" + String(describing: Date())
+   //     let imageID: String = tree.treeID!
+        
+        let imageID = NSUUID().uuidString
         
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
-        let imagesRef = storageRef.child(photoID)
+        let imagesRef = storageRef.child(imageID)
         
         imagesRef.putData(photoData!, metadata: nil, completion: { (metadata, error) in
             
@@ -207,10 +215,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 return
             }
             
-            if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
+            if let metadata = metadata, let downloadedURL = metadata.downloadURL(), let downloadedDBName = metadata.name {
                 print(downloadedURL)
                 metadata.contentType = "image/jpeg"
-                
+                imageDBName = downloadedDBName
                 url = downloadedURL
             }
             
@@ -218,8 +226,13 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 print("NO URL, BREWWW")
                 return
             }
+            
+//            guard let imageDBName = imageDBName else {
+//                print("No name")
+//                return
+//            }
 
-            completion(url)
+            completion(url, imageDBName!)
         })
         
     }
@@ -235,17 +248,26 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             return
         }
         
+        let group = DispatchGroup()
+        
         for image in images {
             
-            uploadImage(image: image, tree: tree, completion: { url in
+            group.enter()
+            uploadImage(image: image, tree: tree, completion: { url, imageDBName in
                 let urlStr = url.absoluteString
+                let dbName = imageDBName
                 let photo = Photo(URL: urlStr)
                 photo.userID = user
+                photo.imageDBName = dbName
                 
                 tempPhotoArr.append(photo)
+                group.leave()
                 
-                completion(tempPhotoArr)
             })
+        }
+        
+        group.notify(queue: DispatchQueue.global()) {
+            completion(tempPhotoArr)
         }
     }
     
