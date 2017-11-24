@@ -49,7 +49,7 @@ class TreeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         if let tree = tree {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
@@ -72,19 +72,15 @@ class TreeDetailViewController: UIViewController {
                 
                 let storage = Storage.storage()
                 let ref = storage.reference()
-
                 
                 let group = DispatchGroup()
                 
-                
                 for photo in photos {
                     group.enter()
-                   // let imagesRef = ref.child(tree.treeID!)
-                 //   let dbref = tree.treeName + "|" + photo.timeStamp
                     
                     let imagesRef = ref.child(photo.imageDBName)
                     
-                   imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
+                    imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
                         if let error = error {
                             print(error)
                             return
@@ -93,16 +89,18 @@ class TreeDetailViewController: UIViewController {
                             let realImage = UIImage(data: data!)
                             self.imageArr.append(realImage!)
                             group.leave()
-                    }
-                        
-                    
-
+                        }
                     })
                 }
                 
                 group.notify(queue: DispatchQueue.global(qos: .background)) {
-                    self.photosViewController.imageArr = self.imageArr
-        //            self.photosViewController.photoCollectionView.reloadData()
+                    
+                    DispatchQueue.main.async {
+                        self.photosViewController.imageArr = self.imageArr
+                        self.photosViewController.photoCollectionView.reloadData()
+                    }
+                    
+                    
                 }
                 
             })
@@ -171,9 +169,6 @@ class TreeDetailViewController: UIViewController {
             break
         }
     }
-    
-    
-    
     
     func distanceFromUser() -> Double {
         let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)

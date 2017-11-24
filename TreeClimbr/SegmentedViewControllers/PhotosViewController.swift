@@ -10,9 +10,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
     
     // MARK: - CollectionView DataSource
     
