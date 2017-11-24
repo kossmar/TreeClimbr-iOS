@@ -21,14 +21,10 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
-        
-        FavouritesManager.loadFavourites { (success) in
-            return
-        }
     }
+    
 
     @IBAction func doneButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -41,16 +37,9 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
             }
             treeDetailVC.tree = sender as! Tree
             treeDetailVC.rootSourceVC = sourceVC
-            
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        FavouritesManager.loadFavourites { (success) in
-            guard let self.treesArr = self.treesArr
-        }
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         FavouritesManager.loadFavourites { (success) in
             return
@@ -60,7 +49,8 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BasicTreeTableViewCell", for: indexPath) as! BasicTreeTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FaveCell", for: indexPath) as! BasicTreeTableViewCell
+        
             let treeTemp = AppData.sharedInstance.favouritesArr[indexPath.row]
             cell.tree = treeTemp
             cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
@@ -69,8 +59,6 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
                                                              completed: { (image, error, cacheType, url) in
                                                                 print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
             })
-            
-            
             return cell
     }
     

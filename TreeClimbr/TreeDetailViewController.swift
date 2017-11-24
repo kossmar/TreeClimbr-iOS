@@ -14,6 +14,7 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet var toMapButton: UIBarButtonItem!
     @IBOutlet weak var basicTreeInfoView: BasicTreeInfoView!
     var tree : Tree!
+    var treeArr = [Tree]()
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
