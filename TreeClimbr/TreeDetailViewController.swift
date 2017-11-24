@@ -76,9 +76,13 @@ class TreeDetailViewController: UIViewController {
                 
                 let group = DispatchGroup()
                 
-                for _ in photos {
+                
+                for photo in photos {
                     group.enter()
-                    let imagesRef = ref.child(tree.treeID!)
+                   // let imagesRef = ref.child(tree.treeID!)
+                    let dbref = tree.treeName + "|" + photo.timeStamp
+                    
+                    let imagesRef = ref.child(dbref)
                     
                    imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
                         if let error = error {

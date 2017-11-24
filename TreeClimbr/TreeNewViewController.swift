@@ -196,7 +196,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let photoData = image.jpeg(.low)
         
         let storage = Storage.storage()
-        let imageID: String = tree.treeID!
+    //HERE!
+        let imageID: String = tree.treeName + "|" + String(describing: Date())
+   //     let imageID: String = tree.treeID!
         
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
