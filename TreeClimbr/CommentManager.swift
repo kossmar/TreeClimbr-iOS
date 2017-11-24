@@ -13,11 +13,6 @@ class CommentManager: NSObject {
             return
         }
         
-        
-        
-        
-//        let userID = Auth.auth().currentUser?.uid
-        
         let commentDict: [String : Any] = [
             "userIDKey": comment.userID,
             "bodyKey": comment.body,

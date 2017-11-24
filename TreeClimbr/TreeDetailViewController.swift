@@ -25,6 +25,9 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var picturesView: UIView!
     
+    @IBOutlet weak var faveButton: UIButton!
+    
+    
     lazy var aboutViewController: AboutViewController = {
         return childViewControllers.first(where: { (viewController) -> Bool in
             return viewController is AboutViewController
@@ -77,7 +80,22 @@ class TreeDetailViewController: UIViewController {
         aboutView.isHidden = true
         reviewView.isHidden = true
         picturesView.isHidden = false
+        
+        //set up button
+        faveButton.contentMode = .scaleAspectFill
+        
+        
+        print ("\(AppData.sharedInstance.curUser)")
     }
+    
+    @IBAction func favouriteAction(_ sender: UIButton) {
+        guard let currentUser = AppData.sharedInstance.curUser else {return}
+        
+        FavouritesManager.saveFavourite(user: currentUser, tree: self.tree) { success in
+            return
+        }
+    }
+    
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
         let treeLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(tree.treeLatitude, tree.treeLongitude)
@@ -94,6 +112,22 @@ class TreeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let currentUser = AppData.sharedInstance.curUser else {return}
+        FavouritesManager.loadFavourites(user: currentUser, tree: self.tree) { (success) in
+            return
+        }
+        
+//        let faveArr = AppData.sharedInstance.favouritesArr
+//        if faveArr .contains(self.tree){
+//            self.faveButton.alpha = 0.5
+//            print ("\(faveArr)")
+//        }
+        
+        let faveArr = AppData.sharedInstance.favouritesArr
+        print ("\(faveArr)")
     }
     
 

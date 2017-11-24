@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,11 +29,23 @@
                                                 <action selector="dismissDetailAction:" destination="8qG-qF-Dga" id="9r6-wx-bUP"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="To Map" id="aPi-0P-pNf">
-                                            <connections>
-                                                <action selector="toMapAction:" destination="8qG-qF-Dga" id="Ou4-jc-Ktw"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem title="To Map" id="aPi-0P-pNf">
+                                                <connections>
+                                                    <action selector="toMapAction:" destination="8qG-qF-Dga" id="Ou4-jc-Ktw"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" style="plain" id="WeF-cN-351">
+                                                <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="W5s-H9-4iV">
+                                                    <rect key="frame" x="232.5" y="0.0" width="62" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Favourites"/>
+                                                    <connections>
+                                                        <action selector="favouriteAction:" destination="8qG-qF-Dga" eventType="touchUpInside" id="6bw-5G-lH5"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -100,6 +113,7 @@
                     <connections>
                         <outlet property="aboutView" destination="EEe-4t-ddy" id="ajl-zm-FOF"/>
                         <outlet property="basicTreeInfoView" destination="gnn-0f-9po" id="vG9-Ms-a1U"/>
+                        <outlet property="faveButton" destination="W5s-H9-4iV" id="XFZ-wn-FLq"/>
                         <outlet property="picturesView" destination="AaD-1Q-cqP" id="8wb-qZ-Bll"/>
                         <outlet property="reviewView" destination="nz1-XT-Ydk" id="EPX-Go-Lbf"/>
                         <outlet property="segmentedControl" destination="czL-H8-tzg" id="pil-qn-hE5"/>
@@ -320,6 +334,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Favourites" width="62" height="72"/>
         <image name="commentbutton" width="62" height="63"/>
     </resources>
 </document>
