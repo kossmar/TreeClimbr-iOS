@@ -10,6 +10,7 @@ class Photo: NSObject {
     var timeStamp = String()
     var isMain : Bool
     var photoID = String()
+    var imageDBName = String()
  
     init(URL: String) {
         self.userID = "fakeID"
@@ -21,6 +22,7 @@ class Photo: NSObject {
         self.timeStamp = dateStr
         self.isMain = false
         self.photoID = "fakeID"
+        self.imageDBName = ""
     }
     
     
