@@ -49,6 +49,7 @@ class TreeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         if let tree = tree {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
@@ -69,28 +70,35 @@ class TreeDetailViewController: UIViewController {
                     return
                 }
                 
+                let storage = Storage.storage()
+                let ref = storage.reference()
+
+                
                 let group = DispatchGroup()
-                for photo in photos {
+                
+                for _ in photos {
                     group.enter()
-                    let ref = Storage.storage().reference()
-                    let imagesRef = ref.child(photo.photoID)
+                    let imagesRef = ref.child(tree.treeID!)
                     
-                   imagesRef.getData(maxSize: 1*1064*1064, completion: { (data, error) in
+                   imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
                         if let error = error {
                             print(error)
                             return
-                        }
+                        } else {
+                            
+                            let realImage = UIImage(data: data!)
+                            self.imageArr.append(realImage!)
+                            group.leave()
+                    }
                         
-                        let realImage = UIImage(data: data!)
                     
-                    self.imageArr.append(realImage!)
-                        group.leave()
+
                     })
                 }
                 
-                group.notify(queue: DispatchQueue.global()) {
+                group.notify(queue: DispatchQueue.global(qos: .background)) {
                     self.photosViewController.imageArr = self.imageArr
-                    self.photosViewController.photoCollectionView.reloadData()
+        //            self.photosViewController.photoCollectionView.reloadData()
                 }
                 
             })
@@ -175,6 +183,10 @@ class TreeDetailViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.photosViewController.photoCollectionView.reloadData()
     }
     
 }

@@ -73,16 +73,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)
+            
+            self.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+                
+                PhotoManager.savePhotos(photos: photos, tree: tree) { success in
+                    print("winners")
+                    
+                }
+            }
+            
         })
         
         
-        self.createNewPhotos(images: imageArr, tree: tree) { (photos) in
-            
-            PhotoManager.savePhotos(photos: photos, tree: tree) { success in
-                print("winners")
-                
-            }
-        }
+
 
         if TreeDescTextView.textColor == UIColor.lightGray {
             TreeDescTextView.text = nil
@@ -193,11 +196,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let photoData = image.jpeg(.low)
         
         let storage = Storage.storage()
-        let photoID: String = tree.treeName + "|" + String(describing: Date())
+        let imageID: String = tree.treeID!
         
         // Create a storage reference from our storage service
         let storageRef = storage.reference()
-        let imagesRef = storageRef.child(photoID)
+        let imagesRef = storageRef.child(imageID)
         
         imagesRef.putData(photoData!, metadata: nil, completion: { (metadata, error) in
             
