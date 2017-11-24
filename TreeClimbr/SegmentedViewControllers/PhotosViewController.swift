@@ -6,6 +6,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
     var photosArr = Array<Photo>()
+    var imageArr = Array<UIImage>()
     
     //    var tree : Tree? {
     //        didSet {

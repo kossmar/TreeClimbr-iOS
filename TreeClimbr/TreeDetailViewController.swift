@@ -56,24 +56,47 @@ class TreeDetailViewController: UIViewController {
             
             basicTreeInfoView.treeImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
-                    print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
                                                             
             })
             
-          basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
-         
+            basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
+            
             PhotoManager.loadPhotos(tree: tree, completion: { photos in
                 
                 guard let photos = photos else {
                     print("oops no photo object returned")
                     return
                 }
-                self.photosViewController.photosArr = photos
-                self.photosViewController.photoCollectionView.reloadData()
+                
+                let group = DispatchGroup()
+                for photo in photos {
+                    group.enter()
+                    let ref = Storage.storage().reference()
+                    let imagesRef = ref.child(photo.photoID)
+                    
+                   imagesRef.getData(maxSize: 1*1064*1064, completion: { (data, error) in
+                        if let error = error {
+                            print(error)
+                            return
+                        }
+                        
+                        let realImage = UIImage(data: data!)
+                    
+                    self.imageArr.append(realImage!)
+                        group.leave()
+                    })
+                }
+                
+                group.notify(queue: DispatchQueue.global()) {
+                    self.photosViewController.imageArr = self.imageArr
+                    self.photosViewController.photoCollectionView.reloadData()
+                }
+                
             })
             
         } else {
-
+            
             print("ERROR")
         }
         if (fromMapView) {
@@ -109,9 +132,9 @@ class TreeDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
     
-
+    
     //MARK: Segment Control
-
+    
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -139,7 +162,7 @@ class TreeDetailViewController: UIViewController {
     
     
     
-
+    
     func distanceFromUser() -> Double {
         let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)
         let currentLocation = rootSourceVC.userCoordinate
