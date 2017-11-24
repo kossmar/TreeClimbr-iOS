@@ -235,17 +235,24 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             return
         }
         
+        let group = DispatchGroup()
+        
         for image in images {
             
+            group.enter()
             uploadImage(image: image, tree: tree, completion: { url in
                 let urlStr = url.absoluteString
                 let photo = Photo(URL: urlStr)
                 photo.userID = user
                 
                 tempPhotoArr.append(photo)
+                group.leave()
                 
-                completion(tempPhotoArr)
             })
+        }
+        
+        group.notify(queue: DispatchQueue.global()) {
+            completion(tempPhotoArr)
         }
     }
     

@@ -12,7 +12,7 @@ class Photo: NSObject {
     var photoID = String()
  
     init(URL: String) {
-        self.userID = ""
+        self.userID = "fakeID"
         self.photoURL = URL
         let date = Date()
         let dateForm = DateFormatter()
@@ -20,7 +20,7 @@ class Photo: NSObject {
         let dateStr = dateForm.string(from: date)
         self.timeStamp = dateStr
         self.isMain = false
-        self.photoID = ""
+        self.photoID = "fakeID"
     }
     
     
