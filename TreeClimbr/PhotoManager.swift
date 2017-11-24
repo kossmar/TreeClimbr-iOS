@@ -25,7 +25,8 @@ class PhotoManager: NSObject {
                 "urlKey": photo.photoURL,
                 "timeKey": photo.timeStamp,
                 "isMainKey": photo.isMain,
-                "photoIDKey": photo.photoID
+                "photoIDKey": photo.photoID,
+                "imageDBNameKey": photo.imageDBName
             ]
             
             AppData.sharedInstance.photosNode
@@ -70,16 +71,14 @@ class PhotoManager: NSObject {
                     let timeStamp = photo["timeKey"] as! String
                     let isMain = photo["isMainKey"] as! Bool
                     let photoID = photo["photoIDKey"] as! String
-                    
-
+                    let imageDB = photo["imageDBNameKey"] as! String
                     
                     let readPhoto = Photo(URL: photoURL)
                     readPhoto.userID = userID
                     readPhoto.isMain = isMain
                     readPhoto.timeStamp = timeStamp
                     readPhoto.photoID = photoID
-                    
-                  
+                    readPhoto.imageDBName = imageDB
                     
                     tempPhotoArr.append(readPhoto)
                     
