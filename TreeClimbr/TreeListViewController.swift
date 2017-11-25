@@ -4,13 +4,12 @@ import CoreLocation
 import MapKit
 
 class TreeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
     var sourceVC = ViewController()
     var treeDistance = Double()
     var treesArr = Array<Tree>()
-    
     
     
     
@@ -23,8 +22,16 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
         treesArr = AppData.sharedInstance.treesArr
-
+        
         // Do any additional setup after loading the view.
+        for treeTemp in treesArr {
+            let treeDist = distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)
+            treeTemp.distFromUser = treeDist
+        }
+
+        self.treesArr.sort(by: { $0.distFromUser < $1.distFromUser })
+        tableView.reloadData()
+
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
@@ -52,11 +59,11 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         let treeTemp = treesArr[indexPath.row]
         cell.tree = treeTemp
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
-        cell.basicTreeInfoView.distanceLabel.text = "\(distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)) km"
+        cell.basicTreeInfoView.distanceLabel.text = "\(treeTemp.distFromUser) km"
         
         cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
-                                                    completed: { (image, error, cacheType, url) in
-                                                        print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+                                                         completed: { (image, error, cacheType, url) in
+                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
         })
         
         
@@ -76,7 +83,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
     }
-
+    
     // MARK: - Custom Functions
     
     func distanceFromUser(_ lat: Double,_ long: Double) -> Double {
@@ -88,6 +95,6 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         let distanceRound = Double(round(10*distance)/10)
         return distanceRound
     }
- 
-
+    
+    
 }
