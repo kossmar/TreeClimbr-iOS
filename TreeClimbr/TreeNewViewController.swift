@@ -74,7 +74,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)
             
-            self.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+            ImageUploader.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
                 
                 PhotoManager.savePhotos(photos: photos, tree: tree) { success in
                     print("winners")
@@ -187,93 +187,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    // MARK: - Custom Functions
-
-    func uploadImage(image: UIImage, tree: Tree, completion: @escaping (URL, String) -> Void) {
-        
-        var url: URL?
-        var imageDBName: String?
-        
-        let photoData = image.jpeg(.low)
-        
-        let storage = Storage.storage()
-    //HERE!
-    //    let imageID: String = tree.treeName + "|" + String(describing: Date())
-   //     let imageID: String = tree.treeID!
-        
-        let imageID = NSUUID().uuidString
-        
-        // Create a storage reference from our storage service
-        let storageRef = storage.reference()
-        let imagesRef = storageRef.child(imageID)
-        
-        imagesRef.putData(photoData!, metadata: nil, completion: { (metadata, error) in
-            
-            if let error = error {
-                print(error)
-                //           completion(nil)
-                return
-            }
-            
-            if let metadata = metadata, let downloadedURL = metadata.downloadURL(), let downloadedDBName = metadata.name {
-                print(downloadedURL)
-                metadata.contentType = "image/jpeg"
-                imageDBName = downloadedDBName
-                url = downloadedURL
-            }
-            
-            guard let url = url else {
-                print("NO URL, BREWWW")
-                return
-            }
-            
-//            guard let imageDBName = imageDBName else {
-//                print("No name")
-//                return
-//            }
-
-            completion(url, imageDBName!)
-        })
-        
-    }
-    
-    func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo]) -> Void) {
-        
-        var tempPhotoArr = Array<Photo>()
-        
-        let curUser = Auth.auth().currentUser?.uid
-        
-        guard let user = curUser else {
-            print("not logged in")
-            return
-        }
-        
-        let group = DispatchGroup()
-        
-        for image in images {
-            
-            group.enter()
-            uploadImage(image: image, tree: tree, completion: { url, imageDBName in
-                let urlStr = url.absoluteString
-                let dbName = imageDBName
-                let photo = Photo(URL: urlStr)
-                photo.userID = user
-                photo.imageDBName = dbName
-                
-                tempPhotoArr.append(photo)
-                group.leave()
-                
-            })
-        }
-        
-        group.notify(queue: DispatchQueue.global()) {
-            completion(tempPhotoArr)
-        }
-    }
-    
 }
-
-
 
 
 extension UIImage {
