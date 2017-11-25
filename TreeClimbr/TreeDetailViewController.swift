@@ -142,6 +142,12 @@ class TreeDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
     
+    @IBAction func favouriteAction(_ sender: UIButton) {
+        FavouritesManager.saveFavourite(tree: self.tree) { success in
+            return
+        }
+    }
+    
     
     //MARK: Segment Control
     
