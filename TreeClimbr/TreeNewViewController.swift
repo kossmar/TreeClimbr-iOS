@@ -1,6 +1,7 @@
 import UIKit
 import CoreLocation
 import ImagePicker
+import Firebase
 
 class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate {
 
@@ -16,7 +17,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     //MARK: Properties
     let imagePickerController = ImagePickerController()
     
-    var photoArr = Array<UIImage>()
+    var imageArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
     var sourceVC = ViewController()
 
@@ -43,8 +44,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        if photoArr.count > 0 {
-            treeImageView.image = photoArr[0]
+        if imageArr.count > 0 {
+            treeImageView.image = imageArr[0]
         }
         
         photoCollectionView.reloadData()
@@ -61,7 +62,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func save(_ sender: UIButton) {
-//        let photoData = UIImagePNGRepresentation(treeImageView.image!) as NSData?
+
+        
         let photoData = treeImageView.image?.jpeg(.low)
         
         let lat = coordinate.latitude
@@ -71,8 +73,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)
+            
+            self.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+                
+                PhotoManager.savePhotos(photos: photos, tree: tree) { success in
+                    print("winners")
+                    
+                }
+            }
+            
         })
         
+        
+
 
         if TreeDescTextView.textColor == UIColor.lightGray {
             TreeDescTextView.text = nil
@@ -92,7 +105,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        photoArr = images
+        imageArr = images
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -102,14 +115,14 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     //MARK: Collection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArr.count
+        return imageArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCell", for: indexPath) as! TreeNewPhotoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddPhotoCell", for: indexPath) as! BasicPhotoCollectionViewCell
         
-        let photo = photoArr[indexPath.row]
-        cell.treePhotoCell.image = photo
+        let photo = imageArr[indexPath.row]
+        cell.treePhotoImageView.image = photo
         
         return cell
     }
@@ -138,22 +151,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         present(imagePickerController, animated: true, completion: nil)
         imagePickerController.imageLimit = 5
     }
-    
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//       var pickedImage: UIImage?
-//
-//        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            pickedImage = editedImage
-//        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-//
-//            pickedImage = originalImage
-//        }
-//
-//        if let selectedImage = pickedImage {
-//            treeImageView.image = selectedImage
-//        }
-//        picker.dismiss(animated: true, completion: nil)
-//    }
     
     //MARK: Textview delegate
     func setupTextView() {
@@ -189,7 +186,95 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             saveButton.isEnabled = true
         }
     }
+    
+    // MARK: - Custom Functions
+
+    func uploadImage(image: UIImage, tree: Tree, completion: @escaping (URL, String) -> Void) {
+        
+        var url: URL?
+        var imageDBName: String?
+        
+        let photoData = image.jpeg(.low)
+        
+        let storage = Storage.storage()
+    //HERE!
+    //    let imageID: String = tree.treeName + "|" + String(describing: Date())
+   //     let imageID: String = tree.treeID!
+        
+        let imageID = NSUUID().uuidString
+        
+        // Create a storage reference from our storage service
+        let storageRef = storage.reference()
+        let imagesRef = storageRef.child(imageID)
+        
+        imagesRef.putData(photoData!, metadata: nil, completion: { (metadata, error) in
+            
+            if let error = error {
+                print(error)
+                //           completion(nil)
+                return
+            }
+            
+            if let metadata = metadata, let downloadedURL = metadata.downloadURL(), let downloadedDBName = metadata.name {
+                print(downloadedURL)
+                metadata.contentType = "image/jpeg"
+                imageDBName = downloadedDBName
+                url = downloadedURL
+            }
+            
+            guard let url = url else {
+                print("NO URL, BREWWW")
+                return
+            }
+            
+//            guard let imageDBName = imageDBName else {
+//                print("No name")
+//                return
+//            }
+
+            completion(url, imageDBName!)
+        })
+        
+    }
+    
+    func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo]) -> Void) {
+        
+        var tempPhotoArr = Array<Photo>()
+        
+        let curUser = Auth.auth().currentUser?.uid
+        
+        guard let user = curUser else {
+            print("not logged in")
+            return
+        }
+        
+        let group = DispatchGroup()
+        
+        for image in images {
+            
+            group.enter()
+            uploadImage(image: image, tree: tree, completion: { url, imageDBName in
+                let urlStr = url.absoluteString
+                let dbName = imageDBName
+                let photo = Photo(URL: urlStr)
+                photo.userID = user
+                photo.imageDBName = dbName
+                
+                tempPhotoArr.append(photo)
+                group.leave()
+                
+            })
+        }
+        
+        group.notify(queue: DispatchQueue.global()) {
+            completion(tempPhotoArr)
+        }
+    }
+    
 }
+
+
+
 
 extension UIImage {
     enum JPEGQuality: CGFloat {

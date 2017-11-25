@@ -1,44 +1,35 @@
-//
-//  PhotosViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-21.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
-    
-//    var tree : Tree? {
-//        didSet {
-//            guard let tree = tree else { return }
-//            
-//        }
-//    }
+    var photosArr = Array<Photo>()
+    var imageArr = Array<UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: - CollectionView DataSource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.imageArr.count
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicPhotoCell", for: indexPath) as! BasicPhotoCollectionViewCell
+        let photo = self.imageArr[indexPath.row]
+        cell.treePhotoImageView.image = photo
+      
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
 }

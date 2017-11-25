@@ -19,6 +19,8 @@ class TreeDetailViewController: UIViewController {
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
     var distance = Double()
+    var photoObjArr = Array<Photo>()
+    var imageArr = Array<UIImage>()
     
     @IBOutlet weak var viewContainer: UIView!
     
@@ -51,20 +53,64 @@ class TreeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let tree = tree {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
             let url = tree.treePhotoURL
-
+            
             basicTreeInfoView.treeImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
-                    print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+                                                            
             })
             
-          basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
-         
+            basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
+            
+            PhotoManager.loadPhotos(tree: tree, completion: { photos in
+                
+                guard let photos = photos else {
+                    print("oops no photo object returned")
+                    return
+                }
+                
+                let storage = Storage.storage()
+                let ref = storage.reference()
+                
+                let group = DispatchGroup()
+                
+                for photo in photos {
+                    group.enter()
+                    
+                    let imagesRef = ref.child(photo.imageDBName)
+                    
+                    imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
+                        if let error = error {
+                            print(error)
+                            return
+                        } else {
+                            
+                            let realImage = UIImage(data: data!)
+                            self.imageArr.append(realImage!)
+                            group.leave()
+                        }
+                    })
+                }
+                
+                group.notify(queue: DispatchQueue.global(qos: .background)) {
+                    
+                    DispatchQueue.main.async {
+                        self.photosViewController.imageArr = self.imageArr
+                        self.photosViewController.photoCollectionView.reloadData()
+                    }
+                    
+                    
+                }
+                
+            })
+            
         } else {
-
+            
             print("ERROR")
         }
         if (fromMapView) {
@@ -110,7 +156,7 @@ class TreeDetailViewController: UIViewController {
     }
 
     //MARK: Segment Control
-
+    
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -148,6 +194,10 @@ class TreeDetailViewController: UIViewController {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.photosViewController.photoCollectionView.reloadData()
     }
     
 }
