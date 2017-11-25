@@ -30,6 +30,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmz-PN-MIr" userLabel="FavouritesButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="72"/>
                                                 <state key="normal" image="Favourites"/>
+                                                <connections>
+                                                    <segue destination="S8V-Cn-h8b" kind="presentation" id="hLa-MJ-6ph"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-3D-nnI" userLabel="MyTreesButton">
                                                 <rect key="frame" x="0.0" y="82" width="62" height="66"/>
@@ -106,6 +109,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSI-Uy-FfA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121.5999999999999" y="-115.14242878560721"/>
+        </scene>
+        <!--UserFavourites-->
+        <scene sceneID="EaG-RL-2kA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserFavourites" id="S8V-Cn-h8b" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8W1-lg-LdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1171" y="-45"/>
         </scene>
         <!--TreeNew-->
         <scene sceneID="6Tu-QU-VCW">
