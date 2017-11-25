@@ -14,6 +14,7 @@ class Tree: NSObject {
     var treePhotoURL: URL
     var treeCreator: String?
     var treeComments = Array<Comment>()
+    var distFromUser = Double()
     
     init(name: String, description: String?, treeLat: Double, treeLong: Double, photo: NSData?) {
         self.treeID = ""
