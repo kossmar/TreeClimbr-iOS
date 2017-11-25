@@ -37,6 +37,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         setupTap()
         userLocationSetup()
+        
+        FavouritesManager.loadFavourites { (success) in
+            return
+        }
     }
     
     

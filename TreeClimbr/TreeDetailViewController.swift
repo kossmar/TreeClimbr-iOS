@@ -14,6 +14,7 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet var toMapButton: UIBarButtonItem!
     @IBOutlet weak var basicTreeInfoView: BasicTreeInfoView!
     var tree : Tree!
+    var treeArr = [Tree]()
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
     var fromMapView : Bool = false
@@ -26,6 +27,9 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet weak var aboutView: UIView!
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var picturesView: UIView!
+    
+    @IBOutlet weak var faveButton: UIButton!
+    
     
     lazy var aboutViewController: AboutViewController = {
         return childViewControllers.first(where: { (viewController) -> Bool in
@@ -123,7 +127,16 @@ class TreeDetailViewController: UIViewController {
         aboutView.isHidden = true
         reviewView.isHidden = true
         picturesView.isHidden = false
+        
+       
     }
+    
+    @IBAction func favouriteAction(_ sender: UIButton) {
+        FavouritesManager.saveFavourite(tree: self.tree) { success in
+            return
+        }
+    }
+    
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
         let treeLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(tree.treeLatitude, tree.treeLongitude)
@@ -141,8 +154,7 @@ class TreeDetailViewController: UIViewController {
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
-    
-    
+
     //MARK: Segment Control
     
     @IBAction func switchViewAction(_ sender: UISegmentedControl) {
@@ -169,7 +181,7 @@ class TreeDetailViewController: UIViewController {
             break
         }
     }
-    
+
     func distanceFromUser() -> Double {
         let treeLocation = CLLocationCoordinate2DMake(tree.treeLatitude,tree.treeLongitude)
         let currentLocation = rootSourceVC.userCoordinate
