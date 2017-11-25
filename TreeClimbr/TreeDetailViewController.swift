@@ -108,21 +108,6 @@ class TreeDetailViewController: UIViewController {
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        FavouritesManager.loadFavourites { (success) in
-            return
-        }
-        
-//        let faveArr = AppData.sharedInstance.favouritesArr
-//        if faveArr .contains(self.tree){
-//            self.faveButton.alpha = 0.0
-//            print ("\(AppData.sharedInstance.favouritesArr)")
-//        }
-        
-         print ("VIEW WILL APPEAR \(AppData.sharedInstance.favouritesArr.count)")
-    }
-    
 
     //MARK: Segment Control
 

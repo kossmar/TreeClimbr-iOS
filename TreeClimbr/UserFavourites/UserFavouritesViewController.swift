@@ -41,10 +41,6 @@ class UserFavouritesViewController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        FavouritesManager.loadFavourites { (success) in
-            return
-        }
-        print ("number of cells \(AppData.sharedInstance.favouritesArr.count)" )
         return AppData.sharedInstance.favouritesArr.count
     }
     
