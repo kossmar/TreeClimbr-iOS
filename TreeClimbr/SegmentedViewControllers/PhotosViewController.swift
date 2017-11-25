@@ -1,20 +1,24 @@
-
 import UIKit
+import ImagePicker
 
-class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate {
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
     var photosArr = Array<Photo>()
     var imageArr = Array<UIImage>()
+    var moreImagesArr = Array<UIImage>()
+    let imagePickerController = ImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePickerController.delegate = self
     }
     
     // MARK: - CollectionView DataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return self.imageArr.count
     }
     
@@ -31,5 +35,42 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 1
     }
     
+    //MARK: Actions
+    
+    @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
+        if moreImagesArr.count > 0 {
+            let counter = moreImagesArr.count
+            imageArr.removeLast(counter)
+        }
+
+        pickTreePhotos()
+    }
+    
+    func pickTreePhotos() {
+        present(imagePickerController, animated: true, completion: nil)
+        imagePickerController.imageLimit = 5
+    }
+    
+    //MARK: ImagePicker
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        moreImagesArr = images
+        var i = 0
+        
+        for image in moreImagesArr {
+            i += 1
+            imageArr.append(image)
+        }
+        
+        photoCollectionView.reloadData()
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
     
 }
