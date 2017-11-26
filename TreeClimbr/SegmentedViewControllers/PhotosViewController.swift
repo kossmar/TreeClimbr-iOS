@@ -11,10 +11,12 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var moreImagesArr = Array<UIImage>()
     let imagePickerController = ImagePickerController()
     
+    
+    //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-      //  uploadPhotosButton.isHidden = true
+        moreImagesArr = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,17 +57,19 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
 
         pickTreePhotos()
-//        ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
-//            
-//            PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
-//                print("winners")
-//                
-//            }
-//        }
     }
     
     
     @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
+        uploadPhotosButton.isHidden = true
+        imageArr = []
+                ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+        
+                    PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
+                        print("winners")
+        
+                    }
+                }
     }
     
     func pickTreePhotos() {
