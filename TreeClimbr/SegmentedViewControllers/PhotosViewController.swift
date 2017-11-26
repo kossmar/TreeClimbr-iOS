@@ -1,7 +1,7 @@
 import UIKit
 import ImagePicker
 
-class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -16,6 +16,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        photoCollectionView.delegate = self
+        
         moreImagesArr = []
     }
     
@@ -40,13 +42,37 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicPhotoCell", for: indexPath) as! BasicPhotoCollectionViewCell
         let photo = self.imageArr[indexPath.row]
         cell.treePhotoImageView.image = photo
-      
+        
         return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
+    //MARK: Collection view layout
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellSize = CGSize(width: collectionView.frame.size.width/2 - 5, height: collectionView.frame.size.width/2 - 5)
+        
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
+    
     
     //MARK: Actions
     
@@ -97,5 +123,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
     }
+    
     
 }
