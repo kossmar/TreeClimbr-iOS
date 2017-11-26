@@ -38,6 +38,7 @@
 		0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */; };
 		22069F8397656E85143983BB /* Pods_TreeClimbrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */; };
 		6FC054FD743C5A5CEA4AAC9A /* Pods_TreeClimbrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */; };
+		7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C7761FCA3773001E3357 /* ImageUploader.swift */; };
 		A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
@@ -117,6 +118,7 @@
 		617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		618A31AA0F04F5BAEE52A1BF /* Pods-TreeClimbr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.debug.xcconfig"; sourceTree = "<group>"; };
 		6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7776C7761FCA3773001E3357 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 				0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */,
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
 				E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */,
+				7776C7761FCA3773001E3357 /* ImageUploader.swift */,
 				0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */,
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
 				0DCE2F061FBCDE44001A30EA /* Assets.xcassets */,
@@ -631,6 +634,7 @@
 				0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */,
+				7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */,
 				E6DA00B61FCA268000DDE91D /* UserFavourtiesViewController.swift in Sources */,
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,

@@ -6,7 +6,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
-    var photosArr = Array<Photo>()
+ //   var photosArr = Array<Photo>()
     var imageArr = Array<UIImage>()
     var moreImagesArr = Array<UIImage>()
     let imagePickerController = ImagePickerController()
@@ -63,6 +63,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
         uploadPhotosButton.isHidden = true
         imageArr = []
+        
                 ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
         
                     PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
@@ -84,10 +85,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         moreImagesArr = images
-        var i = 0
         
         for image in moreImagesArr {
-            i += 1
             imageArr.append(image)
         }
         

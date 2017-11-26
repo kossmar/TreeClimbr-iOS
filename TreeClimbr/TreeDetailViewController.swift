@@ -11,8 +11,8 @@ protocol MapFocusDelegate {
 
 class TreeDetailViewController: UIViewController {
     
-    @IBOutlet var toMapButton: UIBarButtonItem!
-    @IBOutlet weak var basicTreeInfoView: BasicTreeInfoView!
+    //MARK: Properties
+    
     var tree : Tree!
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
@@ -21,8 +21,10 @@ class TreeDetailViewController: UIViewController {
     var photoObjArr = Array<Photo>()
     var imageArr = Array<UIImage>()
     
+    //MARK: Outlets
+    @IBOutlet var toMapButton: UIBarButtonItem!
+    @IBOutlet weak var basicTreeInfoView: BasicTreeInfoView!
     @IBOutlet weak var viewContainer: UIView!
-    
     @IBOutlet weak var aboutView: UIView!
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var picturesView: UIView!
@@ -49,7 +51,7 @@ class TreeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let tree = tree {
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
@@ -75,6 +77,8 @@ class TreeDetailViewController: UIViewController {
                 
                 let group = DispatchGroup()
                 
+                self.imageArr = []
+                
                 for photo in photos {
                     group.enter()
                     
@@ -96,13 +100,11 @@ class TreeDetailViewController: UIViewController {
                 group.notify(queue: DispatchQueue.global(qos: .background)) {
                     
                     DispatchQueue.main.async {
+                        self.photosViewController.imageArr = []
                         self.photosViewController.imageArr = self.imageArr
                         self.photosViewController.photoCollectionView.reloadData()
                     }
-                    
-                    
                 }
-                
             })
             
         } else {
@@ -131,9 +133,6 @@ class TreeDetailViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             self.rootSourceVC.focusOnTree(location: treeLocation, tree: self.tree)
         })
-        
-        
-        
     }
     
     @IBAction func dismissDetailAction(_ sender: UIBarButtonItem) {
