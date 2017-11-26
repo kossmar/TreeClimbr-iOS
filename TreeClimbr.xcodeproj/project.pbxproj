@@ -18,6 +18,7 @@
 		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
 		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
+		0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */; };
 		0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */; };
 		0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
@@ -89,6 +90,7 @@
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
 		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
+		0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoFullScreen.storyboard; sourceTree = "<group>"; };
 		0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddReview.storyboard; sourceTree = "<group>"; };
 		0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
 				E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
+				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
 			);
 			path = TreeClimbr;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */,
 				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
+				0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
 				E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
