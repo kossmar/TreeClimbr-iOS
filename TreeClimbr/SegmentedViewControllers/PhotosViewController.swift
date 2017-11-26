@@ -3,6 +3,7 @@ import ImagePicker
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate {
     
+    @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
     var photosArr = Array<Photo>()
@@ -13,6 +14,16 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+      //  uploadPhotosButton.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if moreImagesArr.isEmpty {
+            uploadPhotosButton.isHidden = true
+        } else {
+            uploadPhotosButton.isHidden = false
+        }
     }
     
     // MARK: - CollectionView DataSource
@@ -44,6 +55,17 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
 
         pickTreePhotos()
+//        ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+//            
+//            PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
+//                print("winners")
+//                
+//            }
+//        }
+    }
+    
+    
+    @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
     }
     
     func pickTreePhotos() {

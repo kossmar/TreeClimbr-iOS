@@ -177,27 +177,38 @@
                                     <action selector="addPhotoButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="8At-tP-6uo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
+                                <rect key="frame" x="0.0" y="301" width="343" height="30"/>
+                                <state key="normal" title="Upload Photos"/>
+                                <connections>
+                                    <action selector="uploadPhotosButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="gMA-hk-ZL5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="vsa-S2-nEN" secondAttribute="bottom" constant="80" id="81t-4C-0vn"/>
                             <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vsa-S2-nEN" secondAttribute="bottom" id="9l6-Q7-138"/>
+                            <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vPD-8n-8ty" secondAttribute="bottom" id="Ewo-hR-nEF"/>
+                            <constraint firstItem="vPD-8n-8ty" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="KaW-t8-YAu"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="dce-Nr-haY" secondAttribute="trailing" id="M3d-N4-Ips"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="OK1-uS-h7r"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="vsa-S2-nEN" secondAttribute="trailing" id="U7P-vf-wfQ"/>
                             <constraint firstItem="dce-Nr-haY" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="Ydw-qK-1nR"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="dce-Nr-haY" secondAttribute="bottom" id="gfh-vp-Jtg"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="vPD-8n-8ty" secondAttribute="trailing" id="ijS-Fb-3HR"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="top" secondItem="scT-ML-PWx" secondAttribute="top" id="vFP-Vc-IYY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xg-jR-oA1"/>
                     </view>
                     <connections>
                         <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
+                        <outlet property="uploadPhotosButton" destination="vPD-8n-8ty" id="fhn-rG-KhC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="-81"/>
+            <point key="canvasLocation" x="1144.8" y="-81.409295352323838"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="glo-EI-lFB">
