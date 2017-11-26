@@ -3,16 +3,29 @@ import ImagePicker
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate {
     
+    @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
-    var photosArr = Array<Photo>()
+ //   var photosArr = Array<Photo>()
     var imageArr = Array<UIImage>()
     var moreImagesArr = Array<UIImage>()
     let imagePickerController = ImagePickerController()
     
+    
+    //MARK: View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
+        moreImagesArr = []
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if moreImagesArr.isEmpty {
+            uploadPhotosButton.isHidden = true
+        } else {
+            uploadPhotosButton.isHidden = false
+        }
     }
     
     // MARK: - CollectionView DataSource
@@ -46,6 +59,20 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         pickTreePhotos()
     }
     
+    
+    @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
+        uploadPhotosButton.isHidden = true
+        imageArr = []
+        
+                ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+        
+                    PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
+                        print("winners")
+        
+                    }
+                }
+    }
+    
     func pickTreePhotos() {
         present(imagePickerController, animated: true, completion: nil)
         imagePickerController.imageLimit = 5
@@ -58,10 +85,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         moreImagesArr = images
-        var i = 0
         
         for image in moreImagesArr {
-            i += 1
             imageArr.append(image)
         }
         
