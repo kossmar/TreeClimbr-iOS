@@ -158,6 +158,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="treePhotoImageView" destination="NG9-ib-tgM" id="37M-AL-F3h"/>
+                                            <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="P89-hl-ilw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -209,6 +210,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.8" y="-81.409295352323838"/>
+        </scene>
+        <!--PhotoFullScreen-->
+        <scene sceneID="Yzl-lK-Er7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PhotoFullScreen" id="z8K-Dy-jmm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9l-gt-P9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="-290"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="glo-EI-lFB">
