@@ -40,15 +40,17 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func filterAction(_ sender: UIBarButtonItem) {
         if isFiltered {
             treesArr = AppData.sharedInstance.favouritesArr
+            sortTableViewByDistance()
             tableView.reloadData()
             isFiltered = false
             filterButton.title = "Show All Trees"
         } else {
             treesArr = AppData.sharedInstance.treesArr
+            sortTableViewByDistance()
             tableView.reloadData()
             isFiltered = true
             filterButton.title = "Show Favourites"
@@ -82,7 +84,6 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
                                                          completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
         })
-        
         
         return cell
     }
