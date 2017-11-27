@@ -30,9 +30,5 @@ class LoginViewController: UIViewController {
             
             })
     }
-    
-    @IBAction func signupButtonPressed(_ sender: UIButton) {
-        }
-    
-    
+
 }

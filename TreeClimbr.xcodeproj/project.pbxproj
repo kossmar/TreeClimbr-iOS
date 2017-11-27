@@ -19,7 +19,6 @@
 		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
 		0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */; };
-		0DA72E8C1FCA7A8100475FBF /* PhotoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */; };
 		0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */; };
 		0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
@@ -41,6 +40,7 @@
 		22069F8397656E85143983BB /* Pods_TreeClimbrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */; };
 		6FC054FD743C5A5CEA4AAC9A /* Pods_TreeClimbrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */; };
 		7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C7761FCA3773001E3357 /* ImageUploader.swift */; };
+		7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */; };
 		A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
@@ -92,7 +92,6 @@
 		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
 		0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoFullScreen.storyboard; sourceTree = "<group>"; };
-		0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoFullScreenViewController.swift; path = /Users_MD/markoss_MD/Documents/CODING/Climbr/Climbr/TreeClimbr/PhotoFullScreenViewController.swift; sourceTree = "<absolute>"; };
 		0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddReview.storyboard; sourceTree = "<group>"; };
 		0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
@@ -123,6 +122,7 @@
 		618A31AA0F04F5BAEE52A1BF /* Pods-TreeClimbr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr.debug.xcconfig"; sourceTree = "<group>"; };
 		6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7776C7761FCA3773001E3357 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFullScreenViewController.swift; sourceTree = "<group>"; };
 		7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +206,7 @@
 				E6E1E49A1FC616EC000F42CB /* MapView */,
 				E6DA00B01FCA239700DDE91D /* Favourites */,
 				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
-				0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */,
+				7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */,
 				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
@@ -647,6 +647,7 @@
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				E6DA00B81FCA27E800DDE91D /* UserFavouritesTableViewCell.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,
 				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,
 				0D2798C71FC3971E004C1B00 /* SaveTree.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
@@ -656,7 +657,6 @@
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
-				0DA72E8C1FCA7A8100475FBF /* PhotoFullScreenViewController.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
