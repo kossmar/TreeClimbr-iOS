@@ -34,6 +34,7 @@ class FavouritesManager: NSObject {
     
     class func loadFavourites(completion: @escaping ([Tree]?) -> Void) {
         AppData.sharedInstance.favouritesArr = []
+        
         if ( Auth.auth().currentUser == nil ) {
             completion(nil)
             return
