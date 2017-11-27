@@ -11,10 +11,9 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     var treeDistance = Double()
     var treesArr = Array<Tree>()
     
-    var isFiltered = Bool()
-    
     @IBOutlet weak var filterButton: UIBarButtonItem!
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     
     
@@ -33,29 +32,8 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        isFiltered = true
-    }
-    
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func filterAction(_ sender: UIBarButtonItem) {
-        if isFiltered {
-            treesArr = AppData.sharedInstance.favouritesArr
-            sortTableViewByDistance()
-            tableView.reloadData()
-            isFiltered = false
-            filterButton.title = "Show All Trees"
-        } else {
-            treesArr = AppData.sharedInstance.treesArr
-            sortTableViewByDistance()
-            tableView.reloadData()
-            isFiltered = true
-            filterButton.title = "Show Favourites"
-        }
-        
     }
     
     // MARK: Segue Methods
@@ -89,9 +67,14 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltered {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            return AppData.sharedInstance.treesArr.count
+        case 1:
+            return AppData.sharedInstance.treesArr.count
+        case 2:
             return AppData.sharedInstance.favouritesArr.count
-        } else {
+        default:
             return AppData.sharedInstance.treesArr.count
         }
     }
@@ -129,5 +112,23 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
+    @IBAction func segmentAction(_ sender: UISegmentedControl) {
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
+            treesArr = AppData.sharedInstance.treesArr
+            sortTableViewByDistance()
+            tableView.reloadData()
+        case 1:
+            treesArr = AppData.sharedInstance.treesArr
+            sortTableViewByDistance()
+            tableView.reloadData()
+        case 2:
+            treesArr = AppData.sharedInstance.favouritesArr
+            sortTableViewByDistance()
+            tableView.reloadData()
+        default:
+            break
+        }
+    }
     
 }
