@@ -53,9 +53,6 @@
 		E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */; };
 		E6D66C1D1FC0E573001B5C52 /* ReadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */; };
 		E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */; };
-		E6DA00B41FCA259300DDE91D /* UserFavourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DA00B31FCA259300DDE91D /* UserFavourites.storyboard */; };
-		E6DA00B61FCA268000DDE91D /* UserFavourtiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA00B51FCA268000DDE91D /* UserFavourtiesViewController.swift */; };
-		E6DA00B81FCA27E800DDE91D /* UserFavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA00B71FCA27E800DDE91D /* UserFavouritesTableViewCell.swift */; };
 		E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */; };
 		E6E1E4971FC4D4E2000F42CB /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */; };
 		E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */; };
@@ -138,9 +135,6 @@
 		E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTrees.swift; sourceTree = "<group>"; };
 		E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTrees.swift; sourceTree = "<group>"; };
 		E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
-		E6DA00B31FCA259300DDE91D /* UserFavourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserFavourites.storyboard; sourceTree = "<group>"; };
-		E6DA00B51FCA268000DDE91D /* UserFavourtiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavourtiesViewController.swift; sourceTree = "<group>"; };
-		E6DA00B71FCA27E800DDE91D /* UserFavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +198,7 @@
 			children = (
 				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
 				E6E1E49A1FC616EC000F42CB /* MapView */,
-				E6DA00B01FCA239700DDE91D /* Favourites */,
+				E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */,
 				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
 				7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */,
 				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
@@ -289,17 +283,6 @@
 				6A11F771686065D68482369B /* Pods-TreeClimbrUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		E6DA00B01FCA239700DDE91D /* Favourites */ = {
-			isa = PBXGroup;
-			children = (
-				E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */,
-				E6DA00B31FCA259300DDE91D /* UserFavourites.storyboard */,
-				E6DA00B51FCA268000DDE91D /* UserFavourtiesViewController.swift */,
-				E6DA00B71FCA27E800DDE91D /* UserFavouritesTableViewCell.swift */,
-			);
-			path = Favourites;
 			sourceTree = "<group>";
 		};
 		E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */ = {
@@ -440,7 +423,6 @@
 				0DF22D971FBEA64800F71C87 /* Login.storyboard in Resources */,
 				0DCE2F0A1FBCDE44001A30EA /* LaunchScreen.storyboard in Resources */,
 				0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */,
-				E6DA00B41FCA259300DDE91D /* UserFavourites.storyboard in Resources */,
 				0DCE2F301FBCDEF1001A30EA /* TreeList.storyboard in Resources */,
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
 				0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */,
@@ -642,10 +624,8 @@
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */,
 				7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */,
-				E6DA00B61FCA268000DDE91D /* UserFavourtiesViewController.swift in Sources */,
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
-				E6DA00B81FCA27E800DDE91D /* UserFavouritesTableViewCell.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,
 				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,
