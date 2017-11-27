@@ -19,6 +19,7 @@
 		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
 		0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */; };
+		0DA72E8C1FCA7A8100475FBF /* PhotoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */; };
 		0DB532B61FC4DB7E00C91F4B /* AddReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */; };
 		0DB532B81FC4DBAA00C91F4B /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */; };
 		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
@@ -91,6 +92,7 @@
 		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
 		0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoFullScreen.storyboard; sourceTree = "<group>"; };
+		0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoFullScreenViewController.swift; path = /Users_MD/markoss_MD/Documents/CODING/Climbr/Climbr/TreeClimbr/PhotoFullScreenViewController.swift; sourceTree = "<absolute>"; };
 		0DB532B51FC4DB7E00C91F4B /* AddReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddReview.storyboard; sourceTree = "<group>"; };
 		0DB532B71FC4DBAA00C91F4B /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,8 @@
 				E6E1E49A1FC616EC000F42CB /* MapView */,
 				E6DA00B01FCA239700DDE91D /* Favourites */,
 				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
+				0DA72E8B1FCA7A8000475FBF /* PhotoFullScreenViewController.swift */,
+				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
@@ -242,7 +246,6 @@
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
 				E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
-				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
 			);
 			path = TreeClimbr;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
+				0DA72E8C1FCA7A8100475FBF /* PhotoFullScreenViewController.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
