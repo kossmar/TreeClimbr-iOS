@@ -127,6 +127,8 @@ class TreeDetailViewController: UIViewController {
         picturesView.isHidden = false
     }
     
+
+    
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
         let treeLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(tree.treeLatitude, tree.treeLongitude)
         self.delegate = rootSourceVC
@@ -192,5 +194,6 @@ class TreeDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.photosViewController.photoCollectionView.reloadData()
     }
+    
     
 }

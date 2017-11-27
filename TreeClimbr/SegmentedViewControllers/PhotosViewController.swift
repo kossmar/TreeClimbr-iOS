@@ -12,7 +12,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     let imagePickerController = ImagePickerController()
     
     
-    //MARK: View controller lifecycle
+    // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
@@ -50,7 +50,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 1
     }
     
-    //MARK: Collection view layout
+    // MARK: - Collection view layout
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -73,8 +73,27 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 5.0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "toFullScreen", sender: indexPath.row)
+    }
     
-    //MARK: Actions
+    // MARK: - Prepare for Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toFullScreen" {
+            
+            let fullScreenVC = segue.destination as! PhotoFullScreenViewController
+            let startPage = sender as! Int
+            fullScreenVC.startPage = startPage
+            fullScreenVC.imageArr = self.imageArr
+        }
+        
+    }
+    
+    
+    // MARK: - Actions
     
     @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
         if moreImagesArr.count > 0 {
