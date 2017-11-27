@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,11 +23,21 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JRg-tX-Piz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCU-1J-pdG">
+                                <rect key="frame" x="20" y="20" width="37.5" height="37.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dCU-1J-pdG" secondAttribute="height" multiplier="1:1" id="1w4-zF-Zlt"/>
+                                </constraints>
+                                <state key="normal" image="menubutton"/>
+                                <connections>
+                                    <action selector="menuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r7X-iQ-qxg"/>
+                                </connections>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q5-aI-TA7" userLabel="side buttons view">
-                                <rect key="frame" x="10" y="105" width="82" height="345"/>
+                                <rect key="frame" x="8" y="67.5" width="62" height="345"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UEF-Eu-ixv">
-                                        <rect key="frame" x="10" y="10" width="62" height="325"/>
+                                        <rect key="frame" x="0.0" y="10" width="62" height="325"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drO-04-UxG">
                                                 <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
@@ -69,33 +80,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="UEF-Eu-ixv" firstAttribute="leading" secondItem="0q5-aI-TA7" secondAttribute="leading" constant="10" id="GAU-6c-bDr"/>
+                                    <constraint firstItem="UEF-Eu-ixv" firstAttribute="leading" secondItem="0q5-aI-TA7" secondAttribute="leading" id="GAU-6c-bDr"/>
                                     <constraint firstItem="UEF-Eu-ixv" firstAttribute="top" secondItem="0q5-aI-TA7" secondAttribute="top" constant="10" id="PCi-wM-zOG"/>
-                                    <constraint firstAttribute="trailing" secondItem="UEF-Eu-ixv" secondAttribute="trailing" constant="10" id="TaY-R7-Q2q"/>
+                                    <constraint firstAttribute="trailing" secondItem="UEF-Eu-ixv" secondAttribute="trailing" id="TaY-R7-Q2q"/>
                                     <constraint firstAttribute="bottom" secondItem="UEF-Eu-ixv" secondAttribute="bottom" constant="10" id="a87-HP-P1r"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dCU-1J-pdG">
-                                <rect key="frame" x="25" y="44" width="53" height="53"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dCU-1J-pdG" secondAttribute="height" multiplier="1:1" id="1w4-zF-Zlt"/>
-                                </constraints>
-                                <state key="normal" image="menubutton"/>
-                                <connections>
-                                    <action selector="menuButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r7X-iQ-qxg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2Ic-PO-WRa"/>
+                            <constraint firstItem="dCU-1J-pdG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6Va-Qr-uuw"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DOI-ul-iKm"/>
-                            <constraint firstItem="0q5-aI-TA7" firstAttribute="top" secondItem="dCU-1J-pdG" secondAttribute="bottom" constant="8" id="UAV-WS-t2g"/>
+                            <constraint firstItem="dCU-1J-pdG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.1" id="EdN-UO-R1n"/>
+                            <constraint firstItem="dCU-1J-pdG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Hri-id-J3d"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ezX-Bi-V8a"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dCU-1J-pdG" secondAttribute="trailing" constant="297" id="iRK-1C-KmC"/>
-                            <constraint firstItem="dCU-1J-pdG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="rnD-D4-GdT"/>
-                            <constraint firstItem="dCU-1J-pdG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="wjG-rZ-8AK"/>
-                            <constraint firstItem="0q5-aI-TA7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="xxU-b0-Vfm"/>
+                            <constraint firstItem="0q5-aI-TA7" firstAttribute="centerX" secondItem="dCU-1J-pdG" secondAttribute="centerX" id="lwc-Xk-Z4I"/>
+                            <constraint firstItem="0q5-aI-TA7" firstAttribute="top" secondItem="dCU-1J-pdG" secondAttribute="bottom" constant="10" id="wGV-IF-Jgl"/>
                             <constraint firstItem="JRg-tX-Piz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yX3-IB-4Jx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
