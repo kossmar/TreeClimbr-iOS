@@ -34,7 +34,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - ScrollViewDelegate functions
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        pageControl.currentPage = (photoScrollView.contentOffset / CGFloat(414))
+        pageControl.currentPage = (Int(photoScrollView.contentOffset.x / photoScrollView.frame.width))
     }
     
     
@@ -42,6 +42,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     func setupScrollView() {
         var x: CGFloat = 0
+        contentWidth = 0
         
         let subviews = photoScrollView.subviews
         for subview in subviews {
@@ -56,12 +57,6 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
             imageView.frame = frame
             imageView.contentMode = .scaleAspectFit
             photoScrollView.addSubview(imageView)
-            //            imageView.translatesAutoresizingMaskIntoConstraints = false
-            //            imageView.leadingAnchor.constraint(equalTo: photoScrollView.leadingAnchor, constant: 0).isActive = true
-            //            imageView.trailingAnchor.constraint(equalTo: photoScrollView.trailingAnchor, constant: 0).isActive = true
-            //            imageView.bottomAnchor.constraint(equalTo: photoScrollView.bottomAnchor, constant: 0).isActive = true
-            //            imageView.topAnchor.constraint(equalTo: photoScrollView.topAnchor, constant: 0).isActive = true
-            
             
             contentWidth += view.frame.width
             x+=1
