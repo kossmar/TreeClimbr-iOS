@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1284" y="212.29385307346328"/>
         </scene>
-        <!--SignUpView-->
+        <!--Login-->
         <scene sceneID="LwC-LY-x55">
             <objects>
-                <viewControllerPlaceholder storyboardName="SignUpView" id="Lnf-bO-2Pn" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" id="Lnf-bO-2Pn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6Z-zj-oEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1156" y="371.51424287856076"/>
