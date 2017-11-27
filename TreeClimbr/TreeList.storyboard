@@ -56,6 +56,11 @@
                                                 <action selector="doneButton:" destination="1oU-Xb-MUW" id="1Sv-x8-hu4"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Show Favourites" id="1Rc-jn-G8l">
+                                            <connections>
+                                                <action selector="filterAction:" destination="1oU-Xb-MUW" id="sip-hy-q3C"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -73,6 +78,7 @@
                         <viewLayoutGuide key="safeArea" id="xla-EM-OGE"/>
                     </view>
                     <connections>
+                        <outlet property="filterButton" destination="1Rc-jn-G8l" id="g5e-XY-0jn"/>
                         <outlet property="navigationBar" destination="so4-ye-eS6" id="End-TR-Ied"/>
                         <outlet property="tableView" destination="Uqq-mo-bEp" id="yRN-sb-Mdx"/>
                         <segue destination="BJz-du-GAK" kind="presentation" identifier="toTreeDetail" id="l2z-ns-Qc2"/>

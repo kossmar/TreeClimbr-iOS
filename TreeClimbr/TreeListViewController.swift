@@ -11,6 +11,9 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     var treeDistance = Double()
     var treesArr = Array<Tree>()
     
+    var isFiltered = Bool()
+    
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     
     
@@ -31,12 +34,33 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
 
         self.treesArr.sort(by: { $0.distFromUser < $1.distFromUser })
         tableView.reloadData()
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        isFiltered = true
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func filterAction(_ sender: UIBarButtonItem) {
+        if isFiltered {
+            treesArr = AppData.sharedInstance.favouritesArr
+            tableView.reloadData()
+            isFiltered = false
+            filterButton.title = "Show All Trees"
+        } else {
+            treesArr = AppData.sharedInstance.treesArr
+            tableView.reloadData()
+            isFiltered = true
+            filterButton.title = "Show Favourites"
+        }
+        
+    }
+    
+   
+    
     
     
     // MARK: Segue Methods
@@ -71,7 +95,11 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AppData.sharedInstance.treesArr.count
+        if isFiltered {
+            return AppData.sharedInstance.favouritesArr.count
+        } else {
+            return AppData.sharedInstance.treesArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
