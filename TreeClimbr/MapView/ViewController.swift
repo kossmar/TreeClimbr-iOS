@@ -24,6 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var treesArr = [Tree]()
     
     @IBOutlet weak var sideButtonsView: UIView!
+    @IBOutlet weak var logoutButton: UIButton!
     
     //MARK: ViewController lifecycle
     
@@ -34,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //setup side buttons
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
         sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
+        sideButtonsView.isHidden = true
+        
         
         setupTap()
         userLocationSetup()
@@ -70,7 +73,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
+        FavouritesManager.loadFavourites { (success) in
+            return
+        }
         mapView.removeAnnotations(mapView.annotations)
         
         ReadTrees.read(completion: { trees in
@@ -177,6 +183,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
         locationManager.stopUpdatingLocation()
+    }
+    
+    @IBAction func menuButton(_ sender: UIButton) {
+        if sideButtonsView.isHidden {
+            sideButtonsView.isHidden = false
+        } else {
+            sideButtonsView.isHidden = true
+        }
     }
     
     //MARK: Map view delegate functions

@@ -26,14 +26,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
         treesArr = AppData.sharedInstance.treesArr
         
-        // Do any additional setup after loading the view.
-        for treeTemp in treesArr {
-            let treeDist = distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)
-            treeTemp.distFromUser = treeDist
-        }
-
-        self.treesArr.sort(by: { $0.distFromUser < $1.distFromUser })
-        tableView.reloadData()
+        sortTableViewByDistance()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,10 +51,6 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     }
-    
-   
-    
-    
     
     // MARK: Segue Methods
     
@@ -103,9 +92,10 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        let treeTemp = treesArr[indexPath.row]
         performSegue(withIdentifier: "toTreeDetail", sender: treeTemp)
         tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -122,6 +112,16 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         let distance = (MKMetersBetweenMapPoints(treePoint, currentPoint) / 1000)
         let distanceRound = Double(round(10*distance)/10)
         return distanceRound
+    }
+    
+    func sortTableViewByDistance() {
+        for treeTemp in treesArr {
+            let treeDist = distanceFromUser(treeTemp.treeLatitude, treeTemp.treeLongitude)
+            treeTemp.distFromUser = treeDist
+        }
+        
+        self.treesArr.sort(by: { $0.distFromUser < $1.distFromUser })
+        tableView.reloadData()
     }
     
     
