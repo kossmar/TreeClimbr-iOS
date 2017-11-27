@@ -1,10 +1,4 @@
-//
-//  AboutViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-21.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 
@@ -27,6 +21,12 @@ class AboutViewController: UIViewController {
         
         treeDescTextView.isEditable = false
         userLabel.text = "By: Me"
+    }
+    
+    @IBAction func favouriteAction(_ sender: UIButton) {
+        FavouritesManager.saveFavourite(tree: self.tree!) { success in
+            return
+        }
     }
 
 }
