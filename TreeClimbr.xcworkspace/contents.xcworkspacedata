@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users_MD/markoss_MD/Documents/CODING/Climbr/Climbr/TreeClimbr/Favourites/PhotoFullScreenViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:TreeClimbr.xcodeproj">
    </FileRef>
    <FileRef

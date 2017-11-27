@@ -27,6 +27,10 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         treesArr = AppData.sharedInstance.treesArr
         
         sortTableViewByDistance()
+        
+        FavouritesManager.loadFavourites { (success) in
+            return
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
