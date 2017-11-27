@@ -73,12 +73,20 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         return 5.0
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "toFullScreen", sender: indexPath.row)
+    }
+    
     // MARK: - Prepare for Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toFullScreen" {
+            
             let fullScreenVC = segue.destination as! PhotoFullScreenViewController
+            let startPage = sender as! Int
+            fullScreenVC.startPage = startPage
             fullScreenVC.imageArr = self.imageArr
         }
         

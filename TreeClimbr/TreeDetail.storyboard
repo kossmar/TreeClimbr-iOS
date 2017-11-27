@@ -158,7 +158,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="treePhotoImageView" destination="NG9-ib-tgM" id="37M-AL-F3h"/>
-                                            <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="P89-hl-ilw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -205,6 +204,7 @@
                     <connections>
                         <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
                         <outlet property="uploadPhotosButton" destination="vPD-8n-8ty" id="fhn-rG-KhC"/>
+                        <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="XHE-bU-QTw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>

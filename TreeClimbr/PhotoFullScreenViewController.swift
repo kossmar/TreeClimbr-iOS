@@ -10,6 +10,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     var imageArr = Array<UIImage>()
     var contentWidth : CGFloat = 0.0
+    var startPage = Int()
+    var justLoaded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,12 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Custom Functions
     
     func setupScrollView() {
+        let width = self.view.frame.width
+
+        if justLoaded == true {
+            photoScrollView.contentOffset.x = width * CGFloat(startPage)
+        }
+        
         var x: CGFloat = 0
         contentWidth = 0
         
@@ -52,7 +60,6 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         for image in imageArr {
             let imageView = UIImageView(image: image)
             
-            let width = self.view.frame.width
             let frame = CGRect(x: (width * x), y: self.view.frame.origin.y, width: self.view.frame.width, height: photoScrollView.frame.height)
             imageView.frame = frame
             imageView.contentMode = .scaleAspectFit
@@ -62,7 +69,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
             x+=1
         }
         photoScrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
-
+        justLoaded = false
     }
     
 }
