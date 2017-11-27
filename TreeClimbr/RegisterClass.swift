@@ -54,7 +54,7 @@ class RegisterClass: NSObject {
             }
             else
             {
-                print("\(error)")
+                print("\(String(describing: error))")
                 //                AlertShow.show(inpView: inpView, titleStr: "Error", messageStr: error.debugDescription);
             }
         }

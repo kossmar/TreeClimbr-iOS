@@ -107,6 +107,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
         uploadPhotosButton.isHidden = true
+        imagePickerController.resetAssets()
         imageArr = []
         
                 ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
