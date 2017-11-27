@@ -58,6 +58,7 @@
                                         <state key="normal" title="Sign up"/>
                                         <connections>
                                             <action selector="signupButtonPressed:" destination="Xhn-qc-TPj" eventType="touchUpInside" id="n7g-5r-n8x"/>
+                                            <segue destination="A0j-Fm-IL5" kind="presentation" modalTransitionStyle="flipHorizontal" id="2Zc-bu-jHi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,6 +80,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KA3-bU-Ivz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-589.60000000000002" y="123.68815592203899"/>
+        </scene>
+        <!--SignUpView-->
+        <scene sceneID="Ph5-0W-rih">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="signup" storyboardName="SignUpView" id="A0j-Fm-IL5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ph-Ba-DFw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="74" y="265"/>
         </scene>
     </scenes>
 </document>

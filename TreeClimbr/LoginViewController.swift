@@ -32,8 +32,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signupButtonPressed(_ sender: UIButton) {
-        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
+        }
     
     
 }

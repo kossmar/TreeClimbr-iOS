@@ -14,7 +14,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="qKJ-H0-suU">
             <objects>
-                <viewController id="WzQ-AT-ITB" customClass="SignUpViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signup" id="WzQ-AT-ITB" customClass="SignUpViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xl5-JV-3va">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
