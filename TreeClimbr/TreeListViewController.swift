@@ -92,9 +92,10 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let treeTemp = AppData.sharedInstance.treesArr[indexPath.row]
+        let treeTemp = treesArr[indexPath.row]
         performSegue(withIdentifier: "toTreeDetail", sender: treeTemp)
         tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
