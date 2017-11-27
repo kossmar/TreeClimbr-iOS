@@ -18,8 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so4-ye-eS6">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="All Trees" id="nuG-qq-wgI">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="AYC-8h-h1c">
+                                            <connections>
+                                                <action selector="doneButton:" destination="1oU-Xb-MUW" id="1Sv-x8-hu4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BTe-d6-0hj">
+                                <rect key="frame" x="71" y="619" width="233" height="29"/>
+                                <segments>
+                                    <segment title="All Trees"/>
+                                    <segment title="My Trees"/>
+                                    <segment title="Favourites"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentAction:" destination="1oU-Xb-MUW" eventType="valueChanged" id="DmH-Va-XXj"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqq-mo-bEp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTreeTableViewCell" rowHeight="70" id="6iv-ng-4y2" customClass="BasicTreeTableViewCell" customModule="TreeClimbr" customModuleProvider="target">
@@ -47,39 +70,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so4-ye-eS6">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="All Trees" id="nuG-qq-wgI">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="AYC-8h-h1c">
-                                            <connections>
-                                                <action selector="doneButton:" destination="1oU-Xb-MUW" id="1Sv-x8-hu4"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Show Favourites" id="1Rc-jn-G8l">
-                                            <connections>
-                                                <action selector="filterAction:" destination="1oU-Xb-MUW" id="sip-hy-q3C"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" id="4Mb-5Y-cAe"/>
+                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="trailing" secondItem="xla-EM-OGE" secondAttribute="trailing" id="40t-gi-Vp4"/>
                             <constraint firstItem="so4-ye-eS6" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" id="Dwu-pX-EpD"/>
-                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="top" secondItem="so4-ye-eS6" secondAttribute="bottom" id="Wb8-Pb-uel"/>
+                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" id="G5j-Rm-THr"/>
+                            <constraint firstItem="BTe-d6-0hj" firstAttribute="centerX" secondItem="CLL-V6-LJg" secondAttribute="centerX" id="Pvo-kz-Uw4"/>
+                            <constraint firstItem="xla-EM-OGE" firstAttribute="bottom" secondItem="BTe-d6-0hj" secondAttribute="bottom" constant="20" id="TTS-XK-XdK"/>
                             <constraint firstItem="so4-ye-eS6" firstAttribute="top" secondItem="xla-EM-OGE" secondAttribute="top" id="YbZ-dQ-PJo"/>
-                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="bottom" secondItem="xla-EM-OGE" secondAttribute="bottom" id="drQ-Xc-ong"/>
-                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="trailing" secondItem="xla-EM-OGE" secondAttribute="trailing" id="sQ0-FK-JLX"/>
+                            <constraint firstItem="Uqq-mo-bEp" firstAttribute="top" secondItem="so4-ye-eS6" secondAttribute="bottom" id="ajc-ch-oRo"/>
+                            <constraint firstItem="BTe-d6-0hj" firstAttribute="top" secondItem="Uqq-mo-bEp" secondAttribute="bottom" constant="20" id="x0q-qp-SsJ"/>
                             <constraint firstItem="so4-ye-eS6" firstAttribute="trailing" secondItem="xla-EM-OGE" secondAttribute="trailing" id="zEv-ul-a2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xla-EM-OGE"/>
                     </view>
                     <connections>
-                        <outlet property="filterButton" destination="1Rc-jn-G8l" id="g5e-XY-0jn"/>
                         <outlet property="navigationBar" destination="so4-ye-eS6" id="End-TR-Ied"/>
+                        <outlet property="segmentControl" destination="BTe-d6-0hj" id="Kcd-sV-6Id"/>
                         <outlet property="tableView" destination="Uqq-mo-bEp" id="yRN-sb-Mdx"/>
                         <segue destination="BJz-du-GAK" kind="presentation" identifier="toTreeDetail" id="l2z-ns-Qc2"/>
                     </connections>
