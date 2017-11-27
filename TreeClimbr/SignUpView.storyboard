@@ -75,7 +75,7 @@
                                                 <state key="normal" title="Log In"/>
                                                 <connections>
                                                     <action selector="goToLoginPressed:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="LcY-pn-FSp"/>
-                                                    <segue destination="qGu-50-SYN" kind="presentation" modalTransitionStyle="coverVertical" id="Uiy-oC-0NF"/>
+                                                    <segue destination="qGu-50-SYN" kind="presentation" modalTransitionStyle="flipHorizontal" id="Uiy-oC-0NF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
