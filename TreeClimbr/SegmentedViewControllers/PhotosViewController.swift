@@ -20,9 +20,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         photoCollectionView.delegate = self
         moreImagesArr = []
         
-        let width = view.frame.width / 2
-        flowLayout.itemSize = CGSize(width: width, height: width)
-        photoCollectionView.collectionViewLayout = flowLayout
+//        let width = view.frame.width / 2
+//        flowLayout.itemSize = CGSize(width: width, height: width)
+//        flowLayout.minimumInteritemSpacing = 0
+//        photoCollectionView.collectionViewLayout = flowLayout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +61,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellSize = CGSize(width: collectionView.frame.size.width/2 - 5, height: collectionView.frame.size.width/2 - 5)
+        let cellSize = CGSize(width: collectionView.frame.size.width/2 - 1 , height: collectionView.frame.size.width/2 - 1 )
         
         return cellSize
     }
@@ -68,13 +69,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        return 1.0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
