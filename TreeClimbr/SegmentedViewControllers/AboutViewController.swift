@@ -3,7 +3,7 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-
+    
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var treeDescTextView: UITextView!
     @IBOutlet weak var coordinateLabel: UILabel!
@@ -11,12 +11,15 @@ class AboutViewController: UIViewController {
     
     var sourceVC = TreeDetailViewController()
     var favouriteState = false
+
     var tree : Tree? {
         didSet {
             guard let tree = tree else { return }
             treeDescTextView.text = tree.treeDescription
             coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
-            
+      
+            getCreatorName()
+
             for thisTree in AppData.sharedInstance.favouritesArr {
                 if tree.treeID == thisTree.treeID {
                     favouriteState = true
@@ -31,7 +34,24 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         treeDescTextView.isEditable = false
-        userLabel.text = "By: Me"
+    }
+    
+    func getCreatorName() {
+        
+        let creator = tree?.treeCreator
+        AppData.sharedInstance.usersNode
+            .child(creator!)
+            .observe( .value, with: { (snapshot) in
+                
+                let value = snapshot.value as? NSDictionary
+                
+                if (value == nil) {
+                    return
+                }
+                
+                let userName = value?["nameKey"] as? String ?? ""
+                self.userLabel.text = "By: \(userName)"
+            })
     }
     
     @IBAction func favouriteAction(_ sender: UIButton) {
