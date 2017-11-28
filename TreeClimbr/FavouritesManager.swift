@@ -105,6 +105,15 @@ class FavouritesManager: NSObject {
         
     }
     
+    class func removeFavourite(tree: Tree) {
+        
+        AppData.sharedInstance.favouritesNode
+        .child(Auth.auth().currentUser!.uid)
+        .child("\(tree.treeID!)")
+        .removeValue()
+        
+    }
+    
     
 }
 
