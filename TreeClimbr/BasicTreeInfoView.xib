@@ -15,6 +15,7 @@
             <connections>
                 <outlet property="alphaView" destination="yh6-ku-0eu" id="rk6-rB-zsp"/>
                 <outlet property="backgroundImageView" destination="bKk-2U-a1Q" id="EjR-Xs-Dom"/>
+                <outlet property="commentLabel" destination="HD3-UP-1hr" id="NH9-wO-gjv"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="1FU-l7-RRV"/>
                 <outlet property="distanceLabel" destination="fqg-c0-LYG" id="ojf-BD-Fb7"/>
                 <outlet property="favouritesCountLabel" destination="5lT-3m-BA8" id="fsf-6h-Ni8"/>
