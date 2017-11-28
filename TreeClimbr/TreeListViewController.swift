@@ -30,6 +30,10 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         FavouritesManager.loadFavourites { (success) in
             return
         }
+        
+        UserTreesManager.loadUserTrees { (success) in
+            return
+        }
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
@@ -71,7 +75,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return AppData.sharedInstance.treesArr.count
         case 1:
-            return AppData.sharedInstance.treesArr.count
+            return AppData.sharedInstance.userTreesArr.count
         case 2:
             return AppData.sharedInstance.favouritesArr.count
         default:
@@ -119,7 +123,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             sortTableViewByDistance()
             tableView.reloadData()
         case 1:
-            treesArr = AppData.sharedInstance.treesArr
+            treesArr = AppData.sharedInstance.userTreesArr
             sortTableViewByDistance()
             tableView.reloadData()
         case 2:
