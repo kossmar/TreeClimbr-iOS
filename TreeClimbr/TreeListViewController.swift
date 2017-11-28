@@ -61,6 +61,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.tree = treeTemp
         cell.basicTreeInfoView.treeNameLabel.text = treeTemp.treeName
         cell.basicTreeInfoView.distanceLabel.text = "\(treeTemp.distFromUser) km"
+        cell.basicTreeInfoView.favouritesCountLabel.text = "\(treeTemp.treePopularity)"
         
         cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
                                                          completed: { (image, error, cacheType, url) in

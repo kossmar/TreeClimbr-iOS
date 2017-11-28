@@ -13,6 +13,7 @@ class BasicTreeInfoView: UIView {
     @IBOutlet weak var treeImageView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
 
+    @IBOutlet weak var favouritesCountLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

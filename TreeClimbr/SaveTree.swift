@@ -53,7 +53,7 @@ class SaveTree: NSObject {
                     "howToFindKey": tree.treeHowToFind!,
                     "latitudeKey": tree.treeLatitude,
                     "longitudeKey": tree.treeLongitude,
-                    "popularityKey":tree.treePopularity!,
+                    "popularityKey":tree.treePopularity,
                     "photoKey":url,
                     "creatorKey":creator!,
 //                    "commentKey": tree.treeComments
@@ -74,4 +74,32 @@ class SaveTree: NSObject {
         })
     }
     
+    class func updateTree(tree: Tree, completion: @escaping (Bool) -> Void) {
+        
+//        let popString = "\(tree.treePopularity)"
+        let url = tree.treePhotoURL.absoluteString
+
+            let treeDict: [String : Any] = [
+                "idKey": tree.treeID,
+                "nameKey": tree.treeName,
+                "descriptionKey": tree.treeDescription!,
+                "speciesKey": tree.treeSpecies!,
+                "ratingKey": tree.treeRating!,
+                "howToFindKey": tree.treeHowToFind!,
+                "latitudeKey": tree.treeLatitude,
+                "longitudeKey": tree.treeLongitude,
+                "popularityKey": tree.treePopularity,
+                "photoKey": url,
+                "creatorKey": tree.treeCreator,
+                //                    "commentKey": tree.treeComments
+            ]
+            
+            AppData.sharedInstance.treeNode
+                //            .child(AppData.sharedInstance.curUser!.uid)
+                .child(tree.treeID!)
+                .setValue(treeDict)
+        
+        completion(true)
+        
+        }
 }

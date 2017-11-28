@@ -1,10 +1,4 @@
-//
-//  FavouritesManager.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-23.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 import Firebase

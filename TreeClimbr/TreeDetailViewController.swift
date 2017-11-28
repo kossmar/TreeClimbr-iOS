@@ -64,6 +64,7 @@ class TreeDetailViewController: UIViewController {
             })
             
             basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
+            basicTreeInfoView.favouritesCountLabel.text = "\(tree.treePopularity)"
             
             PhotoManager.loadPhotos(tree: tree, completion: { photos in
                 
@@ -118,6 +119,7 @@ class TreeDetailViewController: UIViewController {
         
         //setup child viewcontrollers
         aboutViewController.tree = tree
+        aboutViewController.sourceVC = self
         reviewViewController.tree = tree
         photosViewController.tree = tree
         
@@ -143,11 +145,7 @@ class TreeDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
     
-    @IBAction func favouriteAction(_ sender: UIButton) {
-        FavouritesManager.saveFavourite(tree: self.tree) { success in
-            return
-        }
-    }
+
     
     
     //MARK: Segment Control
