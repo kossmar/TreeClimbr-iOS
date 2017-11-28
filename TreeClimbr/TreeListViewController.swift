@@ -86,13 +86,14 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.basicTreeInfoView.distanceLabel.text = "\(treeTemp.distFromUser) km"
         cell.basicTreeInfoView.favouritesCountLabel.text = "\(treeTemp.treePopularity)"
         
+
         treeTemp.treeComments = []
         CommentManager.loadComments(tree: treesArr[indexPath.row]) { (success) in
             cell.basicTreeInfoView.commentLabel.text = "\(treeTemp.treeComments.count) Comments"
             treeTemp.treeComments = []
         }
-        
-        cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
+        cell.basicTreeInfoView.backgroundImageView.sd_setImage(with: treeTemp.treePhotoURL,
+
                                                          completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
         })

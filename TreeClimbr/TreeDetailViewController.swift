@@ -61,10 +61,13 @@ class TreeDetailViewController: UIViewController {
             
             let url = tree.treePhotoURL
             
-            basicTreeInfoView.treeImageView.sd_setImage(with: url,
+//            basicTreeInfoView.treeImageView.sd_setImage(with: url,
+//                                                        completed: { (image, error, cacheType, url) in
+//                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+//            })
+            basicTreeInfoView.backgroundImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
-                                                            
             })
             
             basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
