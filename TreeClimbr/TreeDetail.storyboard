@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-S2-nEN">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="331"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="351"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plH-sr-X5U">
                                     <size key="itemSize" width="50" height="50"/>
@@ -167,7 +167,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
-                                <rect key="frame" x="0.0" y="331" width="343" height="80"/>
+                                <rect key="frame" x="0.0" y="351" width="343" height="60"/>
                                 <color key="backgroundColor" red="0.42053091300000001" green="0.68529901650000002" blue="0.44571341060000003" alpha="0.67356057359999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Add Photo">
@@ -178,7 +178,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
-                                <rect key="frame" x="0.0" y="301" width="343" height="30"/>
+                                <rect key="frame" x="0.0" y="291" width="343" height="60"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" title="Upload Photos"/>
                                 <connections>
                                     <action selector="uploadPhotosButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="gMA-hk-ZL5"/>
@@ -187,8 +188,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="vsa-S2-nEN" secondAttribute="bottom" constant="80" id="81t-4C-0vn"/>
                             <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vsa-S2-nEN" secondAttribute="bottom" id="9l6-Q7-138"/>
+                            <constraint firstItem="vPD-8n-8ty" firstAttribute="height" secondItem="dce-Nr-haY" secondAttribute="height" id="Eti-9E-QYJ"/>
                             <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vPD-8n-8ty" secondAttribute="bottom" id="Ewo-hR-nEF"/>
                             <constraint firstItem="vPD-8n-8ty" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="KaW-t8-YAu"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="dce-Nr-haY" secondAttribute="trailing" id="M3d-N4-Ips"/>

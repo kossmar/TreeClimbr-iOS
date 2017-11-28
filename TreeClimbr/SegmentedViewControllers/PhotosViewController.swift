@@ -106,17 +106,41 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     
     @IBAction func uploadPhotosButtonPressed(_ sender: UIButton) {
-        uploadPhotosButton.isHidden = true
-        imagePickerController.resetAssets()
-        imageArr = []
         
-                ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+        let alert = UIAlertController(title: "Upload pictures?", message: nil, preferredStyle: .alert)
         
-                    PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
-                        print("winners")
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancelAction)
         
-                    }
+        let uploadAction = UIAlertAction(title: "Upload", style: .default) { (action) in
+            self.uploadPhotosButton.isHidden = true
+            self.imagePickerController.resetAssets()
+            self.imageArr = []
+            
+            ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+                
+                PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
+                    print("winners")
+                    
                 }
+            }
+        }
+        alert.addAction(uploadAction)
+        self.present(alert, animated: true, completion: nil)
+        
+//        uploadPhotosButton.isHidden = true
+//        imagePickerController.resetAssets()
+//        imageArr = []
+//
+//                ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+//
+//                    PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
+//                        print("winners")
+//
+//                    }
+//                }
     }
     
     func pickTreePhotos() {
