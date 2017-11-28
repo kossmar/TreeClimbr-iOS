@@ -20,6 +20,7 @@ class TreeDetailViewController: UIViewController {
     var distance = Double()
     var photoObjArr = Array<Photo>()
     var imageArr = Array<UIImage>()
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     //MARK: Outlets
     @IBOutlet var toMapButton: UIBarButtonItem!
@@ -51,8 +52,10 @@ class TreeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let tree = tree {
+            navigationBar.topItem?.title = tree.treeName
+            
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
             let url = tree.treePhotoURL
@@ -128,9 +131,10 @@ class TreeDetailViewController: UIViewController {
         reviewView.isHidden = true
         picturesView.isHidden = false
         
+        
     }
     
-
+    
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
         let treeLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(tree.treeLatitude, tree.treeLongitude)
@@ -146,7 +150,7 @@ class TreeDetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = self.toMapButton
     }
     
-
+    
     
     
     //MARK: Segment Control
