@@ -7,6 +7,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var treeDescTextView: UITextView!
     @IBOutlet weak var coordinateLabel: UILabel!
+    @IBOutlet weak var addFavouriteButton: UIButton!
     
     var sourceVC = TreeDetailViewController()
     var favouriteState = false
@@ -23,6 +24,10 @@ class AboutViewController: UIViewController {
         
         treeDescTextView.isEditable = false
         userLabel.text = "By: Me"
+        
+
+        
+        
     }
     
     @IBAction func favouriteAction(_ sender: UIButton) {
@@ -43,10 +48,15 @@ class AboutViewController: UIViewController {
             }
             
             favouriteState = true
+            addFavouriteButton.titleLabel?.text = "Remove From Favourites"
         }
-//        else {
-//            FavouritesManager.removeFavourite
-//        }
+        else {
+            FavouritesManager.removeFavourite(tree: tree)
+            tree.treePopularity -= 1
+            let favourites = String(describing: tree.treePopularity)
+            self.sourceVC.basicTreeInfoView.favouritesCountLabel.text = favourites
+            favouriteState = false
+            addFavouriteButton.titleLabel?.text = "Add To Favourites"
+        }
     }
-
 }
