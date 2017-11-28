@@ -222,34 +222,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="343" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-NH-CUv">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="250"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="pVp-1Z-sMV"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YWL-m4-WDg">
-                                <rect key="frame" x="0.0" y="250" width="343" height="161"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                 <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-NH-CUv">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="pVp-1Z-sMV"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USu-Au-yem">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="343" height="50"/>
                                         <state key="normal" title="Add To Favourites"/>
                                         <connections>
                                             <action selector="favouriteAction:" destination="CXB-rD-QPr" eventType="touchUpInside" id="JmL-86-Ko3"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De5-Qu-z5W">
-                                        <rect key="frame" x="0.0" y="53.5" width="343" height="54"/>
+                                        <rect key="frame" x="0.0" y="100" width="343" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-Mq-wow">
-                                        <rect key="frame" x="0.0" y="107.5" width="343" height="53.5"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -259,11 +259,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YWL-m4-WDg" secondAttribute="trailing" id="8N4-BX-lg6"/>
-                            <constraint firstItem="cqv-NH-CUv" firstAttribute="trailing" secondItem="Yle-bX-ndx" secondAttribute="trailing" id="93R-Gs-UaE"/>
-                            <constraint firstItem="cqv-NH-CUv" firstAttribute="leading" secondItem="Yle-bX-ndx" secondAttribute="leading" id="E1W-e9-62J"/>
                             <constraint firstAttribute="bottom" secondItem="YWL-m4-WDg" secondAttribute="bottom" id="OZg-vR-vzk"/>
-                            <constraint firstItem="YWL-m4-WDg" firstAttribute="top" secondItem="cqv-NH-CUv" secondAttribute="bottom" id="VXd-4Z-q31"/>
-                            <constraint firstItem="cqv-NH-CUv" firstAttribute="top" secondItem="Yle-bX-ndx" secondAttribute="top" id="aDg-2E-cDg"/>
+                            <constraint firstAttribute="top" secondItem="YWL-m4-WDg" secondAttribute="top" id="S1b-3t-Qxc"/>
                             <constraint firstItem="YWL-m4-WDg" firstAttribute="leading" secondItem="Yle-bX-ndx" secondAttribute="leading" id="juk-Kv-WVP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yle-bX-ndx"/>
