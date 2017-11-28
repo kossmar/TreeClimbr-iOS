@@ -4,7 +4,15 @@ import Firebase
 
 class UserTreesManager: NSObject {
     
-    class func saveUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
+    class func deleteUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
+        AppData.sharedInstance.treeNode
+            .child(tree.treeID!)
+            .removeValue()
+        
+        AppData.sharedInstance.userTreesNode
+            .child(Auth.auth().currentUser!.uid)
+            .child(tree.treeID!)
+            .removeValue()
     }
     
     

@@ -95,6 +95,27 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         return 125
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if segmentControl.selectedSegmentIndex == 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            UserTreesManager.deleteUserTree(tree: treesArr[indexPath.row], completion: { (success) in
+                return
+            })
+        }
+        
+        UserTreesManager.loadUserTrees { (success) in
+            return
+        }
+        tableView.reloadData()
+    }
+    
     // MARK: - Custom Functions
     
     func distanceFromUser(_ lat: Double,_ long: Double) -> Double {
