@@ -60,9 +60,13 @@ class SaveTree: NSObject {
                 ]
                 
                 AppData.sharedInstance.treeNode
-                    //            .child(AppData.sharedInstance.curUser!.uid)
                     .child(tree.treeID!)
                     .setValue(treeDict)
+                
+                AppData.sharedInstance.userTreesNode
+                    .child(Auth.auth().currentUser!.uid)
+                    .child(tree.treeID!)
+                    .setValue(["treeIDKey": tree.treeID!])
             }
             
             completion(true)

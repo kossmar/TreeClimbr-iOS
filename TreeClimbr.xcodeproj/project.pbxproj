@@ -50,6 +50,7 @@
 		E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C51FBFBB5F006ABDAB /* Tree.swift */; };
 		E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */; };
 		E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */; };
+		E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */; };
 		E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */; };
 		E6D66C1D1FC0E573001B5C52 /* ReadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */; };
 		E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */; };
@@ -131,6 +132,7 @@
 		E6CE28C51FBFBB5F006ABDAB /* Tree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeListViewController.swift; sourceTree = "<group>"; };
+		E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTreesManager.swift; sourceTree = "<group>"; };
 		E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTree.swift; sourceTree = "<group>"; };
 		E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTrees.swift; sourceTree = "<group>"; };
 		E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTrees.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
 				0D0D0D721FC624BF00C84F1D /* CommentManager.swift */,
+				E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */,
 				0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */,
 				E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */,
 				E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */,
@@ -635,6 +638,7 @@
 				E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */,
 				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
+				E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */,
 				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
