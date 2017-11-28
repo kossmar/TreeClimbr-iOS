@@ -16,6 +16,14 @@ class AboutViewController: UIViewController {
             guard let tree = tree else { return }
             treeDescTextView.text = tree.treeDescription
             coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
+            
+            for thisTree in AppData.sharedInstance.favouritesArr {
+                if tree.treeID == thisTree.treeID {
+                    favouriteState = true
+                    addFavouriteButton.setTitle("Remove From Favourites", for: .normal)
+                    break
+                }
+            }
         }
     }
     
@@ -24,22 +32,6 @@ class AboutViewController: UIViewController {
         
         treeDescTextView.isEditable = false
         userLabel.text = "By: Me"
-        
-        guard let curTree = tree else {
-            print("no tree was passed into the 'more' section")
-            return
-        }
-        
-        for tree in AppData.sharedInstance.favouritesArr {
-            if tree.treeID == curTree.treeID {
-                favouriteState = true
-                addFavouriteButton.setTitle("Remove From Favourites", for: .normal)
-                break
-            }
-        }
-
-        
-        
     }
     
     @IBAction func favouriteAction(_ sender: UIButton) {
@@ -67,8 +59,16 @@ class AboutViewController: UIViewController {
             tree.treePopularity -= 1
             let favourites = String(describing: tree.treePopularity)
             self.sourceVC.basicTreeInfoView.favouritesCountLabel.text = favourites
+            SaveTree.updateTree(tree: tree, completion: { success in
+            })
             favouriteState = false
             addFavouriteButton.setTitle("Add To Favourites", for: .normal)
+        }
+        FavouritesManager.loadFavourites {trees in
+        }
+        ReadTrees.read { trees in
+        }
+        UserTreesManager.loadUserTrees { trees in
         }
     }
 }

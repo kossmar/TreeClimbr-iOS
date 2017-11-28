@@ -16,6 +16,7 @@ class TreeDetailViewController: UIViewController {
     var tree : Tree!
     var delegate : MapFocusDelegate?
     var rootSourceVC = ViewController()
+    var sourceVC : TreeListViewController?
     var fromMapView : Bool = false
     var distance = Double()
     var photoObjArr = Array<Photo>()
@@ -148,6 +149,11 @@ class TreeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
+//        FavouritesManager.loadFavourites { trees in
+//            guard let trees = trees else {return}
+//            self.sourceVC?.treesArr = trees
+            self.sourceVC?.tableView.reloadData()
+//        }
     }
     
     

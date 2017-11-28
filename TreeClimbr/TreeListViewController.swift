@@ -10,6 +10,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     var sourceVC = ViewController()
     var treeDistance = Double()
     var treesArr = Array<Tree>()
+    var segmentState = 0
     
     @IBOutlet weak var filterButton: UIBarButtonItem!
     
@@ -20,9 +21,12 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+        
         treesArr = AppData.sharedInstance.treesArr
         
         sortTableViewByDistance()
@@ -34,6 +38,23 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         UserTreesManager.loadUserTrees { (success) in
             return
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(true)
+        
+        switch segmentState {
+        case 0:
+            treesArr = AppData.sharedInstance.treesArr
+        case 1:
+            treesArr = AppData.sharedInstance.userTreesArr
+        case 2:
+            treesArr = AppData.sharedInstance.favouritesArr
+        default:
+            treesArr = AppData.sharedInstance.treesArr
+            
+        }
+        
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
@@ -49,6 +70,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             treeDetailVC.tree = sender as! Tree
             treeDetailVC.rootSourceVC = sourceVC
+            treeDetailVC.sourceVC = self
             
         }
     }
@@ -144,14 +166,19 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             treesArr = AppData.sharedInstance.treesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            self.segmentState = 0
         case 1:
             treesArr = AppData.sharedInstance.userTreesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            self.segmentState = 1
+
         case 2:
             treesArr = AppData.sharedInstance.favouritesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            self.segmentState = 2
+
         default:
             break
         }
