@@ -29,7 +29,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="name"/>
                                         <connections>
                                             <action selector="textFieldChanged:" destination="wm2-MY-3kG" eventType="editingChanged" id="bkt-87-0JS"/>
                                         </connections>
