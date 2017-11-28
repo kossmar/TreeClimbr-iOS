@@ -75,11 +75,17 @@ class BasicTreeInfoView: UIView {
             let whiteColor = UIColor.white
 //            mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,whiteColor.withAlphaComponent(0.1).cgColor,whiteColor.withAlphaComponent(1.0).cgColor,clear.withAlphaComponent(1.0).cgColor]
 //            mask.locations = [NSNumber(value: 0.0),NSNumber(value: 0.2),NSNumber(value: 0.8),NSNumber(value: 1.0)]
-            mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,whiteColor.withAlphaComponent(0.0).cgColor,whiteColor.withAlphaComponent(1.0),whiteColor.withAlphaComponent(1.0).cgColor]
-            mask.locations = [NSNumber(value: 0.0),NSNumber(value: 0.4),NSNumber(value: 0.5),NSNumber(value: 1.0)]
+            mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,
+                           whiteColor.withAlphaComponent(0.0).cgColor,
+                           whiteColor.withAlphaComponent(0.8).cgColor,
+                           whiteColor.withAlphaComponent(1.0).cgColor]
+            mask.locations = [NSNumber(value: 0.0),
+                              NSNumber(value: 0.5),
+                              NSNumber(value: 0.7),
+                              NSNumber(value: 1.0)]
             mask.frame = whiteView.bounds
             whiteView.layer.mask = mask
-
+            
 //            alphaView.layer.cornerRadius = alphaView.frame.width/2
 
         }
