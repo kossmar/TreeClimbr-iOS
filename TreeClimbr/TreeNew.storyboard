@@ -112,9 +112,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="hiE-2k-LIR">
                                 <rect key="frame" x="0.0" y="64" width="375" height="262"/>
-                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
+                                <rect key="frame" x="0.0" y="64" width="375" height="262"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="375:262" id="IhI-l7-WqM"/>
                                 </constraints>
@@ -124,13 +126,18 @@
                         <constraints>
                             <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="gqV-SX-RcT" secondAttribute="bottom" id="ATj-3A-3eX"/>
                             <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="K4Y-12-7cx" secondAttribute="trailing" constant="20" id="Gsd-cD-dQT"/>
+                            <constraint firstItem="hiE-2k-LIR" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" constant="44" id="KyK-f4-zyp"/>
                             <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="20" id="Q2I-Jy-Fzs"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="hiE-2k-LIR" secondAttribute="trailing" id="QYM-93-L6h"/>
                             <constraint firstItem="gqV-SX-RcT" firstAttribute="trailing" secondItem="EQZ-eZ-6zZ" secondAttribute="trailing" id="TpZ-l3-bXI"/>
                             <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" id="dlp-tX-i9U"/>
                             <constraint firstItem="gqV-SX-RcT" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" id="e4f-2u-UUZ"/>
+                            <constraint firstItem="hiE-2k-LIR" firstAttribute="height" secondItem="Rdd-MP-v0O" secondAttribute="height" id="eRf-R9-fzk"/>
+                            <constraint firstItem="hiE-2k-LIR" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" id="fnt-Fv-DoM"/>
                             <constraint firstItem="gqV-SX-RcT" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="hxI-DL-YMd"/>
                             <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" id="kIC-EZ-jNZ"/>
                             <constraint firstItem="K4Y-12-7cx" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="20" id="nVZ-as-aOA"/>
+                            <constraint firstItem="hiE-2k-LIR" firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="width" id="uDw-Mb-o73"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQZ-eZ-6zZ"/>
                     </view>
