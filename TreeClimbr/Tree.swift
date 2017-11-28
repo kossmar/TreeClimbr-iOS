@@ -9,7 +9,7 @@ class Tree: NSObject {
     var treeHowToFind: String?
     var treeLatitude = Double()
     var treeLongitude = Double()
-    var treePopularity: Int? = 0
+    var treePopularity: Int = 0
     var treePhotoData: NSData?
     var treePhotoURL: URL
     var treeCreator: String?
