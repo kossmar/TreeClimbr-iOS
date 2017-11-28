@@ -54,6 +54,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             treesArr = AppData.sharedInstance.treesArr
             
         }
+        sortTableViewByDistance()
         
     }
     
