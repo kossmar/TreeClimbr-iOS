@@ -34,8 +34,7 @@ class SignUpViewController: UIViewController {
                 
             RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
                 
-                self.dismiss(animated: true, completion: nil)
-                
+                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 
             })
 
