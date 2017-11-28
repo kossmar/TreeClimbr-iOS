@@ -38,6 +38,8 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         UserTreesManager.loadUserTrees { (success) in
             return
         }
+        
+//        navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,17 +177,20 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             treesArr = AppData.sharedInstance.treesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 0
         case 1:
             treesArr = AppData.sharedInstance.userTreesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 1
 
         case 2:
             treesArr = AppData.sharedInstance.favouritesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 2
 
         default:
