@@ -6,6 +6,7 @@ import Foundation
 class Photo: NSObject {
 
     var userID = String()
+//    var userName = String()
     var photoURL : String
     var timeStamp = String()
     var isMain : Bool

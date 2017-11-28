@@ -7,6 +7,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     var imageArr = Array<UIImage>()
     var contentWidth : CGFloat = 0.0
@@ -17,7 +18,12 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         photoScrollView.delegate = self
+        pageControl.numberOfPages = imageArr.count
+        navigationBar.isHidden = true
+        navigationBar.alpha = 0.6
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showNavBar(sender:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,11 +48,25 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Custom Functions
     
+    @objc func showNavBar(sender: UITapGestureRecognizer) {
+        if navigationBar.isHidden == true {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.navigationBar.isHidden = false
+            })
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.navigationBar.isHidden = true
+            })
+        }
+    }
+    
     func setupScrollView() {
         let width = self.view.frame.width
 
         if justLoaded == true {
             photoScrollView.contentOffset.x = width * CGFloat(startPage)
+        } else {
+            photoScrollView.contentOffset.x = width * CGFloat(pageControl.currentPage)
         }
         
         var x: CGFloat = 0
