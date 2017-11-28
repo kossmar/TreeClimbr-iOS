@@ -59,12 +59,22 @@ class TreeDetailViewController: UIViewController {
             
             basicTreeInfoView.treeNameLabel.text = tree.treeName
             
+            self.tree.treeComments = []
+            CommentManager.loadComments(tree: self.tree, completion: { (success) in
+                self.basicTreeInfoView.commentLabel.text = "\(self.tree.treeComments.count) Comments"
+                self.tree.treeComments = []
+            })
+            
+            
             let url = tree.treePhotoURL
             
-            basicTreeInfoView.treeImageView.sd_setImage(with: url,
+//            basicTreeInfoView.treeImageView.sd_setImage(with: url,
+//                                                        completed: { (image, error, cacheType, url) in
+//                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+//            })
+            basicTreeInfoView.backgroundImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
-                                                            
             })
             
             basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
@@ -131,7 +141,6 @@ class TreeDetailViewController: UIViewController {
         aboutView.isHidden = true
         reviewView.isHidden = true
         picturesView.isHidden = false
-        
         
     }
     

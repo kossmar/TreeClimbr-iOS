@@ -10,6 +10,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var imageArr = Array<UIImage>()
     var moreImagesArr = Array<UIImage>()
     let imagePickerController = ImagePickerController()
+    let flowLayout = UICollectionViewFlowLayout()
     
     
     // MARK: - View controller lifecycle
@@ -17,8 +18,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         imagePickerController.delegate = self
         photoCollectionView.delegate = self
-        
         moreImagesArr = []
+        
+        let width = view.frame.width / 2
+        flowLayout.itemSize = CGSize(width: width, height: width)
+        photoCollectionView.collectionViewLayout = flowLayout
     }
     
     override func viewWillAppear(_ animated: Bool) {

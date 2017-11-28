@@ -15,11 +15,13 @@
             <connections>
                 <outlet property="alphaView" destination="yh6-ku-0eu" id="rk6-rB-zsp"/>
                 <outlet property="backgroundImageView" destination="bKk-2U-a1Q" id="EjR-Xs-Dom"/>
+                <outlet property="commentLabel" destination="HD3-UP-1hr" id="NH9-wO-gjv"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="1FU-l7-RRV"/>
                 <outlet property="distanceLabel" destination="fqg-c0-LYG" id="ojf-BD-Fb7"/>
                 <outlet property="favouritesCountLabel" destination="5lT-3m-BA8" id="fsf-6h-Ni8"/>
                 <outlet property="treeImageView" destination="v7V-fK-r5a" id="Th0-Um-rWx"/>
                 <outlet property="treeNameLabel" destination="Kf1-a3-zqX" id="CI9-ir-cBr"/>
+                <outlet property="whiteView" destination="oPP-uo-D4R" id="RRc-o0-HNM"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,8 +29,8 @@
             <rect key="frame" x="0.0" y="0.0" width="641" height="193"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree!" translatesAutoresizingMaskIntoConstraints="NO" id="bKk-2U-a1Q">
-                    <rect key="frame" x="0.0" y="0.0" width="448" height="193"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree!" translatesAutoresizingMaskIntoConstraints="NO" id="bKk-2U-a1Q">
+                    <rect key="frame" x="0.0" y="0.0" width="641" height="193"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bKk-2U-a1Q" secondAttribute="height" multiplier="1:1" id="KlC-ii-8Ak"/>
                     </constraints>
@@ -38,13 +40,23 @@
                         </mask>
                     </variation>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPP-uo-D4R">
+                    <rect key="frame" x="0.0" y="0.0" width="641" height="193"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v7V-fK-r5a">
+                    <rect key="frame" x="448" y="0.0" width="193" height="193"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="v7V-fK-r5a" secondAttribute="height" multiplier="1:1" id="ney-yp-znX"/>
+                    </constraints>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-ku-0eu">
-                    <rect key="frame" x="0.0" y="0.0" width="448" height="193"/>
+                    <rect key="frame" x="0.0" y="0.0" width="641" height="193"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EmN-x7-Yfs">
                             <rect key="frame" x="10" y="10" width="438" height="173"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Dope-ass Tree!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-a3-zqX">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Dope-ass Tree!" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-a3-zqX">
                                     <rect key="frame" x="0.0" y="0.0" width="438" height="43.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                     <nil key="textColor"/>
@@ -102,26 +114,24 @@
                         <constraint firstItem="EmN-x7-Yfs" firstAttribute="top" secondItem="yh6-ku-0eu" secondAttribute="top" constant="10" id="sP6-AS-4Hk"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree!" translatesAutoresizingMaskIntoConstraints="NO" id="v7V-fK-r5a">
-                    <rect key="frame" x="448" y="0.0" width="193" height="193"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="v7V-fK-r5a" secondAttribute="height" multiplier="1:1" id="ney-yp-znX"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bKk-2U-a1Q" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="1Z1-Lu-LaM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oPP-uo-D4R" secondAttribute="trailing" id="4wr-OS-004"/>
+                <constraint firstItem="oPP-uo-D4R" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AI7-Cx-zUz"/>
                 <constraint firstItem="v7V-fK-r5a" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="I1q-xz-bka"/>
-                <constraint firstItem="yh6-ku-0eu" firstAttribute="trailing" secondItem="v7V-fK-r5a" secondAttribute="leading" id="Ku9-Vi-Tew"/>
                 <constraint firstItem="yh6-ku-0eu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="M1I-So-VBe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="v7V-fK-r5a" secondAttribute="bottom" id="MRc-mI-jnl"/>
                 <constraint firstAttribute="bottom" secondItem="bKk-2U-a1Q" secondAttribute="bottom" id="RD4-Xr-XmN"/>
-                <constraint firstItem="bKk-2U-a1Q" firstAttribute="trailing" secondItem="v7V-fK-r5a" secondAttribute="leading" id="Ri8-Vy-J6c"/>
                 <constraint firstItem="EmN-x7-Yfs" firstAttribute="trailing" secondItem="v7V-fK-r5a" secondAttribute="leading" id="c3K-eT-WMK"/>
+                <constraint firstItem="oPP-uo-D4R" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eFn-xA-keN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oPP-uo-D4R" secondAttribute="bottom" id="fVp-qP-7cG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yh6-ku-0eu" secondAttribute="bottom" id="kax-ft-xvq"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="v7V-fK-r5a" secondAttribute="trailing" id="nUO-Ge-zIF"/>
                 <constraint firstItem="bKk-2U-a1Q" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qqq-R9-RNv"/>
                 <constraint firstItem="yh6-ku-0eu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rHt-ob-iJv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yh6-ku-0eu" secondAttribute="trailing" id="sye-Kr-gH3"/>
                 <constraint firstItem="bKk-2U-a1Q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="znr-4c-pVa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -38,6 +38,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         UserTreesManager.loadUserTrees { (success) in
             return
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +56,6 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
         sortTableViewByDistance()
-        
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
@@ -86,7 +86,14 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         cell.basicTreeInfoView.distanceLabel.text = "\(treeTemp.distFromUser) km"
         cell.basicTreeInfoView.favouritesCountLabel.text = "\(treeTemp.treePopularity)"
         
-        cell.basicTreeInfoView.treeImageView.sd_setImage(with: treeTemp.treePhotoURL,
+
+        treeTemp.treeComments = []
+        CommentManager.loadComments(tree: treesArr[indexPath.row]) { (success) in
+            cell.basicTreeInfoView.commentLabel.text = "\(treeTemp.treeComments.count) Comments"
+            treeTemp.treeComments = []
+        }
+        cell.basicTreeInfoView.backgroundImageView.sd_setImage(with: treeTemp.treePhotoURL,
+
                                                          completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
         })
@@ -126,6 +133,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             return false
         }
     }
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
@@ -175,17 +183,20 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             treesArr = AppData.sharedInstance.treesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 0
         case 1:
             treesArr = AppData.sharedInstance.userTreesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 1
 
         case 2:
             treesArr = AppData.sharedInstance.favouritesArr
             sortTableViewByDistance()
             tableView.reloadData()
+            navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
             self.segmentState = 2
 
         default:
