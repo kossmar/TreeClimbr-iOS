@@ -15,6 +15,7 @@ class BasicTreeInfoView: UIView {
     @IBOutlet weak var distanceLabel: UILabel!
 
     @IBOutlet weak var favouritesCountLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -72,9 +72,8 @@ class CommentManager: NSObject {
 
                     
                     AppData.sharedInstance.commentArr.append(readComment)
-                    
-                    //                    print (AppData.sharedInstance.treesArr)
-                    
+                    tree.treeComments.append(readComment)
+
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.commentArr.count)")
