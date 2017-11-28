@@ -19,15 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
-                                <rect key="frame" x="78" y="19.5" width="219" height="219.5"/>
-                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="1:1" id="eIV-Dn-keC"/>
-                                </constraints>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
-                                <rect key="frame" x="20" y="256" width="335" height="391"/>
+                                <rect key="frame" x="20" y="356" width="335" height="291"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tree name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-PS-tfZ" userLabel="NameTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -100,37 +93,43 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lw2-6z-pt2">
-                                        <rect key="frame" x="0.0" y="311" width="335" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="lw2-6z-pt2" secondAttribute="height" multiplier="67:6" id="3vH-2n-25y"/>
-                                        </constraints>
-                                        <state key="normal" title="Save"/>
-                                        <connections>
-                                            <action selector="save:" destination="wm2-MY-3kG" eventType="touchUpInside" id="ORe-vE-rAe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uc9-EQ-krB">
-                                        <rect key="frame" x="0.0" y="361" width="335" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="uc9-EQ-krB" secondAttribute="height" multiplier="67:6" id="M41-2T-ip0"/>
-                                        </constraints>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="cancelAction:" destination="wm2-MY-3kG" eventType="touchUpInside" id="kd3-C7-HHk"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqV-SX-RcT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Add New Tree" id="RKB-zO-ykL">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="yRc-3k-bAf">
+                                            <connections>
+                                                <action selector="cancelAction:" destination="wm2-MY-3kG" id="thA-uW-BxK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="HEE-FY-f23">
+                                            <connections>
+                                                <action selector="save:" destination="wm2-MY-3kG" id="mhL-Zq-Ocj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Rdd-MP-v0O">
+                                <rect key="frame" x="0.0" y="64" width="375" height="262"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rdd-MP-v0O" secondAttribute="height" multiplier="375:262" id="IhI-l7-WqM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K4Y-12-7cx" firstAttribute="top" secondItem="Rdd-MP-v0O" secondAttribute="bottom" constant="17" id="3Uk-4z-PQI"/>
-                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" constant="78" id="8xb-2e-6me"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="gqV-SX-RcT" secondAttribute="bottom" id="ATj-3A-3eX"/>
                             <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="K4Y-12-7cx" secondAttribute="trailing" constant="20" id="Gsd-cD-dQT"/>
                             <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="bottom" secondItem="K4Y-12-7cx" secondAttribute="bottom" constant="20" id="Q2I-Jy-Fzs"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="TTY-jM-fSO"/>
-                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="78" id="esJ-JS-dks"/>
+                            <constraint firstItem="gqV-SX-RcT" firstAttribute="trailing" secondItem="EQZ-eZ-6zZ" secondAttribute="trailing" id="TpZ-l3-bXI"/>
+                            <constraint firstItem="Rdd-MP-v0O" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" id="dlp-tX-i9U"/>
+                            <constraint firstItem="gqV-SX-RcT" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" id="e4f-2u-UUZ"/>
+                            <constraint firstItem="gqV-SX-RcT" firstAttribute="top" secondItem="EQZ-eZ-6zZ" secondAttribute="top" id="hxI-DL-YMd"/>
+                            <constraint firstItem="EQZ-eZ-6zZ" firstAttribute="trailing" secondItem="Rdd-MP-v0O" secondAttribute="trailing" id="kIC-EZ-jNZ"/>
                             <constraint firstItem="K4Y-12-7cx" firstAttribute="leading" secondItem="EQZ-eZ-6zZ" secondAttribute="leading" constant="20" id="nVZ-as-aOA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EQZ-eZ-6zZ"/>
@@ -138,14 +137,14 @@
                     <connections>
                         <outlet property="TreeDescTextView" destination="L10-cg-qwZ" id="CvQ-Fd-QVx"/>
                         <outlet property="photoCollectionView" destination="4zq-KD-bEG" id="Crf-kd-KUy"/>
-                        <outlet property="saveButton" destination="lw2-6z-pt2" id="4uu-Lc-qs0"/>
+                        <outlet property="saveButton" destination="HEE-FY-f23" id="o7a-Nx-o7m"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
                         <outlet property="treeNameTextField" destination="z6p-PS-tfZ" id="d21-W7-dxI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oay-dV-PS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.75" y="127.5"/>
+            <point key="canvasLocation" x="47.200000000000003" y="127.28635682158921"/>
         </scene>
     </scenes>
     <resources>

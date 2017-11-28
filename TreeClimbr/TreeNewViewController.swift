@@ -12,7 +12,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var treeNameTextField: UITextField!
     @IBOutlet weak var TreeDescTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //MARK: Properties
     let imagePickerController = ImagePickerController()
@@ -27,9 +28,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         
         //set up imageview shape
-        treeImageView.layer.cornerRadius = treeImageView.frame.width/2
+//        treeImageView.layer.cornerRadius = treeImageView.frame.height/2
 
-        treeImageView.clipsToBounds = true
+//        treeImageView.clipsToBounds = true
 
         saveButton.isEnabled = false
         setupTextView()
@@ -61,7 +62,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         pickTreePhotos()
     }
     
-    @IBAction func save(_ sender: UIButton) {
+    @IBAction func save(_ sender: UIBarButtonItem) {
 
         
         let photoData = treeImageView.image?.jpeg(.low)
@@ -95,7 +96,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     }
     
-    @IBAction func cancelAction(_ sender: UIButton) {
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
