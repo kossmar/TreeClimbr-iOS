@@ -129,18 +129,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
         alert.addAction(uploadAction)
         self.present(alert, animated: true, completion: nil)
-        
-//        uploadPhotosButton.isHidden = true
-//        imagePickerController.resetAssets()
-//        imageArr = []
-//
-//                ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
-//
-//                    PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
-//                        print("winners")
-//
-//                    }
-//                }
     }
     
     func pickTreePhotos() {
