@@ -127,7 +127,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
                     print("winners")
-                    
+                    self.moreImagesArr = []
                 }
             }
         }
