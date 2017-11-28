@@ -13,6 +13,13 @@ class UserTreesManager: NSObject {
             .child(Auth.auth().currentUser!.uid)
             .child(tree.treeID!)
             .removeValue()
+        
+        AppData.sharedInstance.favouritesNode
+            .child(Auth.auth().currentUser!.uid)
+            .child(tree.treeID!)
+            .removeValue()
+        
+        completion(true)
     }
     
     
@@ -26,8 +33,10 @@ class UserTreesManager: NSObject {
         
         AppData.sharedInstance.userTreesNode
             .child(Auth.auth().currentUser!.uid)
-            .observe(.value, with: { (userTreesSnapshot) in
-                
+//            .observe(.value, with: { (userTreesSnapshot) in
+            .observeSingleEvent(of: .value) { (userTreesSnapshot) in
+
+        
                 let allUserTrees = userTreesSnapshot.value as? [String: Any]
                 
                 if (allUserTrees == nil) {
@@ -90,7 +99,7 @@ class UserTreesManager: NSObject {
                 
                 print("\(#function) - \(AppData.sharedInstance.userTreesArr.count)")
                 completion(AppData.sharedInstance.userTreesArr)
-            })
+            }
         
     }
     

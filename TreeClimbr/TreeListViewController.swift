@@ -95,16 +95,17 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch segmentControl.selectedSegmentIndex {
-        case 0:
-            return AppData.sharedInstance.treesArr.count
-        case 1:
-            return AppData.sharedInstance.userTreesArr.count
-        case 2:
-            return AppData.sharedInstance.favouritesArr.count
-        default:
-            return AppData.sharedInstance.treesArr.count
-        }
+//        switch segmentControl.selectedSegmentIndex {
+//        case 0:
+//            return AppData.sharedInstance.treesArr.count
+//        case 1:
+//            return AppData.sharedInstance.userTreesArr.count
+//        case 2:
+//            return AppData.sharedInstance.favouritesArr.count
+//        default:
+//            return AppData.sharedInstance.treesArr.count
+//        }
+        return treesArr.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -129,14 +130,21 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             UserTreesManager.deleteUserTree(tree: treesArr[indexPath.row], completion: { (success) in
-                return
+                UserTreesManager.loadUserTrees(completion: { trees in
+                })
+                FavouritesManager.loadFavourites(completion: { trees in
+                })
             })
+            treesArr.remove(at: indexPath.row)
+            tableView.reloadData()
+            
+//            UserTreesManager.loadUserTrees { (success) in
+//                guard let success = success else {return}
+//                self.treesArr = AppData.sharedInstance.userTreesArr
+//                tableView.reloadData()
+////                return
+//            }
         }
-        
-        UserTreesManager.loadUserTrees { (success) in
-            return
-        }
-        tableView.reloadData()
     }
     
     // MARK: - Custom Functions
