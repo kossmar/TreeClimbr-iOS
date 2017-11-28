@@ -134,6 +134,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         return cell
     }
     
+    
     func setup() {
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
@@ -147,12 +148,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(tapGestureRecognizer:)))
         treeImageView.isUserInteractionEnabled = true
         treeImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let tapGestureRecognizerCollectionView = UITapGestureRecognizer(target: self, action: #selector(collectionViewTapped(tapGestureRecognizerCollectionView:)))
+        photoCollectionView.addGestureRecognizer(tapGestureRecognizerCollectionView)
     }
     
-    @objc func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
+    @objc func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         pickTreePhotos()
     }
+    
+    @objc func collectionViewTapped(tapGestureRecognizerCollectionView: UITapGestureRecognizer) {
+         pickTreePhotos()
+    }
+    
     
     func pickTreePhotos() {
         present(imagePickerController, animated: true, completion: nil)
