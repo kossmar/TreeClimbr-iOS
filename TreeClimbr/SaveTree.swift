@@ -26,6 +26,10 @@ class SaveTree: NSObject {
         
         let photoData = tree.treePhotoData! as Data
         
+        if tree.treeDescription == "Enter description..." {
+            tree.treeDescription = ""
+        }
+        
         imagesRef.putData(photoData, metadata: nil, completion: { (metadata, error) in
             
             if let error = error {
