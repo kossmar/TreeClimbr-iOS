@@ -36,8 +36,10 @@ class FavouritesManager: NSObject {
         
         AppData.sharedInstance.favouritesNode
             .child(Auth.auth().currentUser!.uid)
-            .observe(.value, with: { (favesSnapshot) in
+//            .observe(.value, with: { (favesSnapshot) in
+            .observeSingleEvent(of: .value, with: { (favesSnapshot) in
                 
+        
                 let allFaveTrees = favesSnapshot.value as? [String: Any]
                 
                 if (allFaveTrees == nil) {
@@ -46,7 +48,7 @@ class FavouritesManager: NSObject {
                 }
                 
                 
-                AppData.sharedInstance.favouritesArr = []
+//                AppData.sharedInstance.favouritesArr = []
                 for favTree in (allFaveTrees?.keys)!
                 {
                     
