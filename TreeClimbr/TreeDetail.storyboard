@@ -23,7 +23,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fsr-sL-UBa">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="WAT-mh-565">
+                                    <navigationItem id="WAT-mh-565">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="gN0-q4-sCr">
                                             <connections>
                                                 <action selector="dismissDetailAction:" destination="8qG-qF-Dga" id="9r6-wx-bUP"/>
@@ -103,6 +103,7 @@
                     <connections>
                         <outlet property="aboutView" destination="EEe-4t-ddy" id="ajl-zm-FOF"/>
                         <outlet property="basicTreeInfoView" destination="gnn-0f-9po" id="vG9-Ms-a1U"/>
+                        <outlet property="navigationBar" destination="Fsr-sL-UBa" id="BrP-kU-gMF"/>
                         <outlet property="picturesView" destination="AaD-1Q-cqP" id="8wb-qZ-Bll"/>
                         <outlet property="reviewView" destination="nz1-XT-Ydk" id="EPX-Go-Lbf"/>
                         <outlet property="segmentedControl" destination="czL-H8-tzg" id="pil-qn-hE5"/>
