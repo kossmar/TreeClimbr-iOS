@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="trw-am-1rE">
-                                <rect key="frame" x="10" y="41" width="355" height="453"/>
+                                <rect key="frame" x="10" y="107" width="355" height="453"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnC-fz-22u">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
@@ -86,7 +85,7 @@
                         <color key="backgroundColor" red="0.65549275045750022" green="0.83994289340101524" blue="0.63681516231635693" alpha="0.79018621575342463" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="trw-am-1rE" firstAttribute="leading" secondItem="ijt-MG-L4K" secondAttribute="leading" constant="10" id="NRl-i7-xYE"/>
-                            <constraint firstItem="trw-am-1rE" firstAttribute="centerY" secondItem="Xl5-JV-3va" secondAttribute="centerY" multiplier="0.8" id="O4W-Zq-Q7a"/>
+                            <constraint firstItem="trw-am-1rE" firstAttribute="centerY" secondItem="Xl5-JV-3va" secondAttribute="centerY" id="O4W-Zq-Q7a"/>
                             <constraint firstItem="trw-am-1rE" firstAttribute="centerX" secondItem="Xl5-JV-3va" secondAttribute="centerX" id="aAz-kq-z7W"/>
                             <constraint firstItem="ijt-MG-L4K" firstAttribute="trailing" secondItem="trw-am-1rE" secondAttribute="trailing" constant="10" id="e5R-QF-SJK"/>
                         </constraints>

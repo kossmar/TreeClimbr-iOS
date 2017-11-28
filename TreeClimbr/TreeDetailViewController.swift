@@ -127,6 +127,7 @@ class TreeDetailViewController: UIViewController {
         aboutView.isHidden = true
         reviewView.isHidden = true
         picturesView.isHidden = false
+        
     }
     
 
