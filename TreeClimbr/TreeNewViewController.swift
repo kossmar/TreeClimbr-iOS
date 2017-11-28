@@ -21,6 +21,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     var imageArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
     var sourceVC = ViewController()
+    
+    var imageIsSet: Bool = false
+    var titleIsSet: Bool = false
 
     
     //MARK: ViewController lifecycle
@@ -32,10 +35,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 //        treeImageView.clipsToBounds = true
 
-        saveButton.isEnabled = false
+//        saveButton.isEnabled = false
         setupTextView()
         setupTap()
         setup()
+        canSaveTree()
         
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -44,11 +48,12 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        canSaveTree()
         
         if imageArr.count > 0 {
             treeImageView.image = imageArr[0]
         }
-        
+
         photoCollectionView.reloadData()
     }
     
@@ -107,6 +112,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         imageArr = images
+        imageIsSet = true
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
@@ -181,10 +187,19 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
-        if treeNameTextField.text!.isEmpty{
-            saveButton.isEnabled = false
+        if treeNameTextField.text!.isEmpty {
+            titleIsSet = false
         } else {
+            titleIsSet = true
+        }
+        canSaveTree()
+    }
+    
+    private func canSaveTree() {
+        if imageIsSet == true && titleIsSet == true {
             saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
         }
     }
     
