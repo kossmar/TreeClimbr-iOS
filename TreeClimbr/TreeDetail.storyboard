@@ -68,7 +68,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaD-1Q-cqP">
-                                <rect key="frame" x="16" y="248" width="343" height="399"/>
+                                <rect key="frame" x="0.0" y="248" width="375" height="419"/>
                                 <connections>
                                     <segue destination="rCf-eS-uYt" kind="embed" id="xI5-oI-j1c"/>
                                 </connections>
@@ -77,7 +77,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gnn-0f-9po" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" id="6qs-9E-aSV"/>
-                            <constraint firstItem="CKX-F6-1Qy" firstAttribute="bottom" secondItem="AaD-1Q-cqP" secondAttribute="bottom" constant="20" id="7UI-Bc-aod"/>
+                            <constraint firstItem="CKX-F6-1Qy" firstAttribute="bottom" secondItem="AaD-1Q-cqP" secondAttribute="bottom" id="7UI-Bc-aod"/>
                             <constraint firstItem="nz1-XT-Ydk" firstAttribute="top" secondItem="czL-H8-tzg" secondAttribute="bottom" constant="8" id="8EK-yQ-fjS"/>
                             <constraint firstItem="nz1-XT-Ydk" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" constant="16" id="FbN-Gt-t6w"/>
                             <constraint firstItem="EEe-4t-ddy" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" constant="16" id="KEf-4B-Fl6"/>
@@ -86,8 +86,8 @@
                             <constraint firstItem="czL-H8-tzg" firstAttribute="top" secondItem="gnn-0f-9po" secondAttribute="bottom" constant="8" id="OmU-ZK-VFl"/>
                             <constraint firstItem="CKX-F6-1Qy" firstAttribute="trailing" secondItem="czL-H8-tzg" secondAttribute="trailing" constant="50" id="RK6-q4-BrW"/>
                             <constraint firstItem="CKX-F6-1Qy" firstAttribute="trailing" secondItem="gnn-0f-9po" secondAttribute="trailing" id="VtT-6X-zs2"/>
-                            <constraint firstItem="CKX-F6-1Qy" firstAttribute="trailing" secondItem="AaD-1Q-cqP" secondAttribute="trailing" constant="16" id="XeJ-Uy-uHA"/>
-                            <constraint firstItem="AaD-1Q-cqP" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" constant="16" id="e6o-o1-hPe"/>
+                            <constraint firstItem="CKX-F6-1Qy" firstAttribute="trailing" secondItem="AaD-1Q-cqP" secondAttribute="trailing" id="XeJ-Uy-uHA"/>
+                            <constraint firstItem="AaD-1Q-cqP" firstAttribute="leading" secondItem="CKX-F6-1Qy" secondAttribute="leading" id="e6o-o1-hPe"/>
                             <constraint firstItem="AaD-1Q-cqP" firstAttribute="top" secondItem="czL-H8-tzg" secondAttribute="bottom" constant="8" id="h9Q-h9-qP8"/>
                             <constraint firstItem="gnn-0f-9po" firstAttribute="top" secondItem="Fsr-sL-UBa" secondAttribute="bottom" id="hHq-kl-Lbz"/>
                             <constraint firstItem="Fsr-sL-UBa" firstAttribute="top" secondItem="CKX-F6-1Qy" secondAttribute="top" id="iF2-QG-LcX"/>
@@ -119,13 +119,13 @@
             <objects>
                 <viewController id="rCf-eS-uYt" customClass="PhotosViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="scT-ML-PWx">
-                        <rect key="frame" x="0.0" y="0.0" width="343" height="399"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="419"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vsa-S2-nEN">
-                                <rect key="frame" x="0.0" y="0.0" width="343" height="339"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="359"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="plH-sr-X5U">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="plH-sr-X5U">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -161,7 +161,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
-                                <rect key="frame" x="0.0" y="339" width="343" height="60"/>
+                                <rect key="frame" x="0.0" y="359" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.42053091300000001" green="0.68529901650000002" blue="0.44571341060000003" alpha="0.67356057359999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Add Photo">
@@ -172,7 +172,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
-                                <rect key="frame" x="0.0" y="279" width="343" height="60"/>
+                                <rect key="frame" x="0.0" y="299" width="375" height="60"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" title="Upload Photos"/>
                                 <connections>
