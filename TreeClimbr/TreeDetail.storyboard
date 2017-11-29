@@ -173,7 +173,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
                                 <rect key="frame" x="0.0" y="299" width="375" height="60"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" title="Upload Photos"/>
                                 <connections>
                                     <action selector="uploadPhotosButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="gMA-hk-ZL5"/>
