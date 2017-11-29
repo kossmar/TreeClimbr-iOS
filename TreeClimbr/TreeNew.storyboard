@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K4Y-12-7cx">
-                                <rect key="frame" x="20" y="356" width="335" height="291"/>
+                                <rect key="frame" x="20" y="346" width="335" height="301"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tree name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6p-PS-tfZ" userLabel="NameTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -44,18 +44,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6J-dD-g8P">
-                                        <rect key="frame" x="0.0" y="171" width="335" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="z6J-dD-g8P" secondAttribute="height" multiplier="67:6" id="bBW-oe-lFH"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Photo"/>
-                                        <connections>
-                                            <action selector="addPhoto:" destination="wm2-MY-3kG" eventType="touchUpInside" id="xAg-QP-ZW0"/>
-                                        </connections>
-                                    </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4zq-KD-bEG">
-                                        <rect key="frame" x="0.0" y="221" width="335" height="70"/>
+                                        <rect key="frame" x="0.0" y="171" width="335" height="70"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4zq-KD-bEG" secondAttribute="height" multiplier="67:14" id="Umf-ue-s5c"/>
@@ -94,18 +84,38 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z6J-dD-g8P">
+                                        <rect key="frame" x="0.0" y="261" width="335" height="40"/>
+                                        <color key="backgroundColor" red="0.094224356114864349" green="0.63722449541091919" blue="0.12456434220075607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="tx8-Yz-5g1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add Photo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPhoto:" destination="wm2-MY-3kG" eventType="touchUpInside" id="xAg-QP-ZW0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqV-SX-RcT">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.094224356114864349" green="0.63722449541091919" blue="0.12456434220075607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Add New Tree" id="RKB-zO-ykL">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="yRc-3k-bAf">
+                                            <color key="tintColor" red="0.094224356114864349" green="0.63722449541091919" blue="0.12456434220075607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelAction:" destination="wm2-MY-3kG" id="thA-uW-BxK"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="HEE-FY-f23">
+                                            <color key="tintColor" red="0.094224356114864349" green="0.63722449541091919" blue="0.12456434220075607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="save:" destination="wm2-MY-3kG" id="mhL-Zq-Ocj"/>
                                             </connections>
@@ -145,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="TreeDescTextView" destination="L10-cg-qwZ" id="CvQ-Fd-QVx"/>
+                        <outlet property="addPhotoButton" destination="z6J-dD-g8P" id="Sbk-ha-UEH"/>
                         <outlet property="photoCollectionView" destination="4zq-KD-bEG" id="Crf-kd-KUy"/>
                         <outlet property="saveButton" destination="HEE-FY-f23" id="o7a-Nx-o7m"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
