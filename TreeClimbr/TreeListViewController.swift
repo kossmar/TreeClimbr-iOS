@@ -25,7 +25,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        barButton.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18)!], for: UIControlState.normal)
+        barButton.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
         treesArr = AppData.sharedInstance.treesArr
         
         sortTableViewByDistance()

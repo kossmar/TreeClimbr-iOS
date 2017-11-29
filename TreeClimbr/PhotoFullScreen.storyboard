@@ -34,10 +34,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ePy-a0-e7k"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.34956282377243042" green="0.91029781103134155" blue="0.38767185807228088" alpha="0.2599261558219178" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.99200862646102905" green="0.99608379602432251" blue="0.99595052003860474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="TaI-t7-lrH">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="RJa-7V-6nD">
+                                            <color key="tintColor" red="0.092005304989999995" green="0.60224515199999995" blue="0.1215621606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="Spq-k6-cz9" id="Z1B-PS-B2b"/>
                                             </connections>
@@ -61,6 +64,7 @@
                         <viewLayoutGuide key="safeArea" id="ltg-mE-HK3"/>
                     </view>
                     <connections>
+                        <outlet property="leftBarButtonItem" destination="RJa-7V-6nD" id="vX1-Ft-rsM"/>
                         <outlet property="navigationBar" destination="mNk-D4-xGp" id="R2E-Al-N60"/>
                         <outlet property="pageControl" destination="3AC-Tw-oYE" id="wfQ-7z-gTh"/>
                         <outlet property="photoScrollView" destination="1fI-GW-vO3" id="Hhd-zd-eVD"/>

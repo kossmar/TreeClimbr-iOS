@@ -8,6 +8,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
     
     var imageArr = Array<UIImage>()
     var contentWidth : CGFloat = 0.0
@@ -24,10 +25,19 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+//        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        navigationBar.backgroundColor = UIColor(red: 189.0/225.0, green: 239.0/225.0, blue: 191.0/225.0, alpha: 0.85)
+
+//        rgb(11, 124, 15)
+//        rgb(189, 239, 191)
+
+
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showNavBar(sender:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        leftBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
