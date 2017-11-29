@@ -124,6 +124,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let uploadAction = UIAlertAction(title: "Upload", style: .default) { (action) in
             self.uploadPhotosButton.isHidden = true
+            self.addPhotoButton.setTitle("Add Photos", for: .normal)
             self.imagePickerController.resetAssets()
 //            self.imageArr = []
             
