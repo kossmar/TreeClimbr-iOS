@@ -29,11 +29,12 @@
                                     <constraint firstAttribute="width" constant="39" id="mzb-t5-XlM"/>
                                 </constraints>
                             </pageControl>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNk-D4-xGp">
+                            <navigationBar opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNk-D4-xGp">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ePy-a0-e7k"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.34956282377243042" green="0.91029781103134155" blue="0.38767185807228088" alpha="0.2599261558219178" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Title" id="TaI-t7-lrH">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="RJa-7V-6nD">

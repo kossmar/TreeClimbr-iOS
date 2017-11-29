@@ -39,8 +39,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
-//        var attr = NSDictionary(object: UIFont(name: "Helvetica Neue", size: 12.0)!, forKey: NSAttributedStringKey.font as NSCopying)
-//        self.segmentControl.setTitleTextAttributes(attr as! [AnyHashable : Any], for: .Normal)
+
         let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 17.0)!, forKey: NSAttributedStringKey.font as NSCopying)
         segmentControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
         

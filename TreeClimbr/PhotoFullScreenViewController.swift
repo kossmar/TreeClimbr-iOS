@@ -20,7 +20,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         photoScrollView.delegate = self
         pageControl.numberOfPages = imageArr.count
         navigationBar.isHidden = true
-        navigationBar.alpha = 0.6
+        
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showNavBar(sender:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -52,6 +53,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         if navigationBar.isHidden == true {
             UIView.animate(withDuration: 0.5, animations: {
                 self.navigationBar.isHidden = false
+                self.navigationBar.barTintColor = UIColor.white.withAlphaComponent(0.3)
+                
             })
         } else {
             UIView.animate(withDuration: 0.5, animations: {
@@ -62,7 +65,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     func setupScrollView() {
         let width = self.view.frame.width
-
+        
         if justLoaded == true {
             photoScrollView.contentOffset.x = width * CGFloat(startPage)
         } else {
