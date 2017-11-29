@@ -13,6 +13,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var TreeDescTextView: UITextView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     //MARK: Properties
@@ -30,12 +31,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set up imageview shape
-//        treeImageView.layer.cornerRadius = treeImageView.frame.height/2
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
 
-//        treeImageView.clipsToBounds = true
-
-//        saveButton.isEnabled = false
+        
         setupTextView()
         setupTap()
         setup()
@@ -54,6 +52,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         if imageArr.count > 0 {
             treeImageView.image = imageArr[0]
+            addPhotoButton.setTitle("Manage Photos", for: .normal)
+            saveButton.isEnabled = true
+        } else {
+            addPhotoButton.setTitle("Add Photos", for: .normal)
+            saveButton.isEnabled = false
         }
 
         photoCollectionView.reloadData()
