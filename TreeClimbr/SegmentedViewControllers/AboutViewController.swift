@@ -12,7 +12,6 @@ class AboutViewController: UIViewController {
     
     var sourceVC = TreeDetailViewController()
     var favouriteState = false
-    var creatorName = String()
 
     var tree : Tree? {
         didSet {
