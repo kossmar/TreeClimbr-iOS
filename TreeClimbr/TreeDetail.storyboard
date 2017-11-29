@@ -170,42 +170,45 @@
                                     <outlet property="delegate" destination="rCf-eS-uYt" id="nLn-d6-dbp"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xVj-ZS-xyq">
                                 <rect key="frame" x="5" y="370" width="365" height="40"/>
-                                <color key="backgroundColor" red="0.094897352159023285" green="0.56736469268798828" blue="0.17081022262573242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="gZv-I0-ZiD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Add Photo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addPhotoButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="8At-tP-6uo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
-                                <rect key="frame" x="0.0" y="330" width="375" height="40"/>
-                                <state key="normal" title="Upload Photos">
-                                    <color key="titleColor" red="0.091438211500644684" green="0.4701569676399231" blue="0.12714803218841553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadPhotosButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="gMA-hk-ZL5"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Nr-haY">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="40"/>
+                                        <color key="backgroundColor" red="0.094897352159023285" green="0.56736469268798828" blue="0.17081022262573242" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="gZv-I0-ZiD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Add Photo">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addPhotoButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="8At-tP-6uo"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPD-8n-8ty">
+                                        <rect key="frame" x="185" y="0.0" width="180" height="40"/>
+                                        <color key="backgroundColor" red="0.082989238202571869" green="0.76930814981460571" blue="0.086652763187885284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Upload Photos">
+                                            <color key="titleColor" red="0.99200862646102905" green="0.99608379602432251" blue="0.99595052003860474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadPhotosButtonPressed:" destination="rCf-eS-uYt" eventType="touchUpInside" id="gMA-hk-ZL5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.99287670850753784" green="0.99700695276260376" blue="0.99637609720230103" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vsa-S2-nEN" secondAttribute="bottom" constant="5" id="9l6-Q7-138"/>
-                            <constraint firstItem="vPD-8n-8ty" firstAttribute="height" secondItem="dce-Nr-haY" secondAttribute="height" id="Eti-9E-QYJ"/>
-                            <constraint firstItem="dce-Nr-haY" firstAttribute="top" secondItem="vPD-8n-8ty" secondAttribute="bottom" id="Ewo-hR-nEF"/>
-                            <constraint firstItem="vPD-8n-8ty" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="KaW-t8-YAu"/>
-                            <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="dce-Nr-haY" secondAttribute="trailing" constant="5" id="M3d-N4-Ips"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="xVj-ZS-xyq" secondAttribute="bottom" constant="5" id="IyN-38-F3d"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" id="OK1-uS-h7r"/>
+                            <constraint firstItem="xVj-ZS-xyq" firstAttribute="top" secondItem="vsa-S2-nEN" secondAttribute="bottom" constant="5" id="RBU-LT-Psx"/>
                             <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="vsa-S2-nEN" secondAttribute="trailing" id="U7P-vf-wfQ"/>
-                            <constraint firstItem="dce-Nr-haY" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" constant="5" id="Ydw-qK-1nR"/>
-                            <constraint firstItem="0xg-jR-oA1" firstAttribute="bottom" secondItem="dce-Nr-haY" secondAttribute="bottom" constant="5" id="gfh-vp-Jtg"/>
-                            <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="vPD-8n-8ty" secondAttribute="trailing" id="ijS-Fb-3HR"/>
+                            <constraint firstItem="xVj-ZS-xyq" firstAttribute="leading" secondItem="0xg-jR-oA1" secondAttribute="leading" constant="5" id="VVv-4T-LU2"/>
+                            <constraint firstItem="0xg-jR-oA1" firstAttribute="trailing" secondItem="xVj-ZS-xyq" secondAttribute="trailing" constant="5" id="kVY-8b-C8p"/>
                             <constraint firstItem="vsa-S2-nEN" firstAttribute="top" secondItem="scT-ML-PWx" secondAttribute="top" id="vFP-Vc-IYY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0xg-jR-oA1"/>
