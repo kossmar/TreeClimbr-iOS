@@ -197,6 +197,7 @@
                         <viewLayoutGuide key="safeArea" id="0xg-jR-oA1"/>
                     </view>
                     <connections>
+                        <outlet property="addPhotoButton" destination="dce-Nr-haY" id="sob-Dm-QZQ"/>
                         <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
                         <outlet property="uploadPhotosButton" destination="vPD-8n-8ty" id="fhn-rG-KhC"/>
                         <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="XHE-bU-QTw"/>
@@ -223,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YWL-m4-WDg">
-                                <rect key="frame" x="0.0" y="250" width="343" height="149"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cqv-NH-CUv">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -236,21 +237,20 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USu-Au-yem">
-
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="343" height="50"/>
                                         <state key="normal" title="Add To Favourites"/>
                                         <connections>
                                             <action selector="favouriteAction:" destination="CXB-rD-QPr" eventType="touchUpInside" id="JmL-86-Ko3"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De5-Qu-z5W">
-                                        <rect key="frame" x="0.0" y="49.5" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="100" width="343" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZQ-Mq-wow">
-                                        <rect key="frame" x="0.0" y="99.5" width="343" height="49.5"/>
+                                        <rect key="frame" x="0.0" y="150" width="343" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

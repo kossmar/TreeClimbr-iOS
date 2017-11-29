@@ -3,6 +3,7 @@ import ImagePicker
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     var tree : Tree?
@@ -30,8 +31,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewWillAppear(true)
         if moreImagesArr.isEmpty {
             uploadPhotosButton.isHidden = true
+            addPhotoButton.setTitle("Add Photos", for: .normal)
         } else {
             uploadPhotosButton.isHidden = false
+            addPhotoButton.setTitle("Manage Photos", for: .normal)
         }
     }
     
@@ -158,6 +161,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        self.moreImagesArr = []
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
