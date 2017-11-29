@@ -40,6 +40,11 @@ class AboutViewController: UIViewController {
 
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+       treeDescTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+    }
+    
     func getCreatorName() {
         
         let creator = tree?.treeCreator
