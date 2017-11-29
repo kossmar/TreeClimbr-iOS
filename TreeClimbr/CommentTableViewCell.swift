@@ -13,12 +13,16 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var commentInfoView: UIView!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         commentTextView.isEditable = false
+        commentInfoView.layer.cornerRadius = commentInfoView.frame.height/4
+        commentTextView.layer.cornerRadius = commentTextView.frame.height/8
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
