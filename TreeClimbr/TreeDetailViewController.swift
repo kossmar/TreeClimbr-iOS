@@ -76,10 +76,6 @@ class TreeDetailViewController: UIViewController {
             
             let url = tree.treePhotoURL
             
-//            basicTreeInfoView.treeImageView.sd_setImage(with: url,
-//                                                        completed: { (image, error, cacheType, url) in
-//                                                            print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
-//            })
             basicTreeInfoView.backgroundImageView.sd_setImage(with: url,
                                                         completed: { (image, error, cacheType, url) in
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
@@ -101,6 +97,7 @@ class TreeDetailViewController: UIViewController {
                 let group = DispatchGroup()
                 
                 self.imageArr = []
+                self.photoObjArr = []
                 
                 for photo in photos {
                     group.enter()
@@ -114,7 +111,10 @@ class TreeDetailViewController: UIViewController {
                         } else {
                             
                             let realImage = UIImage(data: data!)
-                            self.imageArr.append(realImage!)
+                            
+                            photo.image = realImage!
+                            self.photoObjArr.append(photo)
+//                            self.imageArr.append(realImage!)
                             group.leave()
                         }
                     })
@@ -124,6 +124,11 @@ class TreeDetailViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.photosViewController.imageArr = []
+                        self.photosViewController.photoObjArr = self.photoObjArr
+                        self.photosViewController.photoObjArr.sort(by: { $0.timeStamp < $1.timeStamp })
+                        for photo in self.photoObjArr {
+                            self.imageArr.append(photo.image)
+                        }
                         self.photosViewController.imageArr = self.imageArr
                         self.photosViewController.photoCollectionView.reloadData()
                     }
@@ -166,9 +171,6 @@ class TreeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
-//        FavouritesManager.loadFavourites { trees in
-//            guard let trees = trees else {return}
-//            self.sourceVC?.treesArr = trees
             self.sourceVC?.tableView.reloadData()
 //        }
     }

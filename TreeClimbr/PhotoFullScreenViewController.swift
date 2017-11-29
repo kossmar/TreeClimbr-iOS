@@ -2,6 +2,7 @@
 
 import UIKit
 import CoreGraphics
+import Firebase
 
 class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
@@ -14,6 +15,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     var contentWidth : CGFloat = 0.0
     var startPage = Int()
     var justLoaded = true
+    var photoObjArr = Array<Photo>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +59,13 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         pageControl.currentPage = (Int(photoScrollView.contentOffset.x / photoScrollView.frame.width))
+        if pageControl.currentPage < photoObjArr.count {
+            let photo = photoObjArr[pageControl.currentPage]
+            navigationBar.topItem?.title = photo.userID
+        } else {
+            navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
+        }
+
     }
     
     
