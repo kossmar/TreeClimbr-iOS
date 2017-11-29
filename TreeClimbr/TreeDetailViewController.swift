@@ -54,6 +54,9 @@ class TreeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 17.0)!, forKey: NSAttributedStringKey.font as NSCopying)
+        segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
+        
         if let tree = tree {
             navigationBar.topItem?.title = tree.treeName
             

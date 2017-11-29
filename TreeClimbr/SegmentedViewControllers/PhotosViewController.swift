@@ -21,6 +21,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         photoCollectionView.delegate = self
         moreImagesArr = []
         
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
 //        let width = view.frame.width / 2
 //        flowLayout.itemSize = CGSize(width: width, height: width)
 //        flowLayout.minimumInteritemSpacing = 0
