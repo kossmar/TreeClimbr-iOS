@@ -113,9 +113,11 @@
                     <connections>
                         <outlet property="aboutView" destination="EEe-4t-ddy" id="ajl-zm-FOF"/>
                         <outlet property="basicTreeInfoView" destination="gnn-0f-9po" id="vG9-Ms-a1U"/>
+                        <outlet property="leftBarButtonItem" destination="gN0-q4-sCr" id="n2W-e5-XV0"/>
                         <outlet property="navigationBar" destination="Fsr-sL-UBa" id="BrP-kU-gMF"/>
                         <outlet property="picturesView" destination="AaD-1Q-cqP" id="8wb-qZ-Bll"/>
                         <outlet property="reviewView" destination="nz1-XT-Ydk" id="EPX-Go-Lbf"/>
+                        <outlet property="rightBarButtonItem" destination="aPi-0P-pNf" id="Yxo-ZO-kuI"/>
                         <outlet property="segmentedControl" destination="czL-H8-tzg" id="pil-qn-hE5"/>
                         <outlet property="toMapButton" destination="aPi-0P-pNf" id="uPr-BT-mc7"/>
                     </connections>
