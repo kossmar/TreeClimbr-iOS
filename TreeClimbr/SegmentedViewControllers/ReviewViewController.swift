@@ -13,6 +13,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var addCommentButton: UIButton!
+
     
     var commentArr = [Comment]()
     
@@ -39,6 +40,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
 
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))

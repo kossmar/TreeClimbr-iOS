@@ -8,6 +8,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var treeDescTextView: UITextView!
     @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var addFavouriteButton: UIButton!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     var sourceVC = TreeDetailViewController()
     var favouriteState = false
@@ -34,6 +35,9 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         treeDescTextView.isEditable = false
+        addFavouriteButton.layer.cornerRadius = addFavouriteButton.frame.height/4
+
+
     }
     
     func getCreatorName() {
