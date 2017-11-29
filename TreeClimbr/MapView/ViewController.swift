@@ -34,7 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         //setup side buttons
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
-        sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
+        sideButtonsView.layer.cornerRadius = sideButtonsView.frame.height/2
         sideButtonsView.isHidden = true
         
         
