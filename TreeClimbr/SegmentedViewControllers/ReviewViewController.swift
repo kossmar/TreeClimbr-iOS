@@ -41,10 +41,13 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         tableView.delegate = self
         tableView.dataSource = self
         
-        
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        descTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
     @objc func dismissKeyboard() {
