@@ -60,6 +60,12 @@ class AboutViewController: UIViewController {
                 
                 let userName = value?["nameKey"] as? String ?? ""
                 self.userLabel.text = "\(userName)"
+                
+                if self.tree?.treeDescription == "" {
+                    self.treeDescTextView.text = "\(userName) did not love me enough. So... no description..."
+                    self.treeDescTextView.textColor = UIColor.gray
+                }
+
             })
     }
     
