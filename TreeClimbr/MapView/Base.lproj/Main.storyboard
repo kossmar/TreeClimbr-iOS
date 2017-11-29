@@ -100,6 +100,7 @@
                     <connections>
                         <outlet property="logoutButton" destination="drO-04-UxG" id="aPk-Ol-SYc"/>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
+                        <outlet property="menuButton" destination="dCU-1J-pdG" id="Jc2-ES-ijw"/>
                         <outlet property="sideButtonsView" destination="0q5-aI-TA7" id="EPB-QD-7jL"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>

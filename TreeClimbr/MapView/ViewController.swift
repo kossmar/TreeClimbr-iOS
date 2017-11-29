@@ -25,6 +25,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBOutlet weak var sideButtonsView: UIView!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
     
     //MARK: ViewController lifecycle
     
@@ -44,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         FavouritesManager.loadFavourites { (success) in
             return
         }
+        
     }
     
     
@@ -186,10 +188,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     @IBAction func menuButton(_ sender: UIButton) {
+        
         if sideButtonsView.isHidden {
-            sideButtonsView.isHidden = false
+            
+            UIView.transition(with: sideButtonsView,
+                              duration: 0.3,
+                              options: .transitionFlipFromLeft,
+                              animations: {
+                                self.sideButtonsView.isHidden = false
+                                }, completion: nil)
+            
+            
+            UIView.animate(withDuration: 0.3) {
+                self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            }
+            
         } else {
-            sideButtonsView.isHidden = true
+            UIView.transition(with: sideButtonsView,
+                              duration: 0.3,
+                              options: .transitionFlipFromLeft,
+                              animations: {
+                                self.sideButtonsView.isHidden = true
+            }, completion: nil)
+            
+            UIView.animate(withDuration: 0.3) {
+                self.menuButton.transform = CGAffineTransform.identity
+                self.sideButtonsView.transform = CGAffineTransform.identity
+            }
         }
     }
     
