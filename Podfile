@@ -10,6 +10,7 @@ target 'TreeClimbr' do
   pod 'Firebase/Storage'
   pod 'SDWebImage', '~> 4.0'
   pod 'ImagePicker'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for TreeClimbr
 
