@@ -21,7 +21,10 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         pageControl.numberOfPages = imageArr.count
         navigationBar.isHidden = true
         
-        
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showNavBar(sender:)))
         self.view.addGestureRecognizer(tapGesture)
