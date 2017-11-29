@@ -25,7 +25,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+//        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
         
         treesArr = AppData.sharedInstance.treesArr
         
