@@ -12,6 +12,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     var moreImagesArr = Array<UIImage>()
     let imagePickerController = ImagePickerController()
     let flowLayout = UICollectionViewFlowLayout()
+    var photoObjArr = Array<Photo>()
     
     
     // MARK: - View controller lifecycle
@@ -20,7 +21,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         imagePickerController.delegate = self
         photoCollectionView.delegate = self
         moreImagesArr = []
-        
+
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         uploadPhotosButton.layer.cornerRadius = uploadPhotosButton.frame.height/4
 
@@ -48,9 +49,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicPhotoCell", for: indexPath) as! BasicPhotoCollectionViewCell
-        let photo = self.imageArr[indexPath.row]
-        cell.treePhotoImageView.image = photo
-        
+        if indexPath.item < self.photoObjArr.count {
+            let photo = self.photoObjArr[indexPath.row]
+            cell.treePhotoImageView.image = photo.image
+        } else {
+            let image = self.imageArr[indexPath.row]
+            cell.treePhotoImageView.image = image
+        }
         return cell
     }
     
@@ -96,6 +101,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             let startPage = sender as! Int
             fullScreenVC.startPage = startPage
             fullScreenVC.imageArr = self.imageArr
+            fullScreenVC.photoObjArr = self.photoObjArr
         }
         
     }

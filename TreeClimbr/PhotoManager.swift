@@ -15,6 +15,7 @@ class PhotoManager: NSObject {
         
         
         let userID = Auth.auth().currentUser?.uid
+        let userName = Auth.auth().currentUser?.displayName
         for photo in photos {
             
             let uuid = NSUUID().uuidString
@@ -22,6 +23,7 @@ class PhotoManager: NSObject {
             
             let photoDict: [String : Any] = [
                 "userIDKey": userID!,
+                "userNameKey": userName!,
                 "urlKey": photo.photoURL,
                 "timeKey": photo.timeStamp,
                 "isMainKey": photo.isMain,
@@ -68,6 +70,7 @@ class PhotoManager: NSObject {
                     let photo : [String : Any] = any as! Dictionary <String, Any>
                     
                     let userID = photo["userIDKey"] as! String
+                    let userName = photo["userNameKey"] as! String
                     let photoURL = photo["urlKey"] as! String
                     let timeStamp = photo["timeKey"] as! String
                     let isMain = photo["isMainKey"] as! Bool
@@ -76,6 +79,7 @@ class PhotoManager: NSObject {
                     
                     let readPhoto = Photo(URL: photoURL)
                     readPhoto.userID = userID
+                    readPhoto.userName = userName
                     readPhoto.isMain = isMain
                     readPhoto.timeStamp = timeStamp
                     readPhoto.photoID = photoID
