@@ -50,7 +50,7 @@ class AboutViewController: UIViewController {
                 }
                 
                 let userName = value?["nameKey"] as? String ?? ""
-                self.userLabel.text = "By: \(userName)"
+                self.userLabel.text = "\(userName)"
             })
     }
     
