@@ -49,8 +49,9 @@ class PhotoManager: NSObject {
         
         AppData.sharedInstance
             .photosNode.child(tree.treeID!)
-            .observe (.value, with: { (snapshot) in
-                
+//            .observe (.value, with: { (snapshot) in
+            .observeSingleEvent(of: .value) { (snapshot) in
+
                 let value = snapshot.value as? NSDictionary;
                 
                 if (value == nil) {
@@ -88,7 +89,7 @@ class PhotoManager: NSObject {
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
                 completion(tempPhotoArr)
-            })
+            }
     }
     
     
