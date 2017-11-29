@@ -30,6 +30,8 @@ class TreeDetailViewController: UIViewController {
     @IBOutlet weak var aboutView: UIView!
     @IBOutlet weak var reviewView: UIView!
     @IBOutlet weak var picturesView: UIView!
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     lazy var aboutViewController: AboutViewController = {
         return childViewControllers.first(where: { (viewController) -> Bool in
@@ -56,6 +58,9 @@ class TreeDetailViewController: UIViewController {
         
         let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 17.0)!, forKey: NSAttributedStringKey.font as NSCopying)
         segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
+        
+        leftBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18)!], for: UIControlState.normal)
+        rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18)!], for: UIControlState.normal)
         
         if let tree = tree {
             navigationBar.topItem?.title = tree.treeName

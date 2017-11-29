@@ -27,6 +27,7 @@
                                 <items>
                                     <navigationItem title="All Trees" id="nuG-qq-wgI">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="AYC-8h-h1c">
+                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                             <color key="tintColor" red="0.091438211500644684" green="0.4701569676399231" blue="0.12714803218841553" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="doneButton:" destination="1oU-Xb-MUW" id="1Sv-x8-hu4"/>
@@ -97,6 +98,7 @@
                         <viewLayoutGuide key="safeArea" id="xla-EM-OGE"/>
                     </view>
                     <connections>
+                        <outlet property="barButton" destination="AYC-8h-h1c" id="i6a-lz-0De"/>
                         <outlet property="navigationBar" destination="so4-ye-eS6" id="End-TR-Ied"/>
                         <outlet property="segmentControl" destination="BTe-d6-0hj" id="Kcd-sV-6Id"/>
                         <outlet property="tableView" destination="Uqq-mo-bEp" id="yRN-sb-Mdx"/>

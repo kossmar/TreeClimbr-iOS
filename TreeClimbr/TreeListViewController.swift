@@ -13,7 +13,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     var segmentState = 0
     
     @IBOutlet weak var filterButton: UIBarButtonItem!
-    
+    @IBOutlet var barButton: UIBarButtonItem!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     
@@ -25,8 +25,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
-//        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.80)
-        
+        barButton.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18)!], for: UIControlState.normal)
         treesArr = AppData.sharedInstance.treesArr
         
         sortTableViewByDistance()
