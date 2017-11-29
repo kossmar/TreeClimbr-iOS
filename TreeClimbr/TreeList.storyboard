@@ -31,18 +31,22 @@
                                 </items>
                             </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BTe-d6-0hj">
-                                <rect key="frame" x="71" y="619" width="233" height="29"/>
+                                <rect key="frame" x="10" y="627" width="355" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fN6-0M-zqr"/>
+                                </constraints>
                                 <segments>
                                     <segment title="All Trees"/>
                                     <segment title="My Trees"/>
                                     <segment title="Favourites"/>
                                 </segments>
+                                <color key="tintColor" red="0.094224356114864349" green="0.63722449541091919" blue="0.12456434220075607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segmentAction:" destination="1oU-Xb-MUW" eventType="valueChanged" id="DmH-Va-XXj"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uqq-mo-bEp">
-                                <rect key="frame" x="0.0" y="64" width="375" height="535"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BasicTreeTableViewCell" rowHeight="70" id="6iv-ng-4y2" customClass="BasicTreeTableViewCell" customModule="TreeClimbr" customModuleProvider="target">
@@ -77,10 +81,12 @@
                             <constraint firstItem="so4-ye-eS6" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" id="Dwu-pX-EpD"/>
                             <constraint firstItem="Uqq-mo-bEp" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" id="G5j-Rm-THr"/>
                             <constraint firstItem="BTe-d6-0hj" firstAttribute="centerX" secondItem="CLL-V6-LJg" secondAttribute="centerX" id="Pvo-kz-Uw4"/>
-                            <constraint firstItem="xla-EM-OGE" firstAttribute="bottom" secondItem="BTe-d6-0hj" secondAttribute="bottom" constant="20" id="TTS-XK-XdK"/>
+                            <constraint firstItem="xla-EM-OGE" firstAttribute="bottom" secondItem="BTe-d6-0hj" secondAttribute="bottom" constant="10" id="TTS-XK-XdK"/>
                             <constraint firstItem="so4-ye-eS6" firstAttribute="top" secondItem="xla-EM-OGE" secondAttribute="top" id="YbZ-dQ-PJo"/>
                             <constraint firstItem="Uqq-mo-bEp" firstAttribute="top" secondItem="so4-ye-eS6" secondAttribute="bottom" id="ajc-ch-oRo"/>
-                            <constraint firstItem="BTe-d6-0hj" firstAttribute="top" secondItem="Uqq-mo-bEp" secondAttribute="bottom" constant="20" id="x0q-qp-SsJ"/>
+                            <constraint firstItem="xla-EM-OGE" firstAttribute="trailing" secondItem="BTe-d6-0hj" secondAttribute="trailing" constant="10" id="b0c-Fx-K5m"/>
+                            <constraint firstItem="BTe-d6-0hj" firstAttribute="leading" secondItem="xla-EM-OGE" secondAttribute="leading" constant="10" id="nZ6-lv-MOR"/>
+                            <constraint firstItem="BTe-d6-0hj" firstAttribute="top" secondItem="Uqq-mo-bEp" secondAttribute="bottom" constant="10" id="x0q-qp-SsJ"/>
                             <constraint firstItem="so4-ye-eS6" firstAttribute="trailing" secondItem="xla-EM-OGE" secondAttribute="trailing" id="zEv-ul-a2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xla-EM-OGE"/>
