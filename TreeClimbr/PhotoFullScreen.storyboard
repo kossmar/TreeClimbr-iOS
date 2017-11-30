@@ -35,7 +35,8 @@
                                     <constraint firstAttribute="height" constant="44" id="ePy-a0-e7k"/>
                                 </constraints>
                                 <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.99200862646102905" green="0.99608379602432251" blue="0.99595052003860474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                    <color key="textColor" red="0.027841795235872269" green="0.058244697749614716" blue="0.022074509412050247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="TaI-t7-lrH">

@@ -125,7 +125,7 @@ class TreeDetailViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.photosViewController.imageArr = []
                         self.photosViewController.photoObjArr = self.photoObjArr
-                        self.photosViewController.photoObjArr.sort(by: { $0.timeStamp < $1.timeStamp })
+                        self.photosViewController.photoObjArr.sort(by: { $1.timeStamp < $0.timeStamp })
                         for photo in self.photoObjArr {
                             self.imageArr.append(photo.image)
                         }

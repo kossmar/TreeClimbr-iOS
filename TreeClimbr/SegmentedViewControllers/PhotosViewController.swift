@@ -161,6 +161,8 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         for image in moreImagesArr {
             imageArr.append(image)
+
+
         }
         
         photoCollectionView.reloadData()

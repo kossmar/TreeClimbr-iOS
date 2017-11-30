@@ -46,6 +46,16 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if pageControl.currentPage < photoObjArr.count {
+            let photo = photoObjArr[pageControl.currentPage]
+            navigationBar.topItem?.title = photo.userName
+        } else {
+            navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
+            
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         self.setupScrollView()
     }
@@ -61,7 +71,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = (Int(photoScrollView.contentOffset.x / photoScrollView.frame.width))
         if pageControl.currentPage < photoObjArr.count {
             let photo = photoObjArr[pageControl.currentPage]
-            navigationBar.topItem?.title = photo.userID
+            navigationBar.topItem?.title = photo.userName
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
         }
