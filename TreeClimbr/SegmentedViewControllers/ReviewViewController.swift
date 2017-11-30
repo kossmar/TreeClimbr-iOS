@@ -45,11 +45,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         view.addGestureRecognizer(tap)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        descTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-    }
-    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
