@@ -14,6 +14,7 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentInfoView: UIView!
+    @IBOutlet weak var commentTextTopView: UIView!
     
 
     override func awakeFromNib() {
@@ -21,8 +22,12 @@ class CommentTableViewCell: UITableViewCell {
         // Initialization code
         commentTextView.isEditable = false
         commentInfoView.layer.cornerRadius = commentInfoView.frame.height/4
-        commentTextView.layer.cornerRadius = commentTextView.frame.height/8
-
+        commentTextTopView.layer.cornerRadius = commentTextTopView.frame.height/8
+        
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when){
+            self.commentTextView.contentOffset.y = 0
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
