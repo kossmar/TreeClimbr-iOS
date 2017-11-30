@@ -121,6 +121,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             treeDetailVC.tree = treeObject
             treeDetailVC.fromMapView = true
             
+            treeObject.treeComments = []
+            CommentManager.loadComments(tree: treeObject, completion: { (success) in
+                treeDetailVC.basicTreeInfoView.commentLabel.text = "\(treeObject.treeComments.count) Comments"
+                treeObject.treeComments = []
+            })
+            
         }
         
         if segue.identifier == "toTreeList" {
