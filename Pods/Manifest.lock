@@ -72,7 +72,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   ImagePicker: 973953c25960fe04729a7082a56194321c6762d2
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
-  leveldb-library: 4f9eedf84ab46b4fa3b7893bf30714b2a1a74022
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
