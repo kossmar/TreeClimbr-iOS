@@ -10,28 +10,28 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     var imageArr = Array<UIImage>()
     var contentWidth : CGFloat = 0.0
     var startPage = Int()
     var justLoaded = true
     var photoObjArr = Array<Photo>()
+    var sourceVC = PhotosViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         photoScrollView.delegate = self
-        pageControl.numberOfPages = imageArr.count
+        pageControl.numberOfPages = photoObjArr.count
         navigationBar.isHidden = true
         
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-//        navigationBar.backgroundColor = UIColor.white.withAlphaComponent(0.5)
         navigationBar.backgroundColor = UIColor(red: 189.0/225.0, green: 239.0/225.0, blue: 191.0/225.0, alpha: 0.85)
-
-//        rgb(11, 124, 15)
-//        rgb(189, 239, 191)
+        
 
 
         
@@ -50,6 +50,11 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         if pageControl.currentPage < photoObjArr.count {
             let photo = photoObjArr[pageControl.currentPage]
             navigationBar.topItem?.title = photo.userName
+            if Auth.auth().currentUser?.uid == photo.userID {
+                rightBarButtonItem.isEnabled = true
+                rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
+                rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+            }
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
             
@@ -61,9 +66,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    @IBAction func backButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
+
     
     // MARK: - ScrollViewDelegate functions
     
@@ -72,12 +75,58 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         if pageControl.currentPage < photoObjArr.count {
             let photo = photoObjArr[pageControl.currentPage]
             navigationBar.topItem?.title = photo.userName
+            if Auth.auth().currentUser?.uid == photo.userID {
+                rightBarButtonItem.isEnabled = true
+                rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
+                rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+            } else {
+                rightBarButtonItem.isEnabled = false
+                rightBarButtonItem.tintColor = UIColor.clear
+            }
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
         }
 
     }
     
+    
+    // MARK: - Actions
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func deletePhotoPressed(_ sender: UIBarButtonItem) {
+        
+        AlertShow.confirm(inpView: self, titleStr: "Delete photo?", messageStr: " ") {
+            let photo = self.photoObjArr[self.pageControl.currentPage]
+            if self.pageControl.numberOfPages > 1 {
+                if self.pageControl.currentPage != 0 {
+                    self.pageControl.currentPage = (self.pageControl.currentPage) - 1
+                    self.setupScrollView()
+                    self.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
+                    self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
+                } else {
+                    self.pageControl.currentPage = (self.pageControl.currentPage) + 1
+                    self.setupScrollView()
+                    self.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
+                    self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
+                }
+                self.pageControl.numberOfPages = self.photoObjArr.count
+                self.setupScrollView()
+                
+                
+            } else {
+                self.photoObjArr.remove(at: self.pageControl.currentPage)
+                self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            PhotoManager.deletePhoto(photo: photo, tree: self.sourceVC.tree!)
+
+        }
+    }
+        
     
     // MARK: - Custom Functions
     
@@ -112,8 +161,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
             subview.removeFromSuperview()
         }
         
-        for image in imageArr {
-            let imageView = UIImageView(image: image)
+        for photo in photoObjArr {
+            let imageView = UIImageView(image: photo.image)
             
             let frame = CGRect(x: (width * x), y: self.view.frame.origin.y, width: self.view.frame.width, height: photoScrollView.frame.height)
             imageView.frame = frame

@@ -165,14 +165,14 @@ class TreeDetailViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             self.rootSourceVC.focusOnTree(location: treeLocation, tree: self.tree)
         })
+        
     }
     
     @IBAction func dismissDetailAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
-            self.sourceVC?.tableView.reloadData()
-//        }
+        self.sourceVC?.tableView.reloadData()
     }
     
     
