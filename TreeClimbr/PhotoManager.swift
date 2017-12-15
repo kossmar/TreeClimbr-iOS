@@ -96,5 +96,24 @@ class PhotoManager: NSObject {
             }
     }
     
+    class func deletePhoto(photo: Photo, tree: Tree) {
+        
+        AppData.sharedInstance.photosNode
+            .child(tree.treeID!)
+            .child(photo.photoID)
+            .removeValue()
+        
+        let desertRef = AppData.sharedInstance.storageRef.child(photo.photoID)
+        
+        desertRef.delete { error in
+            if let error = error {
+                print(error)
+            } else {
+                print("PHOTO DELETED")
+            }
+        }
+        
+    }
+    
     
 }

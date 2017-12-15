@@ -43,7 +43,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return self.imageArr.count
+        return self.photoObjArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,6 +102,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             fullScreenVC.startPage = startPage
             fullScreenVC.imageArr = self.imageArr
             fullScreenVC.photoObjArr = self.photoObjArr
+            fullScreenVC.sourceVC = self
         }
         
     }

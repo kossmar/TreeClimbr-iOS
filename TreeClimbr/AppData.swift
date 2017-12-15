@@ -14,6 +14,7 @@ class AppData: NSObject {
     public var favouritesNode: DatabaseReference
     public var photosNode: DatabaseReference
     public var userTreesNode: DatabaseReference
+    public var storageRef: StorageReference
     
     
     public var treesArr : Array <Tree> = Array <Tree> ()
@@ -25,7 +26,6 @@ class AppData: NSObject {
     
     public override init()
     {
-        //        FirebaseApp.configure()
         
         usersNode = Database.database().reference().child("users")
         treeNode = Database.database().reference().child("trees")
@@ -33,6 +33,7 @@ class AppData: NSObject {
         favouritesNode = Database.database().reference().child("favourites")
         photosNode = Database.database().reference().child("photos")
         userTreesNode = Database.database().reference().child("userTrees")
+        storageRef = Storage.storage().reference()
         
     }
     

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Spq-k6-cz9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Spq-k6-cz9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,9 +41,15 @@
                                 <items>
                                     <navigationItem title="Title" id="TaI-t7-lrH">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="RJa-7V-6nD">
-                                            <color key="tintColor" red="0.092005304989999995" green="0.60224515199999995" blue="0.1215621606" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="Spq-k6-cz9" id="Z1B-PS-B2b"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Delete" id="ihL-4l-lOz">
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="deletePhotoPressed:" destination="Spq-k6-cz9" id="seb-0e-zmA"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -69,6 +75,7 @@
                         <outlet property="navigationBar" destination="mNk-D4-xGp" id="R2E-Al-N60"/>
                         <outlet property="pageControl" destination="3AC-Tw-oYE" id="wfQ-7z-gTh"/>
                         <outlet property="photoScrollView" destination="1fI-GW-vO3" id="Hhd-zd-eVD"/>
+                        <outlet property="rightBarButtonItem" destination="ihL-4l-lOz" id="bwD-gX-vIV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgR-6y-2wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
