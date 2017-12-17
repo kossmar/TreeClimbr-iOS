@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Firebase
 
 class AboutViewController: UIViewController {
     
@@ -8,6 +9,7 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var treeDescTextView: UITextView!
     @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var addFavouriteButton: UIButton!
+    @IBOutlet weak var editTreeButton: UIButton!
     @IBOutlet weak var aboutLabel: UILabel!
     
     var sourceVC = TreeDetailViewController()
@@ -18,15 +20,19 @@ class AboutViewController: UIViewController {
             guard let tree = tree else { return }
             treeDescTextView.text = tree.treeDescription
             coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
-      
+            
             getCreatorName()
-
+            
             for thisTree in AppData.sharedInstance.favouritesArr {
                 if tree.treeID == thisTree.treeID {
                     favouriteState = true
                     addFavouriteButton.setTitle("Remove From Favourites", for: .normal)
                     break
                 }
+            }
+            
+            if tree.treeCreator == Auth.auth().currentUser?.uid {
+//                editTreeButton.isHidden = false
             }
         }
     }
@@ -35,8 +41,14 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         treeDescTextView.isEditable = false
-        addFavouriteButton.layer.cornerRadius = addFavouriteButton.frame.height/4
+        addFavouriteButton.layer.cornerRadius = addFavouriteButton.frame.height/8
 
+        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        editTreeButton.layer.cornerRadius = editTreeButton.frame.height/8
 
     }
     
@@ -68,6 +80,8 @@ class AboutViewController: UIViewController {
 
             })
     }
+    
+    // MARK: - Actions
     
     @IBAction func favouriteAction(_ sender: UIButton) {
         guard let tree = tree else {
@@ -106,4 +120,10 @@ class AboutViewController: UIViewController {
         UserTreesManager.loadUserTrees { trees in
         }
     }
+    
+    @IBAction func editTreeButton(_ sender: Any) {
+        
+    }
+    
+    
 }

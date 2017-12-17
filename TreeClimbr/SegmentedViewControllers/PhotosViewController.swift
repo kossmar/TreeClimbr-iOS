@@ -4,6 +4,8 @@ import Firebase
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout {
     
+
+
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var uploadPhotosButton: UIButton!
     @IBOutlet weak var photoCollectionView: UICollectionView!
