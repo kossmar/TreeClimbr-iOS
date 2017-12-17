@@ -33,19 +33,9 @@ class BasicTreeInfoView: UIView {
         // Called when view is live rendered on Storyboard
         super.prepareForInterfaceBuilder()
         commonInit()
-        
-        
-//
-//        sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
-//        sideButtonsView.layer.cornerRadius = sideButtonsView.frame.width/2
-        
     }
     
     private func commonInit() {
-//        Bundle.main.loadNibNamed("BasicTreeInfoView", owner: self, options: nil)
-//        addSubview(contentView)
-//        contentView.frame = self.bounds
-//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         setupFromXib()
     }
     
@@ -73,16 +63,16 @@ class BasicTreeInfoView: UIView {
             mask.endPoint = CGPoint(x: 0.0, y: 0.0)
             mask.startPoint = CGPoint(x: 1.0, y:  0.0)
             let whiteColor = UIColor.white
-//            mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,whiteColor.withAlphaComponent(0.1).cgColor,whiteColor.withAlphaComponent(1.0).cgColor,clear.withAlphaComponent(1.0).cgColor]
-//            mask.locations = [NSNumber(value: 0.0),NSNumber(value: 0.2),NSNumber(value: 0.8),NSNumber(value: 1.0)]
+            
             mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,
-                           whiteColor.withAlphaComponent(0.2).cgColor,
-                           whiteColor.withAlphaComponent(0.7).cgColor,
+//                           whiteColor.withAlphaComponent(0.2).cgColor,
+//                           whiteColor.withAlphaComponent(0.5).cgColor,
                            whiteColor.withAlphaComponent(1.0).cgColor]
-            mask.locations = [NSNumber(value: 0.25),
-                              NSNumber(value: 0.5),
-                              NSNumber(value: 0.75),
-                              NSNumber(value: 1.0)]
+            
+            mask.locations = [NSNumber(value: 0.50),
+//                              NSNumber(value: 0.4),
+//                              NSNumber(value: 0.65),
+                              NSNumber(value: 0.9)]
             mask.frame = whiteView.bounds
             whiteView.layer.mask = mask
             
