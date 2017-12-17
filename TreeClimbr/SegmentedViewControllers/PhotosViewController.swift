@@ -1,5 +1,6 @@
 import UIKit
 import ImagePicker
+import Firebase
 
 class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -133,7 +134,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.uploadPhotosButton.isHidden = true
             self.addPhotoButton.setTitle("Add Photos", for: .normal)
             self.imagePickerController.resetAssets()
-//            self.imageArr = []
             
             ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
                 
@@ -153,6 +153,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     //MARK: ImagePicker
+    
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
         
     }
@@ -162,8 +163,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         for image in moreImagesArr {
             imageArr.append(image)
-
-
+            let photo = Photo(URL: "null")
+            photo.image = image
+            photo.userName = (Auth.auth().currentUser?.displayName)! + " (unsaved)"
+            photoObjArr.insert(photo, at: 0)
         }
         
         photoCollectionView.reloadData()
@@ -172,6 +175,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         self.moreImagesArr = []
+        for photo in photoObjArr {
+            if photo.photoURL == "null" {
+                if let index = photoObjArr.index(of: photo) {
+                photoObjArr.remove(at: index)
+                }
+            }
+        }
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
