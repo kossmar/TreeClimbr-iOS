@@ -18,7 +18,9 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     var justLoaded = true
     var photoObjArr = Array<Photo>()
     var sourceVC = PhotosViewController()
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
