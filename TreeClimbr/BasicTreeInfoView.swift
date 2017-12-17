@@ -66,12 +66,12 @@ class BasicTreeInfoView: UIView {
             
             mask.colors = [whiteColor.withAlphaComponent(0.0).cgColor,
 //                           whiteColor.withAlphaComponent(0.2).cgColor,
-                           whiteColor.withAlphaComponent(0.5).cgColor,
+//                           whiteColor.withAlphaComponent(0.5).cgColor,
                            whiteColor.withAlphaComponent(1.0).cgColor]
             
-            mask.locations = [NSNumber(value: 0.5),
+            mask.locations = [NSNumber(value: 0.50),
 //                              NSNumber(value: 0.4),
-                              NSNumber(value: 0.65),
+//                              NSNumber(value: 0.65),
                               NSNumber(value: 0.9)]
             mask.frame = whiteView.bounds
             whiteView.layer.mask = mask
