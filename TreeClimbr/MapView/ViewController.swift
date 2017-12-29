@@ -55,6 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if user == nil {
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
+            
         }
         
     }
