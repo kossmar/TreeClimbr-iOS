@@ -80,6 +80,14 @@ class CommentManager: NSObject {
                 completion(AppData.sharedInstance.commentArr)
             })
     }
+    
+    class func deleteComment(tree: Tree, comment: Comment) {
+        AppData.sharedInstance.commentsNode
+            .child(tree.treeID!)
+            .child(comment.commentID)
+            .removeValue()
+    }
+    
 }
 
 

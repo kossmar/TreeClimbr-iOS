@@ -1,10 +1,4 @@
-//
-//  ReviewViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-21.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 
@@ -27,8 +21,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
                 self.tableView.reloadData()
                 self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
             }
-            
-
         }
     }
     
@@ -66,6 +58,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     }
     
     //MARK: TextView delegates
+    
     func setupTextView() {
         descTextView.text = "Enter comment..."
         descTextView.textColor = UIColor.lightGray
@@ -97,6 +90,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     }
     
     //MARK: TableView delegates
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentArr.count
     }
@@ -115,4 +109,17 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         return 150
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", completion: {
+                CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[indexPath.row])
+                self.commentArr.remove(at: indexPath.row)
+                tableView.reloadData()
+            })
+        }
+    }
 }

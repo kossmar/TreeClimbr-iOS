@@ -125,7 +125,7 @@ class TreeDetailViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.photosViewController.imageArr = []
                         self.photosViewController.photoObjArr = self.photoObjArr
-                        self.photosViewController.photoObjArr.sort(by: { $1.timeStamp < $0.timeStamp })
+                        self.photosViewController.photoObjArr.sort(by: { $0.timeStamp < $1.timeStamp })
                         for photo in self.photoObjArr {
                             self.imageArr.append(photo.image)
                         }
@@ -165,14 +165,14 @@ class TreeDetailViewController: UIViewController {
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             self.rootSourceVC.focusOnTree(location: treeLocation, tree: self.tree)
         })
+        
     }
     
     @IBAction func dismissDetailAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
         fromMapView = false
         self.navigationItem.rightBarButtonItem = self.toMapButton
-            self.sourceVC?.tableView.reloadData()
-//        }
+        self.sourceVC?.tableView.reloadData()
     }
     
     
