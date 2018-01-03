@@ -23,20 +23,23 @@ class LoginViewController: UIViewController {
             return
         }
         
-        let alert = UIAlertController(title: "Careful out there!",
-                                      message: "Tree climbing can be dangerous. Always assess the situation first before attempting to climb trees!",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
         LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password, completion: {
             
             
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            self.view.window?.rootViewController?.present(alert,
-                                                          animated: true,
-                                                          completion: nil)
         })
         
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        let alert = UIAlertController(title: "Careful out there!",
+                                      message: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.view.window?.rootViewController?.present(alert,
+                                                      animated: true,
+                                                      completion: nil)
+    }
 }

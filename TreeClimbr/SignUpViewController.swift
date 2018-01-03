@@ -31,13 +31,14 @@ class SignUpViewController: UIViewController {
                            messageStr: "Please Fill Out All Required Fields")
             return
         }
-                
-            RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
-                
-                 self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                
-            })
 
+        
+        RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
+            
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
+        })
+        
         
     }
     
