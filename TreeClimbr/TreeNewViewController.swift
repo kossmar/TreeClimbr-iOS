@@ -3,7 +3,7 @@ import CoreLocation
 import ImagePicker
 import Firebase
 
-class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate {
+class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate,UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate {
 
     //MARK: Outlets
     
@@ -32,6 +32,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
         
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
+        photoCollectionView.delegate = self
 
         
         setupTextView()
@@ -125,7 +126,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Collection
+    //MARK: Collection View
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArr.count
     }
@@ -137,6 +138,15 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         cell.treePhotoImageView.image = photo
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let cellSize = CGSize(width: collectionView.frame.size.height , height: collectionView.frame.size.height )
+        
+        return cellSize
     }
     
     
