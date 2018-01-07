@@ -38,9 +38,10 @@ class RegisterClass: NSObject {
                                 .setValue(userDict)
                             
                             ReadWrite.writeUser();
+                            
+                            sendEmailVerification()
 
                             completion()
-                            
                             
                             
                             // add alert to confirm register?
@@ -50,6 +51,8 @@ class RegisterClass: NSObject {
                             
                             
                         }
+                        
+                       
                 })
             }
             else
@@ -58,5 +61,16 @@ class RegisterClass: NSObject {
                 //                AlertShow.show(inpView: inpView, titleStr: "Error", messageStr: error.debugDescription);
             }
         }
+    }
+    
+    class func sendEmailVerification() {
+        Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+            guard error == nil else {
+                print("Failed to send Email verification. \(String(describing: error))")
+                return
+            }
+            
+            print("Verification sent")
+        })
     }
 }
