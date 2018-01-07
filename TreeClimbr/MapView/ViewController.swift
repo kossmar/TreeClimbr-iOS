@@ -56,6 +56,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
             
+            if let loggedinUser = user, let _ = user?.isEmailVerified {
+                if !loggedinUser.isEmailVerified {
+                let alertVC = UIAlertController(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email?", preferredStyle: .alert)
+                let alertActionOkay = UIAlertAction(title: "Okay", style: .default) {
+                    (_) in
+                    user?.sendEmailVerification(completion: nil)
+                }
+                let alertActionCancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                
+                alertVC.addAction(alertActionOkay)
+                alertVC.addAction(alertActionCancel)
+                    self.present(alertVC, animated: true, completion: nil) }
+            } else {
+                print ("Email verified. Signing in...")
+            }
+            
         }
         
     }
