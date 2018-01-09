@@ -55,9 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if user == nil {
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
-            
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,6 +74,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let blockedUser = AppData.sharedInstance.blockedNode
+        let user = Auth.auth().currentUser?.uid
+        
+        blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild(user!) {
+                do {
+                    try Auth.auth().signOut()
+                    self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+                }
+                catch let error as NSError {
+                    print (error.localizedDescription)
+                }
+            }
+        })
         
         FavouritesManager.loadFavourites { (success) in
             return
