@@ -18,13 +18,13 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     var justLoaded = true
     var photoObjArr = Array<Photo>()
     var sourceVC = PhotosViewController()
+    var canDelete = Bool()
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         photoScrollView.delegate = self
         pageControl.numberOfPages = photoObjArr.count
         navigationBar.isHidden = true
@@ -34,8 +34,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         navigationBar.isTranslucent = true
         navigationBar.backgroundColor = UIColor(red: 189.0/225.0, green: 239.0/225.0, blue: 191.0/225.0, alpha: 0.85)
         
-
-
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showNavBar(sender:)))
         self.view.addGestureRecognizer(tapGesture)
@@ -53,14 +52,15 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
             let photo = photoObjArr[pageControl.currentPage]
             navigationBar.topItem?.title = photo.userName
             if Auth.auth().currentUser?.uid == photo.userID {
-                rightBarButtonItem.isEnabled = true
-                rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
-                rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+                canDelete = true
             }
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
             
         }
+        
+        rightBarButtonItem.isEnabled = true
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,7 +68,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-
+    
     
     // MARK: - ScrollViewDelegate functions
     
@@ -77,18 +77,15 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         if pageControl.currentPage < photoObjArr.count {
             let photo = photoObjArr[pageControl.currentPage]
             navigationBar.topItem?.title = photo.userName
-            if Auth.auth().currentUser?.uid == photo.userID {
-                rightBarButtonItem.isEnabled = true
-                rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
-                rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
-            } else {
-                rightBarButtonItem.isEnabled = false
-                rightBarButtonItem.tintColor = UIColor.clear
-            }
+            
+            rightBarButtonItem.isEnabled = true
+//            rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
+            rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+            
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
         }
-
+        
     }
     
     
@@ -100,35 +97,58 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func deletePhotoPressed(_ sender: UIBarButtonItem) {
         
-        AlertShow.confirm(inpView: self, titleStr: "Delete photo?", messageStr: " ") {
-            let photo = self.photoObjArr[self.pageControl.currentPage]
-            if self.pageControl.numberOfPages > 1 {
-                if self.pageControl.currentPage != 0 {
-                    self.pageControl.currentPage = (self.pageControl.currentPage) - 1
-                    self.setupScrollView()
-                    self.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
-                    self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
-                } else {
-                    self.pageControl.currentPage = (self.pageControl.currentPage) + 1
-                    self.setupScrollView()
-                    self.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
-                    self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
-                }
-                self.pageControl.numberOfPages = self.photoObjArr.count
-                self.setupScrollView()
-                
-                
-            } else {
-                self.photoObjArr.remove(at: self.pageControl.currentPage)
-                self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-            PhotoManager.deletePhoto(photo: photo, tree: self.sourceVC.tree!)
-
-        }
-    }
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
+            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content!")
+        }
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
+            if self.canDelete == true {
+                AlertShow.confirm(inpView: self, titleStr: "Delete photo?", messageStr: " ") {
+                    let photo = self.photoObjArr[self.pageControl.currentPage]
+                    if self.pageControl.numberOfPages > 1 {
+                        if self.pageControl.currentPage != 0 {
+                            self.pageControl.currentPage = (self.pageControl.currentPage) - 1
+                            self.setupScrollView()
+                            self.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
+                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
+                        } else {
+                            self.pageControl.currentPage = (self.pageControl.currentPage) + 1
+                            self.setupScrollView()
+                            self.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
+                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
+                        }
+                        self.pageControl.numberOfPages = self.photoObjArr.count
+                        self.setupScrollView()
+                        
+                        
+                    } else {
+                        self.photoObjArr.remove(at: self.pageControl.currentPage)
+                        self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    
+                    PhotoManager.deletePhoto(photo: photo, tree: self.sourceVC.tree!)
+                    
+                }
+                
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(reportAction)
+        if self.canDelete == true {
+            alertController.addAction(deleteAction)
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+        
+    }
+    
     
     // MARK: - Custom Functions
     

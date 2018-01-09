@@ -40,6 +40,8 @@
 		7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C7761FCA3773001E3357 /* ImageUploader.swift */; };
 		7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */; };
 		A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */; };
+		E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */; };
+		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
 		E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */; };
@@ -120,6 +122,8 @@
 		7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInappropriate.swift; sourceTree = "<group>"; };
+		E6051A712005304100C9B288 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNewViewController.swift; sourceTree = "<group>"; };
 		E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
 		E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertShow.swift; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */,
 				A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +219,7 @@
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
 				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
 				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */,
 				0D0D0D701FC621A500C84F1D /* Comment.swift */,
 				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
 				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
@@ -262,6 +268,7 @@
 		484DE440CE7AFA1FBF020362 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6051A712005304100C9B288 /* MessageUI.framework */,
 				C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */,
 				617D2BFF4417DD4A3BDC4428 /* Pods_TreeClimbrTests.framework */,
 				2FF6856E586792415F41E9EA /* Pods_TreeClimbrUITests.framework */,
@@ -622,6 +629,7 @@
 				0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */,
 				7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */,
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
+				E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,

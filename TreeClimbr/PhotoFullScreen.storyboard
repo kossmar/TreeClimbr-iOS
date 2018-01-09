@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Spq-k6-cz9">
-    <device id="retina5_9" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Spq-k6-cz9">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,22 +15,22 @@
             <objects>
                 <viewController id="Spq-k6-cz9" customClass="PhotoFullScreenViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F4h-kD-LVC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fI-GW-vO3">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3AC-Tw-oYE">
-                                <rect key="frame" x="168" y="741" width="39" height="37"/>
+                                <rect key="frame" x="168" y="630" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="iqn-zL-02e"/>
                                     <constraint firstAttribute="width" constant="39" id="mzb-t5-XlM"/>
                                 </constraints>
                             </pageControl>
                             <navigationBar opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNk-D4-xGp">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ePy-a0-e7k"/>
                                 </constraints>
@@ -46,10 +46,10 @@
                                                 <action selector="backButtonPressed:" destination="Spq-k6-cz9" id="Z1B-PS-B2b"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Delete" id="ihL-4l-lOz">
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <barButtonItem key="rightBarButtonItem" image="menu" id="0OX-aF-MLN">
+                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="deletePhotoPressed:" destination="Spq-k6-cz9" id="seb-0e-zmA"/>
+                                                <action selector="deletePhotoPressed:" destination="Spq-k6-cz9" id="9LN-f8-jff"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -75,7 +75,7 @@
                         <outlet property="navigationBar" destination="mNk-D4-xGp" id="R2E-Al-N60"/>
                         <outlet property="pageControl" destination="3AC-Tw-oYE" id="wfQ-7z-gTh"/>
                         <outlet property="photoScrollView" destination="1fI-GW-vO3" id="Hhd-zd-eVD"/>
-                        <outlet property="rightBarButtonItem" destination="ihL-4l-lOz" id="bwD-gX-vIV"/>
+                        <outlet property="rightBarButtonItem" destination="0OX-aF-MLN" id="KUQ-c5-ay9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgR-6y-2wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,4 +83,7 @@
             <point key="canvasLocation" x="86" y="155"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menu" width="26" height="26"/>
+    </resources>
 </document>
