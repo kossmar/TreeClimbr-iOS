@@ -1,9 +1,10 @@
 
 
 import UIKit
+import Firebase
 
-class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
-
+class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var addCommentButton: UIButton!
@@ -40,7 +41,8 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-
+    //MARK: Actions
+    
     @IBAction func addComment (_ sender: UIButton) {
         let comment = Comment(body: descTextView.text)
         CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
@@ -101,6 +103,9 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         cell.userLabel.text = commentArr[indexPath.row].userID
         cell.timestampLabel.text = commentArr[indexPath.row].timeStamp
         cell.commentTextView.text = commentArr[indexPath.row].body
+        cell.delegate = self
+        cell.optionsButton.tag = indexPath.row
+//        cell.optionsButton.addTarget(self, action: Selector(("commentOptionsPressed:")), for: UIControlEvents.touchUpInside)
         
         return cell
     }
@@ -110,16 +115,55 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let comment = commentArr[indexPath.row]
+        
+        if comment.userID == Auth.auth().currentUser?.displayName {
             return true
+        } else {
+            return false
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
+ 
+            if editingStyle == UITableViewCellEditingStyle.delete {
+                AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", completion: {
+                    CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[indexPath.row])
+                    self.commentArr.remove(at: indexPath.row)
+                    tableView.reloadData()
+                })
+            }
+    }
+    
+    //MARK: Comment Menu Delegate
+    
+    func commentMenuPressed(senderTag: Int) {
+        let buttonRow = senderTag
+        let comment = commentArr[buttonRow]
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
+            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content!")
+        }
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", completion: {
-                CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[indexPath.row])
-                self.commentArr.remove(at: indexPath.row)
-                tableView.reloadData()
+                CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[buttonRow])
+                self.commentArr.remove(at: buttonRow)
+                self.tableView.reloadData()
             })
         }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(reportAction)
+        
+        if comment.userID == Auth.auth().currentUser?.displayName {
+            alertController.addAction(deleteAction)
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        
     }
 }
