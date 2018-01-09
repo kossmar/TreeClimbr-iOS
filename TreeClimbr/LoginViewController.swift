@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -24,9 +25,23 @@ class LoginViewController: UIViewController {
         }
         
         LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password, completion: {
+        
+            let blockedUser = AppData.sharedInstance.blockedNode
+            let user = Auth.auth().currentUser?.uid
+            
+            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChild(user!) {
+                    let alert = UIAlertController(title: "Blocked", message: "YO ASS IS BLOCKED", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                }
+            })
             
             
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
+            
         })
         
     }
