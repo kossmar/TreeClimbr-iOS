@@ -1,12 +1,10 @@
-//
-//  CommentTableViewCell.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2017-11-22.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
+
+protocol CommentMenuDelegate {
+    func commentMenuPressed(senderTag: Int)
+}
 
 class CommentTableViewCell: UITableViewCell {
     
@@ -15,6 +13,9 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var commentInfoView: UIView!
     @IBOutlet weak var commentTextTopView: UIView!
+    @IBOutlet weak var optionsButton: UIButton!
+    var delegate: CommentMenuDelegate?
+    
     
 
     override func awakeFromNib() {
@@ -35,5 +36,18 @@ class CommentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //MARK: Actions
+    
+    @IBAction func commentOptionsPressed(_ sender: UIButton) {
+     
+        let buttonRow = sender.tag
+        self.delegate?.commentMenuPressed(senderTag: buttonRow)
+    }
+    
+    
+    
+    
+    
 
 }
