@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HEi-MG-e6o">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="bx1-7j-h0j">
+            <objects>
+                <viewController id="uTe-E2-Ulg" customClass="SettingsViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aMk-rL-b2i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Climbr By Planfam All Rights Reserved 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOa-j6-tdO">
+                                <rect key="frame" x="20" y="635" width="335" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6X-kb-YwY">
+                                <rect key="frame" x="20" y="84" width="335" height="30"/>
+                                <state key="normal" title="Blocked Users"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w6X-kb-YwY" firstAttribute="top" secondItem="nk7-4i-kyb" secondAttribute="top" constant="20" id="GRE-Q3-JmO"/>
+                            <constraint firstItem="w6X-kb-YwY" firstAttribute="centerX" secondItem="aMk-rL-b2i" secondAttribute="centerX" id="OoJ-Wd-ij3"/>
+                            <constraint firstItem="w6X-kb-YwY" firstAttribute="leading" secondItem="nk7-4i-kyb" secondAttribute="leading" constant="20" id="QJ7-MD-fjz"/>
+                            <constraint firstItem="FOa-j6-tdO" firstAttribute="centerX" secondItem="aMk-rL-b2i" secondAttribute="centerX" id="WzW-FP-UPo"/>
+                            <constraint firstItem="nk7-4i-kyb" firstAttribute="trailing" secondItem="FOa-j6-tdO" secondAttribute="trailing" constant="20" id="mr7-sI-HNT"/>
+                            <constraint firstItem="nk7-4i-kyb" firstAttribute="bottom" secondItem="FOa-j6-tdO" secondAttribute="bottom" constant="20" id="uoF-rz-0GL"/>
+                            <constraint firstItem="nk7-4i-kyb" firstAttribute="trailing" secondItem="w6X-kb-YwY" secondAttribute="trailing" constant="20" id="wRY-XL-8pb"/>
+                            <constraint firstItem="FOa-j6-tdO" firstAttribute="leading" secondItem="nk7-4i-kyb" secondAttribute="leading" constant="20" id="zeB-mf-6Mg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nk7-4i-kyb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="785-8P-cqP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="rJH-iH-kOH">
+                            <connections>
+                                <action selector="backToMapView:" destination="uTe-E2-Ulg" id="m2Z-3C-utW"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="dSN-36-42h">
+                            <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="uTe-E2-Ulg" id="fW4-cR-AaZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYk-mF-EB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1567.2" y="-451.12443778110946"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lK5-aI-72A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HEi-MG-e6o" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BL2-pN-H2H">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uTe-E2-Ulg" kind="relationship" relationship="rootViewController" id="plj-kP-aHQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afQ-5x-EJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2377" y="-451"/>
+        </scene>
+    </scenes>
+</document>
