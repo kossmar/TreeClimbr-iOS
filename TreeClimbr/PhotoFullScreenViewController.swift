@@ -103,6 +103,17 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
             self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content!")
         }
+        let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
+            let photo = self.photoObjArr[self.pageControl.currentPage]
+            let badUser =  User(name: photo.userName, email: "", uid: photo.userID)
+            AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", completion: {
+                HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in 
+                    self.photoObjArr.remove(at: self.pageControl.currentPage)
+                    self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
+                    self.dismiss(animated: true, completion: nil)
+                })
+            }
+)        }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             if self.canDelete == true {
@@ -138,14 +149,15 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         }
         
         alertController.addAction(cancelAction)
-        alertController.addAction(reportAction)
+        
         if self.canDelete == true {
             alertController.addAction(deleteAction)
+        } else {
+            alertController.addAction(reportAction)
+            alertController.addAction(blockAction)
         }
         
         self.present(alertController, animated: true, completion: nil)
-        
-        
         
     }
     
