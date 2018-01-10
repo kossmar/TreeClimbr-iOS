@@ -34,44 +34,38 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q5-aI-TA7" userLabel="side buttons view">
-                                <rect key="frame" x="18" y="525.5" width="339" height="76"/>
+                                <rect key="frame" x="47" y="525.5" width="281" height="76"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UEF-Eu-ixv">
-                                        <rect key="frame" x="15" y="5.5" width="309" height="66"/>
+                                        <rect key="frame" x="15" y="5.5" width="251" height="66"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drO-04-UxG">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="66"/>
-                                                <state key="normal" title="Logout">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="logout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T0p-LW-8TE"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-3D-nnI" userLabel="MyTreesButton">
-                                                <rect key="frame" x="58" y="0.0" width="56" height="66"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="66"/>
                                                 <state key="normal" image="mytreesbutton"/>
                                                 <connections>
                                                     <segue destination="EXS-MP-yW1" kind="presentation" identifier="toTreeList" id="poX-WJ-aBE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-Uf-BN7">
-                                                <rect key="frame" x="124" y="0.0" width="56" height="66"/>
+                                                <rect key="frame" x="66" y="0.0" width="56" height="66"/>
                                                 <state key="normal" image="treeatuserloc"/>
                                                 <connections>
                                                     <action selector="addTreeToUserLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXr-2h-3aM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hau-Kk-nEr">
-                                                <rect key="frame" x="190" y="0.0" width="52" height="66"/>
+                                                <rect key="frame" x="132" y="0.0" width="52" height="66"/>
                                                 <state key="normal" image="userlocation"/>
                                                 <connections>
                                                     <action selector="centerToUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oP-NP-N1n"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7a-wv-9hX">
-                                                <rect key="frame" x="252" y="0.0" width="57" height="66"/>
+                                                <rect key="frame" x="194" y="0.0" width="57" height="66"/>
                                                 <state key="normal" image="settingsbutton"/>
+                                                <connections>
+                                                    <segue destination="d5X-kP-5xp" kind="presentation" id="XT7-pJ-iAr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -102,7 +96,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="6UE-lB-4bw"/>
                     <connections>
-                        <outlet property="logoutButton" destination="drO-04-UxG" id="aPk-Ol-SYc"/>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
                         <outlet property="menuButton" destination="dCU-1J-pdG" id="Jc2-ES-ijw"/>
                         <outlet property="sideButtonsView" destination="0q5-aI-TA7" id="EPB-QD-7jL"/>
@@ -146,6 +139,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6Z-zj-oEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1156" y="371.51424287856076"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="5Ab-Og-Mm4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="d5X-kP-5xp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3fP-8m-ez7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="581"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MHC-Cx-TYa">

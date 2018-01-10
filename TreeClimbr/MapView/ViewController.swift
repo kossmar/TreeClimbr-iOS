@@ -24,7 +24,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var treesArr = [Tree]()
     
     @IBOutlet weak var sideButtonsView: UIView!
-    @IBOutlet weak var logoutButton: UIButton!
     @IBOutlet weak var menuButton: UIButton!
     
     //MARK: ViewController lifecycle
@@ -61,15 +60,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         Auth.auth().removeStateDidChangeListener(handle!)
-    }
-    
-    @IBAction func logout(_ sender: Any) {
-        do {
-            try Auth.auth().signOut()
-        }
-        catch let error as NSError {
-            print (error.localizedDescription)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
