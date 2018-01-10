@@ -49,7 +49,7 @@
                                         <barButtonItem key="rightBarButtonItem" image="menu" id="0OX-aF-MLN">
                                             <color key="tintColor" red="0.082989238199999996" green="0.76930814979999995" blue="0.086652763189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="deletePhotoPressed:" destination="Spq-k6-cz9" id="9LN-f8-jff"/>
+                                                <action selector="menuButtonPressed:" destination="Spq-k6-cz9" id="f90-4Z-mZ4"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

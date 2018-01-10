@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qG-qF-Dga">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8qG-qF-Dga">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -398,11 +398,20 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWK-Vy-igS">
+                                                            <rect key="frame" x="307" y="12" width="26" height="26"/>
+                                                            <state key="normal" image="menu"/>
+                                                            <connections>
+                                                                <action selector="commentOptionsPressed:" destination="7OL-uC-7fI" eventType="touchUpInside" id="JDA-i6-OxN"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.80772113800000001" green="0.92685580249999999" blue="0.78823631999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstItem="H49-tx-jGG" firstAttribute="leading" secondItem="e6K-Yq-cEQ" secondAttribute="leading" constant="5" id="1tS-Mr-unY"/>
                                                         <constraint firstAttribute="trailing" secondItem="H49-tx-jGG" secondAttribute="trailing" constant="5" id="5yk-HE-8ym"/>
+                                                        <constraint firstItem="qWK-Vy-igS" firstAttribute="centerY" secondItem="e6K-Yq-cEQ" secondAttribute="centerY" id="CBd-We-oer"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qWK-Vy-igS" secondAttribute="trailing" constant="10" id="Ee4-VB-7lz"/>
                                                         <constraint firstItem="aiT-W6-fkL" firstAttribute="top" secondItem="e6K-Yq-cEQ" secondAttribute="top" id="GeA-uF-XM8"/>
                                                         <constraint firstItem="H49-tx-jGG" firstAttribute="top" secondItem="aiT-W6-fkL" secondAttribute="bottom" constant="5" id="JMp-1X-Zru"/>
                                                         <constraint firstAttribute="trailing" secondItem="aiT-W6-fkL" secondAttribute="trailing" constant="8" id="UPr-f9-tG6"/>
@@ -444,6 +453,7 @@
                                             <outlet property="commentInfoView" destination="e6K-Yq-cEQ" id="HIH-ri-JF1"/>
                                             <outlet property="commentTextTopView" destination="gBK-cb-Lfh" id="0fM-n6-Kwi"/>
                                             <outlet property="commentTextView" destination="5lE-qz-Jaq" id="bdq-iN-wbf"/>
+                                            <outlet property="optionsButton" destination="qWK-Vy-igS" id="Xpg-gx-CR8"/>
                                             <outlet property="timestampLabel" destination="H49-tx-jGG" id="1Ny-H1-Mg4"/>
                                             <outlet property="userLabel" destination="aiT-W6-fkL" id="T3u-JX-95R"/>
                                         </connections>
@@ -477,5 +487,6 @@
     </scenes>
     <resources>
         <image name="commentbutton" width="62" height="63"/>
+        <image name="menu" width="26" height="26"/>
     </resources>
 </document>

@@ -95,7 +95,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func deletePhotoPressed(_ sender: UIBarButtonItem) {
+    @IBAction func menuButtonPressed(_ sender: UIBarButtonItem) {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
