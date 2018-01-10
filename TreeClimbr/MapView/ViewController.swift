@@ -93,6 +93,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         FavouritesManager.loadFavourites { (success) in
             return
         }
+        
+        HiddenUsersManager.loadHiddenUsers { (success) in
+            return
+        }
+        
         mapView.removeAnnotations(mapView.annotations)
         
         ReadTrees.read(completion: { trees in
