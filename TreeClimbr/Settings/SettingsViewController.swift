@@ -1,20 +1,20 @@
-//
-//  SettingsViewController.swift
-//  TreeClimbr
-//
-//  Created by Carlo Namoca on 2018-01-10.
-//  Copyright © 2018 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var blockedUsersButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+//        self.navigationController?.navigationBar.titleTextAttributes. = UIColor.white
+        blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
+        
     }
 
     @IBAction func logout(_ sender: Any) {

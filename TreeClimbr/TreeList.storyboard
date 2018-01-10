@@ -28,7 +28,7 @@
                                     <navigationItem title="All Trees" id="nuG-qq-wgI">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="AYC-8h-h1c">
                                             <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="doneButton:" destination="1oU-Xb-MUW" id="1Sv-x8-hu4"/>
                                             </connections>

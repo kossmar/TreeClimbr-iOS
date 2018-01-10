@@ -41,13 +41,13 @@
                                 <items>
                                     <navigationItem title="Title" id="TaI-t7-lrH">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="RJa-7V-6nD">
-                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="Spq-k6-cz9" id="Z1B-PS-B2b"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" image="menu" id="0OX-aF-MLN">
-                                            <color key="tintColor" red="0.082989238199999996" green="0.76930814979999995" blue="0.086652763189999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="menuButtonPressed:" destination="Spq-k6-cz9" id="f90-4Z-mZ4"/>
                                             </connections>

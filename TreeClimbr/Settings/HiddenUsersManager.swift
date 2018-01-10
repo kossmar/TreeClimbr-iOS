@@ -3,6 +3,8 @@ import Firebase
 
 class HiddenUsersManager: NSObject {
     
+    
+    
     //This is to block a user and prevent photos/comments of specified users from showing up on a user’s app
     class func addToHiddenUsersList(badUser: User, completion: @escaping (Bool) -> Void) {
         
@@ -31,6 +33,8 @@ class HiddenUsersManager: NSObject {
             completion(nil)
             return
         }
+        
+        AppData.sharedInstance.hiddenUsersArr.removeAll()
         
         AppData.sharedInstance.hiddenUsersNode
             .child(Auth.auth().currentUser!.uid)
@@ -80,12 +84,14 @@ class HiddenUsersManager: NSObject {
     }
     
     
-    class func removeFromHidden(badUser: User) {
+    class func removeFromHidden(badUser: User, completion: @escaping (Bool) -> Void) {
         
         AppData.sharedInstance.hiddenUsersNode
             .child(Auth.auth().currentUser!.uid)
             .child("\(badUser.uid)")
             .removeValue()
+        
+        completion(true)
         
     }
     

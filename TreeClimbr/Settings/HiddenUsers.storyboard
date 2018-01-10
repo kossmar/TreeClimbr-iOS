@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sVh-GK-fOT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Blocked Users-->
+        <scene sceneID="avS-6K-CaB">
+            <objects>
+                <viewController title="Blocked Users" id="sVh-GK-fOT" customClass="HiddenUsersViewController" customModule="TreeClimbr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iNy-7o-Cn8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I1t-at-CKB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HiddenUsersCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HiddenUsersCell" id="b8g-sQ-mDR" customClass="HiddenUsersTableViewCell" customModule="TreeClimbr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b8g-sQ-mDR" id="Bdz-kD-B1g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJK-HB-YNo">
+                                                    <rect key="frame" x="284" y="0.0" width="57" height="43.5"/>
+                                                    <state key="normal" title="Unblock"/>
+                                                    <connections>
+                                                        <action selector="unblockPressed:" destination="b8g-sQ-mDR" eventType="touchUpInside" id="E6X-V1-3Ap"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRh-In-qnj">
+                                                    <rect key="frame" x="15" y="11" width="210" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="KJK-HB-YNo" firstAttribute="centerY" secondItem="Bdz-kD-B1g" secondAttribute="centerY" id="5q5-M0-r3C"/>
+                                                <constraint firstItem="NRh-In-qnj" firstAttribute="centerY" secondItem="Bdz-kD-B1g" secondAttribute="centerY" id="7Mi-j7-Wdq"/>
+                                                <constraint firstItem="KJK-HB-YNo" firstAttribute="top" secondItem="Bdz-kD-B1g" secondAttribute="top" id="Ugt-i7-NQO"/>
+                                                <constraint firstAttribute="bottom" secondItem="KJK-HB-YNo" secondAttribute="bottom" id="alp-pD-okr"/>
+                                                <constraint firstAttribute="trailing" secondItem="KJK-HB-YNo" secondAttribute="trailing" multiplier="1.1" id="k96-2H-5N5"/>
+                                                <constraint firstItem="NRh-In-qnj" firstAttribute="leading" secondItem="Bdz-kD-B1g" secondAttribute="leadingMargin" id="sbn-C9-5Bz"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.83024924993515015" green="0.9914814829826355" blue="0.85644048452377319" alpha="0.270081426056338" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="unblockButton" destination="KJK-HB-YNo" id="reh-Fo-BXE"/>
+                                            <outlet property="usernameLabel" destination="NRh-In-qnj" id="2LO-eo-RXe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sVh-GK-fOT" id="jSf-ty-vqA"/>
+                                    <outlet property="delegate" destination="sVh-GK-fOT" id="OnE-nf-0XF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wx7-nT-duI" firstAttribute="trailing" secondItem="I1t-at-CKB" secondAttribute="trailing" id="9DE-1h-IKZ"/>
+                            <constraint firstItem="I1t-at-CKB" firstAttribute="top" secondItem="wx7-nT-duI" secondAttribute="top" id="Pzt-fi-aD9"/>
+                            <constraint firstItem="I1t-at-CKB" firstAttribute="leading" secondItem="wx7-nT-duI" secondAttribute="leading" id="TNV-Ch-j7O"/>
+                            <constraint firstItem="wx7-nT-duI" firstAttribute="bottom" secondItem="I1t-at-CKB" secondAttribute="bottom" id="hYl-Et-9j6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wx7-nT-duI"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="I1t-at-CKB" id="chp-Mc-9jw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ed-xL-375" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-71.200000000000003" y="-10.344827586206897"/>
+        </scene>
+    </scenes>
+</document>
