@@ -40,6 +40,9 @@
 		7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C7761FCA3773001E3357 /* ImageUploader.swift */; };
 		7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */; };
 		A2ED1A78AF63651B5DC3ACE2 /* Pods_TreeClimbr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */; };
+		CA1F19092006C65900D38DE5 /* HiddenUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */; };
+		CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */; };
+		CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */; };
 		E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */; };
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
 		E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */; };
@@ -125,6 +128,9 @@
 		7DF90D628009B2667CE2A69C /* Pods-TreeClimbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests.release.xcconfig"; sourceTree = "<group>"; };
 		BC0E58522D0F36B7F2A1141D /* Pods-TreeClimbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TreeClimbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C86287D5D71F2746141347B9 /* Pods_TreeClimbr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TreeClimbr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiddenUsers.storyboard; sourceTree = "<group>"; };
+		CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersTableViewCell.swift; sourceTree = "<group>"; };
+		CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersViewController.swift; sourceTree = "<group>"; };
 		E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInappropriate.swift; sourceTree = "<group>"; };
 		E6051A712005304100C9B288 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenUsersManager.swift; sourceTree = "<group>"; };
@@ -206,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				E6C423B82006B22800BB823B /* Settings */,
-				E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */,
 				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
 				E6E1E49A1FC616EC000F42CB /* MapView */,
 				E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */,
@@ -302,6 +307,10 @@
 			children = (
 				E6C423B62006B21C00BB823B /* Settings.storyboard */,
 				E6C423BB2006B3A900BB823B /* SettingsViewController.swift */,
+				E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */,
+				CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */,
+				CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */,
+				CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -456,6 +465,7 @@
 				0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */,
 				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
 				E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */,
+				CA1F19092006C65900D38DE5 /* HiddenUsers.storyboard in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
 				0DCE2F2E1FBCDEE6001A30EA /* TreeDetail.storyboard in Resources */,
 			);
@@ -666,6 +676,7 @@
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */,
 				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
+				CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
@@ -676,6 +687,7 @@
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
+				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
 				E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */,
 				E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */,
@@ -853,7 +865,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBYQCX339P;
+				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;
@@ -873,7 +885,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBYQCX339P;
+				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;

@@ -29,13 +29,13 @@
                                 <items>
                                     <navigationItem id="WAT-mh-565">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="gN0-q4-sCr">
-                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="dismissDetailAction:" destination="8qG-qF-Dga" id="9r6-wx-bUP"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="To Map" id="aPi-0P-pNf">
-                                            <color key="tintColor" red="0.26782312000000003" green="0.69219559590000002" blue="0.26500688369999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="toMapAction:" destination="8qG-qF-Dga" id="Ou4-jc-Ktw"/>
                                             </connections>

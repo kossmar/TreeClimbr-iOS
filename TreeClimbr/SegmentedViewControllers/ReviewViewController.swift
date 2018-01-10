@@ -92,7 +92,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         }
     }
     
-    //MARK: TableView delegates
+    //MARK: TableView Delegate / Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentArr.count
