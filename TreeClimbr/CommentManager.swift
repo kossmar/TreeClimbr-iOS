@@ -20,6 +20,7 @@ class CommentManager: NSObject {
         
         let commentDict: [String : Any] = [
             "userIDKey": comment.userID,
+            "usernameKey": comment.username,
             "bodyKey": comment.body,
             "timeKey": comment.timeStamp,
             "commentIDKey": comment.commentID
@@ -63,12 +64,14 @@ class CommentManager: NSObject {
                     let body = comment["bodyKey"] as! String
                     let timeStamp = comment["timeKey"] as! String
                     let commentID = comment["commentIDKey"] as! String
+                    let username = comment["usernameKey"] as! String
                     
                     
                     let readComment = Comment(body: body)
                     readComment.commentID = commentID
                     readComment.userID = userID
                     readComment.timeStamp = timeStamp
+                    readComment.username = username
 
                     
                     AppData.sharedInstance.commentArr.append(readComment)

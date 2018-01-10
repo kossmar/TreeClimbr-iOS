@@ -3,8 +3,9 @@
 import UIKit
 import CoreGraphics
 import Firebase
+import MessageUI
 
-class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
+class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -97,11 +98,19 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func menuButtonPressed(_ sender: UIBarButtonItem) {
         
+        let photo = photoObjArr[pageControl.currentPage]
+        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
-            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content!")
+//            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content! \n\n Username: \n \(photo.userName) \n\n UserID: \n \(photo.userID) \n\n PhotoID: \n \(photo.photoID) \n\n URL: \n \(photo.photoURL) ")
+            let mailComposeViewController = self.configuredMailComposeViewController()
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
@@ -147,6 +156,32 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         
         
         
+    }
+    
+    // MARK: MFMailComposeViewController
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+
+        let photo = photoObjArr[pageControl.currentPage]
+        
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setSubject("TreeClimbr - Inappropriate Content Report")
+        mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(photo.userName) \n\n UserID: \n \(photo.userID) \n\n PhotoID: \n \(photo.photoID) \n\n PhotoURL: \n \(photo.photoURL) \n ", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     
