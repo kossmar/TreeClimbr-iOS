@@ -105,9 +105,13 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         }
         let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
             let photo = self.photoObjArr[self.pageControl.currentPage]
-            let badUser = photo.userID
+            let badUser =  User(name: photo.userName, email: "", uid: photo.userID)
             AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", completion: {
-                print("Blocking...")
+                HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in 
+                    self.photoObjArr.remove(at: self.pageControl.currentPage)
+                    self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
 )        }
         
