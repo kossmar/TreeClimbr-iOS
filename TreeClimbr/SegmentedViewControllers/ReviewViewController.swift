@@ -2,8 +2,9 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
-class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate {
+class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
@@ -100,7 +101,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : CommentTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         
-        cell.userLabel.text = commentArr[indexPath.row].userID
+        cell.userLabel.text = commentArr[indexPath.row].username
         cell.timestampLabel.text = commentArr[indexPath.row].timeStamp
         cell.commentTextView.text = commentArr[indexPath.row].body
         cell.delegate = self
@@ -140,12 +141,18 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     func commentMenuPressed(senderTag: Int) {
         let buttonRow = senderTag
         let comment = commentArr[buttonRow]
-        
+
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
-            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content!")
+            let mailComposeViewController = self.configuredMailComposeViewController(buttonRow: buttonRow)
+            if MFMailComposeViewController.canSendMail() {
+                self.present(mailComposeViewController, animated: true, completion: nil)
+            } else {
+                self.showSendMailErrorAlert()
+            }
+            
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
@@ -159,11 +166,39 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         alertController.addAction(cancelAction)
         alertController.addAction(reportAction)
         
-        if comment.userID == Auth.auth().currentUser?.displayName {
+        if comment.userID == Auth.auth().currentUser?.uid {
             alertController.addAction(deleteAction)
         }
         
         self.present(alertController, animated: true, completion: nil)
         
     }
+    
+    // MARK: MFMailComposeViewController
+    
+    func configuredMailComposeViewController(buttonRow: Int) -> MFMailComposeViewController {
+        let buttonRow = buttonRow
+        let comment = commentArr[buttonRow]
+
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setSubject("TreeClimbr - Inappropriate Content Report")
+        mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(comment.username) \n\n UserID: \n \(comment.userID) \n\n Content: \n \(comment.body) \n\n CommentID: \n \(comment.commentID) \n ", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+//        let sendMailErrorAlert = UIAlertController(title: <#T##String?#>, message: <#T##String?#>, preferredStyle: . )
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
 }
