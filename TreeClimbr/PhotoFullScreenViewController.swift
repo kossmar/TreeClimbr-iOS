@@ -138,14 +138,14 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate {
         }
         
         alertController.addAction(cancelAction)
-        alertController.addAction(reportAction)
+        
         if self.canDelete == true {
             alertController.addAction(deleteAction)
+        } else {
+            alertController.addAction(reportAction)
         }
         
         self.present(alertController, animated: true, completion: nil)
-        
-        
         
     }
     
