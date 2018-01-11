@@ -25,7 +25,7 @@ class LoginClass: NSObject {
             }
             else
             {
-                AlertShow.show(inpView: inpView, titleStr: "Failed", messageStr: error.debugDescription);
+                AlertShow.show(inpView: inpView, titleStr: "Failed", messageStr: "Your email or password was entered incorrectly.");
             }
         }
     }
