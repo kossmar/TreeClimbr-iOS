@@ -63,18 +63,7 @@ class ReadTrees: NSObject {
                     readTree.treeID = treeID
                     readTree.treeCreator = treeCreator
                     
-                    
-                    var hiddenUIDSet = Set <String>()
-                    
-                    for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
-                       hiddenUIDSet.insert(hiddenUser.uid)
-                    }
-                    
-                    if !hiddenUIDSet.contains(readTree.treeCreator!) {
-                        AppData.sharedInstance.treesArr.append(readTree)
-                    } else {
-                        return
-                    }
+                    AppData.sharedInstance.treesArr.append(readTree)
                     
                 }
                 
