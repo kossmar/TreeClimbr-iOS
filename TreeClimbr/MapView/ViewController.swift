@@ -55,6 +55,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 self.performSegue(withIdentifier: "CheckIdentity", sender: self)
             }
         }
+        
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapViewWillStartLoadingMap(self.mapView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +101,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 else { return }
             
             for tree in self.treesArr {
+                
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
                 let treeAnn : TreeAnnotation = TreeAnnotation()
@@ -303,6 +307,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
                 treeAnn.title = tree.treeName
                 treeAnn.tree = tree
+                
                 self.mapView.addAnnotation(treeAnn)
 
             }
