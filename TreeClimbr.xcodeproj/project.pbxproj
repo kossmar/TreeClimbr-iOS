@@ -220,7 +220,6 @@
 				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
 				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
 				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
-				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
 				0D0D0D721FC624BF00C84F1D /* CommentManager.swift */,
 				E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */,
@@ -320,6 +319,7 @@
 			children = (
 				E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */,
 				E6E1E4961FC4D4E2000F42CB /* ReviewViewController.swift */,
+				E6E1E49B1FC63DBA000F42CB /* CommentTableViewCell.swift */,
 				E6E1E4981FC4D4FB000F42CB /* PhotosViewController.swift */,
 			);
 			path = SegmentedViewControllers;

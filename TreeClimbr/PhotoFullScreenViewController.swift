@@ -122,7 +122,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
                     self.dismiss(animated: true, completion: nil)
                 })
             }
-)        }
+            )}
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             if self.canDelete == true {
