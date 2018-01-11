@@ -31,7 +31,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //setup side buttons
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
         sideButtonsView.layer.cornerRadius = sideButtonsView.frame.height/2
@@ -40,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         setupTap()
         userLocationSetup()
+        
         
         FavouritesManager.loadFavourites { (success) in
             return
@@ -88,6 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return
         }
         
+        
         mapView.removeAnnotations(mapView.annotations)
         
         ReadTrees.read(completion: { trees in
@@ -96,14 +97,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let trees = trees
                 else { return }
             
-            for tree in trees {
+            for tree in self.treesArr {
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
                 let treeAnn : TreeAnnotation = TreeAnnotation()
                 treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
                 treeAnn.title = tree.treeName
                 treeAnn.tree = tree
+                
                 self.mapView.addAnnotation(treeAnn)
+                
+                
+                
             }
         })
         emailIsVerified()
@@ -283,22 +288,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
         
-        ReadTrees.read(completion: { trees in
-            
-            guard
-                let trees = trees
-                else { return }
-            
-            for tree in trees {
-                let treeLat = tree.treeLatitude
-                let treeLong = tree.treeLongitude
-                let treeAnn: TreeAnnotation = TreeAnnotation()
-                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-                treeAnn.title = tree.treeName
-                treeAnn.tree = tree
-                self.mapView.addAnnotation(treeAnn)
-            }
-        })
+        AppData.sharedInstance.treesArr = self.hideBlockedTrees()
+        
+//        ReadTrees.read(completion: { trees in
+//
+//            guard
+//                let trees = trees
+//                else { return }
+//
+//            for tree in trees {
+//                let treeLat = tree.treeLatitude
+//                let treeLong = tree.treeLongitude
+//                let treeAnn: TreeAnnotation = TreeAnnotation()
+//                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+//                treeAnn.title = tree.treeName
+//                treeAnn.tree = tree
+//                self.mapView.addAnnotation(treeAnn)
+//
+//            }
+//        })
     }
     
     // MARK: - Delegate Functions
@@ -345,6 +353,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         } else {
             print ("Email verified. Signing in...")
         }
+    }
+    
+    func hideBlockedTrees() -> [Tree]{
+        var hiddenUIDSet = Set <String>()
+        
+        treesArr = AppData.sharedInstance.treesArr
+        
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+        
+        var index = 0
+        for aTree in treesArr {
+            if hiddenUIDSet.contains(aTree.treeCreator!) {
+                treesArr.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return treesArr
     }
 
 }
