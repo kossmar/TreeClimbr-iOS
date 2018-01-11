@@ -95,4 +95,46 @@ class HiddenUsersManager: NSObject {
         
     }
     
+//        class func loadHiddenUsers(completion: @escaping ([User]?) -> Void)
+    
+    class func hideBlockedUsersComments(array: [Comment]) -> [Comment] {
+        
+        var hiddenUIDSet = Set <String>()
+        var tempArray = array
+        
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+        
+        var index = 0
+        for comment in tempArray {
+            if hiddenUIDSet.contains(comment.userID) {
+                tempArray.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return tempArray
+    }
+    
+    class func hideBlockedUsersPhotos(array: [Photo]) -> [Photo] {
+        
+        var hiddenUIDSet = Set <String>()
+        var tempArray = array
+        
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+        
+        var index = 0
+        for comment in tempArray {
+            if hiddenUIDSet.contains(comment.userID) {
+                tempArray.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return tempArray
+    }
+    
 }
