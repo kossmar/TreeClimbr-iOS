@@ -16,8 +16,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var handle: AuthStateDidChangeListenerHandle?
     
-    //    var detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
-
     var lat = 0.0
     var long = 0.0
     
@@ -318,25 +316,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func focusOnTree(location: CLLocationCoordinate2D, tree: Tree) {
     
-        let matching = mapView.annotations.first { (annotation) -> Bool in
-            
-            if let annotation = annotation as? TreeAnnotation {
-                return annotation.tree.treePhotoURL == tree.treePhotoURL
-            }
-            
-            return false
-        }
+//        mapView.setCenter(location, animated: true)
         
-        if let match = matching {
-            
-            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-            
-            mapView.setRegion(region, animated: true)
-            mapView.selectAnnotation(match, animated: true)
-            
-//            mapView.showAnnotations([match], animated: true)
-        }
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+
+        mapView.setRegion(region, animated: true)
+    
     }
     
     func emailIsVerified() {
