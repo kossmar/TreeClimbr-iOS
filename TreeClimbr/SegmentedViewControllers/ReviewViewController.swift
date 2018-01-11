@@ -19,9 +19,9 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
             
             CommentManager.loadComments(tree: tree) { comments in
                 guard let comments = comments else { return }
-                self.commentArr = comments
-                self.tableView.reloadData()
+                self.commentArr = self.hideBlockedUsers(comments: comments)
                 self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
+                self.tableView.reloadData()
             }
         }
     }
@@ -106,7 +106,6 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         cell.commentTextView.text = commentArr[indexPath.row].body
         cell.delegate = self
         cell.optionsButton.tag = indexPath.row
-//        cell.optionsButton.addTarget(self, action: Selector(("commentOptionsPressed:")), for: UIControlEvents.touchUpInside)
         
         return cell
     }
@@ -163,8 +162,19 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
             })
         }
         
+        let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
+            let badUser =  User(name: comment.username, email: "", uid: comment.userID)
+            AlertShow.confirm(inpView: self, titleStr: "Block \(comment.username)?", messageStr: "You won't see \(comment.username)'s trees, photos and comments anymore.", completion: {
+                HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
+                    self.commentArr.remove(at: senderTag)
+                    self.tableView.reloadData()
+                })
+            }
+            )}
+        
         alertController.addAction(cancelAction)
         alertController.addAction(reportAction)
+        alertController.addAction(blockAction)
         
         if comment.userID == Auth.auth().currentUser?.uid {
             alertController.addAction(deleteAction)
@@ -199,6 +209,28 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Custom Functions
+    
+    func hideBlockedUsers(comments: [Comment]) -> [Comment] {
+        var hiddenUIDSet = Set <String>()
+        
+        commentArr = AppData.sharedInstance.commentArr
+        
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+        
+        var index = 0
+        for comment in commentArr {
+            if hiddenUIDSet.contains(comment.userID) {
+                commentArr.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return commentArr
     }
     
 }
