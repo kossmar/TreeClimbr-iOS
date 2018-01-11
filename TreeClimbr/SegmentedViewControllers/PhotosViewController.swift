@@ -24,9 +24,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         imagePickerController.delegate = self
         photoCollectionView.delegate = self
         moreImagesArr = []
-        
-        //
-        //photoObjArr = hideBlockedUsers()
 
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         uploadPhotosButton.layer.cornerRadius = uploadPhotosButton.frame.height/4
@@ -48,7 +45,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: - CollectionView DataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //
         self.photoObjArr = hideBlockedUsers()
         return self.photoObjArr.count
     }
