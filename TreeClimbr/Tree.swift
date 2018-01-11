@@ -15,6 +15,7 @@ class Tree: NSObject {
     var treeCreator: String?
     var treeComments = Array<Comment>()
     var distFromUser = Double()
+    var isHidden = Bool()
     
     init(name: String, description: String?, treeLat: Double, treeLong: Double, photo: NSData?) {
         self.treeID = ""
