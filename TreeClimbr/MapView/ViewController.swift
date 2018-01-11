@@ -290,23 +290,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         AppData.sharedInstance.treesArr = self.hideBlockedTrees()
         
-//        ReadTrees.read(completion: { trees in
-//
-//            guard
-//                let trees = trees
-//                else { return }
-//
-//            for tree in trees {
-//                let treeLat = tree.treeLatitude
-//                let treeLong = tree.treeLongitude
-//                let treeAnn: TreeAnnotation = TreeAnnotation()
-//                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-//                treeAnn.title = tree.treeName
-//                treeAnn.tree = tree
-//                self.mapView.addAnnotation(treeAnn)
-//
-//            }
-//        })
+        ReadTrees.read(completion: { trees in
+
+            guard
+                let trees = trees
+                else { return }
+
+            for tree in self.treesArr {
+                let treeLat = tree.treeLatitude
+                let treeLong = tree.treeLongitude
+                let treeAnn: TreeAnnotation = TreeAnnotation()
+                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+                treeAnn.title = tree.treeName
+                treeAnn.tree = tree
+                self.mapView.addAnnotation(treeAnn)
+
+            }
+        })
     }
     
     // MARK: - Delegate Functions
