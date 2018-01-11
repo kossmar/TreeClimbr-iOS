@@ -35,11 +35,15 @@ class HiddenUsersViewController: UIViewController, UITableViewDelegate, UITableV
     
     func unblockUser(senderTag: Int) {
         
-        HiddenUsersManager.removeFromHidden(badUser: AppData.sharedInstance.hiddenUsersArr[senderTag]) { (true) in
-            HiddenUsersManager.loadHiddenUsers { (User) in
-                self.tableView.reloadData()
-            }
+        let blockedUser = AppData.sharedInstance.hiddenUsersArr[senderTag]
+        AlertShow.confirm(inpView: self, titleStr: "Unblock \(blockedUser.name)?", messageStr: "\(blockedUser.name)'s trees, photos and comments will be visible to you again.", completion: {
+            
+                HiddenUsersManager.removeFromHidden(badUser: blockedUser) { (true) in
+                    HiddenUsersManager.loadHiddenUsers { (User) in
+                        self.tableView.reloadData()
+                    }
+                }
+            })
         }
-    }
 
 }
