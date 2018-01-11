@@ -65,8 +65,6 @@ class ReadTrees: NSObject {
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     
-//                    print (AppData.sharedInstance.treesArr)
-                    
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")

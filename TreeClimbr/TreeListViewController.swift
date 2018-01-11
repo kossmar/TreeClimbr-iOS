@@ -49,7 +49,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         switch segmentState {
         case 0:
-            treesArr = AppData.sharedInstance.treesArr
+            treesArr = hideBlockedUsers()
         case 1:
             treesArr = AppData.sharedInstance.userTreesArr
         case 2:
@@ -167,7 +167,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func segmentAction(_ sender: UISegmentedControl) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            treesArr = AppData.sharedInstance.treesArr
+            treesArr = hideBlockedUsers()
             sortTableViewByDistance()
             tableView.reloadData()
             navigationBar.topItem?.title = segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)
@@ -189,6 +189,26 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         default:
             break
         }
+    }
+    
+    func hideBlockedUsers() -> [Tree] {
+        var hiddenUIDSet = Set <String>()
+        
+        treesArr = AppData.sharedInstance.treesArr
+        
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+        
+        var index = 0
+        for aTree in treesArr {
+            if hiddenUIDSet.contains(aTree.treeCreator!) {
+                treesArr.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return treesArr
     }
     
 }
