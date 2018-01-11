@@ -104,7 +104,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let reportAction = UIAlertAction(title: "Report", style: .default) { (report) in
-//            self.makeReport(withEmail: "higepon@example.com", messageBody: "Found inappropriate content! \n\n Username: \n \(photo.userName) \n\n UserID: \n \(photo.userID) \n\n PhotoID: \n \(photo.photoID) \n\n URL: \n \(photo.photoURL) ")
+
             let mailComposeViewController = self.configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
                 self.present(mailComposeViewController, animated: true, completion: nil)
@@ -116,10 +116,16 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             let photo = self.photoObjArr[self.pageControl.currentPage]
             let badUser =  User(name: photo.userName, email: "", uid: photo.userID)
             AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", completion: {
-                HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in 
-                    self.photoObjArr.remove(at: self.pageControl.currentPage)
-                    self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
-                    self.dismiss(animated: true, completion: nil)
+                AppData.sharedInstance.hiddenUsersArr.append(badUser)
+//                self.photoObjArr.remove(at: self.pageControl.currentPage)
+//                self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
+                self.sourceVC.photoCollectionView.reloadData()
+                HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
+                })
+                self.dismiss(animated: true, completion: {
+                    if badUser.uid == self.sourceVC.tree!.treeCreator! {
+                        self.sourceVC.dismiss(animated: true, completion: nil)
+                    }
                 })
             }
             )}

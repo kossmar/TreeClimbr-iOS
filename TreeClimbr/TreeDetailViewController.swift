@@ -114,7 +114,6 @@ class TreeDetailViewController: UIViewController {
                             
                             photo.image = realImage!
                             self.photoObjArr.append(photo)
-//                            self.imageArr.append(realImage!)
                             group.leave()
                         }
                     })
@@ -223,5 +222,5 @@ class TreeDetailViewController: UIViewController {
         self.photosViewController.photoCollectionView.reloadData()
     }
     
-    
+
 }
