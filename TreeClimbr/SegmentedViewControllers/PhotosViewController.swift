@@ -45,7 +45,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: - CollectionView DataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        self.photoObjArr = hideBlockedUsers()
         return self.photoObjArr.count
     }
     
@@ -185,6 +185,26 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             }
         }
         imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func hideBlockedUsers() -> [Photo] {
+        var hiddenUIDSet = Set <String>()
+
+        var tempPhotoArr = photoObjArr
+
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+            hiddenUIDSet.insert(hiddenUser.uid)
+        }
+
+        var index = 0
+        for aPhoto in tempPhotoArr {
+            if hiddenUIDSet.contains(aPhoto.userID) {
+                tempPhotoArr.remove(at: index)
+            } else {
+                index += 1
+            }
+        }
+        return tempPhotoArr
     }
     
     
