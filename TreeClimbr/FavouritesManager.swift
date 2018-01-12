@@ -15,12 +15,12 @@ class FavouritesManager: NSObject {
         }
         
         let faveDict: [String: Any] = [
-            "treeIDKey": tree.treeID!
+            "treeIDKey": tree.treeID
         ]
         
         AppData.sharedInstance.favouritesNode
             .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .setValue(faveDict)
         
         completion(true)
@@ -111,7 +111,7 @@ class FavouritesManager: NSObject {
         
         AppData.sharedInstance.favouritesNode
         .child(Auth.auth().currentUser!.uid)
-        .child("\(tree.treeID!)")
+        .child("\(tree.treeID)")
         .removeValue()
         
     }

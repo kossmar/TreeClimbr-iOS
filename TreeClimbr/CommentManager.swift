@@ -27,7 +27,7 @@ class CommentManager: NSObject {
         ]
         
         AppData.sharedInstance.commentsNode
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .child(comment.commentID)
             .setValue(commentDict)
         
@@ -43,7 +43,7 @@ class CommentManager: NSObject {
         }
         
         AppData.sharedInstance
-            .commentsNode.child(tree.treeID!)
+            .commentsNode.child(tree.treeID)
             .observe (.value, with: { (snapshot) in
                 
                 let value = snapshot.value as? NSDictionary;
@@ -86,7 +86,7 @@ class CommentManager: NSObject {
     
     class func deleteComment(tree: Tree, comment: Comment) {
         AppData.sharedInstance.commentsNode
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .child(comment.commentID)
             .removeValue()
     }

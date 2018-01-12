@@ -20,8 +20,7 @@ class AboutViewController: UIViewController {
             guard let tree = tree else { return }
             treeDescTextView.text = tree.treeDescription
             coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
-            
-            getCreatorName()
+
             
             for thisTree in AppData.sharedInstance.favouritesArr {
                 if tree.treeID == thisTree.treeID {
@@ -43,6 +42,12 @@ class AboutViewController: UIViewController {
         treeDescTextView.isEditable = false
         addFavouriteButton.layer.cornerRadius = addFavouriteButton.frame.height/8
 
+        if self.tree?.treeDescription == "" {
+            self.treeDescTextView.text = "\(tree?.treeCreatorName) did not love me enough. So... no description..."
+            self.treeDescTextView.textColor = UIColor.gray
+        }
+        
+        self.userLabel.text = tree?.treeCreatorName
         
     }
 
@@ -55,30 +60,6 @@ class AboutViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
        treeDescTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-    }
-    
-    func getCreatorName() {
-        
-        let creator = tree?.treeCreator
-        AppData.sharedInstance.usersNode
-            .child(creator!)
-            .observe( .value, with: { (snapshot) in
-                
-                let value = snapshot.value as? NSDictionary
-                
-                if (value == nil) {
-                    return
-                }
-                
-                let userName = value?["nameKey"] as? String ?? ""
-                self.userLabel.text = "\(userName)"
-                
-                if self.tree?.treeDescription == "" {
-                    self.treeDescTextView.text = "\(userName) did not love me enough. So... no description..."
-                    self.treeDescTextView.textColor = UIColor.gray
-                }
-
-            })
     }
     
     // MARK: - Actions

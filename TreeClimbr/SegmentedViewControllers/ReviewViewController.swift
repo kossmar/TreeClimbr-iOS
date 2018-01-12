@@ -170,7 +170,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
                     
                 })
                 
-                if badUser.uid == self.tree!.treeCreator! {
+                if badUser.uid == self.tree!.treeCreator {
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     self.commentArr = HiddenUsersManager.hideBlockedUsersComments(array: self.commentArr)

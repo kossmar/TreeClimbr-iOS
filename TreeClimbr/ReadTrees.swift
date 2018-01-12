@@ -42,6 +42,7 @@ class ReadTrees: NSObject {
                     let treeSpecies : String = tree["speciesKey"] as! String
                     let treePhotoStr = tree["photoKey"] as! String
                     let treeCreator = tree["creatorKey"] as! String
+                    let treeCreatorName = tree["creatorNameKey"] as! String
 //                    let treeComments = tree["commentsKey"] as! Array
                     
                     let treePhotoURL = URL(string: treePhotoStr)
@@ -62,6 +63,7 @@ class ReadTrees: NSObject {
                     readTree.treePhotoURL = treePhotoURL!
                     readTree.treeID = treeID
                     readTree.treeCreator = treeCreator
+                    readTree.treeCreatorName = treeCreatorName
                     
                     AppData.sharedInstance.treesArr.append(readTree)
                     
