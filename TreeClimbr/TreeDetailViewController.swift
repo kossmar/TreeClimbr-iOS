@@ -195,14 +195,35 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             AlertShow.confirm(inpView: self, titleStr: "Delete Tree?", messageStr: " ", completion: {
-//                CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[buttonRow])
-//                self.commentArr.remove(at: buttonRow)
-                let index = AppData.sharedInstance.treesArr.index(of: self.tree)
-                AppData.sharedInstance.treesArr.remove(at: index!)
+//                let index = AppData.sharedInstance.treesArr.index(of: self.tree)
+//                AppData.sharedInstance.treesArr.remove(at: index!)
+
                 UserTreesManager.deleteUserTree(tree: self.tree, completion: { (true) in
-                    self.dismiss(animated: true, completion: {
-                        self.sourceVC?.tableView.reloadData()
+                    let group = DispatchGroup()
+                    
+                    group.enter()
+                    FavouritesManager.loadFavourites(completion: { trees in
+                        group.leave()
                     })
+                    group.enter()
+                    UserTreesManager.loadUserTrees(completion: { trees in
+                        group.leave()
+                    })
+                    group.enter()
+                    ReadTrees.read(completion: { trees in
+                        group.leave()
+                    })
+                    
+                    group.notify(queue: DispatchQueue.global(qos: .background)) {
+                        
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: {
+                                self.sourceVC?.tableView.reloadData()
+                            })
+                        }
+                    }
+
+
                 })
             })
         }
