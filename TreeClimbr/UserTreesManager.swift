@@ -6,17 +6,17 @@ class UserTreesManager: NSObject {
     
     class func deleteUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
         AppData.sharedInstance.treeNode
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .removeValue()
         
         AppData.sharedInstance.userTreesNode
             .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .removeValue()
         
         AppData.sharedInstance.favouritesNode
             .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .removeValue()
         
         completion(true)
@@ -73,6 +73,7 @@ class UserTreesManager: NSObject {
                             let treeSpecies : String = treeDict?["speciesKey"] as! String
                             let treePhotoStr = treeDict?["photoKey"] as! String
                             let treeCreator = treeDict?["creatorKey"] as! String
+                            let treeCreatorName = treeDict?["creatorNameKey"] as! String
                             let treePhotoURL = URL(string: treePhotoStr)
                             
                             let userTree = Tree(name: treeName,
@@ -90,6 +91,7 @@ class UserTreesManager: NSObject {
                             userTree.treePhotoURL = treePhotoURL!
                             userTree.treeID = treeID
                             userTree.treeCreator = treeCreator
+                            userTree.treeCreatorName = treeCreatorName
                             
                             AppData.sharedInstance.userTreesArr.append(userTree)
                             print (" After Append\(AppData.sharedInstance.userTreesArr.count)")

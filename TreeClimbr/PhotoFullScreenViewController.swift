@@ -123,7 +123,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
                 HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
                 })
                 self.dismiss(animated: true, completion: {
-                    if badUser.uid == self.sourceVC.tree!.treeCreator! {
+                    if badUser.uid == self.sourceVC.tree!.treeCreator {
                         self.sourceVC.dismiss(animated: true, completion: nil)
                     }
                 })

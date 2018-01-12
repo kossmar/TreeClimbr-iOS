@@ -32,7 +32,7 @@ class PhotoManager: NSObject {
             ]
             
             AppData.sharedInstance.photosNode
-                .child(tree.treeID!)
+                .child(tree.treeID)
                 .child(photo.photoID)
                 .setValue(photoDict)
             
@@ -50,7 +50,7 @@ class PhotoManager: NSObject {
         }
         
         AppData.sharedInstance
-            .photosNode.child(tree.treeID!)
+            .photosNode.child(tree.treeID)
 //            .observe (.value, with: { (snapshot) in
             .observeSingleEvent(of: .value) { (snapshot) in
 
@@ -99,7 +99,7 @@ class PhotoManager: NSObject {
     class func deletePhoto(photo: Photo, tree: Tree) {
         
         AppData.sharedInstance.photosNode
-            .child(tree.treeID!)
+            .child(tree.treeID)
             .child(photo.photoID)
             .removeValue()
         

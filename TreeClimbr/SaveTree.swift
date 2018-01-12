@@ -38,10 +38,11 @@ class SaveTree: NSObject {
                 return
             }
             
-            let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
-            tree.treeID = treeID
+//            let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
+//            tree.treeID = treeID
             
             let creator = Auth.auth().currentUser?.uid
+            let creatorName = Auth.auth().currentUser?.displayName
             
             if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
                 print(downloadedURL)
@@ -49,7 +50,7 @@ class SaveTree: NSObject {
                 let url = downloadedURL.absoluteString
                 
                 let treeDict: [String : Any] = [
-                    "idKey": treeID,
+                    "idKey": tree.treeID,
                     "nameKey": tree.treeName,
                     "descriptionKey": tree.treeDescription!,
                     "speciesKey": tree.treeSpecies!,
@@ -60,17 +61,18 @@ class SaveTree: NSObject {
                     "popularityKey":tree.treePopularity,
                     "photoKey":url,
                     "creatorKey":creator!,
+                    "creatorNameKey":creatorName!,
 //                    "commentKey": tree.treeComments
                 ]
                 
                 AppData.sharedInstance.treeNode
-                    .child(tree.treeID!)
+                    .child(tree.treeID)
                     .setValue(treeDict)
                 
                 AppData.sharedInstance.userTreesNode
                     .child(Auth.auth().currentUser!.uid)
-                    .child(tree.treeID!)
-                    .setValue(["treeIDKey": tree.treeID!])
+                    .child(tree.treeID)
+                    .setValue(["treeIDKey": tree.treeID])
             }
             
             completion(true)
@@ -95,12 +97,13 @@ class SaveTree: NSObject {
                 "popularityKey": tree.treePopularity,
                 "photoKey": url,
                 "creatorKey": tree.treeCreator,
+                "creatorNameKey": tree.treeCreatorName,
                 //                    "commentKey": tree.treeComments
             ]
             
             AppData.sharedInstance.treeNode
                 //            .child(AppData.sharedInstance.curUser!.uid)
-                .child(tree.treeID!)
+                .child(tree.treeID)
                 .setValue(treeDict)
         
         completion(true)

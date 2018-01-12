@@ -357,7 +357,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         var index = 0
         for aTree in treesArr {
-            if hiddenUIDSet.contains(aTree.treeCreator!) {
+            if hiddenUIDSet.contains(aTree.treeCreator) {
                 treesArr.remove(at: index)
             } else {
                 index += 1
