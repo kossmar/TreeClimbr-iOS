@@ -91,9 +91,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 PhotoManager.savePhotos(photos: photos, tree: tree) { success in
                     print("winners")
                     
+                    self.dismiss(animated: true) {
+                        self.sourceVC.reloadInputViews()
+                    }
                 }
             }
-            
         })
         
         
@@ -102,9 +104,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         if TreeDescTextView.textColor == UIColor.lightGray {
             TreeDescTextView.text = nil
         }
-        
-        dismiss(animated: true, completion: nil)
-
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
