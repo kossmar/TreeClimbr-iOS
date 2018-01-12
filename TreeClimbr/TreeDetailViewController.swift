@@ -243,11 +243,12 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             )}
         
         alertController.addAction(cancelAction)
-        alertController.addAction(reportAction)
-        alertController.addAction(blockAction)
         
         if tree.treeCreator == Auth.auth().currentUser?.uid {
             alertController.addAction(deleteAction)
+        } else {
+            alertController.addAction(reportAction)
+            alertController.addAction(blockAction)
         }
         
         self.present(alertController, animated: true, completion: nil)
