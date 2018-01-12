@@ -187,7 +187,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         mailComposerVC.setToRecipients(["someone@somewhere.com"])
         mailComposerVC.setSubject("TreeClimbr - Inappropriate Content Report")
-        mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(photo.userName) \n\n UserID: \n \(photo.userID) \n\n PhotoID: \n \(photo.photoID) \n\n PhotoURL: \n \(photo.photoURL) \n ", isHTML: false)
+        mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(photo.userName) \n\n PhotoID: \n \(photo.photoID) \n\n", isHTML: false)
         
         return mailComposerVC
     }
