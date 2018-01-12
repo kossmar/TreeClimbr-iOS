@@ -21,6 +21,12 @@ class AboutViewController: UIViewController {
             treeDescTextView.text = tree.treeDescription
             coordinateLabel.text = "\(tree.treeLatitude), \(tree.treeLongitude)"
 
+            if tree.treeDescription == "" {
+                self.treeDescTextView.text = "\(tree.treeCreatorName) did not love me enough. So... no description..."
+                self.treeDescTextView.textColor = UIColor.gray
+            }
+            
+            self.userLabel.text = tree.treeCreatorName
             
             for thisTree in AppData.sharedInstance.favouritesArr {
                 if tree.treeID == thisTree.treeID {
@@ -41,13 +47,6 @@ class AboutViewController: UIViewController {
         
         treeDescTextView.isEditable = false
         addFavouriteButton.layer.cornerRadius = addFavouriteButton.frame.height/8
-
-        if self.tree?.treeDescription == "" {
-            self.treeDescTextView.text = "\(tree?.treeCreatorName) did not love me enough. So... no description..."
-            self.treeDescTextView.textColor = UIColor.gray
-        }
-        
-        self.userLabel.text = tree?.treeCreatorName
         
     }
 
