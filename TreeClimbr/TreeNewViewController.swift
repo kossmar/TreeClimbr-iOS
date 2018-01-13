@@ -40,6 +40,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         setup()
         canSaveTree()
         
+//        if treeNameTextField.text!.isEmpty {
+//            title
+//        }
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -54,7 +57,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         if imageArr.count > 0 {
             treeImageView.image = imageArr[0]
             addPhotoButton.setTitle("Manage Photos", for: .normal)
-            saveButton.isEnabled = true
+//            saveButton.isEnabled = true
         } else {
             addPhotoButton.setTitle("Add Photos", for: .normal)
             saveButton.isEnabled = false
@@ -75,6 +78,12 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func save(_ sender: UIBarButtonItem) {
 
+        let charset = CharacterSet(charactersIn: "$.[]#")
+        
+        if treeNameTextField.text!.rangeOfCharacter(from: charset) != nil {
+            treeNameTextField.text! = ""
+            AlertShow.show(inpView: self, titleStr: "Oops!", messageStr: "A tree's name cannot contain the following characters: \n & . [ ] # ")
+        } else {
         
         let photoData = treeImageView.image?.jpeg(.low)
         
@@ -97,12 +106,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 }
             }
         })
-        
-        
-
-
-        if TreeDescTextView.textColor == UIColor.lightGray {
-            TreeDescTextView.text = nil
+            
+            if TreeDescTextView.textColor == UIColor.lightGray {
+                TreeDescTextView.text = nil
+            }
         }
     }
     
@@ -209,6 +216,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
+
         if treeNameTextField.text!.isEmpty {
             titleIsSet = false
         } else {
