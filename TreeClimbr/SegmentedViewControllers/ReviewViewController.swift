@@ -200,7 +200,7 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setToRecipients(["treeclimbrcontact@gmail.com"])
         mailComposerVC.setSubject("TreeClimbr - Inappropriate Content Report")
         mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(comment.username) \n\n UserID: \n \(comment.userID) \n\n Content: \n \(comment.body) \n\n CommentID: \n \(comment.commentID) \n ", isHTML: false)
         
