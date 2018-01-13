@@ -287,7 +287,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["someone@somewhere.com"])
+        mailComposerVC.setToRecipients(["treeclimbrcontact@gmail.com"])
         mailComposerVC.setSubject("TreeClimbr - Inappropriate Content Report")
         mailComposerVC.setMessageBody("Found inappropriate content! \n\n Username: \n \(tree.treeCreatorName) \n\n TreeName: \n \(tree.treeName) \n\n TreeID: \n \(tree.treeID) \n ", isHTML: false)
         

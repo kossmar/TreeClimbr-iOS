@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
             
             blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.hasChild(user!) {
-                    let alert = UIAlertController(title: "Blocked", message: "YO ASS IS BLOCKED", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Blocked", message: "Your account has been suspended until further notice.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
