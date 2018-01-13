@@ -90,29 +90,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         
-        mapView.removeAnnotations(mapView.annotations)
-        
-//        ReadTrees.read(completion: { trees in
-//            
-//            guard
-//                let trees = trees
-//                else { return }
-//            
-//            for tree in self.treesArr {
-//                
-//                let treeLat = tree.treeLatitude
-//                let treeLong = tree.treeLongitude
-//                let treeAnn : TreeAnnotation = TreeAnnotation()
-//                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-//                treeAnn.title = tree.treeName
-//                treeAnn.tree = tree
-//                
-//                self.mapView.addAnnotation(treeAnn)
-//                
-//                
-//                
-//            }
-//        })
+
         emailIsVerified()
     }
     
