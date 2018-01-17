@@ -52,14 +52,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-
-            if Auth.auth().currentUser == nil {
-//              self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-                self.addTreeToLocationButton.isEnabled = false
-            }
-
-        }
+//        handle = Auth.auth().addStateDidChangeListener { auth, user in
+//
+//            if Auth.auth().currentUser == nil {
+//                self.addTreeToLocationButton.isEnabled = false
+//            }
+//
+//        }
         
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapViewWillStartLoadingMap(self.mapView)
@@ -67,11 +66,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handle!)
+//        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            
+            if Auth.auth().currentUser == nil {
+                //              self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+                self.addTreeToLocationButton.isEnabled = false
+            }
+            
+        }
         
         let blockedUser = AppData.sharedInstance.blockedNode
         let user = Auth.auth().currentUser?.uid
@@ -366,10 +374,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         return treesArr
     }
-    
-//    func goToLogin() {
-//        self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-//    }
+
 
 }
 

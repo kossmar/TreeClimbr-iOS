@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
         
         guard let email = emailField.text, let password = passwordField.text else {
             AlertShow.show(inpView: self,
-                           titleStr: "Oopies!",
+                           titleStr: "Oopsies!",
                            messageStr: "Please Fill Out All Required Fields")
             return
         }
@@ -50,6 +50,8 @@ class LoginViewController: UIViewController {
             self.dismiss(animated: true, completion: {
                 self.sourceVC.dismiss(animated: true, completion: nil)
             })
+            
+            
         })
         
         
