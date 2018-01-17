@@ -42,10 +42,10 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         }) as! AboutViewController
     }()
     
-    lazy var reviewViewController: ReviewViewController = {
+    lazy var reviewViewController: CommentViewController = {
         return childViewControllers.first(where: { (viewController) -> Bool in
-            return viewController is ReviewViewController
-        }) as! ReviewViewController
+            return viewController is CommentViewController
+        }) as! CommentViewController
     }()
     
     lazy var photosViewController: PhotosViewController = {
@@ -228,7 +228,9 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             alertController.addAction(deleteAction)
         } else {
             alertController.addAction(reportAction)
-            alertController.addAction(blockAction)
+            if Auth.auth().currentUser != nil {
+                alertController.addAction(blockAction)
+            }
         }
         
         self.present(alertController, animated: true, completion: nil)

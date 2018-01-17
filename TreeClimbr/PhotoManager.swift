@@ -13,17 +13,18 @@ class PhotoManager: NSObject {
             return
         }
         
+        guard let curUser = Auth.auth().currentUser else {return}
         
-        let userID = Auth.auth().currentUser?.uid
-        let userName = Auth.auth().currentUser?.displayName
+        let userID = curUser.uid
+        let userName = curUser.displayName!
         for photo in photos {
             
             let uuid = NSUUID().uuidString
             photo.photoID = uuid
             
             let photoDict: [String : Any] = [
-                "userIDKey": userID!,
-                "userNameKey": userName!,
+                "userIDKey": userID,
+                "userNameKey": userName,
                 "urlKey": photo.photoURL,
                 "timeKey": photo.timeStamp,
                 "isMainKey": photo.isMain,
@@ -44,14 +45,13 @@ class PhotoManager: NSObject {
     
     class func loadPhotos(tree: Tree, completion: @escaping ([Photo]?) -> Void) {
         
-        if ( Auth.auth().currentUser == nil ) {
-            completion(nil)
-            return
-        }
+//        if ( Auth.auth().currentUser == nil ) {
+//            completion(nil)
+//            return
+//        }
         
         AppData.sharedInstance
             .photosNode.child(tree.treeID)
-//            .observe (.value, with: { (snapshot) in
             .observeSingleEvent(of: .value) { (snapshot) in
 
                 let value = snapshot.value as? NSDictionary;

@@ -7,6 +7,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var sourceVC = SignUpViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,6 +15,10 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: Actions
+    
+    @IBAction func SignUpButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
@@ -26,8 +31,8 @@ class LoginViewController: UIViewController {
         
         LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password, completion: {
         
-//            let blockedUser = AppData.sharedInstance.blockedNode
-//            let user = Auth.auth().currentUser?.uid
+            let blockedUser = AppData.sharedInstance.blockedNode
+            let user = Auth.auth().currentUser?.uid
 //
 //            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
 //                if snapshot.hasChild(user!) {
@@ -39,7 +44,17 @@ class LoginViewController: UIViewController {
 //                }
 //            })
             
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.hasChild(user!) {
+                    let alert = UIAlertController(title: "Blocked", message: "Your account has been suspended until further notice.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.dismiss(animated: true, completion: {
+                        self.sourceVC.dismiss(animated: true, completion: nil)
+                    })
+                }
+            })
             
             
 
