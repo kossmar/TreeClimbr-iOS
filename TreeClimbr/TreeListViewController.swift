@@ -2,6 +2,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Firebase
 
 class TreeListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -11,6 +12,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     var treeDistance = Double()
     var treesArr = Array<Tree>()
     var segmentState = 0
+    var handle: AuthStateDidChangeListenerHandle?
     
     @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet var barButton: UIBarButtonItem!
@@ -38,6 +40,14 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+
+//                self.segmentControl.numberOfSegments = 1
+                self.segmentControl.setEnabled(false, forSegmentAt: 1)
+                self.segmentControl.setEnabled(false, forSegmentAt: 2)
+            }
+        }
 
         let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 17.0)!, forKey: NSAttributedStringKey.font as NSCopying)
         segmentControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)

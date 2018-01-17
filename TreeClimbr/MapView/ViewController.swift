@@ -49,9 +49,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-            }
+//            if user == nil {
+//                self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+//            }
         }
         
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -70,13 +70,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let user = Auth.auth().currentUser?.uid
         
         blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild(user!) {
-                do {
-                    try Auth.auth().signOut()
-                    self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-                }
-                catch let error as NSError {
-                    print (error.localizedDescription)
+            if user != nil {
+                if snapshot.hasChild(user!) {
+                    do {
+                        try Auth.auth().signOut()
+                        self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+                    }
+                    catch let error as NSError {
+                        print (error.localizedDescription)
+                    }
                 }
             }
         })

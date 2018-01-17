@@ -33,6 +33,14 @@ class SignUpViewController: UIViewController {
     @IBAction func goToLoginPressed(_ sender: UIButton) {
         
         
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let treeVC = segue.destination as? LoginViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        treeVC.sourceVC = self
     }
     
 }

@@ -90,7 +90,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let lat = coordinate.latitude
         let long = coordinate.longitude
         
+            guard let curUser = Auth.auth().currentUser else {return}
+        
         let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
+            tree.treeCreator = curUser.uid
+            tree.treeCreatorName = curUser.displayName!
         
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)

@@ -7,6 +7,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var sourceVC = SignUpViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,6 +15,10 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: Actions
+    
+    @IBAction func SignUpButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         
@@ -35,7 +40,9 @@ class LoginViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: {
+                        self.sourceVC.dismiss(animated: true, completion: nil)
+                    })
                 }
             })
             

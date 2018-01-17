@@ -4,11 +4,12 @@ import UIKit
 import Firebase
 import MessageUI
 
-class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate, MFMailComposeViewControllerDelegate {
+class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var addCommentButton: UIButton!
+    let sourceVC = TreeDetailViewController()
 
     
     var commentArr = [Comment]()
@@ -45,6 +46,14 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     //MARK: Actions
     
     @IBAction func addComment (_ sender: UIButton) {
+        
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "commentToSignUp", sender: self)
+                return
+            })
+        }
+        
         let comment = Comment(body: descTextView.text)
         CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
             self.view.endEditing(true)

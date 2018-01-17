@@ -67,7 +67,7 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Sign up"/>
                                                 <connections>
-                                                    <segue destination="A0j-Fm-IL5" kind="presentation" modalTransitionStyle="flipHorizontal" id="2Zc-bu-jHi"/>
+                                                    <action selector="SignUpButtonPressed:" destination="Xhn-qc-TPj" eventType="touchUpInside" id="7Oo-0Z-JAD"/>
                                                 </connections>
                                             </button>
                                         </subviews>
