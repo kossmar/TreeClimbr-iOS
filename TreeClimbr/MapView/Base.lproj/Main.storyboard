@@ -34,34 +34,41 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0q5-aI-TA7" userLabel="side buttons view">
-                                <rect key="frame" x="47" y="525.5" width="281" height="76"/>
+                                <rect key="frame" x="19.5" y="525.5" width="336" height="76"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UEF-Eu-ixv">
-                                        <rect key="frame" x="15" y="5.5" width="251" height="66"/>
+                                        <rect key="frame" x="15" y="5.5" width="306" height="66"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lg9-Vb-nzm">
+                                                <rect key="frame" x="0.0" y="0.0" width="45" height="66"/>
+                                                <state key="normal" title="LOGIN"/>
+                                                <connections>
+                                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="psE-Q3-QCH"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-3D-nnI" userLabel="MyTreesButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="66"/>
+                                                <rect key="frame" x="55" y="0.0" width="56" height="66"/>
                                                 <state key="normal" image="mytreesbutton"/>
                                                 <connections>
                                                     <segue destination="EXS-MP-yW1" kind="presentation" identifier="toTreeList" id="poX-WJ-aBE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VL8-Uf-BN7">
-                                                <rect key="frame" x="66" y="0.0" width="56" height="66"/>
+                                                <rect key="frame" x="121" y="0.0" width="56" height="66"/>
                                                 <state key="normal" image="treeatuserloc"/>
                                                 <connections>
                                                     <action selector="addTreeToUserLoc:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tXr-2h-3aM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hau-Kk-nEr">
-                                                <rect key="frame" x="132" y="0.0" width="52" height="66"/>
+                                                <rect key="frame" x="187" y="0.0" width="52" height="66"/>
                                                 <state key="normal" image="userlocation"/>
                                                 <connections>
                                                     <action selector="centerToUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5oP-NP-N1n"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7a-wv-9hX">
-                                                <rect key="frame" x="194" y="0.0" width="57" height="66"/>
+                                                <rect key="frame" x="249" y="0.0" width="57" height="66"/>
                                                 <state key="normal" image="settingsbutton"/>
                                                 <connections>
                                                     <segue destination="d5X-kP-5xp" kind="presentation" id="XT7-pJ-iAr"/>
@@ -96,9 +103,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="6UE-lB-4bw"/>
                     <connections>
+                        <outlet property="addTreeToLocationButton" destination="VL8-Uf-BN7" id="GIG-7i-wo9"/>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
                         <outlet property="menuButton" destination="dCU-1J-pdG" id="Jc2-ES-ijw"/>
                         <outlet property="sideButtonsView" destination="0q5-aI-TA7" id="EPB-QD-7jL"/>
+                        <outlet property="treeListButton" destination="gaB-3D-nnI" id="KhT-jx-ZKk"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
                         <segue destination="C35-4q-N1j" kind="presentation" identifier="toTreeDetail" id="wUw-dM-NYP"/>
