@@ -96,9 +96,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="6UE-lB-4bw"/>
                     <connections>
+                        <outlet property="addTreeToLocationButton" destination="VL8-Uf-BN7" id="GIG-7i-wo9"/>
                         <outlet property="mapView" destination="JRg-tX-Piz" id="OFD-wP-6bE"/>
                         <outlet property="menuButton" destination="dCU-1J-pdG" id="Jc2-ES-ijw"/>
                         <outlet property="sideButtonsView" destination="0q5-aI-TA7" id="EPB-QD-7jL"/>
+                        <outlet property="treeListButton" destination="gaB-3D-nnI" id="KhT-jx-ZKk"/>
                         <segue destination="o5z-DZ-vmH" kind="presentation" identifier="toNewTree" id="yvV-7N-ldg"/>
                         <segue destination="Lnf-bO-2Pn" kind="presentation" identifier="CheckIdentity" modalTransitionStyle="flipHorizontal" id="DnM-3j-LnW"/>
                         <segue destination="C35-4q-N1j" kind="presentation" identifier="toTreeDetail" id="wUw-dM-NYP"/>

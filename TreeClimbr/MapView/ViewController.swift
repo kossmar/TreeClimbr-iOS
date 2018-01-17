@@ -14,6 +14,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var myAnnotation = MKPointAnnotation()
     var treeLocation = CLLocationCoordinate2D()
     
+    @IBOutlet weak var addTreeToLocationButton: UIButton!
+    @IBOutlet weak var treeListButton: UIButton!
+    
+    
     var handle: AuthStateDidChangeListenerHandle?
     
     var lat = 0.0
@@ -50,7 +54,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
-                self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+//                self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+                
+                self.addTreeToLocationButton.isEnabled = false
+                
             }
         }
         
@@ -66,20 +73,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let blockedUser = AppData.sharedInstance.blockedNode
-        let user = Auth.auth().currentUser?.uid
-        
-        blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.hasChild(user!) {
-                do {
-                    try Auth.auth().signOut()
-                    self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-                }
-                catch let error as NSError {
-                    print (error.localizedDescription)
-                }
-            }
-        })
+//        let blockedUser = AppData.sharedInstance.blockedNode
+//        let user = Auth.auth().currentUser?.uid
+//
+//        blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if snapshot.hasChild(user!) {
+//                do {
+//                    try Auth.auth().signOut()
+//                    self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+//                }
+//                catch let error as NSError {
+//                    print (error.localizedDescription)
+//                }
+//            }
+//        })
         
         FavouritesManager.loadFavourites { (success) in
             return
@@ -137,6 +144,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
         mapView.isUserInteractionEnabled = true
         mapView.addGestureRecognizer(longPressGestureRecognizer)
+        
     }
     
     @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
@@ -144,9 +152,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
         treeLocation = annCoordinates
-        performSegue(withIdentifier: "toNewTree", sender: view)
+        
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if user != nil {
+                self.performSegue(withIdentifier: "toNewTree", sender: self.view)
+            }
+        }
 
     }
+    
+    
     
     //MARK: Setup map features
     func userLocationSetup() {
