@@ -54,8 +54,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         super.viewDidAppear(animated)
         handle = Auth.auth().addStateDidChangeListener { auth, user in
 
-            if user == nil {
-              self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+            if Auth.auth().currentUser == nil {
+//              self.performSegue(withIdentifier: "CheckIdentity", sender: self)
                 self.addTreeToLocationButton.isEnabled = false
             }
 
@@ -167,6 +167,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     
     //MARK: Setup map features
+    
+    @IBAction func login(_ sender: UIButton) {
+        performSegue(withIdentifier: "CheckIdentity", sender: self.view)
+    }
+    
     func userLocationSetup() {
         locationManager.requestWhenInUseAuthorization()
         
@@ -361,6 +366,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         return treesArr
     }
+    
+//    func goToLogin() {
+//        self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+//    }
 
 }
 

@@ -30,36 +30,28 @@ class LoginViewController: UIViewController {
         }
         
         LoginClass.loginMethod(inpView: self, inpEmail: email, inpPassword: password, completion: {
-        
+            
             let blockedUser = AppData.sharedInstance.blockedNode
             let user = Auth.auth().currentUser?.uid
-//
-//            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
-//                if snapshot.hasChild(user!) {
-//                    let alert = UIAlertController(title: "Blocked", message: "Your account has been suspended until further notice.", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-//                    self.present(alert, animated: true, completion: nil)
-//                } else {
-//                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-//                }
-//            })
             
-            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
-                if snapshot.hasChild(user!) {
-                    let alert = UIAlertController(title: "Blocked", message: "Your account has been suspended until further notice.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.dismiss(animated: true, completion: {
-                        self.sourceVC.dismiss(animated: true, completion: nil)
-                    })
-                }
+            //            blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
+            //                if snapshot.hasChild(user!) {
+            //                    let alert = UIAlertController(title: "Blocked", message: "Your account has been suspended until further notice.", preferredStyle: .alert)
+            //                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            //                    self.present(alert, animated: true, completion: nil)
+            //                } else {
+            //                    self.dismiss(animated: true, completion: {
+            //                        self.sourceVC.dismiss(animated: true, completion: nil)
+            //                    })
+            //                }
+            //            })
+            
+            
+            self.dismiss(animated: true, completion: {
+                self.sourceVC.dismiss(animated: true, completion: nil)
             })
-            
-            
-
-            
         })
+        
         
     }
     

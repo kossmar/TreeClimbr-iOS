@@ -10,6 +10,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var blockedUsersButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
+    var sourceVC = ViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,16 +21,18 @@ class SettingsViewController: UIViewController {
         blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
         
         handle = Auth.auth().addStateDidChangeListener { auth, user in
+            
             if user == nil {
                 self.logoutButton.title = "Login"
+                self.blockedUsersButton.isEnabled = false
             }
         }
-        
     }
     
     @IBAction func logout(_ sender: Any) {
         
         handle = Auth.auth().addStateDidChangeListener { auth, user in
+            
             if user != nil {
                 self.dismiss(animated: true, completion: nil)
                 
@@ -39,12 +43,12 @@ class SettingsViewController: UIViewController {
                     print (error.localizedDescription)
                 }
             } else {
-                self.performSegue(withIdentifier: "toLogin", sender: self.logoutButton)
-                
+//                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "toLogin", sender: self)
             }
-            
         }
         
+
         
     }
     
