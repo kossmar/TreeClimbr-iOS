@@ -115,6 +115,13 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     // MARK: - Actions
     
     @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
+        
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "toSignUp", sender: self)
+            })
+        }
+        
         if moreImagesArr.count > 0 {
             let counter = moreImagesArr.count
             imageArr.removeLast(counter)
