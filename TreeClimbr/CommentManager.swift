@@ -13,17 +13,16 @@ class CommentManager: NSObject {
             return
         }
         
-        
-        
-        
         guard let curUser = Auth.auth().currentUser else {return}
+        
+        comment.commentID = "\(curUser.uid)" + "\(comment.timeStamp)"
         
         let commentDict: [String : Any] = [
             "userIDKey": curUser.uid,
             "usernameKey": curUser.displayName!,
             "bodyKey": comment.body,
             "timeKey": comment.timeStamp,
-            "commentIDKey": "\(curUser.uid)" + "\(comment.timeStamp)"
+            "commentIDKey": comment.commentID,
         ]
         
         AppData.sharedInstance.commentsNode

@@ -40,9 +40,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         setup()
         canSaveTree()
         
-//        if treeNameTextField.text!.isEmpty {
-//            title
-//        }
+
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -64,6 +62,16 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
 
         photoCollectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "commentToSignUp", sender: self)
+                return
+            })
+        }
     }
     
     @objc func dismissKeyboard() {
