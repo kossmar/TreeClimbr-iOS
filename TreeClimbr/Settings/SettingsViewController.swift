@@ -18,7 +18,11 @@ class SettingsViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         //        self.navigationController?.navigationBar.titleTextAttributes. = UIColor.white
         blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
         if firUser != nil {
             self.logoutButton.title = "Logout"
@@ -41,8 +45,8 @@ class SettingsViewController: UIViewController {
                 print (error.localizedDescription)
             }
         } else {
-            performSegue(withIdentifier: "toLogin", sender: self)
-            self.logoutButton.title = "Logout"
+            performSegue(withIdentifier: "toSignUp", sender: self)
+//            self.logoutButton.title = "Logout"
         }
 
     }
