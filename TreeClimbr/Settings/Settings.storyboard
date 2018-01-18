@@ -69,17 +69,17 @@
                     <connections>
                         <outlet property="blockedUsersButton" destination="w6X-kb-YwY" id="tbn-CK-Se1"/>
                         <outlet property="logoutButton" destination="dSN-36-42h" id="Wp7-QS-srv"/>
-                        <segue destination="2VH-3k-bSu" kind="presentation" identifier="toLogin" id="rLN-vK-eWz"/>
+                        <segue destination="2VH-3k-bSu" kind="presentation" identifier="toSignUp" id="rLN-vK-eWz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYk-mF-EB0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1567.2" y="-451.12443778110946"/>
         </scene>
-        <!--Login-->
+        <!--SignUpView-->
         <scene sceneID="Iyl-3J-MIc">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="2VH-3k-bSu" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SignUpView" id="2VH-3k-bSu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMQ-CB-Z2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-975" y="-687"/>
