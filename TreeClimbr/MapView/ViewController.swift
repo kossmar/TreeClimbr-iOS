@@ -40,9 +40,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         
         setupTap()
-        userLocationSetup()
-  //      authenticateUser()
-        
+        userLocationSetup()        
         
         FavouritesManager.loadFavourites { (success) in
             return
@@ -68,7 +66,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if user == nil {
-               // self.performSegue(withIdentifier: "CheckIdentity", sender: self)
                 self.addTreeToLocationButton.isEnabled = false
                 print("No user signed in")
                 
@@ -77,9 +74,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
         
-        
- //       self.authenticateUser()
-
         
         let blockedUser = AppData.sharedInstance.blockedNode
         let user = Auth.auth().currentUser?.uid
@@ -380,20 +374,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
         return treesArr
-    }
-    
-    func authenticateUser() {
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            
-            if AppData.sharedInstance.curUser == nil {
-                self.addTreeToLocationButton.isEnabled = false
-                print("No user signed in")
-                
-            } else {
-                self.addTreeToLocationButton.isEnabled = true
-            }
-            
-        }
     }
 
 
