@@ -41,7 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         setupTap()
         userLocationSetup()
-        authenticateUser()
+  //      authenticateUser()
         
         
         FavouritesManager.loadFavourites { (success) in
@@ -60,14 +60,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-//        Auth.auth().removeStateDidChangeListener(handle!)
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            if user == nil {
+               // self.performSegue(withIdentifier: "CheckIdentity", sender: self)
+                self.addTreeToLocationButton.isEnabled = false
+                print("No user signed in")
+                
+            } else {
+                self.addTreeToLocationButton.isEnabled = true
+            }
+        }
         
-        self.authenticateUser()
+        
+ //       self.authenticateUser()
 
         
         let blockedUser = AppData.sharedInstance.blockedNode
