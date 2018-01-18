@@ -49,13 +49,15 @@ class LoginViewController: UIViewController {
             
             
 //            self.dismiss(animated: true, completion: {
-                self.sourceVC.sourceVC.dismiss(animated: true, completion: {
-                    self.sourceVC.delegate?.verificationComplete()
+//                self.sourceVC.sourceVC.dismiss(animated: true, completion: {
+//                    self.sourceVC.delegate?.verificationComplete()
 //                    self.delegate?.verificationComplete()
-                })
+//                })
 
 //            })
-            
+            self.dismiss(animated: true, completion: {
+                self.sourceVC.dismiss(animated: true, completion: nil)
+            })
             
         })
     }
