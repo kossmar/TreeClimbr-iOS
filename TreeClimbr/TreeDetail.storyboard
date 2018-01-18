@@ -383,7 +383,6 @@
                                         <state key="normal" image="commentbutton"/>
                                         <connections>
                                             <action selector="addComment:" destination="CuG-42-DZo" eventType="touchUpInside" id="Qj3-R0-eoW"/>
-                                            <segue destination="jrX-o5-fBG" kind="presentation" identifier="commentToSignUp" id="IIQ-4z-Vs7"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -497,6 +496,7 @@
                         <outlet property="addCommentButton" destination="0ms-c7-rdg" id="rnu-Wh-x2b"/>
                         <outlet property="descTextView" destination="eOH-4s-SgF" id="CNJ-8z-ZpU"/>
                         <outlet property="tableView" destination="WIk-IP-M75" id="5Oe-i3-nBJ"/>
+                        <segue destination="jrX-o5-fBG" kind="presentation" identifier="commentToSignUp" id="BMF-oH-SDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Euy-rF-uqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -509,6 +509,6 @@
         <image name="menu" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IIQ-4z-Vs7"/>
+        <segue reference="BMF-oH-SDW"/>
     </inferredMetricsTieBreakers>
 </document>
