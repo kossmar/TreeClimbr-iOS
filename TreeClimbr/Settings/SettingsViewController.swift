@@ -20,9 +20,10 @@ class SettingsViewController: UIViewController {
         //        self.navigationController?.navigationBar.titleTextAttributes. = UIColor.white
         blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
         
+        
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             
-            if user == nil {
+            if AppData.sharedInstance.curUser == nil {
                 self.logoutButton.title = "Login"
                 self.blockedUsersButton.isEnabled = false
             }
@@ -33,10 +34,11 @@ class SettingsViewController: UIViewController {
         
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             
-            if user != nil {
+            if AppData.sharedInstance.curUser != nil {
                 self.dismiss(animated: true, completion: nil)
                 
                 do {
+                    AppData.sharedInstance.curUser = nil
                     try Auth.auth().signOut()
                 }
                 catch let error as NSError {

@@ -41,6 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         setupTap()
         userLocationSetup()
+        authenticateUser()
         
         
         FavouritesManager.loadFavourites { (success) in
@@ -52,13 +53,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        handle = Auth.auth().addStateDidChangeListener { auth, user in
-//
-//            if Auth.auth().currentUser == nil {
-//                self.addTreeToLocationButton.isEnabled = false
-//            }
-//
-//        }
         
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapViewWillStartLoadingMap(self.mapView)
@@ -72,14 +66,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            
-            if Auth.auth().currentUser == nil {
-                //              self.performSegue(withIdentifier: "CheckIdentity", sender: self)
-                self.addTreeToLocationButton.isEnabled = false
-            }
-            
-        }
+        
+        self.authenticateUser()
+
         
         let blockedUser = AppData.sharedInstance.blockedNode
         let user = Auth.auth().currentUser?.uid
@@ -147,6 +136,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeListVC.sourceVC = self
+        }
+        
+        if segue.identifier == "CheckIdentity" {
+            guard let signUpVC = segue.destination as? SignUpViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            signUpVC.sourceVC = self
         }
     }
     
@@ -373,6 +369,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
         }
         return treesArr
+    }
+    
+    func authenticateUser() {
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            
+            if AppData.sharedInstance.curUser == nil {
+                self.addTreeToLocationButton.isEnabled = false
+                print("No user signed in")
+                
+            } else {
+                self.addTreeToLocationButton.isEnabled = true
+            }
+            
+        }
     }
 
 

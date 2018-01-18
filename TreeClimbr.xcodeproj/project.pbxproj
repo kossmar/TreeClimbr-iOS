@@ -43,6 +43,7 @@
 		CA1F19092006C65900D38DE5 /* HiddenUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */; };
 		CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */; };
 		CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */; };
+		CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */; };
 		E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */; };
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
 		E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */; };
@@ -131,6 +132,7 @@
 		CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiddenUsers.storyboard; sourceTree = "<group>"; };
 		CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersTableViewCell.swift; sourceTree = "<group>"; };
 		CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersViewController.swift; sourceTree = "<group>"; };
+		CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUserDelegate.swift; sourceTree = "<group>"; };
 		E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInappropriate.swift; sourceTree = "<group>"; };
 		E6051A712005304100C9B288 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TreeClimbr.entitlements; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
 				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
 				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
+				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
 				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
@@ -677,6 +680,7 @@
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
 				E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */,
+				CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */,
 				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */,
@@ -871,7 +875,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y4KAZTNBPK;
+				DEVELOPMENT_TEAM = FBYQCX339P;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;
@@ -892,7 +896,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y4KAZTNBPK;
+				DEVELOPMENT_TEAM = FBYQCX339P;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;
