@@ -239,6 +239,7 @@
                         <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
                         <outlet property="uploadPhotosButton" destination="vPD-8n-8ty" id="fhn-rG-KhC"/>
                         <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="XHE-bU-QTw"/>
+                        <segue destination="jrX-o5-fBG" kind="presentation" identifier="photoToSignUp" id="IjO-p4-0a8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pOy-po-eIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -399,16 +400,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6K-Yq-cEQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="992" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H49-tx-jGG">
-                                                            <rect key="frame" x="5" y="30" width="982" height="16"/>
+                                                            <rect key="frame" x="5" y="30" width="372" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiT-W6-fkL">
-                                                            <rect key="frame" x="5" y="0.0" width="979" height="25"/>
+                                                            <rect key="frame" x="5" y="0.0" width="369" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="sHT-F0-exk"/>
                                                             </constraints>
@@ -417,7 +418,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWK-Vy-igS">
-                                                            <rect key="frame" x="956" y="12" width="26" height="26"/>
+                                                            <rect key="frame" x="346" y="12" width="26" height="26"/>
                                                             <state key="normal" image="menu"/>
                                                             <connections>
                                                                 <action selector="commentOptionsPressed:" destination="7OL-uC-7fI" eventType="touchUpInside" id="JDA-i6-OxN"/>
@@ -438,10 +439,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBK-cb-Lfh">
-                                                    <rect key="frame" x="0.0" y="52" width="992" height="126"/>
+                                                    <rect key="frame" x="0.0" y="52" width="382" height="126"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5lE-qz-Jaq">
-                                                            <rect key="frame" x="8" y="8" width="976" height="110"/>
+                                                            <rect key="frame" x="8" y="8" width="366" height="110.00000000000003"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -509,6 +510,6 @@
         <image name="menu" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BMF-oH-SDW"/>
+        <segue reference="IjO-p4-0a8"/>
     </inferredMetricsTieBreakers>
 </document>
