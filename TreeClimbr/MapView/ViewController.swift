@@ -148,6 +148,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             treeListVC.sourceVC = self
         }
+        
+        if segue.identifier == "CheckIdentity" {
+            guard let signUpVC = segue.destination as? SignUpViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            signUpVC.sourceVC = self
+        }
     }
     
     //MARK: Tap gesture methods

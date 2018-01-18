@@ -139,6 +139,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let signUpVC = segue.destination as! SignUpViewController
         signUpVC.delegate = self
+        signUpVC.sourceVC = self 
     }
     
     //MARK: CommentMenu Delegate
