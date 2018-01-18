@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WzQ-AT-ITB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WzQ-AT-ITB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,20 +74,35 @@
                                                 <state key="normal" title="Log In"/>
                                                 <connections>
                                                     <action selector="goToLoginPressed:" destination="WzQ-AT-ITB" eventType="touchUpInside" id="LcY-pn-FSp"/>
-                                                    <segue destination="qGu-50-SYN" kind="presentation" modalTransitionStyle="flipHorizontal" id="Uiy-oC-0NF"/>
+                                                    <segue destination="qGu-50-SYN" kind="presentation" identifier="toLogin" modalTransitionStyle="flipHorizontal" id="Uiy-oC-0NF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaA-Ou-1Ov">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="v1w-mh-pJa">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1HK-kF-EdQ">
+                                            <connections>
+                                                <action selector="cancelSignUpPressed:" destination="WzQ-AT-ITB" id="gGw-fY-i5L"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.65549275045750022" green="0.83994289340101524" blue="0.63681516231635693" alpha="0.79018621575342463" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="trw-am-1rE" firstAttribute="leading" secondItem="ijt-MG-L4K" secondAttribute="leading" constant="10" id="NRl-i7-xYE"/>
                             <constraint firstItem="trw-am-1rE" firstAttribute="centerY" secondItem="Xl5-JV-3va" secondAttribute="centerY" id="O4W-Zq-Q7a"/>
+                            <constraint firstItem="BaA-Ou-1Ov" firstAttribute="top" secondItem="ijt-MG-L4K" secondAttribute="top" id="Pv8-MC-TlI"/>
+                            <constraint firstItem="ijt-MG-L4K" firstAttribute="trailing" secondItem="BaA-Ou-1Ov" secondAttribute="trailing" id="XmJ-wv-9uf"/>
                             <constraint firstItem="trw-am-1rE" firstAttribute="centerX" secondItem="Xl5-JV-3va" secondAttribute="centerX" id="aAz-kq-z7W"/>
                             <constraint firstItem="ijt-MG-L4K" firstAttribute="trailing" secondItem="trw-am-1rE" secondAttribute="trailing" constant="10" id="e5R-QF-SJK"/>
+                            <constraint firstItem="BaA-Ou-1Ov" firstAttribute="leading" secondItem="Xl5-JV-3va" secondAttribute="leading" id="gKT-yR-rbh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ijt-MG-L4K"/>
                     </view>
