@@ -5,6 +5,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField?
     @IBOutlet weak var emailTextField: UITextField?
     @IBOutlet weak var passwordTextField: UITextField?
+    var delegate: VerifyUserDelegate?
     
     
     // MARK: - Actions
@@ -24,10 +25,10 @@ class SignUpViewController: UIViewController {
         
         RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
             
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: {
+                self.delegate?.verificationComplete()
+            })
         })
-        
     }
     
     @IBAction func goToLoginPressed(_ sender: UIButton) {
