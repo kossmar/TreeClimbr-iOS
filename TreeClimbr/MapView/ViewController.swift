@@ -164,12 +164,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
         treeLocation = annCoordinates
-        
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if user != nil {
-                self.performSegue(withIdentifier: "toNewTree", sender: self.view)
-            }
-        }
+        self.performSegue(withIdentifier: "toNewTree", sender: self.view)
+
 
     }
     
