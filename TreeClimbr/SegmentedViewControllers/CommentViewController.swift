@@ -201,7 +201,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
     //MARK: VerifyUserDelegate
     
     func verificationComplete() {
-        let commentBody = UserDefaults.standard.object(forKey: "commentBody") as? String
+        let commentBody = UserDefaults.standard.string(forKey: "commentBody")
         if let commentTrue = commentBody {
             let comment = Comment(body: commentTrue)
             self.saveComment(comment: comment)
