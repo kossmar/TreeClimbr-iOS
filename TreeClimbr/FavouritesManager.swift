@@ -77,6 +77,7 @@ class FavouritesManager: NSObject {
                             let treeSpecies : String = treeDict?["speciesKey"] as! String
                             let treePhotoStr = treeDict?["photoKey"] as! String
                             let treeCreator = treeDict?["creatorKey"] as! String
+                            let treeCreatorName = treeDict?["creatorNameKey"] as! String
                             let treePhotoURL = URL(string: treePhotoStr)
                             
                             let faveTree = Tree(name: treeName,
@@ -94,6 +95,7 @@ class FavouritesManager: NSObject {
                             faveTree.treePhotoURL = treePhotoURL!
                             faveTree.treeID = treeID
                             faveTree.treeCreator = treeCreator
+                            faveTree.treeCreatorName = treeCreatorName
                             
                             AppData.sharedInstance.favouritesArr.append(faveTree)
                             print (" After Append\(AppData.sharedInstance.favouritesArr.count)")
