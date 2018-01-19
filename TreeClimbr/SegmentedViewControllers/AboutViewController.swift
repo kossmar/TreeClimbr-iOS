@@ -3,7 +3,7 @@
 import UIKit
 import Firebase
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, VerifyUserDelegate {
     
     @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var treeDescTextView: UITextView!
@@ -61,7 +61,22 @@ class AboutViewController: UIViewController {
        treeDescTextView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
     }
     
+    //MARK: Prepare For Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let signUpVC = segue.destination as! SignUpViewController
+        signUpVC.delegate = self
+        signUpVC.sourceVC = self
+    }
+    
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+        addToFavourites(tree!)
+    }
+    
     // MARK: - Actions
+    
     
     @IBAction func favouriteAction(_ sender: UIButton) {
         guard let tree = tree else {
@@ -69,6 +84,23 @@ class AboutViewController: UIViewController {
             return
         }
         
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "You need an account to add a tree to favourites. Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "aboutToSignUp", sender: self)
+            })
+        } else {
+            
+            addToFavourites(tree)
+        }
+    }
+    
+    @IBAction func editTreeButton(_ sender: Any) {
+        
+    }
+    
+    //MARK: Custom Functions
+    
+    fileprivate func addToFavourites(_ tree: Tree) {
         if favouriteState == false {
             
             FavouritesManager.saveFavourite(tree: tree) { success in
@@ -99,10 +131,6 @@ class AboutViewController: UIViewController {
         }
         UserTreesManager.loadUserTrees { trees in
         }
-    }
-    
-    @IBAction func editTreeButton(_ sender: Any) {
-        
     }
     
     
