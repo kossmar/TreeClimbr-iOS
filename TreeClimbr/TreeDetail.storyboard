@@ -356,6 +356,7 @@
                         <outlet property="editTreeButton" destination="dT8-eq-IT1" id="3Gz-Rb-2dV"/>
                         <outlet property="treeDescTextView" destination="cqv-NH-CUv" id="3vG-xS-cbb"/>
                         <outlet property="userLabel" destination="De5-Qu-z5W" id="NaC-9Z-rIQ"/>
+                        <segue destination="jrX-o5-fBG" kind="presentation" identifier="aboutToSignUp" id="g4U-Oo-krp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiY-ej-7xL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -510,6 +511,6 @@
         <image name="menu" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IjO-p4-0a8"/>
+        <segue reference="g4U-Oo-krp"/>
     </inferredMetricsTieBreakers>
 </document>
