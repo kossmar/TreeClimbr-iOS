@@ -40,9 +40,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         setup()
         canSaveTree()
         
-//        if treeNameTextField.text!.isEmpty {
-//            title
-//        }
+
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -52,6 +50,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        
+        
         canSaveTree()
         
         if imageArr.count > 0 {
@@ -64,6 +65,24 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
 
         photoCollectionView.reloadData()
+        
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.deny(inpView: self, titleStr: "Account Required", messageStr: "You need an account to create a tree. Would you like to sign in?", completion: {
+                self.dismiss(animated: true, completion: nil)
+            })
+            
+        }
+            
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "commentToSignUp", sender: self)
+                return
+            })
+        }
     }
     
     @objc func dismissKeyboard() {
@@ -90,7 +109,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         let lat = coordinate.latitude
         let long = coordinate.longitude
         
+            guard let curUser = Auth.auth().currentUser else {return}
+        
         let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
+            tree.treeCreator = curUser.uid
+            tree.treeCreatorName = curUser.displayName!
         
         SaveTree.saveTree(tree: tree, completion: { success in
              self.dismiss(animated: true, completion: nil)

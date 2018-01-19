@@ -67,19 +67,34 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <state key="normal" title="Sign up"/>
                                                 <connections>
-                                                    <segue destination="A0j-Fm-IL5" kind="presentation" modalTransitionStyle="flipHorizontal" id="2Zc-bu-jHi"/>
+                                                    <action selector="SignUpButtonPressed:" destination="Xhn-qc-TPj" eventType="touchUpInside" id="7Oo-0Z-JAD"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eth-eS-mlO">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="qNV-1x-U53">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LtZ-Cq-CzC">
+                                            <connections>
+                                                <action selector="cancelLogInPressed:" destination="Xhn-qc-TPj" id="7bg-I0-SJZ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.6554927505" green="0.83994289339999995" blue="0.63681516230000001" alpha="0.79018621580000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VAa-63-YXi" firstAttribute="trailing" secondItem="nsm-Pa-fjA" secondAttribute="trailing" constant="8" id="1ax-g5-xql"/>
+                            <constraint firstItem="Eth-eS-mlO" firstAttribute="top" secondItem="VAa-63-YXi" secondAttribute="top" id="Fge-Dg-6sx"/>
+                            <constraint firstItem="Eth-eS-mlO" firstAttribute="leading" secondItem="VAa-63-YXi" secondAttribute="leading" id="Hdi-fJ-IXl"/>
                             <constraint firstItem="nsm-Pa-fjA" firstAttribute="leading" secondItem="VAa-63-YXi" secondAttribute="leading" constant="8" id="NcB-lx-gfA"/>
                             <constraint firstItem="nsm-Pa-fjA" firstAttribute="centerY" secondItem="VAa-63-YXi" secondAttribute="centerY" id="SIc-60-o1T"/>
+                            <constraint firstItem="Eth-eS-mlO" firstAttribute="trailing" secondItem="VAa-63-YXi" secondAttribute="trailing" id="oTp-hp-DzF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VAa-63-YXi"/>
                     </view>

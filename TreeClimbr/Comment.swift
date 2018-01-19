@@ -18,9 +18,9 @@ class Comment: NSObject {
         
         self.body = body
         self.timeStamp = dateStr
-        self.userID = Auth.auth().currentUser!.uid
-        self.commentID = "\(self.userID)" + "\(self.timeStamp)"
-        self.username = Auth.auth().currentUser!.displayName!
+        self.userID = ""
+        self.commentID = ""
+        self.username = ""
     }
     
 }

@@ -21,6 +21,7 @@ class Tree: NSObject {
     
     init(name: String, description: String?, treeLat: Double, treeLong: Double, photo: NSData?) {
 
+        
         self.treeName = name
         self.treeID = self.treeName + "|" + String(describing: Date()) + "1"
         self.treeSpecies = "none"
@@ -32,8 +33,8 @@ class Tree: NSObject {
         self.treePopularity = 0
         self.treePhotoData = photo
         self.treePhotoURL = URL(string:"https://firebasestorage.googleapis.com/v0/b/climbr-f1fe2.appspot.com/o/defaultPhoto.png?alt=media&token=1ee322e5-7309-4cc1-9edf-f7ccbaccd356")!
-        self.treeCreator = Auth.auth().currentUser!.uid
-        self.treeCreatorName = Auth.auth().currentUser!.displayName!
+        self.treeCreator = "creator"
+        self.treeCreatorName = "creatorName"
     }
     
 }

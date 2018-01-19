@@ -13,17 +13,16 @@ class CommentManager: NSObject {
             return
         }
         
+        guard let curUser = Auth.auth().currentUser else {return}
         
-        
-        
-//        let userID = Auth.auth().currentUser?.uid
+        comment.commentID = "\(curUser.uid)" + "\(comment.timeStamp)"
         
         let commentDict: [String : Any] = [
-            "userIDKey": comment.userID,
-            "usernameKey": comment.username,
+            "userIDKey": curUser.uid,
+            "usernameKey": curUser.displayName!,
             "bodyKey": comment.body,
             "timeKey": comment.timeStamp,
-            "commentIDKey": comment.commentID
+            "commentIDKey": comment.commentID,
         ]
         
         AppData.sharedInstance.commentsNode
@@ -37,10 +36,10 @@ class CommentManager: NSObject {
     
     class func loadComments(tree: Tree, completion: @escaping ([Comment]?) -> Void) {
         
-        if ( Auth.auth().currentUser == nil ) {
-            completion(nil)
-            return
-        }
+//        if ( Auth.auth().currentUser == nil ) {
+//            completion(nil)
+//            return
+//        }
         
         AppData.sharedInstance
             .commentsNode.child(tree.treeID)

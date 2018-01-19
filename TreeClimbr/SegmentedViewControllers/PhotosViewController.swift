@@ -2,7 +2,7 @@ import UIKit
 import ImagePicker
 import Firebase
 
-class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, ImagePickerDelegate, UICollectionViewDelegateFlowLayout, VerifyUserDelegate {
     
 
 
@@ -109,12 +109,33 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             fullScreenVC.sourceVC = self
         }
         
+        if segue.identifier == "photoToSignUp" {
+            let signUpVC = segue.destination as! SignUpViewController
+            signUpVC.delegate = self
+            signUpVC.sourceVC = self
+        }
+        
+    }
+    
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+        
+        pickTreePhotos()
+        
     }
     
     
     // MARK: - Actions
     
     @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
+        
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "photoToSignUp", sender: self)
+            })
+        }
+        
         if moreImagesArr.count > 0 {
             let counter = moreImagesArr.count
             imageArr.removeLast(counter)

@@ -16,12 +16,8 @@ class LoginClass: NSObject {
                                                            email: user!.email!,
                                                            uid: user!.uid)
                 
-                
-                
                 print("LOGGED IN!")
                 completion()
-                
-//                ReadAll.readData(inpView: inpView);
             }
             else
             {

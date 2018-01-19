@@ -4,11 +4,12 @@ import UIKit
 import Firebase
 import MessageUI
 
-class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate, MFMailComposeViewControllerDelegate {
+class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, CommentMenuDelegate, MFMailComposeViewControllerDelegate, VerifyUserDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var addCommentButton: UIButton!
+    let sourceVC = TreeDetailViewController()
 
     
     var commentArr = [Comment]()
@@ -45,19 +46,17 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     //MARK: Actions
     
     @IBAction func addComment (_ sender: UIButton) {
+        
+        if ( Auth.auth().currentUser == nil ) {
+            UserDefaults.standard.set(self.descTextView.text, forKey: "commentBody")
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.performSegue(withIdentifier: "commentToSignUp", sender: self)
+                return
+            })
+        }
+        
         let comment = Comment(body: descTextView.text)
-        CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
-            self.view.endEditing(true)
-        }
-        descTextView.text = "Enter comment..."
-        descTextView.textColor = UIColor.lightGray
-        addCommentButton.isEnabled = false
-        CommentManager.loadComments(tree: tree!) { comments in
-            guard let comments = comments else { return }
-            self.commentArr = comments
-            self.tableView.reloadData()
-            self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
-        }
+        self.saveComment(comment: comment)
     }
     
     //MARK: TextView delegates
@@ -135,7 +134,15 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
             }
     }
     
-    //MARK: Comment Menu Delegate
+    //MARK: Prepare For Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let signUpVC = segue.destination as! SignUpViewController
+        signUpVC.delegate = self
+        signUpVC.sourceVC = self 
+    }
+    
+    //MARK: CommentMenu Delegate
     
     func commentMenuPressed(senderTag: Int) {
         let buttonRow = senderTag
@@ -191,6 +198,16 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
         
     }
     
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+        let commentBody = UserDefaults.standard.string(forKey: "commentBody")
+        if let commentTrue = commentBody {
+            let comment = Comment(body: commentTrue)
+            self.saveComment(comment: comment)
+        }
+    }
+    
     // MARK: MFMailComposeViewController
     
     func configuredMailComposeViewController(buttonRow: Int) -> MFMailComposeViewController {
@@ -216,6 +233,24 @@ class ReviewViewController: UIViewController, UITextViewDelegate, UITableViewDel
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Custom Functions
+    
+    func saveComment(comment: Comment) {
+        CommentManager.saveComment(comment: comment, tree: self.tree!) { success in
+            self.view.endEditing(true)
+        }
+        
+        descTextView.text = "Enter comment..."
+        descTextView.textColor = UIColor.lightGray
+        addCommentButton.isEnabled = false
+        CommentManager.loadComments(tree: tree!) { comments in
+            guard let comments = comments else { return }
+            self.commentArr = comments
+            self.tableView.reloadData()
+            self.commentArr.sort(by: { $0.timeStamp > $1.timeStamp })
+        }
     }
     
 }
