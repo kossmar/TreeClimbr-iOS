@@ -36,4 +36,24 @@ class AlertShow: NSObject {
                         completion: nil)
     }
     
+    class func deny (inpView: UIViewController, titleStr: String, messageStr: String, completion: @escaping () -> Void ) {
+        let alert = UIAlertController(title: titleStr,
+                                      message: messageStr,
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes",
+                                      style: UIAlertActionStyle.default,
+                                      handler: nil ))
+        
+        alert.addAction(UIAlertAction(title: "No",
+                                      style: UIAlertActionStyle.default,
+                                      handler: {(action) -> Void in
+                                        completion()
+        }))
+        
+        inpView.present(alert,
+                        animated: true,
+                        completion: nil)
+    }
+    
 }

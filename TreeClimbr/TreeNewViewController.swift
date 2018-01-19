@@ -50,6 +50,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        
+        
         canSaveTree()
         
         if imageArr.count > 0 {
@@ -62,6 +65,14 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
 
         photoCollectionView.reloadData()
+        
+        if ( Auth.auth().currentUser == nil ) {
+            AlertShow.deny(inpView: self, titleStr: "Account Required", messageStr: "You need an account to create a tree. Would you like to sign in?", completion: {
+                self.dismiss(animated: true, completion: nil)
+            })
+            
+        }
+            
     }
     
     override func viewDidAppear(_ animated: Bool) {
