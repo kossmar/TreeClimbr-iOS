@@ -5,9 +5,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField?
     @IBOutlet weak var emailTextField: UITextField?
     @IBOutlet weak var passwordTextField: UITextField?
+    @IBOutlet weak var signUpButton: UIButton!
+    
     var delegate: VerifyUserDelegate?
     var sourceVC = UIViewController()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        signUpButton.layer.cornerRadius = signUpButton.frame.height/4
+
+    }
     
     // MARK: - Actions
     
