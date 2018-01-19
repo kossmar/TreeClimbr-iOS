@@ -47,7 +47,6 @@ class SignUpViewController: UIViewController {
     
     @IBAction func cancelSignUpPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
-//        self.sourceVC.dismiss(animated: true, completion: nil)
     }
     
     //MARK: Prepare For Segue
