@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKB-dx-6yW">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.022514818990000001" green="0.41768539510000002" blue="0.043434989090000001" alpha="0.30710827460000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="nsm-Pa-fjA">
                                 <rect key="frame" x="8" y="157" width="359" height="373"/>
                                 <subviews>
@@ -41,7 +45,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxd-Qc-Ig6">
                                         <rect key="frame" x="0.0" y="240" width="359" height="50"/>
-                                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.09025751957" green="0.61129752000000004" blue="0.1242764864" alpha="0.79148327460000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="x1M-Hu-Q6y"/>
                                         </constraints>
@@ -65,7 +69,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgj-7o-b6P">
                                                 <rect key="frame" x="186" y="0.0" width="173" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <state key="normal" title="Sign up"/>
+                                                <state key="normal" title="Sign up">
+                                                    <color key="titleColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="SignUpButtonPressed:" destination="Xhn-qc-TPj" eventType="touchUpInside" id="7Oo-0Z-JAD"/>
                                                 </connections>
@@ -76,9 +82,13 @@
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eth-eS-mlO">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.83024924990000004" green="0.99148148300000005" blue="0.85644048449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.83024924990000004" green="0.99148148300000005" blue="0.85644048449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.83024924990000004" green="0.99148148300000005" blue="0.85644048449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem id="qNV-1x-U53">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LtZ-Cq-CzC">
+                                            <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelLogInPressed:" destination="Xhn-qc-TPj" id="7bg-I0-SJZ"/>
                                             </connections>
@@ -87,19 +97,24 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.6554927505" green="0.83994289339999995" blue="0.63681516230000001" alpha="0.79018621580000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.83024924990000004" green="0.99148148300000005" blue="0.85644048449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="EKB-dx-6yW" firstAttribute="top" secondItem="Eth-eS-mlO" secondAttribute="bottom" id="0LM-2p-VEv"/>
                             <constraint firstItem="VAa-63-YXi" firstAttribute="trailing" secondItem="nsm-Pa-fjA" secondAttribute="trailing" constant="8" id="1ax-g5-xql"/>
                             <constraint firstItem="Eth-eS-mlO" firstAttribute="top" secondItem="VAa-63-YXi" secondAttribute="top" id="Fge-Dg-6sx"/>
                             <constraint firstItem="Eth-eS-mlO" firstAttribute="leading" secondItem="VAa-63-YXi" secondAttribute="leading" id="Hdi-fJ-IXl"/>
                             <constraint firstItem="nsm-Pa-fjA" firstAttribute="leading" secondItem="VAa-63-YXi" secondAttribute="leading" constant="8" id="NcB-lx-gfA"/>
+                            <constraint firstItem="VAa-63-YXi" firstAttribute="bottom" secondItem="EKB-dx-6yW" secondAttribute="bottom" id="Opi-UZ-TEo"/>
                             <constraint firstItem="nsm-Pa-fjA" firstAttribute="centerY" secondItem="VAa-63-YXi" secondAttribute="centerY" id="SIc-60-o1T"/>
+                            <constraint firstItem="VAa-63-YXi" firstAttribute="trailing" secondItem="EKB-dx-6yW" secondAttribute="trailing" id="U6X-Ms-joP"/>
+                            <constraint firstItem="EKB-dx-6yW" firstAttribute="leading" secondItem="VAa-63-YXi" secondAttribute="leading" id="kSz-wX-b46"/>
                             <constraint firstItem="Eth-eS-mlO" firstAttribute="trailing" secondItem="VAa-63-YXi" secondAttribute="trailing" id="oTp-hp-DzF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VAa-63-YXi"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="sQZ-KE-9Qy" id="Xf8-9j-iKC"/>
+                        <outlet property="loginButton" destination="Cxd-Qc-Ig6" id="EdM-yC-84r"/>
                         <outlet property="passwordField" destination="Qu4-PZ-sP3" id="TWY-ks-HNY"/>
                     </connections>
                 </viewController>
