@@ -58,21 +58,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        Auth.auth().removeStateDidChangeListener(handle!)
+        guard let someHandle = handle else {return}
+        Auth.auth().removeStateDidChangeListener(someHandle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            if user == nil {
-                self.addTreeToLocationButton.isEnabled = false
-                print("No user signed in")
-                
-            } else {
-                self.addTreeToLocationButton.isEnabled = true
-            }
-        }
+//        handle = Auth.auth().addStateDidChangeListener { auth, user in
+//            if user == nil {
+//                self.addTreeToLocationButton.isEnabled = false
+//                print("No user signed in")
+//
+//            } else {
+//                self.addTreeToLocationButton.isEnabled = true
+//            }
+//        }
         
         
         let blockedUser = AppData.sharedInstance.blockedNode
