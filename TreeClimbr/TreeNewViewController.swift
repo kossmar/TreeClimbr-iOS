@@ -25,11 +25,14 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var imageIsSet: Bool = false
     var titleIsSet: Bool = false
+    var showAlert = true
 
     
     //MARK: ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showAlert = true
         
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         photoCollectionView.delegate = self
@@ -72,8 +75,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if ( Auth.auth().currentUser == nil ) {
+        if ( Auth.auth().currentUser == nil && self.showAlert == true ) {
             AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+                self.showAlert = false
                 self.performSegue(withIdentifier: "toSignUp", sender: self)
             })
         }
@@ -187,6 +191,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let signUpVC = segue.destination as! SignUpViewController
         signUpVC.sourceVC = self
+        signUpVC.fromTreeNew = true
         
     }
     

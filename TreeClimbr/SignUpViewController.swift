@@ -10,6 +10,7 @@ class SignUpViewController: UIViewController {
     var delegate: VerifyUserDelegate?
     var sourceVC = UIViewController()
     var fromSettings = false
+    var fromTreeNew = false
     
     
     override func viewDidLoad() {
@@ -47,8 +48,14 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func cancelSignUpPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        if fromTreeNew == false {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.fromTreeNew = false
+        }
     }
+
     
     //MARK: Prepare For Segue
     
