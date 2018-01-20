@@ -25,11 +25,14 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     var imageIsSet: Bool = false
     var titleIsSet: Bool = false
+    var showAlert = true
 
     
     //MARK: ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showAlert = true
         
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         photoCollectionView.delegate = self
@@ -40,17 +43,16 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         setup()
         canSaveTree()
         
-
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-       
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         
         
         canSaveTree()
@@ -66,25 +68,21 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         photoCollectionView.reloadData()
         
-        if ( Auth.auth().currentUser == nil ) {
-            AlertShow.deny(inpView: self, titleStr: "Account Required", messageStr: "You need an account to create a tree. Would you like to sign in?", completion: {
-                self.dismiss(animated: true, completion: nil)
-            })
-            
-        }
-            
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if ( Auth.auth().currentUser == nil ) {
+        
+        if ( Auth.auth().currentUser == nil && self.showAlert == true ) {
             AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
-                self.performSegue(withIdentifier: "commentToSignUp", sender: self)
-                return
+                self.showAlert = false
+                self.performSegue(withIdentifier: "toSignUp", sender: self)
             })
         }
     }
-    
+
     @objc func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -188,6 +186,16 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         treeNameTextField.delegate = self
         }
     
+    //MARK: Prepare for segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let signUpVC = segue.destination as! SignUpViewController
+        signUpVC.sourceVC = self
+        signUpVC.fromTreeNew = true
+        
+    }
+    
     //MARK: Tap gestures
     func setupTap() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(tapGestureRecognizer:)))
@@ -257,6 +265,10 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         return updatedText.count <= 40
     }
+
+    //MARK: Custom Functions
+    
+
 
     
     private func canSaveTree() {

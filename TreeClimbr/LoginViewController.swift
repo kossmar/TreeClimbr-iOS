@@ -51,15 +51,7 @@ class LoginViewController: UIViewController {
             //                    })
             //                }
             //            })
-            
-            
-//            self.dismiss(animated: true, completion: {
-//                self.sourceVC.sourceVC.dismiss(animated: true, completion: {
-//                    self.sourceVC.delegate?.verificationComplete()
-//                    self.delegate?.verificationComplete()
-//                })
 
-//            })
             
             if self.sourceVC.fromSettings == false {
                 self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
@@ -73,7 +65,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func cancelLogInPressed(_ sender: UIBarButtonItem) {
-        self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
+        if self.sourceVC.fromTreeNew == true {
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        } else {
+            self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
+        }
     }
     
     

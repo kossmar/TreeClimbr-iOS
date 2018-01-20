@@ -11,6 +11,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SignUpView-->
+        <scene sceneID="Mh0-lf-AAz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUpView" id="cOF-18-eB6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XG4-eb-fyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-729" y="5"/>
+        </scene>
         <!--Tree New View Controller-->
         <scene sceneID="lxO-4j-pKt">
             <objects>
@@ -61,7 +69,9 @@
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP0-ce-L5F"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IP0-ce-L5F">
+                                                            <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                                        </imageView>
                                                     </subviews>
                                                 </view>
                                                 <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -152,6 +162,7 @@
                         <outlet property="saveButton" destination="HEE-FY-f23" id="o7a-Nx-o7m"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
                         <outlet property="treeNameTextField" destination="z6p-PS-tfZ" id="d21-W7-dxI"/>
+                        <segue destination="cOF-18-eB6" kind="presentation" identifier="toSignUp" id="dXX-c0-O4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oay-dV-PS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
