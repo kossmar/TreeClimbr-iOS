@@ -46,17 +46,21 @@ class LoginViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    self.dismiss(animated: true, completion: {
-                        self.sourceVC.dismiss(animated: true, completion: nil)
-                    })
+                    if self.sourceVC.fromSettings == true {
+                        self.sourceVC.fromSettings = false
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
+                    }
                 }
             })
         })
     }
-    
+
     @IBAction func cancelLogInPressed(_ sender: UIBarButtonItem) {
         if self.sourceVC.fromTreeNew == true {
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.sourceVC.fromTreeNew = false
         } else {
             self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
         }
