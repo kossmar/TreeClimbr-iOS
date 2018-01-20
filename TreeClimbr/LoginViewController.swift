@@ -60,10 +60,14 @@ class LoginViewController: UIViewController {
 //                })
 
 //            })
-//            self.dismiss(animated: true, completion: {
+            
+            if self.sourceVC.fromSettings == false {
                 self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
+            } else {
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                self.sourceVC.fromSettings = false
+            }
                 self.sourceVC.delegate?.verificationComplete()
-//            })
             
         })
     }

@@ -31,6 +31,20 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    //MARK: Prepare For Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toSignUp" {
+            
+            let signUpVC = segue.destination as! SignUpViewController
+            signUpVC.sourceVC = self
+            signUpVC.fromSettings = true
+        }
+    }
+    
+    //MARK: Actions
+    
     @IBAction func logout(_ sender: Any) {
         
         let user = Auth.auth().currentUser
@@ -44,9 +58,11 @@ class SettingsViewController: UIViewController {
             catch let error as NSError {
                 print (error.localizedDescription)
             }
+            
+            AppData.sharedInstance.hiddenUsersArr.removeAll()
+            
         } else {
             performSegue(withIdentifier: "toSignUp", sender: self)
-//            self.logoutButton.title = "Logout"
         }
 
     }

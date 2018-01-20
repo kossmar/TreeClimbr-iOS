@@ -9,6 +9,7 @@ class SignUpViewController: UIViewController {
     
     var delegate: VerifyUserDelegate?
     var sourceVC = UIViewController()
+    var fromSettings = false
     
     
     override func viewDidLoad() {
