@@ -97,6 +97,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func save(_ sender: UIBarButtonItem) {
 
+        self.saveButton.isEnabled = false
         let charset = CharacterSet(charactersIn: "$.[]#")
         
         if treeNameTextField.text!.rangeOfCharacter(from: charset) != nil {
