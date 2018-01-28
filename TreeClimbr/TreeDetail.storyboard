@@ -139,7 +139,7 @@
                         <outlet property="segmentedControl" destination="czL-H8-tzg" id="pil-qn-hE5"/>
                         <outlet property="toMapButton" destination="aPi-0P-pNf" id="uPr-BT-mc7"/>
                         <segue destination="jrX-o5-fBG" kind="presentation" id="VXM-lk-xFf"/>
-                        <segue destination="cP2-cg-ILi" kind="presentation" identifier="toEdit" id="8CH-8p-MiR"/>
+                        <segue destination="cP2-cg-ILi" kind="presentation" identifier="toEdit" modalTransitionStyle="crossDissolve" id="8CH-8p-MiR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Yz-rx-Lya" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,7 +247,7 @@
                         <outlet property="addPhotoButton" destination="dce-Nr-haY" id="sob-Dm-QZQ"/>
                         <outlet property="photoCollectionView" destination="vsa-S2-nEN" id="Wbn-eq-Asx"/>
                         <outlet property="uploadPhotosButton" destination="vPD-8n-8ty" id="fhn-rG-KhC"/>
-                        <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" id="XHE-bU-QTw"/>
+                        <segue destination="z8K-Dy-jmm" kind="presentation" identifier="toFullScreen" modalTransitionStyle="crossDissolve" id="XHE-bU-QTw"/>
                         <segue destination="jrX-o5-fBG" kind="presentation" identifier="photoToSignUp" id="IjO-p4-0a8"/>
                     </connections>
                 </viewController>

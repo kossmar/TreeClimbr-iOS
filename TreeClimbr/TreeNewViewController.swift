@@ -58,14 +58,15 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         
         canSaveTree()
-        
-        if imageArr.count > 0 {
-            treeImageView.image = imageArr[0]
-            addPhotoButton.setTitle("Manage Photos", for: .normal)
-//            saveButton.isEnabled = true
-        } else {
-            addPhotoButton.setTitle("Add Photos", for: .normal)
-            saveButton.isEnabled = false
+        if tree == nil {
+            if imageArr.count > 0 {
+                treeImageView.image = imageArr[0]
+                addPhotoButton.setTitle("Manage Photos", for: .normal)
+                //            saveButton.isEnabled = true
+            } else {
+                addPhotoButton.setTitle("Add Photos", for: .normal)
+                saveButton.isEnabled = false
+            }
         }
 
         photoCollectionView.reloadData()

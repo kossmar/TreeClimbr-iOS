@@ -59,6 +59,11 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let storage = Storage.storage()
+        let ref = storage.reference()
+        photosViewController.sourceVC = self
+
+        
         let attr = NSDictionary(object: UIFont(name: "HelveticaNeue", size: 17.0)!, forKey: NSAttributedStringKey.font as NSCopying)
         segmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
         
@@ -84,6 +89,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
                                                             print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
             })
             
+            
             basicTreeInfoView.distanceLabel.text = "\(distanceFromUser()) km"
             basicTreeInfoView.favouritesCountLabel.text = "\(tree.treePopularity)"
             
@@ -94,8 +100,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
                     return
                 }
                 
-                let storage = Storage.storage()
-                let ref = storage.reference()
+
                 
                 let group = DispatchGroup()
                 
@@ -338,5 +343,5 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-
+    
 }
