@@ -53,7 +53,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        AppUtility.lockOrientation(.portrait)
+
         
         canSaveTree()
         
@@ -81,6 +82,12 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 self.performSegue(withIdentifier: "toSignUp", sender: self)
             })
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppUtility.lockOrientation(.all)
+
     }
 
     @objc func dismissKeyboard() {

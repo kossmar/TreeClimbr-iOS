@@ -64,23 +64,28 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         self.setupScrollView()
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        self.setupScrollView()
+//    }
     
     
     
     
     // MARK: - ScrollViewDelegate functions
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
         pageControl.currentPage = (Int(photoScrollView.contentOffset.x / photoScrollView.frame.width))
-        if pageControl.currentPage < photoObjArr.count {
+        
+        if pageControl.currentPage <= photoObjArr.count {
             let photo = photoObjArr[pageControl.currentPage]
             navigationBar.topItem?.title = photo.userName
             
             rightBarButtonItem.isEnabled = true
-//            rightBarButtonItem.tintColor = UIColor(red: 183.0/225.0, green: 20.0/225.0, blue: 20.0/225.0, alpha: 1.0)
             rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
             
         } else {
@@ -220,6 +225,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
     }
     
     func setupScrollView() {
+        
+        
         let width = self.view.frame.width
         
         if justLoaded == true {

@@ -50,6 +50,8 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
        super.viewWillAppear(true)
         
+        AppUtility.lockOrientation(.portrait)
+        
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             if user != nil {
                 
@@ -74,6 +76,13 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
             
         }
         sortTableViewByDistance()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        AppUtility.lockOrientation(.all)
+
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {

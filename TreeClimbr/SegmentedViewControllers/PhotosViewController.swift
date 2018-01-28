@@ -27,8 +27,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
 
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         uploadPhotosButton.layer.cornerRadius = uploadPhotosButton.frame.height/4
-
-//        uploadPhotosButton.backgroundColor = UIColor.clear.withAlphaComponent(0.7)
     }
     
     override func viewWillAppear(_ animated: Bool) {

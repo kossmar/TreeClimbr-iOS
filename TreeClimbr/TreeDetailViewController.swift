@@ -159,6 +159,22 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.photosViewController.photoCollectionView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        AppUtility.lockOrientation(.all)
+
+    }
+    
     //MARK: Actions
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
@@ -278,9 +294,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.photosViewController.photoCollectionView.reloadData()
-    }
+
     
     // MARK: MFMailComposeViewController
     

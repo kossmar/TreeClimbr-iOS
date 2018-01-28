@@ -58,6 +58,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
+        
+        AppUtility.lockOrientation(.all)
         guard let someHandle = handle else {return}
         Auth.auth().removeStateDidChangeListener(someHandle)
     }
@@ -65,16 +67,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        handle = Auth.auth().addStateDidChangeListener { auth, user in
-//            if user == nil {
-//                self.addTreeToLocationButton.isEnabled = false
-//                print("No user signed in")
-//
-//            } else {
-//                self.addTreeToLocationButton.isEnabled = true
-//            }
-//        }
-        
+        AppUtility.lockOrientation(.portrait)
         
         let blockedUser = AppData.sharedInstance.blockedNode
         let user = Auth.auth().currentUser?.uid
