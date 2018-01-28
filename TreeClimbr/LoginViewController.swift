@@ -16,8 +16,25 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         loginButton.layer.cornerRadius = loginButton.frame.height/4
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        AppUtility.lockOrientation(.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
 
         
+        let alert = UIAlertController(title: "Careful out there!",
+                                      message: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.view.window?.rootViewController?.present(alert,
+                                                      animated: true,
+                                                      completion: nil)
     }
     
     //MARK: Actions
@@ -64,18 +81,5 @@ class LoginViewController: UIViewController {
         } else {
             self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        let alert = UIAlertController(title: "Careful out there!",
-                                      message: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        self.view.window?.rootViewController?.present(alert,
-                                                      animated: true,
-                                                      completion: nil)
     }
 }

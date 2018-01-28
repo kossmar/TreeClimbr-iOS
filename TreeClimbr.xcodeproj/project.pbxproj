@@ -43,6 +43,7 @@
 		CA1F19092006C65900D38DE5 /* HiddenUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */; };
 		CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */; };
 		CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */; };
+		CA6A7F8B201DA953000210F7 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A7F8A201DA953000210F7 /* AppUtility.swift */; };
 		CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */; };
 		E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */; };
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
@@ -132,6 +133,7 @@
 		CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiddenUsers.storyboard; sourceTree = "<group>"; };
 		CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersTableViewCell.swift; sourceTree = "<group>"; };
 		CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersViewController.swift; sourceTree = "<group>"; };
+		CA6A7F8A201DA953000210F7 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUserDelegate.swift; sourceTree = "<group>"; };
 		E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInappropriate.swift; sourceTree = "<group>"; };
 		E6051A712005304100C9B288 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -246,6 +248,7 @@
 				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
 				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
+				CA6A7F8A201DA953000210F7 /* AppUtility.swift */,
 				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
 				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
@@ -673,6 +676,7 @@
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
+				CA6A7F8B201DA953000210F7 /* AppUtility.swift in Sources */,
 				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
 				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,
 				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,

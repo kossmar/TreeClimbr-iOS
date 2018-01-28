@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  TreeClimbr
-//
-//  Created by Mar Koss on 2017-11-15.
-//  Copyright © 2017 Mar Koss. All rights reserved.
-//
+
 
 import UIKit
 import Firebase
@@ -15,6 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var orientationLock = UIInterfaceOrientationMask.all
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
