@@ -175,6 +175,20 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
 
     }
     
+    //MARK: Prepare for Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEdit" {
+            let editVC = segue.destination as! TreeNewViewController
+            editVC.tree = tree
+            editVC.imageArr = imageArr
+        }
+//        editVC.treeNameTextField.text = tree.treeName
+//        editVC.TreeDescTextView.text = tree.treeDescription
+//        editVC.imageArr = imageArr
+//        editVC.treeImageView = tree.treePhotoURL
+    }
+    
     //MARK: Actions
     
     @IBAction func toMapAction(_ sender: UIBarButtonItem) {
@@ -224,6 +238,10 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             })
         }
         
+        let editAction = UIAlertAction(title: "edit tree", style: .default) { (edit) in
+            self.performSegue(withIdentifier: "toEdit", sender: self)
+        }
+        
         let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
             
         
@@ -242,6 +260,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         
         if tree.treeCreator == Auth.auth().currentUser?.uid {
             alertController.addAction(deleteAction)
+            alertController.addAction(editAction)
         } else {
             alertController.addAction(reportAction)
             if Auth.auth().currentUser != nil {
