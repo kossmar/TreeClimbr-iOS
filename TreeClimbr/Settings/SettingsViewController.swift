@@ -11,6 +11,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var changeNameButton: UIButton!
     @IBOutlet weak var changeEmailButton: UIButton!
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     
     var sourceVC = ViewController()
@@ -33,7 +34,11 @@ class SettingsViewController: UIViewController {
         if firUser != nil {
             guard let displayName = firUser?.displayName else {return}
             self.logoutButton.title = "Logout"
-            self.welcomeLabel.text = "Welcome, " + displayName
+            self.welcomeLabel.text = "Welcome, " + displayName + "!"
+            let email = Auth.auth().currentUser?.email
+            if  email != nil {
+                self.emailLabel.text = "e-mail: " + email!
+            }
         } else {
             self.logoutButton.title = "Login"
             self.welcomeLabel.text = "Hello, Stranger."
@@ -85,6 +90,12 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func changeEmailPressed(_ sender: UIButton) {
+        
+        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (email) in
+            Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+                self.emailLabel.text = "e-mail: " + email
+            }
+        }
     }
     
     @IBAction func backToMapView(_ sender: UIBarButtonItem) {

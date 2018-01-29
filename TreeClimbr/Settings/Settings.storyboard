@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HiraginoKakuGothic.ttc">
+            <string>HiraginoSans-W3</string>
+        </array>
+        <array key="Zapfino.ttf">
+            <string>Zapfino</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Settings-->
         <scene sceneID="bx1-7j-h0j">
@@ -25,16 +33,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k2c-UX-Smx">
-                                <rect key="frame" x="20" y="84" width="335" height="170.5"/>
+                                <rect key="frame" x="20" y="84" width="335" height="247.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCk-hH-5wT">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="57.5"/>
+                                        <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="17"/>
+                                        <color key="textColor" red="0.094897352160000004" green="0.56736469270000001" blue="0.17081022260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48q-7c-pJT">
+                                        <rect key="frame" x="0.0" y="67.5" width="335" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="m5r-lN-DJW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.094897352160000004" green="0.56736469270000001" blue="0.17081022260000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6X-kb-YwY">
-                                        <rect key="frame" x="0.0" y="30.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="107.5" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1bp-MN-NQW"/>
@@ -48,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W75-S0-wu2">
-                                        <rect key="frame" x="0.0" y="80.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="157.5" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="yvb-ye-flH"/>
@@ -62,7 +79,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-G5-2Vi">
-                                        <rect key="frame" x="0.0" y="130.5" width="335" height="40"/>
+                                        <rect key="frame" x="0.0" y="207.5" width="335" height="40"/>
                                         <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="VsP-yJ-z8V"/>
@@ -108,6 +125,7 @@
                         <outlet property="blockedUsersButton" destination="w6X-kb-YwY" id="tbn-CK-Se1"/>
                         <outlet property="changeEmailButton" destination="SlG-G5-2Vi" id="B48-9d-Tgz"/>
                         <outlet property="changeNameButton" destination="W75-S0-wu2" id="t24-gf-6CK"/>
+                        <outlet property="emailLabel" destination="48q-7c-pJT" id="GKi-IX-WkA"/>
                         <outlet property="logoutButton" destination="dSN-36-42h" id="Wp7-QS-srv"/>
                         <outlet property="welcomeLabel" destination="dCk-hH-5wT" id="Am7-mj-Nza"/>
                         <segue destination="2VH-3k-bSu" kind="presentation" identifier="toSignUp" id="rLN-vK-eWz"/>

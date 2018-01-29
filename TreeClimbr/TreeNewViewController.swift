@@ -58,6 +58,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             setupTap()
         } else if fromDetail == true {
             navigationBar.topItem?.title = "Edit Tree"
+            self.addPhotoButton.setTitle("Your buttons are no good here", for: .normal)
+            addPhotoButton.isEnabled = false
         }
     }
     
