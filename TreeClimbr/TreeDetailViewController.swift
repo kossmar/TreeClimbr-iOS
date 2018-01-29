@@ -10,7 +10,7 @@ protocol MapFocusDelegate {
     func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
 }
 
-class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDelegate, TreeNewDelegate {
     
     //MARK: Properties
     
@@ -187,11 +187,9 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             let editVC = segue.destination as! TreeNewViewController
             editVC.tree = tree
             editVC.imageArr = imageArr
+            editVC.fromDetail = true
+            editVC.delegate = self
         }
-//        editVC.treeNameTextField.text = tree.treeName
-//        editVC.TreeDescTextView.text = tree.treeDescription
-//        editVC.imageArr = imageArr
-//        editVC.treeImageView = tree.treePhotoURL
     }
     
     //MARK: Actions
@@ -202,7 +200,6 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         self.view.window?.rootViewController?.dismiss(animated: true, completion: {
             self.rootSourceVC.focusOnTree(location: treeLocation, tree: self.tree)
         })
-        
     }
     
     @IBAction func dismissDetailAction(_ sender: UIBarButtonItem) {
@@ -225,7 +222,6 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             } else {
                 self.showSendMailErrorAlert()
             }
-            
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
@@ -342,6 +338,14 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: TreeNewDelegate Functions
+    
+    func treeSaved(tree: Tree) {
+        self.basicTreeInfoView.treeNameLabel.text = tree.treeName
+        navigationBar.topItem?.title = tree.treeName
+        self.aboutViewController.treeDescTextView.text = tree.treeDescription
     }
     
 }

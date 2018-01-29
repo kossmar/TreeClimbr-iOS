@@ -3,6 +3,10 @@ import CoreLocation
 import ImagePicker
 import Firebase
 
+protocol TreeNewDelegate {
+    func treeSaved(tree: Tree)
+}
+
 class TreeNewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UINavigationControllerDelegate,UICollectionViewDelegateFlowLayout, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate {
 
     //MARK: Outlets
@@ -15,19 +19,22 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     //MARK: Properties
     let imagePickerController = ImagePickerController()
     
     var tree: Tree?
-    
+    var delegate: TreeNewDelegate?
     var imageArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
-    var sourceVC = ViewController()
+    var sourceVC = UIViewController()
     
     var imageIsSet: Bool = false
     var titleIsSet: Bool = false
     var showAlert = true
+    var fromMap: Bool = false
+    var fromDetail: Bool = false
 
     
     //MARK: ViewController lifecycle
@@ -41,15 +48,17 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         setupTree()
         setupTextView()
-        setupTap()
         setup()
         canSaveTree()
         
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        
+        if fromMap == true {
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+            view.addGestureRecognizer(tap)
+            
+            setupTap()
+        } else if fromDetail == true {
+            navigationBar.topItem?.title = "Edit Tree"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +71,6 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             if imageArr.count > 0 {
                 treeImageView.image = imageArr[0]
                 addPhotoButton.setTitle("Manage Photos", for: .normal)
-                //            saveButton.isEnabled = true
             } else {
                 addPhotoButton.setTitle("Add Photos", for: .normal)
                 saveButton.isEnabled = false
@@ -103,7 +111,9 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        
 
+        
         self.saveButton.isEnabled = false
         let charset = CharacterSet(charactersIn: "$.[]#")
         
@@ -111,32 +121,44 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
             treeNameTextField.text! = ""
             AlertShow.show(inpView: self, titleStr: "Oops!", messageStr: "A tree's name cannot contain the following characters: \n & . [ ] # ")
         } else {
-        
-        let photoData = treeImageView.image?.jpeg(.low)
-        
-        let lat = coordinate.latitude
-        let long = coordinate.longitude
-        
-            guard let curUser = Auth.auth().currentUser else {return}
-        
-        let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
-            tree.treeCreator = curUser.uid
-            tree.treeCreatorName = curUser.displayName!
-        
-        SaveTree.saveTree(tree: tree, completion: { success in
-             self.dismiss(animated: true, completion: nil)
             
-            ImageUploader.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+            let photoData = treeImageView.image?.jpeg(.low)
+            
+            if fromDetail == true {
+                guard let tree = tree else {return}
+                tree.treeName = treeNameTextField.text!
+                tree.treeDescription = TreeDescTextView.text
+                SaveTree.updateTree(tree: tree, completion: { (updated) in
+                    self.delegate?.treeSaved(tree: tree)
+                  self.dismiss(animated: true, completion: nil)
+                })
+            } else {
                 
-                PhotoManager.savePhotos(photos: photos, tree: tree) { success in
-                    print("winners")
+                let lat = coordinate.latitude
+                let long = coordinate.longitude
+                
+                guard let curUser = Auth.auth().currentUser else {return}
+                
+                let tree = Tree(name: treeNameTextField.text!, description: TreeDescTextView.text, treeLat: lat, treeLong: long, photo: photoData! as NSData)
+                tree.treeCreator = curUser.uid
+                tree.treeCreatorName = curUser.displayName!
+                
+                SaveTree.saveTree(tree: tree, completion: { success in
+                    self.dismiss(animated: true, completion: nil)
                     
-                    self.dismiss(animated: true) {
-                        self.sourceVC.reloadInputViews()
+                    ImageUploader.createNewPhotos(images: self.imageArr, tree: tree) { (photos) in
+                        
+                        PhotoManager.savePhotos(photos: photos, tree: tree) { success in
+                            print("winners")
+                            
+                            self.dismiss(animated: true) {
+                                self.sourceVC.reloadInputViews()
+                            }
+                        }
                     }
-                }
+                })
+                
             }
-        })
             
             if TreeDescTextView.textColor == UIColor.lightGray {
                 TreeDescTextView.text = nil
@@ -283,10 +305,16 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     //MARK: Custom Functions
     
     private func canSaveTree() {
-        if imageIsSet == true && titleIsSet == true {
-            saveButton.isEnabled = true
+        if fromMap == true {
+            if imageIsSet == true && titleIsSet == true {
+                saveButton.isEnabled = true
+            } else {
+                saveButton.isEnabled = false
+            }
         } else {
-            saveButton.isEnabled = false
+            if titleIsSet == true {
+                saveButton.isEnabled = true
+            }
         }
     }
     

@@ -161,6 +161,7 @@
                     <connections>
                         <outlet property="TreeDescTextView" destination="L10-cg-qwZ" id="CvQ-Fd-QVx"/>
                         <outlet property="addPhotoButton" destination="z6J-dD-g8P" id="Sbk-ha-UEH"/>
+                        <outlet property="navigationBar" destination="gqV-SX-RcT" id="usR-3a-4jG"/>
                         <outlet property="photoCollectionView" destination="4zq-KD-bEG" id="Crf-kd-KUy"/>
                         <outlet property="saveButton" destination="HEE-FY-f23" id="o7a-Nx-o7m"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
