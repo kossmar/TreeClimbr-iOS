@@ -31,8 +31,9 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
         if firUser != nil {
+            guard let displayName = firUser?.displayName else {return}
             self.logoutButton.title = "Logout"
-            self.welcomeLabel.text = firUser?.displayName
+            self.welcomeLabel.text = "Welcome, " + displayName
         } else {
             self.logoutButton.title = "Login"
             self.welcomeLabel.text = "Hello, Stranger."
@@ -73,8 +74,13 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func changeUsernamePressed(_ sender: UIButton) {
-        AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") {
-            
+
+        AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = name
+            changeRequest?.commitChanges(completion: { (error) in
+            })
+            self.welcomeLabel.text = "Welcome, " + name
         }
     }
     
