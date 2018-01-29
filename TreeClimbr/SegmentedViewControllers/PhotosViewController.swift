@@ -16,6 +16,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     let imagePickerController = ImagePickerController()
     let flowLayout = UICollectionViewFlowLayout()
     var photoObjArr = Array<Photo>()
+    var sourceVC = TreeDetailViewController()
     
     
     // MARK: - View controller lifecycle

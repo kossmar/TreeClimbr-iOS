@@ -102,7 +102,7 @@
                         <outlet property="navigationBar" destination="so4-ye-eS6" id="End-TR-Ied"/>
                         <outlet property="segmentControl" destination="BTe-d6-0hj" id="Kcd-sV-6Id"/>
                         <outlet property="tableView" destination="Uqq-mo-bEp" id="yRN-sb-Mdx"/>
-                        <segue destination="BJz-du-GAK" kind="presentation" identifier="toTreeDetail" id="l2z-ns-Qc2"/>
+                        <segue destination="BJz-du-GAK" kind="presentation" identifier="toTreeDetail" modalTransitionStyle="crossDissolve" id="l2z-ns-Qc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b87-MO-Yqb" userLabel="First Responder" sceneMemberID="firstResponder"/>

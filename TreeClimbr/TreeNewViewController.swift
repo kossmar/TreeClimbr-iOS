@@ -19,6 +19,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     //MARK: Properties
     let imagePickerController = ImagePickerController()
     
+    var tree: Tree?
+    
     var imageArr = Array<UIImage>()
     var coordinate = CLLocationCoordinate2D()
     var sourceVC = ViewController()
@@ -37,12 +39,11 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height/4
         photoCollectionView.delegate = self
 
-        
+        setupTree()
         setupTextView()
         setupTap()
         setup()
         canSaveTree()
-        
         
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -57,14 +58,15 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         
         canSaveTree()
-        
-        if imageArr.count > 0 {
-            treeImageView.image = imageArr[0]
-            addPhotoButton.setTitle("Manage Photos", for: .normal)
-//            saveButton.isEnabled = true
-        } else {
-            addPhotoButton.setTitle("Add Photos", for: .normal)
-            saveButton.isEnabled = false
+        if tree == nil {
+            if imageArr.count > 0 {
+                treeImageView.image = imageArr[0]
+                addPhotoButton.setTitle("Manage Photos", for: .normal)
+                //            saveButton.isEnabled = true
+            } else {
+                addPhotoButton.setTitle("Add Photos", for: .normal)
+                saveButton.isEnabled = false
+            }
         }
 
         photoCollectionView.reloadData()
@@ -229,8 +231,13 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     //MARK: Textview delegate
     func setupTextView() {
-        TreeDescTextView.text = "Enter description..."
-        TreeDescTextView.textColor = UIColor.lightGray
+        
+        if tree == nil {
+            TreeDescTextView.text = "Enter description..."
+            TreeDescTextView.textColor = UIColor.lightGray
+        } else {
+            TreeDescTextView.text = tree?.treeDescription
+        }
         TreeDescTextView.layer.cornerRadius = TreeDescTextView.frame.width/50
     }
     
@@ -275,14 +282,22 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     //MARK: Custom Functions
     
-
-
-    
     private func canSaveTree() {
         if imageIsSet == true && titleIsSet == true {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false
+        }
+    }
+    
+    private func setupTree() {
+        if tree != nil {
+            treeNameTextField.text = tree?.treeName
+            let url = tree?.treePhotoURL
+            treeImageView.sd_setImage(with: url,
+                                      completed: { (image, error, cacheType, url) in
+                                        print("\(String(describing: image)), \(String(describing: error)), \(cacheType), \(String(describing: url))")
+            })
         }
     }
     

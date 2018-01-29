@@ -5,6 +5,10 @@ import CoreGraphics
 import Firebase
 import MessageUI
 
+protocol SetCoverPhotoDelegate {
+    func setCoverPhoto(image: UIImage)
+}
+
 class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var photoScrollView: UIScrollView!
@@ -42,10 +46,11 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         leftBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,16 +67,13 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         rightBarButtonItem.isEnabled = true
         
+        justLoaded = false
+
     }
     
     override func viewWillLayoutSubviews() {
         self.setupScrollView()
     }
-    
-//    override func viewDidLayoutSubviews() {
-//        self.setupScrollView()
-//    }
-    
     
     
     
@@ -168,8 +170,21 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             }
         }
         
+        let setAsCoverAction = UIAlertAction(title: "Set As Cover Photo", style: .default) { (cover) in
+            let url = URL(string: photo.photoURL)
+            let tree = self.sourceVC.tree
+            tree?.treePhotoURL = url!
+            SaveTree.updateTree(tree: tree!, completion: { (complete) in
+                
+            })
+            self.sourceVC.sourceVC.basicTreeInfoView.backgroundImageView.image = photo.image
+        }
+        
         alertController.addAction(cancelAction)
         
+        if Auth.auth().currentUser?.uid == self.sourceVC.tree?.treeCreator {
+            alertController.addAction(setAsCoverAction)
+        }
         if self.canDelete == true {
             alertController.addAction(deleteAction)
         } else {
@@ -231,6 +246,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         if justLoaded == true {
             photoScrollView.contentOffset.x = width * CGFloat(startPage)
+            pageControl.currentPage = startPage
         } else {
             photoScrollView.contentOffset.x = width * CGFloat(pageControl.currentPage)
         }
@@ -255,7 +271,6 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             x+=1
         }
         photoScrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
-        justLoaded = false
     }
     
 }
