@@ -64,7 +64,7 @@
                                                 <rect key="frame" x="194" y="0.0" width="57" height="66"/>
                                                 <state key="normal" image="settingsbutton"/>
                                                 <connections>
-                                                    <segue destination="d5X-kP-5xp" kind="presentation" id="XT7-pJ-iAr"/>
+                                                    <segue destination="d5X-kP-5xp" kind="presentation" identifier="toSettings" id="XT7-pJ-iAr"/>
                                                 </connections>
                                             </button>
                                         </subviews>

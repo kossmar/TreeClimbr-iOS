@@ -24,30 +24,68 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6X-kb-YwY">
-                                <rect key="frame" x="10" y="84" width="355" height="40"/>
-                                <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="1bp-MN-NQW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Blocked Users">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Uks-6M-itc" kind="show" id="vG2-k2-5qN"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k2c-UX-Smx">
+                                <rect key="frame" x="20" y="84" width="335" height="170.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCk-hH-5wT">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6X-kb-YwY">
+                                        <rect key="frame" x="0.0" y="30.5" width="335" height="40"/>
+                                        <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="1bp-MN-NQW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Blocked Users">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Uks-6M-itc" kind="show" id="vG2-k2-5qN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W75-S0-wu2">
+                                        <rect key="frame" x="0.0" y="80.5" width="335" height="40"/>
+                                        <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="yvb-ye-flH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Change Username">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeUsernamePressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="a9t-md-PeM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-G5-2Vi">
+                                        <rect key="frame" x="0.0" y="130.5" width="335" height="40"/>
+                                        <color key="backgroundColor" red="0.094224356110000004" green="0.63722449540000003" blue="0.1245643422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VsP-yJ-z8V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Change E-mail">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeEmailPressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="fPD-G0-uK8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="w6X-kb-YwY" firstAttribute="top" secondItem="nk7-4i-kyb" secondAttribute="top" constant="20" id="GRE-Q3-JmO"/>
-                            <constraint firstItem="w6X-kb-YwY" firstAttribute="centerX" secondItem="aMk-rL-b2i" secondAttribute="centerX" id="OoJ-Wd-ij3"/>
-                            <constraint firstItem="w6X-kb-YwY" firstAttribute="leading" secondItem="nk7-4i-kyb" secondAttribute="leading" constant="10" id="QJ7-MD-fjz"/>
+                            <constraint firstItem="k2c-UX-Smx" firstAttribute="top" secondItem="nk7-4i-kyb" secondAttribute="top" constant="20" id="Gs9-6a-gAr"/>
                             <constraint firstItem="FOa-j6-tdO" firstAttribute="centerX" secondItem="aMk-rL-b2i" secondAttribute="centerX" id="WzW-FP-UPo"/>
+                            <constraint firstItem="nk7-4i-kyb" firstAttribute="trailing" secondItem="k2c-UX-Smx" secondAttribute="trailing" constant="20" id="gp5-2i-n0o"/>
                             <constraint firstItem="nk7-4i-kyb" firstAttribute="trailing" secondItem="FOa-j6-tdO" secondAttribute="trailing" constant="20" id="mr7-sI-HNT"/>
+                            <constraint firstItem="k2c-UX-Smx" firstAttribute="leading" secondItem="nk7-4i-kyb" secondAttribute="leading" constant="20" id="pKh-T7-M2L"/>
                             <constraint firstItem="nk7-4i-kyb" firstAttribute="bottom" secondItem="FOa-j6-tdO" secondAttribute="bottom" constant="20" id="uoF-rz-0GL"/>
-                            <constraint firstItem="nk7-4i-kyb" firstAttribute="trailing" secondItem="w6X-kb-YwY" secondAttribute="trailing" constant="10" id="wRY-XL-8pb"/>
                             <constraint firstItem="FOa-j6-tdO" firstAttribute="leading" secondItem="nk7-4i-kyb" secondAttribute="leading" constant="20" id="zeB-mf-6Mg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nk7-4i-kyb"/>
@@ -68,7 +106,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blockedUsersButton" destination="w6X-kb-YwY" id="tbn-CK-Se1"/>
+                        <outlet property="changeEmailButton" destination="SlG-G5-2Vi" id="B48-9d-Tgz"/>
+                        <outlet property="changeNameButton" destination="W75-S0-wu2" id="t24-gf-6CK"/>
                         <outlet property="logoutButton" destination="dSN-36-42h" id="Wp7-QS-srv"/>
+                        <outlet property="welcomeLabel" destination="dCk-hH-5wT" id="Am7-mj-Nza"/>
                         <segue destination="2VH-3k-bSu" kind="presentation" identifier="toSignUp" id="rLN-vK-eWz"/>
                     </connections>
                 </viewController>
