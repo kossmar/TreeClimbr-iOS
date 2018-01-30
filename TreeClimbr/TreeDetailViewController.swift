@@ -55,7 +55,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
     }()
     
 
-    
+    //MARK: VC lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -178,6 +178,10 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
 
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return  .portrait
     }
     
     //MARK: Prepare for Segue
