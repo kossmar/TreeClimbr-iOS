@@ -37,6 +37,10 @@ class PhotoManager: NSObject {
                 .child(photo.photoID)
                 .setValue(photoDict)
             
+            AppData.sharedInstance.userPhotosNode
+                .child(userID)
+                .child(photo.photoID)
+                .setValue(["photoIDKey": photo.photoID])
         }
 
         completion(true)
@@ -44,11 +48,6 @@ class PhotoManager: NSObject {
     }
     
     class func loadPhotos(tree: Tree, completion: @escaping ([Photo]?) -> Void) {
-        
-//        if ( Auth.auth().currentUser == nil ) {
-//            completion(nil)
-//            return
-//        }
         
         AppData.sharedInstance
             .photosNode.child(tree.treeID)

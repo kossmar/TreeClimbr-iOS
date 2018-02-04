@@ -5,12 +5,7 @@ class ReadTrees: NSObject {
     
     
     class func read(completion: @escaping ([Tree]?) -> Void) {
-//        if ( Auth.auth().currentUser == nil ) {
-//            completion(nil)
-//            return
-//        }
-        
-        
+
         
         
         AppData.sharedInstance

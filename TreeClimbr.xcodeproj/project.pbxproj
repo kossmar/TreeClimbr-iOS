@@ -44,6 +44,7 @@
 		CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */; };
 		CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */; };
 		CA6A7F8B201DA953000210F7 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6A7F8A201DA953000210F7 /* AppUtility.swift */; };
+		CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AF32D20253D3100BBC1E3 /* UserManager.swift */; };
 		CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */; };
 		E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */; };
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
@@ -59,7 +60,6 @@
 		E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */; };
 		E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */; };
 		E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */; };
-		E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */; };
 		E6D66C1D1FC0E573001B5C52 /* ReadTrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */; };
 		E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */; };
 		E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */; };
@@ -134,6 +134,7 @@
 		CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersTableViewCell.swift; sourceTree = "<group>"; };
 		CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenUsersViewController.swift; sourceTree = "<group>"; };
 		CA6A7F8A201DA953000210F7 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		CA6AF32D20253D3100BBC1E3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUserDelegate.swift; sourceTree = "<group>"; };
 		E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInappropriate.swift; sourceTree = "<group>"; };
 		E6051A712005304100C9B288 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -151,7 +152,6 @@
 		E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeListViewController.swift; sourceTree = "<group>"; };
 		E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTreesManager.swift; sourceTree = "<group>"; };
 		E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTree.swift; sourceTree = "<group>"; };
-		E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadTrees.swift; sourceTree = "<group>"; };
 		E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadTrees.swift; sourceTree = "<group>"; };
 		E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 		E6E1E4941FC4D4D1000F42CB /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -232,10 +232,10 @@
 				0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */,
 				E6D66C181FC0E2C9001B5C52 /* SaveTree.swift */,
 				E6D66C1C1FC0E573001B5C52 /* ReadTrees.swift */,
-				E6D66C1A1FC0E2DC001B5C52 /* LoadTrees.swift */,
 				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
 				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
+				CA6AF32D20253D3100BBC1E3 /* UserManager.swift */,
 				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
 				E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */,
 				0D0D0D701FC621A500C84F1D /* Comment.swift */,
@@ -695,6 +695,7 @@
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				E6C423BC2006B3A900BB823B /* SettingsViewController.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
+				CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */,
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
@@ -702,7 +703,6 @@
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
 				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
-				E6D66C1B1FC0E2DC001B5C52 /* LoadTrees.swift in Sources */,
 				E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */,
 				0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */,
 				E6CE28C91FBFBB5F006ABDAB /* AppData.swift in Sources */,
