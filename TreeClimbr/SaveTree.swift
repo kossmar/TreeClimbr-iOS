@@ -8,7 +8,7 @@ class SaveTree: NSObject {
     
     var tempUrl: URL!
 
-    class func saveTree(tree: Tree, completion: @escaping (Bool) -> Void) {
+    class func saveTree(tree: Tree, coverPhoto: Photo, completion: @escaping (Bool) -> Void) {
         print("Saving...")
         if ( Auth.auth().currentUser == nil )
         {
@@ -30,25 +30,25 @@ class SaveTree: NSObject {
             tree.treeDescription = ""
         }
         
-        imagesRef.putData(photoData, metadata: nil, completion: { (metadata, error) in
-            
-            if let error = error {
-                print(error)
-                completion(false)
-                return
-            }
-            
+//        imagesRef.putData(photoData, metadata: nil, completion: { (metadata, error) in
+//
+//            if let error = error {
+//                print(error)
+//                completion(false)
+//                return
+//            }
+        
 //            let treeID: String = tree.treeName + "|" + String(describing: Date()) + "1"
 //            tree.treeID = treeID
             
             let creator = Auth.auth().currentUser?.uid
             let creatorName = Auth.auth().currentUser?.displayName
             
-            if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
-                print(downloadedURL)
-                metadata.contentType = "image/jpeg"
-                let url = downloadedURL.absoluteString
-                
+//            if let metadata = metadata, let downloadedURL = metadata.downloadURL() {
+//                print(downloadedURL)
+//                metadata.contentType = "image/jpeg"
+//                let url = downloadedURL.absoluteString
+        
                 let treeDict: [String : Any] = [
                     "idKey": tree.treeID,
                     "nameKey": tree.treeName,
@@ -59,7 +59,7 @@ class SaveTree: NSObject {
                     "latitudeKey": tree.treeLatitude,
                     "longitudeKey": tree.treeLongitude,
                     "popularityKey":tree.treePopularity,
-                    "photoKey":url,
+                    "photoKey":coverPhoto.photoURL,
                     "creatorKey":creator!,
                     "creatorNameKey":creatorName!,
 //                    "commentKey": tree.treeComments
@@ -73,11 +73,11 @@ class SaveTree: NSObject {
                     .child(Auth.auth().currentUser!.uid)
                     .child(tree.treeID)
                     .setValue(["treeIDKey": tree.treeID])
-            }
-            
+//            }
+        
             completion(true)
             
-        })
+//        })
     }
     
     class func updateTree(tree: Tree, completion: @escaping (Bool) -> Void) {
@@ -98,11 +98,9 @@ class SaveTree: NSObject {
                 "photoKey": url,
                 "creatorKey": tree.treeCreator,
                 "creatorNameKey": tree.treeCreatorName,
-                //                    "commentKey": tree.treeComments
             ]
             
             AppData.sharedInstance.treeNode
-                //            .child(AppData.sharedInstance.curUser!.uid)
                 .child(tree.treeID)
                 .setValue(treeDict)
         

@@ -158,7 +158,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             self.addPhotoButton.setTitle("Add Photos", for: .normal)
             self.imagePickerController.resetAssets()
             
-            ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos) in
+            ImageUploader.createNewPhotos(images: self.moreImagesArr, tree: self.tree!) { (photos, photo) in
                 
                 PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
                     print("winners")

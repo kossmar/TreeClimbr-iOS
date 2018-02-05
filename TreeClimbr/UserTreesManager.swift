@@ -5,6 +5,38 @@ import Firebase
 class UserTreesManager: NSObject {
     
     class func deleteUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
+        
+        // Get all photos from one tree
+        AppData.sharedInstance.photosNode
+            .child(tree.treeID)
+            .observeSingleEvent(of: .value , with: { (snapshot) in
+                let treePhotos = snapshot
+                    .children
+                    .flatMap { $0 as? DataSnapshot }
+                    .flatMap { $0.value as? [String:Any] }
+                
+                print(treePhotos)
+                
+                // For each comment, change the associated name
+                for photo in treePhotos {
+                    
+                    let imageDBName = photo["imageDBNameKey"] as! String
+                    let desertRef = AppData.sharedInstance.storageRef.child(imageDBName)
+                    
+                    desertRef.delete { error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            print("PHOTO DELETED")
+                        }
+                    }
+                }
+                
+                AppData.sharedInstance.photosNode
+                    .child(tree.treeID)
+                    .removeValue()
+        })
+
         AppData.sharedInstance.treeNode
             .child(tree.treeID)
             .removeValue()
@@ -18,6 +50,12 @@ class UserTreesManager: NSObject {
             .child(Auth.auth().currentUser!.uid)
             .child(tree.treeID)
             .removeValue()
+        
+        AppData.sharedInstance.commentsNode
+            .child(tree.treeID)
+            .removeValue()
+        
+        
         
         completion(true)
     }

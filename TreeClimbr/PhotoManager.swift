@@ -32,6 +32,11 @@ class PhotoManager: NSObject {
                 "imageDBNameKey": photo.imageDBName
             ]
             
+            let userPhotoDict: [String : Any] = [
+                "photoIDKey": photo.photoID,
+                "parentTreeKey": tree.treeID
+            ]
+            
             AppData.sharedInstance.photosNode
                 .child(tree.treeID)
                 .child(photo.photoID)
@@ -40,7 +45,7 @@ class PhotoManager: NSObject {
             AppData.sharedInstance.userPhotosNode
                 .child(userID)
                 .child(photo.photoID)
-                .setValue(["photoIDKey": photo.photoID])
+                .setValue(userPhotoDict)
         }
 
         completion(true)
@@ -59,8 +64,6 @@ class PhotoManager: NSObject {
                     completion(nil)
                     return
                 }
-                
-                //                AppData.sharedInstance.treesArr = Array<Tree>()
                 
                 var tempPhotoArr = Array<Photo>()
                 
@@ -85,9 +88,6 @@ class PhotoManager: NSObject {
                     readPhoto.imageDBName = imageDB
                     
                     tempPhotoArr.append(readPhoto)
-                    
-                    //                    print (AppData.sharedInstance.treesArr)
-                    
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
@@ -101,6 +101,9 @@ class PhotoManager: NSObject {
             .child(tree.treeID)
             .child(photo.photoID)
             .removeValue()
+        
+//        AppData.sharedInstance.photosNode
+//            .child(<#T##pathString: String##String#>)
         
         let desertRef = AppData.sharedInstance.storageRef.child(photo.photoID)
         

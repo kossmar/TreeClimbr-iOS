@@ -115,6 +115,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
                     imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
                         if let error = error {
                             print(error)
+                            group.leave()
                             return
                         } else {
                             

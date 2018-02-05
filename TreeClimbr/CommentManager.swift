@@ -117,7 +117,9 @@ class CommentManager: NSObject {
         
         // Get all comments from on user
         Database.database().reference()
-            .child("userComments").child(curUser.uid).observeSingleEvent(of: .value , with: { (snapshot) in
+            .child("userComments")
+            .child(curUser.uid)
+            .observeSingleEvent(of: .value , with: { (snapshot) in
                 let comments = snapshot
                     .children
                     .flatMap { $0 as? DataSnapshot }
