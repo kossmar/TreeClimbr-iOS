@@ -289,7 +289,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         AppData.sharedInstance.treesArr = self.hideBlockedTrees()
         
-        ReadTrees.read(completion: { trees in
+        TreeManager.read(completion: { trees in
 
             guard
                 let trees = trees

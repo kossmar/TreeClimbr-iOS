@@ -130,7 +130,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 guard let tree = tree else {return}
                 tree.treeName = treeNameTextField.text!
                 tree.treeDescription = TreeDescTextView.text
-                SaveTree.updateTree(tree: tree, completion: { (updated) in
+                TreeManager.updateTree(tree: tree, completion: { (updated) in
                     self.delegate?.treeSaved(tree: tree)
                   self.dismiss(animated: true, completion: nil)
                 })
@@ -150,7 +150,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                     PhotoManager.savePhotos(photos: photos, tree: tree) { success in
                         print("winners")
                         
-                        SaveTree.saveTree(tree: tree, coverPhoto: firstPhoto, completion: { success in
+                        TreeManager.saveTree(tree: tree, coverPhoto: firstPhoto, completion: { success in
                             self.dismiss(animated: true) {
                                 self.sourceVC.reloadInputViews()
                             }

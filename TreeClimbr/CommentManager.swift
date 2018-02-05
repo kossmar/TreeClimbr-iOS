@@ -115,7 +115,7 @@ class CommentManager: NSObject {
         
         guard let curUser = Auth.auth().currentUser else {return}
         
-        // Get all comments from on user
+        // Get all comments from one user
         Database.database().reference()
             .child("userComments")
             .child(curUser.uid)
