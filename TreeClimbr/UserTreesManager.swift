@@ -4,38 +4,6 @@ import Firebase
 
 class UserTreesManager: NSObject {
     
-
-    
-
-    
-    class func deleteUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
-        
-        deleteImagesFromStorage(tree)
-        deleteUserComments(tree)
-        
-        AppData.sharedInstance.treeNode
-            .child(tree.treeID)
-            .removeValue()
-        
-        AppData.sharedInstance.userTreesNode
-            .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID)
-            .removeValue()
-        
-        AppData.sharedInstance.favouritesNode
-            .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID)
-            .removeValue()
-        
-        AppData.sharedInstance.commentsNode
-            .child(tree.treeID)
-            .removeValue()
-
-        
-        completion(true)
-    }
-    
-    
     class func loadUserTrees(completion: @escaping ([Tree]?) -> Void) {
         AppData.sharedInstance.userTreesArr = []
         
@@ -46,7 +14,6 @@ class UserTreesManager: NSObject {
         
         AppData.sharedInstance.userTreesNode
             .child(Auth.auth().currentUser!.uid)
-//            .observe(.value, with: { (userTreesSnapshot) in
             .observeSingleEvent(of: .value) { (userTreesSnapshot) in
 
         
@@ -120,60 +87,5 @@ class UserTreesManager: NSObject {
     
     //MARK: Private Functions
     
-    fileprivate static func deleteImagesFromStorage(_ tree: Tree) {
-        // Get all photos from one tree
-        AppData.sharedInstance.photosNode
-            .child(tree.treeID)
-            .observeSingleEvent(of: .value , with: { (snapshot) in
-                let treePhotos = snapshot
-                    .children
-                    .flatMap { $0 as? DataSnapshot }
-                    .flatMap { $0.value as? [String:Any] }
-                
-                print(treePhotos)
-                
-                // For each photo, delete the image from storage
-                for photo in treePhotos {
-                    
-                    let imageDBName = photo["imageDBNameKey"] as! String
-                    let desertRef = AppData.sharedInstance.storageRef.child(imageDBName)
-                    
-                    desertRef.delete { error in
-                        if let error = error {
-                            print(error)
-                        } else {
-                            print("PHOTO DELETED")
-                        }
-                    }
-                }
-                
-                AppData.sharedInstance.photosNode
-                    .child(tree.treeID)
-                    .removeValue()
-            })
-    }
-    
-    fileprivate static func deleteUserComments(_ tree: Tree) {
-        // Get all comments from one user
-        AppData.sharedInstance.commentsNode
-            .child(tree.treeID)
-            .observeSingleEvent(of: .value , with: { (snapshot) in
-                let comments = snapshot
-                    .children
-                    .flatMap { $0 as? DataSnapshot }
-                    .flatMap { $0.value as? [String:Any] }
-                
-                for comment in comments {
-                    let userIDKey = comment["userIDKey"] as! String
-                    let commentID = comment["commentIDKey"] as! String
-                    
-                    AppData.sharedInstance.userCommentsNode
-                        .child(userIDKey)
-                        .child(commentID)
-                        .removeValue()
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-        }
-    }
+
 }

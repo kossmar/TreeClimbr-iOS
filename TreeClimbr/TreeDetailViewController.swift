@@ -228,7 +228,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             AlertShow.confirm(inpView: self, titleStr: "Delete Tree?", messageStr: " ", completion: {
 
-                UserTreesManager.deleteUserTree(tree: self.tree, completion: { (true) in
+                TreeManager.deleteTree(tree: self.tree, completion: { (true) in
                     FavouritesManager.loadFavourites(completion: { trees in
                     })
                     UserTreesManager.loadUserTrees(completion: { trees in
