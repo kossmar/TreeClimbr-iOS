@@ -1,6 +1,7 @@
 
 
 import UIKit
+import Firebase
 
 class AlertShow: NSObject {
 
@@ -55,5 +56,34 @@ class AlertShow: NSObject {
                         animated: true,
                         completion: nil)
     }
+    
+    class func respond (inpView: UIViewController, titleStr: String, messageStr: String, completion: @escaping (String) -> Void) {
+        
+        let alert = UIAlertController(title: titleStr, message: messageStr, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+            
+            let input = alert.textFields?[0].text
+            guard input != nil else {return}
+
+            completion(input!)
+            
+        }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        //adding textfields to our dialog box
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter Username"
+        }
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        inpView.present(alert,
+                        animated: true,
+                        completion: nil)
+    }
+    
     
 }

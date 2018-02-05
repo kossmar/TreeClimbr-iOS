@@ -158,7 +158,6 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
             } else {
                 self.showSendMailErrorAlert()
             }
-            
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in

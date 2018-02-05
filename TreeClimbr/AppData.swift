@@ -14,6 +14,8 @@ class AppData: NSObject {
     public var favouritesNode: DatabaseReference
     public var photosNode: DatabaseReference
     public var userTreesNode: DatabaseReference
+    public var userPhotosNode: DatabaseReference
+    public var userCommentsNode: DatabaseReference
     public var storageRef: StorageReference
     public var blockedNode: DatabaseReference
     public var hiddenUsersNode: DatabaseReference
@@ -35,6 +37,8 @@ class AppData: NSObject {
         favouritesNode = Database.database().reference().child("favourites")
         photosNode = Database.database().reference().child("photos")
         userTreesNode = Database.database().reference().child("userTrees")
+        userPhotosNode = Database.database().reference().child("userPhotos")
+        userCommentsNode = Database.database().reference().child("userComments")
         storageRef = Storage.storage().reference()
         blockedNode = Database.database().reference().child("blocked")
         hiddenUsersNode = Database.database().reference().child("hiddenUsers")

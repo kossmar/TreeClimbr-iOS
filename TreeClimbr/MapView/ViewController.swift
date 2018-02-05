@@ -3,9 +3,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate {
-
-    
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -109,7 +107,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeVC.coordinate = treeLocation
-            treeVC.sourceVC = self
+            treeVC.delegate = self
+            treeVC.fromMap = true
         }
         
         if segue.identifier == "toTreeDetail" {
@@ -146,6 +145,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     //MARK: Tap gesture methods
+    
     func setupTap() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
         mapView.isUserInteractionEnabled = true
@@ -241,10 +241,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    //MARK: Map view delegate functions
+    //MARK: MapViewDelegate functions
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // go to tree creation
 
 
     }
@@ -257,9 +256,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
         if annView == nil {
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
-//            annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
-            //add info button
             let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
             annView!.rightCalloutAccessoryView = detailButton
         } else {
@@ -292,7 +289,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         AppData.sharedInstance.treesArr = self.hideBlockedTrees()
         
-        ReadTrees.read(completion: { trees in
+        TreeManager.read(completion: { trees in
 
             guard
                 let trees = trees
@@ -312,11 +309,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         })
     }
     
-    // MARK: - Delegate Functions
+    // MARK: - MapFocusDelegate Functions
     
     func focusOnTree(location: CLLocationCoordinate2D, tree: Tree) {
-    
-//        mapView.setCenter(location, animated: true)
         
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
@@ -366,7 +361,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return treesArr
     }
 
-
+    //MARK: TreeNewDelegate Functions
+    
+    func treeSaved(tree: Tree) {
+        
+    }
+    
 }
 
 

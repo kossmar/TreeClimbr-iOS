@@ -4,25 +4,6 @@ import Firebase
 
 class UserTreesManager: NSObject {
     
-    class func deleteUserTree(tree: Tree, completion: @escaping (Bool) -> Void) {
-        AppData.sharedInstance.treeNode
-            .child(tree.treeID)
-            .removeValue()
-        
-        AppData.sharedInstance.userTreesNode
-            .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID)
-            .removeValue()
-        
-        AppData.sharedInstance.favouritesNode
-            .child(Auth.auth().currentUser!.uid)
-            .child(tree.treeID)
-            .removeValue()
-        
-        completion(true)
-    }
-    
-    
     class func loadUserTrees(completion: @escaping ([Tree]?) -> Void) {
         AppData.sharedInstance.userTreesArr = []
         
@@ -33,7 +14,6 @@ class UserTreesManager: NSObject {
         
         AppData.sharedInstance.userTreesNode
             .child(Auth.auth().currentUser!.uid)
-//            .observe(.value, with: { (userTreesSnapshot) in
             .observeSingleEvent(of: .value) { (userTreesSnapshot) in
 
         
@@ -105,4 +85,7 @@ class UserTreesManager: NSObject {
         
     }
     
+    //MARK: Private Functions
+    
+
 }

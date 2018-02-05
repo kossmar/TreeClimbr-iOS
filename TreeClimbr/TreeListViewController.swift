@@ -155,7 +155,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            UserTreesManager.deleteUserTree(tree: treesArr[indexPath.row], completion: { (success) in
+            TreeManager.deleteTree(tree: treesArr[indexPath.row], completion: { (success) in
                 UserTreesManager.loadUserTrees(completion: { trees in
                 })
                 FavouritesManager.loadFavourites(completion: { trees in
