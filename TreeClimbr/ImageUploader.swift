@@ -10,7 +10,8 @@ class ImageUploader {
         
         let photoData = image.jpeg(.low)
         
-        let imageID = NSUUID().uuidString
+        let imageID = tree.treeName + "|" + NSUUID().uuidString
+//        let _: String = tree.treeName + "|" + String(describing: Date())
         
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -40,7 +41,7 @@ class ImageUploader {
         
     }
     
-    class func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo]) -> Void) {
+    class func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo], Photo) -> Void) {
         
         var tempPhotoArr = Array<Photo>()
         
@@ -53,8 +54,10 @@ class ImageUploader {
         
         let group = DispatchGroup()
         
+        var firstPhoto: Photo?
+        
         for image in images {
-            
+            let position = images.index(of: image)
             group.enter()
             uploadImage(image: image, tree: tree, completion: { url, imageDBName in
                 let urlStr = url.absoluteString
@@ -62,15 +65,18 @@ class ImageUploader {
                 let photo = Photo(URL: urlStr)
                 photo.userID = user
                 photo.imageDBName = dbName
-                
                 tempPhotoArr.append(photo)
+                if position == 0 {
+                    firstPhoto = photo
+                }
                 group.leave()
                 
             })
         }
         
         group.notify(queue: DispatchQueue.global()) {
-            completion(tempPhotoArr)
+            guard let firstPhoto = firstPhoto else {return}
+            completion(tempPhotoArr, firstPhoto)
         }
     }
     

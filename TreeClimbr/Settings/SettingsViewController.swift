@@ -8,6 +8,11 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var blockedUsersButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var changeNameButton: UIButton!
+    @IBOutlet weak var changeEmailButton: UIButton!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     
     var sourceVC = ViewController()
     
@@ -16,18 +21,28 @@ class SettingsViewController: UIViewController {
         
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        //        self.navigationController?.navigationBar.titleTextAttributes. = UIColor.white
         blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
+        changeNameButton.layer.cornerRadius = changeNameButton.frame.height/4
+        changeEmailButton.layer.cornerRadius = changeEmailButton.frame.height/4
     
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
         if firUser != nil {
+            guard let displayName = firUser?.displayName else {return}
             self.logoutButton.title = "Logout"
+            self.welcomeLabel.text = "Welcome, " + displayName + "!"
+            let email = Auth.auth().currentUser?.email
+            if  email != nil {
+                self.emailLabel.text = "e-mail: " + email!
+            }
         } else {
             self.logoutButton.title = "Login"
+            self.welcomeLabel.text = "Hello, Stranger."
+
         }
     }
     
@@ -48,9 +63,7 @@ class SettingsViewController: UIViewController {
     @IBAction func logout(_ sender: Any) {
         
         let user = Auth.auth().currentUser
-        
         if user != nil {
-            
             do {
                 try Auth.auth().signOut()
                 self.dismiss(animated: true, completion: nil)
@@ -58,13 +71,37 @@ class SettingsViewController: UIViewController {
             catch let error as NSError {
                 print (error.localizedDescription)
             }
-            
             AppData.sharedInstance.hiddenUsersArr.removeAll()
-            
         } else {
             performSegue(withIdentifier: "toSignUp", sender: self)
         }
 
+    }
+    
+    @IBAction func changeUsernamePressed(_ sender: UIButton) {
+
+        AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = name
+            changeRequest?.commitChanges(completion: { (error) in
+            })
+            self.welcomeLabel.text = "Welcome, " + name
+            CommentManager.updateComments(newName: name)
+        }
+        
+        
+        
+        
+        
+    }
+    
+    @IBAction func changeEmailPressed(_ sender: UIButton) {
+        
+        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (email) in
+            Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+                self.emailLabel.text = "e-mail: " + email
+            }
+        }
     }
     
     @IBAction func backToMapView(_ sender: UIBarButtonItem) {
