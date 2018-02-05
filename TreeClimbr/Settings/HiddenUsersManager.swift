@@ -36,50 +36,59 @@ class HiddenUsersManager: NSObject {
         
         AppData.sharedInstance.hiddenUsersArr.removeAll()
         
-        AppData.sharedInstance.hiddenUsersNode
-            .child(Auth.auth().currentUser!.uid)
-            .observeSingleEvent(of: .value, with: { (hiddenUsersSnapshot) in
-                
-                
-                let allHiddenUsers = hiddenUsersSnapshot.value as? [String: Any]
-                
-                if (allHiddenUsers == nil) {
-                    completion(nil)
-                    return
-                }
-                
-                for badUser in (allHiddenUsers?.keys)!
-                {
-                    
-                    AppData.sharedInstance
-                        .usersNode
-                        .child(badUser)
-                        .observeSingleEvent (of: .value, with: { (usersSnapshot) in
+        Database.database().reference().observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild("hiddenUsers") {
+                AppData.sharedInstance.hiddenUsersNode
+                    .child(Auth.auth().currentUser!.uid)
+                    .observeSingleEvent(of: .value, with: { (hiddenUsersSnapshot) in
+                        
+                        
+                        let allHiddenUsers = hiddenUsersSnapshot.value as? [String: Any]
+                        
+                        if (allHiddenUsers == nil) {
+                            completion(nil)
+                            return
+                        }
+                        
+                        
+                        for badUser in (allHiddenUsers?.keys)!
+                        {
                             
-                            let usersDict = usersSnapshot.value as? [String: Any]
-                            
-                            if usersDict == nil
-                            {
-                                completion(nil)
-                                return
-                            }
-                            
-                            let userName : String = usersDict?["nameKey"] as! String
-                            let userEmail = usersDict?["emailKey"] as! String
-                            let userID = usersDict?["uidKey"] as! String
-                            
-                            let badUser = User(name: userName, email: userEmail, uid: userID)
-                            
-                            AppData.sharedInstance.hiddenUsersArr.append(badUser)
-                            //TODO: remove print
-                            print (" After Append\(AppData.sharedInstance.hiddenUsersArr.count)")
-                            
-                        })
-                }
-                
-                print("\(#function) - \(AppData.sharedInstance.hiddenUsersArr.count)")
-                completion(AppData.sharedInstance.hiddenUsersArr)
-            })
+                            AppData.sharedInstance
+                                .usersNode
+                                .child(badUser)
+                                .observeSingleEvent (of: .value, with: { (usersSnapshot) in
+                                    
+                                    let usersDict = usersSnapshot.value as? [String: Any]
+                                    
+                                    if usersDict == nil
+                                    {
+                                        completion(nil)
+                                        return
+                                    }
+                                    
+                                    let userName : String = usersDict?["nameKey"] as! String
+                                    let userEmail = usersDict?["emailKey"] as! String
+                                    let userID = usersDict?["uidKey"] as! String
+                                    
+                                    let badUser = User(name: userName, email: userEmail, uid: userID)
+                                    
+                                    AppData.sharedInstance.hiddenUsersArr.append(badUser)
+                                    //TODO: remove print
+                                    print (" After Append\(AppData.sharedInstance.hiddenUsersArr.count)")
+                                    
+                                })
+                        }
+                        
+                        print("\(#function) - \(AppData.sharedInstance.hiddenUsersArr.count)")
+                        completion(AppData.sharedInstance.hiddenUsersArr)
+                    })
+            }
+        }) { (error) in
+            return
+        }
+        
+        
         
     }
     

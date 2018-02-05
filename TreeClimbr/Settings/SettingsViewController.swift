@@ -86,7 +86,13 @@ class SettingsViewController: UIViewController {
             changeRequest?.commitChanges(completion: { (error) in
             })
             self.welcomeLabel.text = "Welcome, " + name
+            CommentManager.updateComments(newName: name)
         }
+        
+        
+        
+        
+        
     }
     
     @IBAction func changeEmailPressed(_ sender: UIButton) {
