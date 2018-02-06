@@ -42,6 +42,7 @@ class SettingsViewController: UIViewController {
         } else {
             self.logoutButton.title = "Login"
             self.welcomeLabel.text = "Hello, Stranger."
+            self.emailLabel.text = ""
 
         }
     }
