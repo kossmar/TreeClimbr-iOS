@@ -50,12 +50,13 @@ class CommentManager: NSObject {
             return
         }
         
-        AppData.sharedInstance
-            .commentsNode.child(tree.treeID)
-            .observe (.value, with: { (snapshot) in
+        Database.database().reference()
+            .child("comments")
+            .child(tree.treeID)
+            .observe( .value, with: { (snapshot) in
                 
                 let value = snapshot.value as? NSDictionary;
-                
+
                 if (value == nil) {
                     completion(nil)
                     return
@@ -63,11 +64,21 @@ class CommentManager: NSObject {
                 
                 AppData.sharedInstance.commentArr = Array<Comment>()
                 
-                
+
                 for any in (value?.allValues)!
                 {
-                    let comment : [String : Any] = any as! Dictionary <String, Any>
+//                let comments = snapshot
+//                    .children
+//                    .flatMap { $0 as? DataSnapshot }
+//                    .flatMap { $0.value as? [String:Any] }
+                
+                print(any)
+                
+                // For each comment, change the associated name
+//                for comment in comments {
                     
+                    let comment : [String : Any] = any as! Dictionary <String, Any>
+                    print(any)
                     let userID = comment["userIDKey"] as! String
                     let body = comment["bodyKey"] as! String
                     let timeStamp = comment["timeKey"] as! String
@@ -80,17 +91,30 @@ class CommentManager: NSObject {
                     readComment.userID = userID
                     readComment.timeStamp = timeStamp
                     readComment.username = username
-
+                    
                     
                     AppData.sharedInstance.commentArr.append(readComment)
                     tree.treeComments.append(readComment)
-
+                    
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.commentArr.count)")
                 completion(AppData.sharedInstance.commentArr)
-            })
+            }) { (error) in
+                print(error.localizedDescription)
+        }
     }
+    
+    /*
+     }, withCancel: { (error) in
+     return
+     })
+     }
+     }) { (error) in
+     print(error.localizedDescription)
+     }
+     */
+    
     
     class func deleteComment(tree: Tree, comment: Comment) {
         
@@ -107,7 +131,7 @@ class CommentManager: NSObject {
             .removeValue()
     }
     
-    class func updateComments(newName: String) {
+    class func updateUserCommentsUserName(newName: String) {
         if ( Auth.auth().currentUser == nil ) {
 //            completion(false)
             return

@@ -86,7 +86,9 @@ class SettingsViewController: UIViewController {
             changeRequest?.commitChanges(completion: { (error) in
             })
             self.welcomeLabel.text = "Welcome, " + name
-            CommentManager.updateComments(newName: name)
+            CommentManager.updateUserCommentsUserName(newName: name)
+            PhotoManager.updateUserPhotosUserName(newName: name)
+            TreeManager.updateUserTreesUserName(newName: name)
         }
         
         

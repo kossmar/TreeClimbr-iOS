@@ -126,7 +126,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 treeDetailVC.basicTreeInfoView.commentLabel.text = "\(treeObject.treeComments.count) Comments"
                 treeObject.treeComments = []
             })
-            
         }
         
         if segue.identifier == "toTreeList" {
