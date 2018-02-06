@@ -32,9 +32,6 @@ class TreeManager: NSObject {
             .child(tree.treeID)
             .removeValue()
         
-        AppData.sharedInstance.userPhotosNode
-            .child(<#T##pathString: String##String#>)
-        
         
         completion(true)
     }
