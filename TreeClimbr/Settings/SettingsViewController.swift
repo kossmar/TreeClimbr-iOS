@@ -88,6 +88,7 @@ class SettingsViewController: UIViewController {
             self.welcomeLabel.text = "Welcome, " + name
             CommentManager.updateUserCommentsUserName(newName: name)
             PhotoManager.updateUserPhotosUserName(newName: name)
+            TreeManager.updateUserTreesUserName(newName: name)
         }
         
         

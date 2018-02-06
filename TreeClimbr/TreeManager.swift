@@ -112,6 +112,77 @@ class TreeManager: NSObject {
         completion(true)
         
     }
+    
+    class func updateUserTreesUserName(newName: String) {
+        if ( Auth.auth().currentUser == nil ) {
+            //            completion(false)
+            return
+        }
+        
+        guard let curUser = Auth.auth().currentUser else {return}
+        
+        // Get all comments from one user
+        AppData.sharedInstance.userTreesNode
+            .child(curUser.uid)
+            .observeSingleEvent(of: .value , with: { (snapshot) in
+                let trees = snapshot
+                    .children
+                    .flatMap { $0 as? DataSnapshot }
+                    .flatMap { $0.value as? [String:Any] }
+                
+                // For each photo, change the associated name
+                for tree in trees {
+
+                    let treeID = tree["treeIDKey"] as! String
+                    
+                    // get comment information
+                    AppData.sharedInstance.treeNode
+                        .child(treeID)
+                        .observeSingleEvent(of: .value, with: { (treeSnapshot) in
+                            guard let treeDict = treeSnapshot.value as? NSDictionary else {return}
+                            print(treeDict)
+                            
+                            let treeID = treeDict["idKey"] as! String
+                            let treeDescription = treeDict["descriptionKey"] as! String
+                            let treeHowToFind = treeDict["howToFindKey"] as! String
+                            let treeLatitude = treeDict["latitudeKey"] as! Double
+                            let treeLongitude = treeDict["longitudeKey"]  as! Double
+                            let treeName = treeDict["nameKey"] as! String
+                            let treePopularity = treeDict["popularityKey"] as! Int
+                            let treeRating = treeDict["ratingKey"] as! Double
+                            let treeSpecies = treeDict["speciesKey"] as! String
+                            let treePhotoURL = treeDict["photoKey"] as! String
+                            let treeCreator = treeDict["creatorKey"] as! String
+                            let _ = treeDict["creatorNameKey"] as! String
+                            
+                            // change username
+                            let newTreeDict: [String : Any] = [
+                                "idKey": treeID,
+                                "nameKey": treeName,
+                                "descriptionKey": treeDescription,
+                                "speciesKey": treeSpecies,
+                                "ratingKey": treeRating,
+                                "howToFindKey": treeHowToFind,
+                                "latitudeKey": treeLatitude,
+                                "longitudeKey": treeLongitude,
+                                "popularityKey": treePopularity,
+                                "photoKey": treePhotoURL,
+                                "creatorKey": treeCreator,
+                                "creatorNameKey": newName,
+                                ]
+                            
+                            AppData.sharedInstance.treeNode
+                                .child(treeID)
+                                .setValue(newTreeDict)
+                            
+                        }, withCancel: { (error) in
+                            return
+                        })
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+    }
 
     
     class func read(completion: @escaping ([Tree]?) -> Void) {
