@@ -45,10 +45,10 @@ class CommentManager: NSObject {
     
     class func loadComments(tree: Tree, completion: @escaping ([Comment]?) -> Void) {
         
-        if ( Auth.auth().currentUser == nil ) {
-            completion(nil)
-            return
-        }
+//        if ( Auth.auth().currentUser == nil ) {
+//            completion(nil)
+//            return
+//        }
         
         Database.database().reference()
             .child("comments")
