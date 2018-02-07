@@ -43,6 +43,9 @@ class SettingsViewController: UIViewController {
             self.logoutButton.title = "Login"
             self.welcomeLabel.text = "Hello, Stranger."
             self.emailLabel.text = ""
+            self.blockedUsersButton.isHidden = true
+            self.changeNameButton.isHidden = true
+            self.changeEmailButton.isHidden = true
 
         }
     }
