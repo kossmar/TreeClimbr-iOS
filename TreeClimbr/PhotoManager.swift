@@ -102,10 +102,12 @@ class PhotoManager: NSObject {
             .child(photo.photoID)
             .removeValue()
         
-//        AppData.sharedInstance.photosNode
-//            .child(<#T##pathString: String##String#>)
+        AppData.sharedInstance.userPhotosNode
+            .child(tree.treeCreator)
+            .child(photo.photoID)
+            .removeValue()
         
-        let desertRef = AppData.sharedInstance.storageRef.child(photo.photoID)
+        let desertRef = AppData.sharedInstance.storageRef.child(photo.imageDBName)
         
         desertRef.delete { error in
             if let error = error {
@@ -145,7 +147,6 @@ class PhotoManager: NSObject {
                         .child(photoID)
                         .observeSingleEvent(of: .value, with: { (photoSnapshot) in
                             guard let photoDict = photoSnapshot.value as? NSDictionary else {return}
-                            print(photoDict)
                             
                             let userID = photoDict["userIDKey"] as! String
                             let _ = photoDict["userNameKey"] as! String

@@ -149,7 +149,6 @@ class CommentManager: NSObject {
                     .flatMap { $0 as? DataSnapshot }
                     .flatMap { $0.value as? [String:Any] }
                 
-                print(comments)
                 
                 // For each comment, change the associated name
                 for comment in comments {
@@ -162,7 +161,6 @@ class CommentManager: NSObject {
                         .child(commentID)
                         .observeSingleEvent(of: .value, with: { (commentSnapshot) in
                             guard let commentDict = commentSnapshot.value as? NSDictionary else {return}
-                            print(commentDict)
                             
                             let userID = commentDict["userIDKey"] as! String
                             let body = commentDict["bodyKey"] as! String

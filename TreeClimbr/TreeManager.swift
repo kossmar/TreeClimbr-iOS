@@ -140,7 +140,6 @@ class TreeManager: NSObject {
                         .child(treeID)
                         .observeSingleEvent(of: .value, with: { (treeSnapshot) in
                             guard let treeDict = treeSnapshot.value as? NSDictionary else {return}
-                            print(treeDict)
                             
                             let treeID = treeDict["idKey"] as! String
                             let treeDescription = treeDict["descriptionKey"] as! String
@@ -304,9 +303,7 @@ class TreeManager: NSObject {
                     .children
                     .flatMap { $0 as? DataSnapshot }
                     .flatMap { $0.value as? [String:Any] }
-                
-                print(treePhotos)
-                
+                                
                 // For each photo, delete the image from storage
                 for photo in treePhotos {
                     
