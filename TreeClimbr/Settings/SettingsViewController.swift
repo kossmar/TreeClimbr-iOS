@@ -3,8 +3,8 @@
 import UIKit
 import Firebase
 
-class SettingsViewController: UIViewController {
-    
+class SettingsViewController: UIViewController, VerifyUserDelegate {
+
     
     @IBOutlet weak var blockedUsersButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
     
     
     var sourceVC = ViewController()
+    var delegate: VerifyUserDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,7 @@ class SettingsViewController: UIViewController {
             let signUpVC = segue.destination as! SignUpViewController
             signUpVC.sourceVC = self
             signUpVC.fromSettings = true
+            signUpVC.delegate = self
         }
     }
     
@@ -112,6 +114,12 @@ class SettingsViewController: UIViewController {
     
     @IBAction func backToMapView(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+        self.delegate?.verificationComplete()
     }
     
 }

@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate, VerifyUserDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -11,6 +11,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var userCoordinate = CLLocationCoordinate2D()
     var myAnnotation = MKPointAnnotation()
     var treeLocation = CLLocationCoordinate2D()
+    var justOnce = true
     
     @IBOutlet weak var addTreeToLocationButton: UIButton!
     @IBOutlet weak var treeListButton: UIButton!
@@ -43,7 +44,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         FavouritesManager.loadFavourites { (success) in
             return
         }
-        
     }
     
     
@@ -52,6 +52,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapViewWillStartLoadingMap(self.mapView)
+        
+        if Auth.auth().currentUser == nil && justOnce {
+            AlertShow.show(inpView: self, titleStr: "Careful out there!", messageStr: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!")
+            justOnce = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -364,6 +369,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func treeSaved(tree: Tree) {
         
+    }
+    
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+
     }
     
 }
