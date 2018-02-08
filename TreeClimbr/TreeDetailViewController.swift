@@ -244,7 +244,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             })
         }
         
-        let editAction = UIAlertAction(title: "edit tree", style: .default) { (edit) in
+        let editAction = UIAlertAction(title: "Edit tree", style: .default) { (edit) in
             self.performSegue(withIdentifier: "toEdit", sender: self)
         }
         
