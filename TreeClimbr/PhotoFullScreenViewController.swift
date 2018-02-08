@@ -185,8 +185,11 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         if Auth.auth().currentUser?.uid == self.sourceVC.tree?.treeCreator {
             alertController.addAction(setAsCoverAction)
         }
+        
         if self.canDelete == true {
             alertController.addAction(deleteAction)
+        } else if Auth.auth().currentUser == nil {
+            alertController.addAction(reportAction)
         } else {
             alertController.addAction(reportAction)
             alertController.addAction(blockAction)

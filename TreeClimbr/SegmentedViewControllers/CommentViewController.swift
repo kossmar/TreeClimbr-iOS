@@ -186,8 +186,6 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
             )}
         
         alertController.addAction(cancelAction)
-//        alertController.addAction(reportAction)
-//        alertController.addAction(blockAction)
         
         if Auth.auth().currentUser == nil {
             alertController.addAction(reportAction)
