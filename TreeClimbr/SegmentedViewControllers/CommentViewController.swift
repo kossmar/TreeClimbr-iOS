@@ -186,11 +186,14 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
             )}
         
         alertController.addAction(cancelAction)
-        alertController.addAction(reportAction)
-        alertController.addAction(blockAction)
         
-        if comment.userID == Auth.auth().currentUser?.uid {
+        if Auth.auth().currentUser == nil {
+            alertController.addAction(reportAction)
+        } else if comment.userID == Auth.auth().currentUser?.uid {
             alertController.addAction(deleteAction)
+        } else {
+            alertController.addAction(reportAction)
+            alertController.addAction(blockAction)
         }
         
         self.present(alertController, animated: true, completion: nil)
