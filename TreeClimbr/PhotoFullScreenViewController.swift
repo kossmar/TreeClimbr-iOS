@@ -180,21 +180,21 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         alertController.addAction(cancelAction)
         
-        if Auth.auth().currentUser?.uid == self.sourceVC.tree?.treeCreator {
-            alertController.addAction(setAsCoverAction)
+        if photo.photoURL != "null" {
+            if Auth.auth().currentUser?.uid == self.sourceVC.tree?.treeCreator {
+                alertController.addAction(setAsCoverAction)
+            }
+            
+            if self.canDelete == true {
+                alertController.addAction(deleteAction)
+            } else if Auth.auth().currentUser == nil {
+                alertController.addAction(reportAction)
+            } else {
+                alertController.addAction(reportAction)
+                alertController.addAction(blockAction)
+            }
+            self.present(alertController, animated: true, completion: nil)
         }
-        
-        if self.canDelete == true {
-            alertController.addAction(deleteAction)
-        } else if Auth.auth().currentUser == nil {
-            alertController.addAction(reportAction)
-        } else {
-            alertController.addAction(reportAction)
-            alertController.addAction(blockAction)
-        }
-        
-        self.present(alertController, animated: true, completion: nil)
-        
     }
     
     // MARK: MFMailComposeViewController
