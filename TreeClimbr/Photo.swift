@@ -13,7 +13,7 @@ class Photo: NSObject {
     var isMain : Bool
     var photoID = String()
     var imageDBName = String()
-    var image = UIImage()
+    var image: UIImage?
  
     init(URL: String) {
         self.userName = "fakeName"
@@ -21,7 +21,7 @@ class Photo: NSObject {
         self.photoURL = URL
         let date = Date()
         let dateForm = DateFormatter()
-        dateForm.dateFormat = "E, d MMM yyyy HH:mm:ss Z"
+        dateForm.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         let dateStr = dateForm.string(from: date)
         self.timeStamp = dateStr
         self.isMain = false
@@ -31,3 +31,5 @@ class Photo: NSObject {
     
     
 }
+
+

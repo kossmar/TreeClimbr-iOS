@@ -132,10 +132,12 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
                     
                     DispatchQueue.main.async {
                         self.photosViewController.imageArr = []
+                        self.photoObjArr.sort(by: { $0.timeStamp > $1.timeStamp })
                         self.photosViewController.photoObjArr = self.photoObjArr
-                        self.photosViewController.photoObjArr.sort(by: { $0.timeStamp > $1.timeStamp })
+//                        self.photosViewController.photoObjArr.sort(by: { $1.timeStamp > $0.timeStamp })
                         for photo in self.photoObjArr {
-                            self.imageArr.append(photo.image)
+                            guard photo.image != nil else {return}
+                            self.imageArr.append(photo.image!)
                         }
                         self.photosViewController.imageArr = self.imageArr
                         self.photosViewController.photoCollectionView.reloadData()
