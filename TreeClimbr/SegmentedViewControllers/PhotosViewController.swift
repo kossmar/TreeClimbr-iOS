@@ -42,6 +42,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
     
+
     // MARK: - CollectionView DataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -162,7 +163,66 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
                 
                 PhotoManager.savePhotos(photos: photos, tree: self.tree!) { success in
                     print("winners")
-                    self.moreImagesArr = []
+                    PhotoManager.loadPhotos(tree: self.tree!, completion: { (photos) in
+                        guard let updatedPhotoArr = photos else {return}
+                        let group = DispatchGroup()
+                        var combinedPhotoArray = [Photo]()
+                        var newPhotos = [Photo]()
+                        for photo in updatedPhotoArr {
+                            combinedPhotoArray.append(photo)
+                        }
+                        for photo in self.photoObjArr {
+                            combinedPhotoArray.append(photo)
+                        }
+                        
+                        var photoIDArray = [String]()
+                        for photo in combinedPhotoArray {
+                            photoIDArray.append(photo.photoID)
+                        }
+                        
+                        let uniqueIDs = photoIDArray.extractUnique()
+                        
+                        for photo in combinedPhotoArray {
+                            if uniqueIDs.contains(photo.photoID) {
+                                newPhotos.append(photo)
+                            }
+                        }
+                        
+                        
+                        for photo in newPhotos {
+                            group.enter()
+                            
+                            let ref = Storage.storage().reference()
+                            let imagesRef = ref.child(photo.imageDBName)
+                            
+                            imagesRef.getData(maxSize: 1*1064*1064, completion: { data, error in
+                                if let error = error {
+                                    print(error)
+                                    group.leave()
+                                    return
+                                } else {
+                                    let realImage = UIImage(data: data!)
+                                    photo.image = realImage!
+                                    self.photoObjArr.append(photo)
+                                    group.leave()
+                                }
+                            })
+                        }
+                        group.notify(queue: DispatchQueue.global(qos: .background)) {
+                            DispatchQueue.main.async {
+                                for photo in self.photoObjArr {
+                                    if photo.photoID == "fakeID" {
+                                        let index = self.photoObjArr.index(of: photo)
+                                        guard let indexConfirm = index else {return}
+                                        self.photoObjArr.remove(at: indexConfirm)
+                                    }
+                                }
+                                self.moreImagesArr = []
+                                self.photoObjArr.sort(by: { $0.timeStamp > $1.timeStamp })
+                                self.photoCollectionView.reloadData()
+                            }
+                        }
+                    })
                 }
             }
         }
@@ -208,3 +268,39 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         imagePicker.dismiss(animated: true, completion: nil)
     }
 }
+
+extension Sequence where Iterator.Element: Equatable {
+    
+    public func unique() -> [Iterator.Element] {
+        var buffer: [Iterator.Element] = []
+        
+        for element in self {
+            guard !buffer.contains(element) else { continue }
+            
+            buffer.append(element)
+        }
+        
+        return buffer
+    }
+}
+
+extension Array where Element:Equatable {
+    func extractUnique() -> [Element] {
+        var result = [Element]()
+        
+        for value in self {
+            var count = 0
+            for value2 in self {
+                if value == value2 {
+                    count += 1
+                }
+            }
+            if count == 1 {
+                result.append(value)
+            }
+        }
+        
+        return result
+    }
+}
+

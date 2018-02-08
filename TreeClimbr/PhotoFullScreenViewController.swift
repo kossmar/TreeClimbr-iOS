@@ -124,8 +124,6 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             let badUser =  User(name: photo.userName, email: "", uid: photo.userID)
             AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", completion: {
                 AppData.sharedInstance.hiddenUsersArr.append(badUser)
-//                self.photoObjArr.remove(at: self.pageControl.currentPage)
-//                self.sourceVC.photoObjArr.remove(at: self.pageControl.currentPage)
                 self.sourceVC.photoCollectionView.reloadData()
                 HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
                 })
