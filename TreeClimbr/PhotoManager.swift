@@ -32,11 +32,20 @@ class PhotoManager: NSObject {
                 "imageDBNameKey": photo.imageDBName
             ]
             
+            let userPhotoDict: [String : Any] = [
+                "photoIDKey": photo.photoID,
+                "parentTreeKey": tree.treeID
+            ]
+            
             AppData.sharedInstance.photosNode
                 .child(tree.treeID)
                 .child(photo.photoID)
                 .setValue(photoDict)
             
+            AppData.sharedInstance.userPhotosNode
+                .child(userID)
+                .child(photo.photoID)
+                .setValue(userPhotoDict)
         }
 
         completion(true)
@@ -45,13 +54,8 @@ class PhotoManager: NSObject {
     
     class func loadPhotos(tree: Tree, completion: @escaping ([Photo]?) -> Void) {
         
-//        if ( Auth.auth().currentUser == nil ) {
-//            completion(nil)
-//            return
-//        }
-        
-        AppData.sharedInstance
-            .photosNode.child(tree.treeID)
+        AppData.sharedInstance.photosNode
+            .child(tree.treeID)
             .observeSingleEvent(of: .value) { (snapshot) in
 
                 let value = snapshot.value as? NSDictionary;
@@ -60,8 +64,6 @@ class PhotoManager: NSObject {
                     completion(nil)
                     return
                 }
-                
-                //                AppData.sharedInstance.treesArr = Array<Tree>()
                 
                 var tempPhotoArr = Array<Photo>()
                 
@@ -86,9 +88,6 @@ class PhotoManager: NSObject {
                     readPhoto.imageDBName = imageDB
                     
                     tempPhotoArr.append(readPhoto)
-                    
-                    //                    print (AppData.sharedInstance.treesArr)
-                    
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
@@ -103,7 +102,12 @@ class PhotoManager: NSObject {
             .child(photo.photoID)
             .removeValue()
         
-        let desertRef = AppData.sharedInstance.storageRef.child(photo.photoID)
+        AppData.sharedInstance.userPhotosNode
+            .child(tree.treeCreator)
+            .child(photo.photoID)
+            .removeValue()
+        
+        let desertRef = AppData.sharedInstance.storageRef.child(photo.imageDBName)
         
         desertRef.delete { error in
             if let error = error {
@@ -115,5 +119,67 @@ class PhotoManager: NSObject {
         
     }
     
+    class func updateUserPhotosUserName(newName: String) {
+        if ( Auth.auth().currentUser == nil ) {
+            //            completion(false)
+            return
+        }
+        
+        guard let curUser = Auth.auth().currentUser else {return}
+        
+        // Get all comments from one user
+            AppData.sharedInstance.userPhotosNode
+            .child(curUser.uid)
+            .observeSingleEvent(of: .value , with: { (snapshot) in
+                let photos = snapshot
+                    .children
+                    .flatMap { $0 as? DataSnapshot }
+                    .flatMap { $0.value as? [String:Any] }
+                
+                // For each photo, change the associated name
+                for photo in photos {
+                    let tree = photo["parentTreeKey"] as! String
+                    let photoID = photo["photoIDKey"] as! String
+                    
+                    // get comment information
+                    AppData.sharedInstance.photosNode
+                        .child(tree)
+                        .child(photoID)
+                        .observeSingleEvent(of: .value, with: { (photoSnapshot) in
+                            guard let photoDict = photoSnapshot.value as? NSDictionary else {return}
+                            
+                            let userID = photoDict["userIDKey"] as! String
+                            let _ = photoDict["userNameKey"] as! String
+                            let photoURL = photoDict["urlKey"] as! String
+                            let timeStamp = photoDict["timeKey"] as! String
+                            let isMain = photoDict["isMainKey"] as! Bool
+                            let photoID = photoDict["photoIDKey"] as! String
+                            let imageDBName = photoDict["imageDBNameKey"] as! String
+                            
+                            
+                            // change username
+                            let newPhotoDict: [String : Any] = [
+                                "userIDKey": userID,
+                                "userNameKey": newName,
+                                "urlKey": photoURL,
+                                "timeKey": timeStamp,
+                                "isMainKey": isMain,
+                                "photoIDKey": photoID,
+                                "imageDBNameKey": imageDBName
+                                ]
+                            
+                            AppData.sharedInstance.photosNode
+                                .child(tree)
+                                .child(photoID)
+                                .setValue(newPhotoDict)
+                            
+                        }, withCancel: { (error) in
+                            return
+                        })
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+        }
+    }
     
 }

@@ -64,7 +64,7 @@
                                                 <rect key="frame" x="194" y="0.0" width="57" height="66"/>
                                                 <state key="normal" image="settingsbutton"/>
                                                 <connections>
-                                                    <segue destination="d5X-kP-5xp" kind="presentation" id="XT7-pJ-iAr"/>
+                                                    <segue destination="d5X-kP-5xp" kind="presentation" identifier="toSettings" id="XT7-pJ-iAr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -148,7 +148,7 @@
                 <viewControllerPlaceholder storyboardName="Settings" id="d5X-kP-5xp" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fP-8m-ez7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865" y="581"/>
+            <point key="canvasLocation" x="1015" y="532"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MHC-Cx-TYa">

@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 
+
 class LoginViewController: UIViewController {
     
     //MARK: Properties
@@ -24,17 +25,8 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         AppUtility.lockOrientation(.all)
-
-        
-        let alert = UIAlertController(title: "Careful out there!",
-                                      message: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        self.view.window?.rootViewController?.present(alert,
-                                                      animated: true,
-                                                      completion: nil)
     }
     
     //MARK: Actions
@@ -65,9 +57,13 @@ class LoginViewController: UIViewController {
                 } else {
                     if self.sourceVC.fromSettings == true {
                         self.sourceVC.fromSettings = false
-                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        self.delegate?.verificationComplete()
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: {
+                        
+                        })
                     } else {
                         self.sourceVC.sourceVC.dismiss(animated: true, completion: nil)
+                        self.delegate?.verificationComplete()
                     }
                 }
             })

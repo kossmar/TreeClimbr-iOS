@@ -107,7 +107,7 @@ class AboutViewController: UIViewController, VerifyUserDelegate {
                 tree.treePopularity += 1
                 let favourites = String(describing: tree.treePopularity)
                 self.sourceVC.basicTreeInfoView.favouritesCountLabel.text = favourites
-                SaveTree.updateTree(tree: tree, completion: { success in
+                TreeManager.updateTree(tree: tree, completion: { success in
                 })
                 return
             }
@@ -120,14 +120,14 @@ class AboutViewController: UIViewController, VerifyUserDelegate {
             tree.treePopularity -= 1
             let favourites = String(describing: tree.treePopularity)
             self.sourceVC.basicTreeInfoView.favouritesCountLabel.text = favourites
-            SaveTree.updateTree(tree: tree, completion: { success in
+            TreeManager.updateTree(tree: tree, completion: { success in
             })
             favouriteState = false
             addFavouriteButton.setTitle("Add To Favourites", for: .normal)
         }
         FavouritesManager.loadFavourites {trees in
         }
-        ReadTrees.read { trees in
+        TreeManager.read { trees in
         }
         UserTreesManager.loadUserTrees { trees in
         }

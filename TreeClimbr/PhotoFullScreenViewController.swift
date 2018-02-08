@@ -174,7 +174,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             let url = URL(string: photo.photoURL)
             let tree = self.sourceVC.tree
             tree?.treePhotoURL = url!
-            SaveTree.updateTree(tree: tree!, completion: { (complete) in
+            TreeManager.updateTree(tree: tree!, completion: { (complete) in
                 
             })
             self.sourceVC.sourceVC.basicTreeInfoView.backgroundImageView.image = photo.image

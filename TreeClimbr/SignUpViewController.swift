@@ -1,6 +1,6 @@
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, VerifyUserDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField?
     @IBOutlet weak var emailTextField: UITextField?
@@ -47,9 +47,13 @@ class SignUpViewController: UIViewController {
         
         RegisterClass.registerMethod(inpName: username, inpEmail: email, inpPassword: password, completion:{
             
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: {
-                self.delegate?.verificationComplete()
-            })
+            if self.fromSettings == true {
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                self.fromSettings = false
+            } else {
+                self.sourceVC.dismiss(animated: true, completion: nil)
+            }
+            self.delegate?.verificationComplete()
         })
     }
     
@@ -77,7 +81,14 @@ class SignUpViewController: UIViewController {
             }
             
             treeVC.sourceVC = self
+            treeVC.delegate = self
         }
+    }
+    
+    //MARK: VerifyUserDelegate
+    
+    func verificationComplete() {
+        self.delegate?.verificationComplete()
     }
     
 }
