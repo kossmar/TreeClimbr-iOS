@@ -85,7 +85,7 @@ class AboutViewController: UIViewController, VerifyUserDelegate {
         }
         
         if ( Auth.auth().currentUser == nil ) {
-            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "You need an account to add a tree to favourites. Would you like to sign in?", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "You need an account to add a tree to favourites. Would you like to sign in?", dismissIfNo: false, completion: {
                 self.performSegue(withIdentifier: "aboutToSignUp", sender: self)
             })
         } else {

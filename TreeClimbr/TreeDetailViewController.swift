@@ -232,7 +232,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
-            AlertShow.confirm(inpView: self, titleStr: "Delete Tree?", messageStr: " ", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Delete Tree?", messageStr: " ", dismissIfNo: false, completion: {
 
                 TreeManager.deleteTree(tree: self.tree, completion: { (true) in
                     FavouritesManager.loadFavourites(completion: { trees in
@@ -254,7 +254,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
             
         
             let badUser =  User(name: self.tree.treeCreatorName, email: "", uid: self.tree.treeCreator)
-            AlertShow.confirm(inpView: self, titleStr: "Block \(self.tree.treeCreatorName)?", messageStr: "You won't see \(self.tree.treeCreatorName)'s trees, photos and comments anymore.", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Block \(self.tree.treeCreatorName)?", messageStr: "You won't see \(self.tree.treeCreatorName)'s trees, photos and comments anymore.", dismissIfNo: false, completion: {
                 AppData.sharedInstance.hiddenUsersArr.append(badUser)
                 HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
                 })

@@ -122,7 +122,6 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     func verificationComplete() {
         
         pickTreePhotos()
-        
     }
     
     
@@ -131,7 +130,7 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBAction func addPhotoButtonPressed(_ sender: UIButton) {
         
         if ( Auth.auth().currentUser == nil ) {
-            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", dismissIfNo: false, completion: {
                 self.performSegue(withIdentifier: "photoToSignUp", sender: self)
             })
         }
