@@ -95,6 +95,26 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
             CommentManager.updateUserCommentsUserName(newName: name)
             PhotoManager.updateUserPhotosUserName(newName: name)
             TreeManager.updateUserTreesUserName(newName: name)
+            
+            guard let curUser = Auth.auth().currentUser else {return}
+            AppData.sharedInstance.usersNode
+                .child(curUser.uid)
+                .observeSingleEvent(of: .value, with: { (snapshot) in
+                    guard let userDict = snapshot.value as? NSDictionary else {return}
+                    let _ = userDict["nameKey"] as! String
+                    let userID = userDict["uidKey"] as! String
+                    let email = userDict["emailKey"] as! String
+                    
+                    let newUserDict: [String: Any] = [
+                        "nameKey": name,
+                        "uidKey": userID,
+                        "emailKey": email
+                    ]
+                    
+                    AppData.sharedInstance.usersNode
+                        .child(curUser.uid)
+                        .setValue(newUserDict)
+                })
         }
         
         
@@ -105,9 +125,33 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
     
     @IBAction func changeEmailPressed(_ sender: UIButton) {
         
-        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (email) in
-            Auth.auth().currentUser?.updateEmail(to: email) { (error) in
-                self.emailLabel.text = "e-mail: " + email
+        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (newEmail) in
+            Auth.auth().currentUser?.updateEmail(to: newEmail) { (error) in
+                if error == nil {
+                    guard let curUser = Auth.auth().currentUser else {return}
+                    self.emailLabel.text = "e-mail: " + newEmail
+                    
+                    AppData.sharedInstance.usersNode
+                        .child(curUser.uid)
+                        .observeSingleEvent(of: .value, with: { (snapshot) in
+                            guard let userDict = snapshot.value as? NSDictionary else {return}
+                            let userName = userDict["nameKey"] as! String
+                            let userID = userDict["uidKey"] as! String
+                            let _ = userDict["emailKey"] as! String
+                            
+                            let newUserDict: [String: Any] = [
+                                "nameKey": userName,
+                                "uidKey": userID,
+                                "emailKey": newEmail
+                            ]
+                            
+                            AppData.sharedInstance.usersNode
+                                .child(curUser.uid)
+                                .setValue(newUserDict)
+                        })
+                } else {
+                    print(error!)
+                }
             }
         }
     }
