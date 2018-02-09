@@ -89,6 +89,11 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             
             rightBarButtonItem.isEnabled = true
             rightBarButtonItem.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
+            if photo.userID == Auth.auth().currentUser?.uid {
+                self.canDelete = true
+            } else {
+                self.canDelete = false
+            }
             
         } else {
             navigationBar.topItem?.title = Auth.auth().currentUser?.displayName
