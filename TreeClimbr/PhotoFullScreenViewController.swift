@@ -141,15 +141,15 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
                     let photo = self.photoObjArr[self.pageControl.currentPage]
                     if self.pageControl.numberOfPages > 1 {
                         if self.pageControl.currentPage != 0 {
-                            self.pageControl.currentPage = (self.pageControl.currentPage) - 1
-                            self.setupScrollView()
-                            self.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
-                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) + 1)
+//                            self.pageControl.currentPage = (self.pageControl.currentPage) - 1
+//                            self.setupScrollView()
+                            self.photoObjArr.remove(at: (self.pageControl.currentPage))
+                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage))
                         } else {
-                            self.pageControl.currentPage = (self.pageControl.currentPage) + 1
-                            self.setupScrollView()
-                            self.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
-                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage) - 1)
+                            self.photoObjArr.remove(at: (self.pageControl.currentPage))
+                            self.sourceVC.photoObjArr.remove(at: (self.pageControl.currentPage))
+//                            self.pageControl.currentPage = (self.pageControl.currentPage) + 1
+//                            self.setupScrollView()
                         }
                         self.pageControl.numberOfPages = self.photoObjArr.count
                         self.setupScrollView()
@@ -250,6 +250,13 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
             pageControl.currentPage = startPage
         } else {
             photoScrollView.contentOffset.x = width * CGFloat(pageControl.currentPage)
+            let photo = self.photoObjArr[pageControl.currentPage]
+            self.navigationBar.topItem?.title = photo.userName
+            if photo.userID == Auth.auth().currentUser?.uid {
+                self.canDelete = true
+            } else {
+                self.canDelete = false
+            }
         }
         
         var x: CGFloat = 0
