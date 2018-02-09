@@ -249,7 +249,8 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
     func setupScrollView() {
         
         
-        let width = self.view.frame.width
+        let width = self.view.safeAreaLayoutGuide.layoutFrame.width
+        let height = self.view.safeAreaLayoutGuide.layoutFrame.height
         
         if justLoaded == true {
             photoScrollView.contentOffset.x = width * CGFloat(startPage)
@@ -276,15 +277,15 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         for photo in photoObjArr {
             let imageView = UIImageView(image: photo.image)
             
-            let frame = CGRect(x: (width * x), y: self.view.frame.origin.y, width: self.view.frame.width, height: photoScrollView.frame.height)
+            let frame = CGRect(x: (width * x), y: self.view.safeAreaLayoutGuide.layoutFrame.origin.y, width: width, height: height)
             imageView.frame = frame
             imageView.contentMode = .scaleAspectFit
             photoScrollView.addSubview(imageView)
             
-            contentWidth += view.frame.width
+            contentWidth += width
             x+=1
         }
-        photoScrollView.contentSize = CGSize(width: contentWidth, height: view.frame.height)
+        photoScrollView.contentSize = CGSize(width: contentWidth, height: height)
     }
     
 }
