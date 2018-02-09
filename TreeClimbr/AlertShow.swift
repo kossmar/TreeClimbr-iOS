@@ -18,8 +18,8 @@ class AlertShow: NSObject {
                         completion: nil)
     }
     
-    class func confirm (inpView: UIViewController, titleStr: String, messageStr: String, completion: @escaping () -> Void) {
-        var no: Bool?
+    class func confirm (inpView: UIViewController, titleStr: String, messageStr: String, dismissIfNo: Bool, completion: @escaping () -> Void) {
+        
         let alert = UIAlertController(title: titleStr,
                                       message: messageStr,
                                       preferredStyle: UIAlertControllerStyle.alert)
@@ -33,7 +33,9 @@ class AlertShow: NSObject {
         alert.addAction(UIAlertAction(title: "No",
                                       style: UIAlertActionStyle.default,
                                       handler: {(action) -> Void in
-                                        inpView.dismiss(animated: true, completion: nil)
+                                        if dismissIfNo == true {
+                                            inpView.dismiss(animated: true, completion: nil)
+                                        }
         } ))
         inpView.present(alert,
                         animated: true,

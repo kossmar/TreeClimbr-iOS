@@ -89,7 +89,7 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidAppear(true)
         
         if ( Auth.auth().currentUser == nil && self.showAlert == true ) {
-            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", dismissIfNo: true, completion: {
                 self.showAlert = false
                 self.performSegue(withIdentifier: "toSignUp", sender: self)
             })

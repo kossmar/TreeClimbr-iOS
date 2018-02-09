@@ -124,10 +124,11 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
                 self.showSendMailErrorAlert()
             }
         }
+        
         let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
             let photo = self.photoObjArr[self.pageControl.currentPage]
             let badUser =  User(name: photo.userName, email: "", uid: photo.userID)
-            AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Block \(photo.userName)?", messageStr: "You won't see \(photo.userName)'s trees, photos and comments anymore.", dismissIfNo: false, completion: {
                 AppData.sharedInstance.hiddenUsersArr.append(badUser)
                 self.sourceVC.photoCollectionView.reloadData()
                 HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
@@ -142,7 +143,7 @@ class PhotoFullScreenViewController: UIViewController, UIScrollViewDelegate, MFM
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
             if self.canDelete == true {
-                AlertShow.confirm(inpView: self, titleStr: "Delete photo?", messageStr: " ") {
+                AlertShow.confirm(inpView: self, titleStr: "Delete photo?", messageStr: " ", dismissIfNo: false) {
                     let photo = self.photoObjArr[self.pageControl.currentPage]
                     if self.pageControl.numberOfPages > 1 {
                         if self.pageControl.currentPage != 0 {

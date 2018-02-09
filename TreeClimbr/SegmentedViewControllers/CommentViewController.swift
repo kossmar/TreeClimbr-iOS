@@ -49,7 +49,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
         
         if ( Auth.auth().currentUser == nil ) {
             UserDefaults.standard.set(self.descTextView.text, forKey: "commentBody")
-            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Account Required", messageStr: "Would you like to sign in?", dismissIfNo: false, completion: {
                 self.performSegue(withIdentifier: "commentToSignUp", sender: self)
                 return
             })
@@ -126,7 +126,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
  
             if editingStyle == UITableViewCellEditingStyle.delete {
-                AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", completion: {
+                AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", dismissIfNo: false, completion: {
                     CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[indexPath.row])
                     self.commentArr.remove(at: indexPath.row)
                     tableView.reloadData()
@@ -161,7 +161,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
         }
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (delete) in
-            AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Delete Comment?", messageStr: " ", dismissIfNo: false, completion: {
                 CommentManager.deleteComment(tree: self.tree!, comment: self.commentArr[buttonRow])
                 self.commentArr.remove(at: buttonRow)
                 self.tableView.reloadData()
@@ -170,7 +170,7 @@ class CommentViewController: UIViewController, UITextViewDelegate, UITableViewDe
         
         let blockAction = UIAlertAction(title: "Block", style: .default) { (block) in
             let badUser =  User(name: comment.username, email: "", uid: comment.userID)
-            AlertShow.confirm(inpView: self, titleStr: "Block \(comment.username)?", messageStr: "You won't see \(comment.username)'s trees, photos and comments anymore.", completion: {
+            AlertShow.confirm(inpView: self, titleStr: "Block \(comment.username)?", messageStr: "You won't see \(comment.username)'s trees, photos and comments anymore.", dismissIfNo: false, completion: {
                 AppData.sharedInstance.hiddenUsersArr.append(badUser)
                 HiddenUsersManager.addToHiddenUsersList(badUser: badUser, completion: {_ in
                     
