@@ -22,6 +22,10 @@ target 'TreeClimbr' do
   target 'TreeClimbrUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Firebase'
+    pod 'IQKeyboardManagerSwift'
+    pod 'ImagePicker'
+    pod 'SDWebImage'
   end
 
 end
