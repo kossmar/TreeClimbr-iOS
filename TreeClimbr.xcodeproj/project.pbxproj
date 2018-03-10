@@ -215,44 +215,23 @@
 			isa = PBXGroup;
 			children = (
 				E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */,
-				E6C423B82006B22800BB823B /* Settings */,
-				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
-				E6E1E49A1FC616EC000F42CB /* MapView */,
-				E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */,
-				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
-				7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */,
-				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
-				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
-				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
-				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
-				0D0D0D721FC624BF00C84F1D /* CommentManager.swift */,
-				E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */,
-				0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */,
-				CA32CB56202840D6003B9AEA /* TreeManager.swift */,
-				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
-				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
-				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
-				CA6AF32D20253D3100BBC1E3 /* UserManager.swift */,
-				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
-				E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */,
-				0D0D0D701FC621A500C84F1D /* Comment.swift */,
-				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
-				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
-				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
-				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
-				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
-				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
-				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
-				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				CA6A7F8A201DA953000210F7 /* AppUtility.swift */,
-				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
-				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
+				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
+				E6C423B82006B22800BB823B /* Settings */,
+				CAA8BB7020538A2500CCC99A /* BasicObjects */,
+				CAA8BB6F20538A0900CCC99A /* ManagerClasses */,
+				CAA8BB7220538CB100CCC99A /* LoginSignup */,
+				E6E1E49A1FC616EC000F42CB /* MapView */,
+				CAA8BB7320538D1D00CCC99A /* TreeDetail */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
 				E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */,
 				0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */,
 				0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */,
 				E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */,
+				E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */,
+				0D0BD53E1FBFBFED004D0FAE /* ReadWrite.swift */,
+				E6051A6F20052F9800C9B288 /* ReportInappropriate.swift */,
 				7776C7761FCA3773001E3357 /* ImageUploader.swift */,
 				0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */,
 				0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */,
@@ -306,6 +285,57 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CAA8BB6F20538A0900CCC99A /* ManagerClasses */ = {
+			isa = PBXGroup;
+			children = (
+				0D0D0D721FC624BF00C84F1D /* CommentManager.swift */,
+				E6DA00B11FCA23BD00DDE91D /* FavouritesManager.swift */,
+				E6D5CF3C1FCCE1A200568764 /* UserTreesManager.swift */,
+				0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */,
+				CA6AF32D20253D3100BBC1E3 /* UserManager.swift */,
+				CA32CB56202840D6003B9AEA /* TreeManager.swift */,
+			);
+			path = ManagerClasses;
+			sourceTree = "<group>";
+		};
+		CAA8BB7020538A2500CCC99A /* BasicObjects */ = {
+			isa = PBXGroup;
+			children = (
+				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
+				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
+				0D0D0D701FC621A500C84F1D /* Comment.swift */,
+			);
+			path = BasicObjects;
+			sourceTree = "<group>";
+		};
+		CAA8BB7220538CB100CCC99A /* LoginSignup */ = {
+			isa = PBXGroup;
+			children = (
+				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
+				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
+				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
+				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
+				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
+				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
+				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
+			);
+			path = LoginSignup;
+			sourceTree = "<group>";
+		};
+		CAA8BB7320538D1D00CCC99A /* TreeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0DCE2F2D1FBCDEE6001A30EA /* TreeDetail.storyboard */,
+				0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */,
+				E6E1E49D1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift */,
+				0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */,
+				7776C77A1FCCAC1F001E3357 /* PhotoFullScreenViewController.swift */,
+				E6E1E48F1FC4B68B000F42CB /* SegmentedViewControllers */,
+			);
+			path = TreeDetail;
+			sourceTree = "<group>";
+		};
 		E6C423B82006B22800BB823B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +363,8 @@
 		E6E1E49A1FC616EC000F42CB /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
+				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
 				0DCE2F011FBCDE44001A30EA /* ViewController.swift */,
 				0DCE2F031FBCDE44001A30EA /* Main.storyboard */,
 			);
@@ -878,7 +910,7 @@
 				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;
+				PRODUCT_BUNDLE_IDENTIFIER = .TreeClimbr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
@@ -899,7 +931,7 @@
 				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TreeClimbr;
+				PRODUCT_BUNDLE_IDENTIFIER = .TreeClimbr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
