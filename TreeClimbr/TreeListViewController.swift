@@ -8,7 +8,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
-    var sourceVC = ViewController()
+    var sourceVC = MapViewController()
     var treeDistance = Double()
     var treesArr = Array<Tree>()
     var segmentState = 0
@@ -27,6 +27,7 @@ class TreeListViewController: UIViewController, UITableViewDelegate, UITableView
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         barButton.setTitleTextAttributes([ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 20)!], for: UIControlState.normal)
         treesArr = AppData.sharedInstance.treesArr
         

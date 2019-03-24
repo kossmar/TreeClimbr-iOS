@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
     @IBOutlet weak var emailLabel: UILabel!
     
     
-    var sourceVC = ViewController()
+    var sourceVC = MapViewController()
     var delegate: VerifyUserDelegate?
     
     override func viewDidLoad() {

@@ -3,33 +3,69 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate, VerifyUserDelegate {
+protocol MapDisplayLogic: class
+{
+}
+
+class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate, VerifyUserDelegate
+{
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addTreeToLocationButton: UIButton!
+    @IBOutlet weak var treeListButton: UIButton!
+    @IBOutlet weak var sideButtonsView: UIView!
+    @IBOutlet weak var menuButton: UIButton!
+    
+    var interactor: MapBusinessLogic?
+    var router: (NSObjectProtocol & MapRoutingLogic & MapDataPassing)?
     
     var locationManager = CLLocationManager()
     var userCoordinate = CLLocationCoordinate2D()
     var myAnnotation = MKPointAnnotation()
     var treeLocation = CLLocationCoordinate2D()
     var justOnce = true
-    
-    @IBOutlet weak var addTreeToLocationButton: UIButton!
-    @IBOutlet weak var treeListButton: UIButton!
-    
-    
     var handle: AuthStateDidChangeListenerHandle?
-    
+
     var lat = 0.0
     var long = 0.0
     
     var treesArr = [Tree]()
     
-    @IBOutlet weak var sideButtonsView: UIView!
-    @IBOutlet weak var menuButton: UIButton!
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = MapInteractor()
+        let presenter = MapPresenter()
+        let router = MapRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
     
     //MARK: ViewController lifecycle
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         //setup side buttons
@@ -46,8 +82,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         super.viewDidAppear(animated)
         
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -59,7 +95,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool)
+    {
         super.viewWillDisappear(true)
         
         AppUtility.lockOrientation(.all)
@@ -67,7 +104,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         Auth.auth().removeStateDidChangeListener(someHandle)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         
         AppUtility.lockOrientation(.portrait)
@@ -77,8 +115,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         blockedUser.observeSingleEvent(of: .value, with: { (snapshot) in
             if user != nil {
-                if snapshot.hasChild(user!) {
-                    do {
+                if snapshot.hasChild(user!)
+                {
+                    do
+                    {
                         try Auth.auth().signOut()
                         self.performSegue(withIdentifier: "CheckIdentity", sender: self)
                     }
@@ -104,10 +144,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     
-    //MARK: Segue Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: Routing
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+//    {
+//        if let scene = segue.identifier {
+//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+//            if let router = router, router.responds(to: selector) {
+//                router.perform(selector, with: segue)
+//            }
+//        }
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         
-        if segue.identifier == "toNewTree" {
+        if segue.identifier == "toNewTree"
+        {
             guard let treeVC = segue.destination as? TreeNewViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -116,7 +169,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             treeVC.fromMap = true
         }
         
-        if segue.identifier == "toTreeDetail" {
+        if segue.identifier == "toTreeDetail"
+        {
             guard let treeDetailVC = segue.destination as? TreeDetailViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -133,14 +187,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             })
         }
         
-        if segue.identifier == "toTreeList" {
+        if segue.identifier == "toTreeList"
+        {
             guard let treeListVC = segue.destination as? TreeListViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeListVC.sourceVC = self
         }
         
-        if segue.identifier == "CheckIdentity" {
+        if segue.identifier == "CheckIdentity"
+        {
             guard let signUpVC = segue.destination as? SignUpViewController else {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
@@ -150,32 +206,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //MARK: Tap gesture methods
     
-    func setupTap() {
+    func setupTap()
+    {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(locationLongPressed(longPressGestureRecognizer:)))
         mapView.isUserInteractionEnabled = true
         mapView.addGestureRecognizer(longPressGestureRecognizer)
-        
     }
     
-    @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer){
+    @objc func locationLongPressed(longPressGestureRecognizer: UILongPressGestureRecognizer)
+    {
         
         let touchPoint = longPressGestureRecognizer.location(in: self.mapView)
         let annCoordinates = self.mapView.convert(touchPoint, toCoordinateFrom: self.mapView)
         treeLocation = annCoordinates
         self.performSegue(withIdentifier: "toNewTree", sender: self.view)
-
-
     }
     
     
     
     //MARK: Setup map features
     
-    @IBAction func login(_ sender: UIButton) {
+    @IBAction func login(_ sender: UIButton)
+    {
         performSegue(withIdentifier: "CheckIdentity", sender: self.view)
     }
     
-    func userLocationSetup() {
+    func userLocationSetup()
+    {
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled(){
@@ -188,7 +245,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.startUpdatingLocation()
     }
     
-    @IBAction func centerToUser(_ sender: UIButton) {
+    @IBAction func centerToUser(_ sender: UIButton)
+    {
         let location = mapView.userLocation
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
@@ -198,7 +256,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
     }
     
-    @IBAction func addTreeToUserLoc(_ sender: UIButton){
+    @IBAction func addTreeToUserLoc(_ sender: UIButton)
+    {
         treeLocation = userCoordinate
         performSegue(withIdentifier: "toNewTree", sender: view)
     }
@@ -214,9 +273,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         locationManager.stopUpdatingLocation()
     }
     
-    @IBAction func menuButton(_ sender: UIButton) {
+    @IBAction func menuButton(_ sender: UIButton)
+    {
         
-        if sideButtonsView.isHidden {
+        if sideButtonsView.isHidden
+        {
             
             UIView.transition(with: sideButtonsView,
                               duration: 0.3,
@@ -226,7 +287,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 }, completion: nil)
             
             
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3)
+            {
                 self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
             }
             
@@ -247,18 +309,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //MARK: MapViewDelegate functions
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
 
 
     }
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if !(annotation is TreeAnnotation){
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        if !(annotation is TreeAnnotation)
+        {
             return nil
         }
         
         var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
-        if annView == nil {
+        if annView == nil
+        {
             annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
             annView!.canShowCallout = true
             let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
@@ -266,6 +332,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         } else {
             annView!.annotation = annotation
         }
+        
         annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
         let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
         let hasAlpha = false
@@ -281,15 +348,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return annView!
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView{
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        if control == view.rightCalloutAccessoryView
+        {
             let cusView = view.annotation as! TreeAnnotation
             let treeObject = cusView.tree
             performSegue(withIdentifier: "toTreeDetail", sender: treeObject)
         }
     }
     
-    func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView)
+    {
         
         AppData.sharedInstance.treesArr = self.hideBlockedTrees()
         
@@ -315,20 +385,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     // MARK: - MapFocusDelegate Functions
     
-    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree) {
+    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
+    {
         
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
 
         mapView.setRegion(region, animated: true)
-    
     }
     
-    func emailIsVerified() {
+    func emailIsVerified()
+    {
         
         let user = Auth.auth().currentUser
         user?.reload()
-        if let loggedinUser = user, let _ = user?.isEmailVerified {
+        if let loggedinUser = user, let _ = user?.isEmailVerified
+        {
             if loggedinUser.isEmailVerified == false {
                 let alertVC = UIAlertController(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email?", preferredStyle: .alert)
                 let alertActionOkay = UIAlertAction(title: "Okay", style: .default) {
@@ -350,13 +422,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         treesArr = AppData.sharedInstance.treesArr
         
-        for hiddenUser in AppData.sharedInstance.hiddenUsersArr {
+        for hiddenUser in AppData.sharedInstance.hiddenUsersArr
+        {
             hiddenUIDSet.insert(hiddenUser.uid)
         }
         
         var index = 0
-        for aTree in treesArr {
-            if hiddenUIDSet.contains(aTree.treeCreator) {
+        for aTree in treesArr
+        {
+            if hiddenUIDSet.contains(aTree.treeCreator)
+            {
                 treesArr.remove(at: index)
             } else {
                 index += 1
@@ -367,13 +442,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
 
     //MARK: TreeNewDelegate Functions
     
-    func treeSaved(tree: Tree) {
+    func treeSaved(tree: Tree)
+    {
         
     }
     
     //MARK: VerifyUserDelegate
     
-    func verificationComplete() {
+    func verificationComplete()
+    {
 
     }
     
