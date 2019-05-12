@@ -18,10 +18,10 @@
 		0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */; };
 		0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D503A251FBFCEAF00B031F8 /* LoginClass.swift */; };
 		0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */; };
-		0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */; };
+		0DBF019E1FBF6A4200ACBB61 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBF019D1FBF6A4200ACBB61 /* SignUp.storyboard */; };
 		0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */; };
-		0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* ViewController.swift */; };
-		0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F031FBCDE44001A30EA /* Main.storyboard */; };
+		0DCE2F021FBCDE44001A30EA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F011FBCDE44001A30EA /* MapViewController.swift */; };
+		0DCE2F051FBCDE44001A30EA /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F031FBCDE44001A30EA /* Map.storyboard */; };
 		0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F061FBCDE44001A30EA /* Assets.xcassets */; };
 		0DCE2F0A1FBCDE44001A30EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */; };
 		0DCE2F151FBCDE44001A30EA /* TreeClimbrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F141FBCDE44001A30EA /* TreeClimbrTests.swift */; };
@@ -31,6 +31,11 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+		0DF12BA822475F7E00DFE851 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA222475F7E00DFE851 /* MapPresenter.swift */; };
+		0DF12BA922475F7E00DFE851 /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA322475F7E00DFE851 /* MapWorker.swift */; };
+		0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA422475F7E00DFE851 /* MapRouter.swift */; };
+		0DF12BAB22475F7E00DFE851 /* MapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA522475F7E00DFE851 /* MapModels.swift */; };
+		0DF12BAD22475F7E00DFE851 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA722475F7E00DFE851 /* MapInteractor.swift */; };
 		0DF22D971FBEA64800F71C87 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF22D941FBEA64600F71C87 /* Login.storyboard */; };
 		0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D951FBEA64600F71C87 /* LoginViewController.swift */; };
 		0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */; };
@@ -97,11 +102,11 @@
 		0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotationView.swift; sourceTree = "<group>"; };
 		0D503A251FBFCEAF00B031F8 /* LoginClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginClass.swift; sourceTree = "<group>"; };
 		0DA72E891FCA6C4400475FBF /* PhotoFullScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhotoFullScreen.storyboard; sourceTree = "<group>"; };
-		0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUpView.storyboard; sourceTree = "<group>"; };
+		0DBF019D1FBF6A4200ACBB61 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		0DCE2EFC1FBCDE44001A30EA /* TreeClimbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TreeClimbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0DCE2F011FBCDE44001A30EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0DCE2F041FBCDE44001A30EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0DCE2F011FBCDE44001A30EA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		0DCE2F041FBCDE44001A30EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
 		0DCE2F061FBCDE44001A30EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DCE2F091FBCDE44001A30EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DCE2F0B1FBCDE44001A30EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +121,11 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+		0DF12BA222475F7E00DFE851 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		0DF12BA322475F7E00DFE851 /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
+		0DF12BA422475F7E00DFE851 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		0DF12BA522475F7E00DFE851 /* MapModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModels.swift; sourceTree = "<group>"; };
+		0DF12BA722475F7E00DFE851 /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
 		0DF22D941FBEA64600F71C87 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		0DF22D951FBEA64600F71C87 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +199,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DBC0A7D2287DC13006F9FB3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
+				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
+				0D0D0D701FC621A500C84F1D /* Comment.swift */,
+				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
+				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0DCE2EF31FBCDE44001A30EA = {
 			isa = PBXGroup;
 			children = (
@@ -214,16 +237,13 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				0DBC0A7D2287DC13006F9FB3 /* Models */,
 				E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				CA6A7F8A201DA953000210F7 /* AppUtility.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
-				E6C423B82006B22800BB823B /* Settings */,
-				CAA8BB7020538A2500CCC99A /* BasicObjects */,
 				CAA8BB6F20538A0900CCC99A /* ManagerClasses */,
-				CAA8BB7220538CB100CCC99A /* LoginSignup */,
-				E6E1E49A1FC616EC000F42CB /* MapView */,
-				CAA8BB7320538D1D00CCC99A /* TreeDetail */,
+				0DF12BA12247585E00DFE851 /* Scenes */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
 				E6CE28D91FBFC233006ABDAB /* TreeListViewController.swift */,
 				0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */,
@@ -259,6 +279,17 @@
 				0DCE2F211FBCDE44001A30EA /* Info.plist */,
 			);
 			path = TreeClimbrUITests;
+			sourceTree = "<group>";
+		};
+		0DF12BA12247585E00DFE851 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E6C423B82006B22800BB823B /* Settings */,
+				CAA8BB7220538CB100CCC99A /* Authentication */,
+				E6E1E49A1FC616EC000F42CB /* MapView */,
+				CAA8BB7320538D1D00CCC99A /* TreeDetail */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		484DE440CE7AFA1FBF020362 /* Frameworks */ = {
@@ -298,21 +329,10 @@
 			path = ManagerClasses;
 			sourceTree = "<group>";
 		};
-		CAA8BB7020538A2500CCC99A /* BasicObjects */ = {
+		CAA8BB7220538CB100CCC99A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
-				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
-				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
-				0D0D0D701FC621A500C84F1D /* Comment.swift */,
-			);
-			path = BasicObjects;
-			sourceTree = "<group>";
-		};
-		CAA8BB7220538CB100CCC99A /* LoginSignup */ = {
-			isa = PBXGroup;
-			children = (
-				0DBF019D1FBF6A4200ACBB61 /* SignUpView.storyboard */,
+				0DBF019D1FBF6A4200ACBB61 /* SignUp.storyboard */,
 				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
 				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
 				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
@@ -320,7 +340,7 @@
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
 				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
 			);
-			path = LoginSignup;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		CAA8BB7320538D1D00CCC99A /* TreeDetail */ = {
@@ -363,10 +383,13 @@
 		E6E1E49A1FC616EC000F42CB /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
-				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
-				0DCE2F011FBCDE44001A30EA /* ViewController.swift */,
-				0DCE2F031FBCDE44001A30EA /* Main.storyboard */,
+				0DCE2F031FBCDE44001A30EA /* Map.storyboard */,
+				0DCE2F011FBCDE44001A30EA /* MapViewController.swift */,
+				0DF12BA722475F7E00DFE851 /* MapInteractor.swift */,
+				0DF12BA322475F7E00DFE851 /* MapWorker.swift */,
+				0DF12BA222475F7E00DFE851 /* MapPresenter.swift */,
+				0DF12BA422475F7E00DFE851 /* MapRouter.swift */,
+				0DF12BA522475F7E00DFE851 /* MapModels.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -443,7 +466,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Mar Koss";
 				TargetAttributes = {
 					0DCE2EFB1FBCDE44001A30EA = {
@@ -501,9 +524,9 @@
 				E6C423B72006B21C00BB823B /* Settings.storyboard in Resources */,
 				0DCE2F301FBCDEF1001A30EA /* TreeList.storyboard in Resources */,
 				0DCE2F071FBCDE44001A30EA /* Assets.xcassets in Resources */,
-				0DBF019E1FBF6A4200ACBB61 /* SignUpView.storyboard in Resources */,
+				0DBF019E1FBF6A4200ACBB61 /* SignUp.storyboard in Resources */,
 				0DA72E8A1FCA6C4400475FBF /* PhotoFullScreen.storyboard in Resources */,
-				0DCE2F051FBCDE44001A30EA /* Main.storyboard in Resources */,
+				0DCE2F051FBCDE44001A30EA /* Map.storyboard in Resources */,
 				E6CE28CC1FBFBBC6006ABDAB /* GoogleService-Info.plist in Resources */,
 				CA1F19092006C65900D38DE5 /* HiddenUsers.storyboard in Resources */,
 				0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */,
@@ -696,16 +719,18 @@
 			files = (
 				E6E1E4971FC4D4E2000F42CB /* CommentViewController.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
+				0DF12BA922475F7E00DFE851 /* MapWorker.swift in Sources */,
 				E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */,
 				E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */,
 				E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */,
 				0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */,
 				7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */,
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
+				0DF12BAD22475F7E00DFE851 /* MapInteractor.swift in Sources */,
 				E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				CA6A7F8B201DA953000210F7 /* AppUtility.swift in Sources */,
-				0DCE2F021FBCDE44001A30EA /* ViewController.swift in Sources */,
+				0DCE2F021FBCDE44001A30EA /* MapViewController.swift in Sources */,
 				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,
 				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
@@ -719,16 +744,19 @@
 				E6E1E49E1FC6516A000F42CB /* BasicPhotoCollectionViewCell.swift in Sources */,
 				CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
+				0DF12BA822475F7E00DFE851 /* MapPresenter.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				E6C423BC2006B3A900BB823B /* SettingsViewController.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
 				CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */,
+				0DF12BAB22475F7E00DFE851 /* MapModels.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */,
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
+				0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */,
 				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
 				0DF22D991FBEA64800F71C87 /* SignUpViewController.swift in Sources */,
 				E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */,
@@ -769,12 +797,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0DCE2F031FBCDE44001A30EA /* Main.storyboard */ = {
+		0DCE2F031FBCDE44001A30EA /* Map.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0DCE2F041FBCDE44001A30EA /* Base */,
 			);
-			name = Main.storyboard;
+			name = Map.storyboard;
 			sourceTree = "<group>";
 		};
 		0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */ = {
@@ -802,6 +830,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -809,6 +838,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -860,6 +890,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -867,6 +898,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

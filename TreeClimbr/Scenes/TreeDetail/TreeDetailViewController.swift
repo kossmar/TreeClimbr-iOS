@@ -16,7 +16,7 @@ class TreeDetailViewController: UIViewController, MFMailComposeViewControllerDel
     
     var tree : Tree!
     var delegate : MapFocusDelegate?
-    var rootSourceVC = ViewController()
+    var rootSourceVC = MapViewController()
     var sourceVC : TreeListViewController?
     var fromMapView : Bool = false
     var distance = Double()
