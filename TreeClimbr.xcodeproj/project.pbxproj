@@ -202,6 +202,10 @@
 		0DBC0A7D2287DC13006F9FB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
+				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
+				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
+				0D0D0D701FC621A500C84F1D /* Comment.swift */,
 				0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */,
 				0D49A58F1FC27A9700350FE5 /* TreeAnnotationView.swift */,
 			);
@@ -238,7 +242,6 @@
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
 				CA6A7F8A201DA953000210F7 /* AppUtility.swift */,
 				E6CE28C41FBFBB5F006ABDAB /* AppData.swift */,
-				CAA8BB7020538A2500CCC99A /* BasicObjects */,
 				CAA8BB6F20538A0900CCC99A /* ManagerClasses */,
 				0DF12BA12247585E00DFE851 /* Scenes */,
 				0DCE2F2F1FBCDEF1001A30EA /* TreeList.storyboard */,
@@ -324,17 +327,6 @@
 				CA32CB56202840D6003B9AEA /* TreeManager.swift */,
 			);
 			path = ManagerClasses;
-			sourceTree = "<group>";
-		};
-		CAA8BB7020538A2500CCC99A /* BasicObjects */ = {
-			isa = PBXGroup;
-			children = (
-				E6CE28C31FBFBB5F006ABDAB /* User.swift */,
-				E6CE28C51FBFBB5F006ABDAB /* Tree.swift */,
-				0D0D0D6E1FC61B5E00C84F1D /* Photo.swift */,
-				0D0D0D701FC621A500C84F1D /* Comment.swift */,
-			);
-			path = BasicObjects;
 			sourceTree = "<group>";
 		};
 		CAA8BB7220538CB100CCC99A /* Authentication */ = {

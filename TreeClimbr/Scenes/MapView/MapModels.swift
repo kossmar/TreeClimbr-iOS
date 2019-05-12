@@ -16,7 +16,7 @@ enum Map
 {
   // MARK: Use cases
   
-  enum Something
+  enum LoadTrees
   {
     struct Request
     {

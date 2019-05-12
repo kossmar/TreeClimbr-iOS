@@ -11,19 +11,23 @@ import UIKit
 
 protocol MapBusinessLogic
 {
+    func loadTrees(request: Map.LoadTrees.Request)
 }
 
 protocol MapDataStore
 {
-  //var name: String { get set }
 }
 
 class MapInteractor: MapBusinessLogic, MapDataStore
 {
-  var presenter: MapPresentationLogic?
-  var worker: MapWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
+    var presenter: MapPresentationLogic?
+    var worker: MapWorker?
+    //var name: String = ""
+    
+    // MARK: Load Trees
+    
+    func loadTrees(request: Map.LoadTrees.Request)
+    {
+        
+    }
 }

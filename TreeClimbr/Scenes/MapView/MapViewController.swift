@@ -7,9 +7,9 @@ protocol MapDisplayLogic: class
 {
 }
 
-class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDelegate, MKMapViewDelegate, MapFocusDelegate, TreeNewDelegate, VerifyUserDelegate
-{
-    
+class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDelegate
+
+{    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addTreeToLocationButton: UIButton!
     @IBOutlet weak var treeListButton: UIButton!
@@ -165,7 +165,6 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             treeVC.coordinate = treeLocation
-            treeVC.delegate = self
             treeVC.fromMap = true
         }
         
@@ -222,14 +221,9 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         self.performSegue(withIdentifier: "toNewTree", sender: self.view)
     }
     
-    
-    
     //MARK: Setup map features
     
-    @IBAction func login(_ sender: UIButton)
-    {
-        performSegue(withIdentifier: "CheckIdentity", sender: self.view)
-    }
+
     
     func userLocationSetup()
     {
@@ -243,6 +237,13 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         }
         
         locationManager.startUpdatingLocation()
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func login(_ sender: UIButton)
+    {
+        performSegue(withIdentifier: "CheckIdentity", sender: self.view)
     }
     
     @IBAction func centerToUser(_ sender: UIButton)
@@ -307,93 +308,6 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         }
     }
     
-    //MARK: MapViewDelegate functions
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
-    {
-
-
-    }
-
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-    {
-        if !(annotation is TreeAnnotation)
-        {
-            return nil
-        }
-        
-        var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
-        if annView == nil
-        {
-            annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
-            annView!.canShowCallout = true
-            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
-            annView!.rightCalloutAccessoryView = detailButton
-        } else {
-            annView!.annotation = annotation
-        }
-        
-        annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
-        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
-        let hasAlpha = false
-        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
-        
-        UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
-        annView!.image!.draw(in: CGRect(origin: CGPoint.zero, size: size))
-        
-        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        annView!.image = scaledImage
-        return annView!
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
-    {
-        if control == view.rightCalloutAccessoryView
-        {
-            let cusView = view.annotation as! TreeAnnotation
-            let treeObject = cusView.tree
-            performSegue(withIdentifier: "toTreeDetail", sender: treeObject)
-        }
-    }
-    
-    func mapViewWillStartLoadingMap(_ mapView: MKMapView)
-    {
-        
-        AppData.sharedInstance.treesArr = self.hideBlockedTrees()
-        
-        TreeManager.read(completion: { trees in
-
-            guard
-                let trees = trees
-                else { return }
-
-            for tree in self.treesArr {
-                let treeLat = tree.treeLatitude
-                let treeLong = tree.treeLongitude
-                let treeAnn: TreeAnnotation = TreeAnnotation()
-                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
-                treeAnn.title = tree.treeName
-                treeAnn.tree = tree
-                
-                self.mapView.addAnnotation(treeAnn)
-
-            }
-        })
-    }
-    
-    // MARK: - MapFocusDelegate Functions
-    
-    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
-    {
-        
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-
-        mapView.setRegion(region, animated: true)
-    }
-    
     func emailIsVerified()
     {
         
@@ -439,21 +353,88 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         }
         return treesArr
     }
+}
 
-    //MARK: TreeNewDelegate Functions
+extension MapViewController: MKMapViewDelegate
+{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        if !(annotation is TreeAnnotation)
+        {
+            return nil
+        }
+        
+        var annView = mapView.dequeueReusableAnnotationView(withIdentifier: "CustomAnnotation")
+        if annView == nil
+        {
+            annView = MKAnnotationView(annotation: annotation, reuseIdentifier: "CustomAnnotation")
+            annView!.canShowCallout = true
+            let detailButton: UIButton = UIButton(type: UIButtonType.detailDisclosure) as UIButton
+            annView!.rightCalloutAccessoryView = detailButton
+        } else {
+            annView!.annotation = annotation
+        }
+        
+        annView!.image = #imageLiteral(resourceName: "CustomAnnotation")
+        let size = annView!.image!.size.applying(CGAffineTransform(scaleX: 0.5, y: 0.5))
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(size, hasAlpha, scale)
+        annView!.image!.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        annView!.image = scaledImage
+        return annView!
+    }
     
-    func treeSaved(tree: Tree)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        if control == view.rightCalloutAccessoryView
+        {
+            let cusView = view.annotation as! TreeAnnotation
+            let treeObject = cusView.tree
+            performSegue(withIdentifier: "toTreeDetail", sender: treeObject)
+        }
+    }
+    
+    func mapViewWillStartLoadingMap(_ mapView: MKMapView)
     {
         
+        AppData.sharedInstance.treesArr = self.hideBlockedTrees()
+        
+        TreeManager.read(completion: { trees in
+            
+            guard
+                let trees = trees else { return }
+            
+            for tree in self.treesArr {
+                let treeLat = tree.treeLatitude
+                let treeLong = tree.treeLongitude
+                let treeAnn: TreeAnnotation = TreeAnnotation()
+                treeAnn.coordinate = CLLocationCoordinate2DMake(treeLat, treeLong)
+                treeAnn.title = tree.treeName
+                treeAnn.tree = tree
+                
+                self.mapView.addAnnotation(treeAnn)
+                
+            }
+        })
     }
-    
-    //MARK: VerifyUserDelegate
-    
-    func verificationComplete()
-    {
+}
 
+extension MapViewController: MapFocusDelegate
+{
+    func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
+    {
+        
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        mapView.setRegion(region, animated: true)
     }
-    
 }
 
 
