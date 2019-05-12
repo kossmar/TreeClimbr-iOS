@@ -22,8 +22,5 @@ class MapPresenter: MapPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: Map.Something.Response)
-  {
-    let viewModel = Map.Something.ViewModel()
-  }
+
 }
