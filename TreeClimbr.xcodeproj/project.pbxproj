@@ -440,7 +440,6 @@
 				0DCE2EF91FBCDE44001A30EA /* Frameworks */,
 				0DCE2EFA1FBCDE44001A30EA /* Resources */,
 				6A063A0D5FC49B6CE8EB9F29 /* [CP] Embed Pods Frameworks */,
-				EDFC16F2C7AC127410304F40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -459,8 +458,6 @@
 				0DCE2F0C1FBCDE44001A30EA /* Sources */,
 				0DCE2F0D1FBCDE44001A30EA /* Frameworks */,
 				0DCE2F0E1FBCDE44001A30EA /* Resources */,
-				18C722F9FB685AC4F0E67FF1 /* [CP] Embed Pods Frameworks */,
-				A3E3982C3AF8A1397E943E7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -480,8 +477,6 @@
 				0DCE2F171FBCDE44001A30EA /* Sources */,
 				0DCE2F181FBCDE44001A30EA /* Frameworks */,
 				0DCE2F191FBCDE44001A30EA /* Resources */,
-				F82FCABC4516B7CBE7841864 /* [CP] Embed Pods Frameworks */,
-				DAC73157E5AADB52FB798273 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -585,21 +580,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18C722F9FB685AC4F0E67FF1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		551B4644CBFC6C21BD880D5C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -626,7 +606,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -636,7 +616,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -646,21 +626,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A3E3982C3AF8A1397E943E7F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrTests/Pods-TreeClimbrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A7E451E09C998B333E270BC4 /* [CP] Check Pods Manifest.lock */ = {
@@ -697,51 +662,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DAC73157E5AADB52FB798273 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EDFC16F2C7AC127410304F40 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbr/Pods-TreeClimbr-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F82FCABC4516B7CBE7841864 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TreeClimbrUITests/Pods-TreeClimbrUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
