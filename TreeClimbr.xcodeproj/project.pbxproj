@@ -12,11 +12,12 @@
 		0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D701FC621A500C84F1D /* Comment.swift */; };
 		0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D721FC624BF00C84F1D /* CommentManager.swift */; };
 		0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */; };
-		0D25F5D122EAA609008469E7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */; };
-		0D25F5D222EAA609008469E7 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */; };
-		0D25F5D322EAA609008469E7 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */; };
-		0D25F5D422EAA609008469E7 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CF22EAA609008469E7 /* SettingsModels.swift */; };
-		0D25F5D522EAA609008469E7 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */; };
+		0D25F5DC22EAA722008469E7 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D622EAA721008469E7 /* SettingsRouter.swift */; };
+		0D25F5DD22EAA722008469E7 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D922EAA722008469E7 /* SettingsInteractor.swift */; };
+		0D25F5DE22EAA722008469E7 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D722EAA721008469E7 /* SettingsWorker.swift */; };
+		0D25F5DF22EAA722008469E7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */; };
+		0D25F5E022EAA722008469E7 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5DB22EAA722008469E7 /* SettingsModels.swift */; };
+		0D25F5E122EAA722008469E7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D822EAA721008469E7 /* SettingsPresenter.swift */; };
 		0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
 		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
@@ -60,7 +61,7 @@
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
 		E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */; };
 		E6C423B72006B21C00BB823B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C423B62006B21C00BB823B /* Settings.storyboard */; };
-		E6C423BC2006B3A900BB823B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423BB2006B3A900BB823B /* SettingsViewController.swift */; };
+		E6C423BC2006B3A900BB823B /* SettingsViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
 		E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */; };
@@ -101,11 +102,12 @@
 		0D0D0D701FC621A500C84F1D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0D0D0D721FC624BF00C84F1D /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
-		0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
-		0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
-		0D25F5CF22EAA609008469E7 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
-		0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		0D25F5D622EAA721008469E7 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsRouter.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsRouter.swift"; sourceTree = "<absolute>"; };
+		0D25F5D722EAA721008469E7 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsWorker.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsWorker.swift"; sourceTree = "<absolute>"; };
+		0D25F5D822EAA721008469E7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsPresenter.swift"; sourceTree = "<absolute>"; };
+		0D25F5D922EAA722008469E7 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsInteractor.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsInteractor.swift"; sourceTree = "<absolute>"; };
+		0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsViewController.swift"; sourceTree = "<absolute>"; };
+		0D25F5DB22EAA722008469E7 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsModels.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsModels.swift"; sourceTree = "<absolute>"; };
 		0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeTableViewCell.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
@@ -161,7 +163,7 @@
 		E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TreeClimbr.entitlements; sourceTree = "<group>"; };
 		E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenUsersManager.swift; sourceTree = "<group>"; };
 		E6C423B62006B21C00BB823B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		E6C423BB2006B3A900BB823B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerOld.swift; sourceTree = "<group>"; };
 		E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNewViewController.swift; sourceTree = "<group>"; };
 		E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
 		E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertShow.swift; sourceTree = "<group>"; };
@@ -213,12 +215,13 @@
 			isa = PBXGroup;
 			children = (
 				E6C423B62006B21C00BB823B /* Settings.storyboard */,
-				E6C423BB2006B3A900BB823B /* SettingsViewController.swift */,
-				0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */,
-				0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */,
-				0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */,
-				0D25F5CF22EAA609008469E7 /* SettingsModels.swift */,
-				0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */,
+				E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */,
+				0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */,
+				0D25F5D922EAA722008469E7 /* SettingsInteractor.swift */,
+				0D25F5D722EAA721008469E7 /* SettingsWorker.swift */,
+				0D25F5D822EAA721008469E7 /* SettingsPresenter.swift */,
+				0D25F5D622EAA721008469E7 /* SettingsRouter.swift */,
+				0D25F5DB22EAA722008469E7 /* SettingsModels.swift */,
 			);
 			path = "Main Settings";
 			sourceTree = "<group>";
@@ -749,9 +752,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E1E4971FC4D4E2000F42CB /* CommentViewController.swift in Sources */,
-				0D25F5D422EAA609008469E7 /* SettingsModels.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
-				0D25F5D522EAA609008469E7 /* SettingsInteractor.swift in Sources */,
 				0DF12BA922475F7E00DFE851 /* MapWorker.swift in Sources */,
 				E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */,
 				E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */,
@@ -760,6 +761,7 @@
 				7776C7771FCA3773001E3357 /* ImageUploader.swift in Sources */,
 				E6E1E49C1FC63DBA000F42CB /* CommentTableViewCell.swift in Sources */,
 				0DF12BAD22475F7E00DFE851 /* MapInteractor.swift in Sources */,
+				0D25F5DE22EAA722008469E7 /* SettingsWorker.swift in Sources */,
 				E6051A7020052F9800C9B288 /* ReportInappropriate.swift in Sources */,
 				0D0D0D6F1FC61B5E00C84F1D /* Photo.swift in Sources */,
 				CA6A7F8B201DA953000210F7 /* AppUtility.swift in Sources */,
@@ -769,9 +771,10 @@
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				CA32CB57202840D6003B9AEA /* TreeManager.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
-				0D25F5D122EAA609008469E7 /* SettingsPresenter.swift in Sources */,
+				0D25F5E122EAA722008469E7 /* SettingsPresenter.swift in Sources */,
 				E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */,
 				CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */,
+				0D25F5DC22EAA722008469E7 /* SettingsRouter.swift in Sources */,
 				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
 				0D0BD53F1FBFBFED004D0FAE /* ReadWrite.swift in Sources */,
 				E6D5CF3D1FCCE1A200568764 /* UserTreesManager.swift in Sources */,
@@ -779,18 +782,18 @@
 				CA1F190D2006C9C000D38DE5 /* HiddenUsersViewController.swift in Sources */,
 				0D503A261FBFCEAF00B031F8 /* LoginClass.swift in Sources */,
 				0DF12BA822475F7E00DFE851 /* MapPresenter.swift in Sources */,
+				0D25F5DF22EAA722008469E7 /* SettingsViewController.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
-				E6C423BC2006B3A900BB823B /* SettingsViewController.swift in Sources */,
+				E6C423BC2006B3A900BB823B /* SettingsViewControllerOld.swift in Sources */,
+				0D25F5E022EAA722008469E7 /* SettingsModels.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
-				0D25F5D322EAA609008469E7 /* SettingsRouter.swift in Sources */,
 				CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */,
 				0DF12BAB22475F7E00DFE851 /* MapModels.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */,
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
-				0D25F5D222EAA609008469E7 /* SettingsWorker.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
 				0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */,
 				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
@@ -798,6 +801,7 @@
 				E6CE28DA1FBFC233006ABDAB /* TreeListViewController.swift in Sources */,
 				0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */,
 				E6CE28C91FBFBB5F006ABDAB /* AppData.swift in Sources */,
+				0D25F5DD22EAA722008469E7 /* SettingsInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

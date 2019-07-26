@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HEi-MG-e6o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HEi-MG-e6o">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +67,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="changeUsernamePressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="a9t-md-PeM"/>
+                                            <action selector="changeUsernamePressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="vZr-Nl-xQp"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlG-G5-2Vi">
@@ -81,7 +81,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="changeEmailPressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="fPD-G0-uK8"/>
+                                            <action selector="changeEmailPressed:" destination="uTe-E2-Ulg" eventType="touchUpInside" id="b1r-3s-7RI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -103,23 +103,23 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="rJH-iH-kOH">
                             <color key="tintColor" red="0.094741500909999998" green="0.54010355470000004" blue="0.13501197100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="backToMapView:" destination="uTe-E2-Ulg" id="m2Z-3C-utW"/>
+                                <action selector="backToMapView:" destination="uTe-E2-Ulg" id="Exy-Ty-rDv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="dSN-36-42h">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="logout:" destination="uTe-E2-Ulg" id="fW4-cR-AaZ"/>
+                                <action selector="logout:" destination="uTe-E2-Ulg" id="Ket-pb-rBL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="blockedUsersButton" destination="w6X-kb-YwY" id="tbn-CK-Se1"/>
-                        <outlet property="changeEmailButton" destination="SlG-G5-2Vi" id="B48-9d-Tgz"/>
-                        <outlet property="changeNameButton" destination="W75-S0-wu2" id="t24-gf-6CK"/>
-                        <outlet property="emailLabel" destination="48q-7c-pJT" id="GKi-IX-WkA"/>
-                        <outlet property="logoutButton" destination="dSN-36-42h" id="Wp7-QS-srv"/>
-                        <outlet property="welcomeLabel" destination="dCk-hH-5wT" id="Am7-mj-Nza"/>
+                        <outlet property="blockedUsersButton" destination="w6X-kb-YwY" id="cMd-Yg-nxm"/>
+                        <outlet property="changeEmailButton" destination="SlG-G5-2Vi" id="VYx-w8-0S3"/>
+                        <outlet property="changeNameButton" destination="W75-S0-wu2" id="rGh-3F-b4c"/>
+                        <outlet property="emailLabel" destination="48q-7c-pJT" id="hIx-7g-pNp"/>
+                        <outlet property="logoutButton" destination="dSN-36-42h" id="0NB-Na-rS2"/>
+                        <outlet property="welcomeLabel" destination="dCk-hH-5wT" id="bZO-Tb-1js"/>
                         <segue destination="2VH-3k-bSu" kind="presentation" identifier="toSignUp" id="rLN-vK-eWz"/>
                     </connections>
                 </viewController>

@@ -1,20 +1,11 @@
-//
-//  SettingsViewController.swift
-//  
-//
-//  Created by Mar Koss on 2019-07-25.
 
 
 import UIKit
 import Firebase
 
-protocol SettingsDisplayLogic: class
+class SettingsViewControllerOld: UIViewController, VerifyUserDelegate
 {
-    func displaySomething(viewModel: Settings.Something.ViewModel)
-}
 
-class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisplayLogic
-{
     
     @IBOutlet weak var blockedUsersButton: UIButton!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
@@ -23,68 +14,9 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var interactor: SettingsBusinessLogic?
-    var router: (NSObjectProtocol & SettingsRoutingLogic & SettingsDataPassing)?
     
     var sourceVC = MapViewController()
     var delegate: VerifyUserDelegate?
-    
-    // MARK: Object lifecycle
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    // MARK: Setup
-    
-    private func setup()
-    {
-        let viewController = self
-        let interactor = SettingsInteractor()
-        let presenter = SettingsPresenter()
-        let router = SettingsRouter()
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
-    }
-    
-    // MARK: Routing
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if let scene = segue.identifier {
-//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-//            if let router = router, router.responds(to: selector) {
-//                router.perform(selector, with: segue)
-//            }
-//        }
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        
-        if segue.identifier == "toSignUp"
-        {
-            
-            let signUpVC = segue.destination as! SignUpViewController
-            signUpVC.sourceVC = self
-            signUpVC.fromSettings = true
-            signUpVC.delegate = self
-        }
-    }
-    
-    // MARK: View lifecycle
     
     override func viewDidLoad()
     {
@@ -95,6 +27,8 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         blockedUsersButton.layer.cornerRadius = blockedUsersButton.frame.height/4
         changeNameButton.layer.cornerRadius = changeNameButton.frame.height/4
         changeEmailButton.layer.cornerRadius = changeEmailButton.frame.height/4
+    
+
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -118,11 +52,26 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
             self.blockedUsersButton.isHidden = true
             self.changeNameButton.isHidden = true
             self.changeEmailButton.isHidden = true
-            
+
         }
     }
     
-    // MARK: Actions
+    //MARK: Prepare For Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        if segue.identifier == "toSignUp"
+        {
+            
+            let signUpVC = segue.destination as! SignUpViewController
+            signUpVC.sourceVC = self
+            signUpVC.fromSettings = true
+            signUpVC.delegate = self
+        }
+    }
+    
+    //MARK: Actions
     
     @IBAction func logout(_ sender: Any)
     {
@@ -142,12 +91,12 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         } else {
             performSegue(withIdentifier: "toSignUp", sender: self)
         }
-        
+
     }
     
     @IBAction func changeUsernamePressed(_ sender: UIButton)
     {
-        
+
         AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = name
@@ -227,16 +176,4 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         self.delegate?.verificationComplete()
     }
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Settings.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Settings.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
-    }
 }
