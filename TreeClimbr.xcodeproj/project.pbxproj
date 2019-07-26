@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,11 @@
 		0D0D0D711FC621A500C84F1D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D701FC621A500C84F1D /* Comment.swift */; };
 		0D0D0D731FC624BF00C84F1D /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D0D721FC624BF00C84F1D /* CommentManager.swift */; };
 		0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */; };
+		0D25F5D122EAA609008469E7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */; };
+		0D25F5D222EAA609008469E7 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */; };
+		0D25F5D322EAA609008469E7 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */; };
+		0D25F5D422EAA609008469E7 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5CF22EAA609008469E7 /* SettingsModels.swift */; };
+		0D25F5D522EAA609008469E7 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */; };
 		0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
 		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
@@ -96,6 +101,11 @@
 		0D0D0D701FC621A500C84F1D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		0D0D0D721FC624BF00C84F1D /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
 		0D132CFB1FC75AA800C63AC0 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
+		0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		0D25F5CF22EAA609008469E7 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeTableViewCell.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
@@ -199,6 +209,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D25F5CA22EAA5BC008469E7 /* Main Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E6C423B62006B21C00BB823B /* Settings.storyboard */,
+				E6C423BB2006B3A900BB823B /* SettingsViewController.swift */,
+				0D25F5CC22EAA609008469E7 /* SettingsPresenter.swift */,
+				0D25F5CD22EAA609008469E7 /* SettingsWorker.swift */,
+				0D25F5CE22EAA609008469E7 /* SettingsRouter.swift */,
+				0D25F5CF22EAA609008469E7 /* SettingsModels.swift */,
+				0D25F5D022EAA609008469E7 /* SettingsInteractor.swift */,
+			);
+			path = "Main Settings";
+			sourceTree = "<group>";
+		};
+		0D25F5CB22EAA5D5008469E7 /* Hidden Users */ = {
+			isa = PBXGroup;
+			children = (
+				E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */,
+				CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */,
+				CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */,
+				CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */,
+			);
+			path = "Hidden Users";
+			sourceTree = "<group>";
+		};
 		0DBC0A7D2287DC13006F9FB3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,12 +394,8 @@
 		E6C423B82006B22800BB823B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E6C423B62006B21C00BB823B /* Settings.storyboard */,
-				E6C423BB2006B3A900BB823B /* SettingsViewController.swift */,
-				E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */,
-				CA1F19082006C65900D38DE5 /* HiddenUsers.storyboard */,
-				CA1F190C2006C9C000D38DE5 /* HiddenUsersViewController.swift */,
-				CA1F190A2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift */,
+				0D25F5CA22EAA5BC008469E7 /* Main Settings */,
+				0D25F5CB22EAA5D5008469E7 /* Hidden Users */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -494,7 +525,7 @@
 				};
 			};
 			buildConfigurationList = 0DCE2EF71FBCDE44001A30EA /* Build configuration list for PBXProject "TreeClimbr" */;
-			compatibilityVersion = "Xcode 8.0";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -718,7 +749,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E1E4971FC4D4E2000F42CB /* CommentViewController.swift in Sources */,
+				0D25F5D422EAA609008469E7 /* SettingsModels.swift in Sources */,
 				0DF22D981FBEA64800F71C87 /* LoginViewController.swift in Sources */,
+				0D25F5D522EAA609008469E7 /* SettingsInteractor.swift in Sources */,
 				0DF12BA922475F7E00DFE851 /* MapWorker.swift in Sources */,
 				E6E1E4951FC4D4D1000F42CB /* AboutViewController.swift in Sources */,
 				E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */,
@@ -736,6 +769,7 @@
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
 				CA32CB57202840D6003B9AEA /* TreeManager.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
+				0D25F5D122EAA609008469E7 /* SettingsPresenter.swift in Sources */,
 				E6E1E4991FC4D4FB000F42CB /* PhotosViewController.swift in Sources */,
 				CADBDECE2010242C0002750C /* VerifyUserDelegate.swift in Sources */,
 				0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */,
@@ -749,12 +783,14 @@
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
 				E6C423BC2006B3A900BB823B /* SettingsViewController.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
+				0D25F5D322EAA609008469E7 /* SettingsRouter.swift in Sources */,
 				CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */,
 				0DF12BAB22475F7E00DFE851 /* MapModels.swift in Sources */,
 				0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */,
 				0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */,
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
+				0D25F5D222EAA609008469E7 /* SettingsWorker.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
 				0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */,
 				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
@@ -925,7 +961,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -941,7 +978,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = .TreeClimbr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -962,7 +1002,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y4KAZTNBPK;
 				INFOPLIST_FILE = TreeClimbr/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = .TreeClimbr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -980,7 +1023,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TreeClimbrTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.markoss.TreeClimbrTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -997,7 +1044,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TreeClimbrTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.markoss.TreeClimbrTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1013,7 +1064,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TreeClimbrUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.markoss.TreeClimbrUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -1029,7 +1084,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = TreeClimbrUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.markoss.TreeClimbrUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

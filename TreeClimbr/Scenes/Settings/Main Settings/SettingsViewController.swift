@@ -3,7 +3,8 @@
 import UIKit
 import Firebase
 
-class SettingsViewController: UIViewController, VerifyUserDelegate {
+class SettingsViewController: UIViewController, VerifyUserDelegate
+{
 
     
     @IBOutlet weak var blockedUsersButton: UIButton!
@@ -17,7 +18,8 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
     var sourceVC = MapViewController()
     var delegate: VerifyUserDelegate?
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
@@ -29,15 +31,18 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
-        if firUser != nil {
+        if firUser != nil
+        {
             guard let displayName = firUser?.displayName else {return}
             self.logoutButton.title = "Logout"
             self.welcomeLabel.text = "Welcome, " + displayName + "!"
             let email = Auth.auth().currentUser?.email
-            if  email != nil {
+            if  email != nil
+            {
                 self.emailLabel.text = "e-mail: " + email!
             }
         } else {
@@ -53,9 +58,11 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
     
     //MARK: Prepare For Segue
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
         
-        if segue.identifier == "toSignUp" {
+        if segue.identifier == "toSignUp"
+        {
             
             let signUpVC = segue.destination as! SignUpViewController
             signUpVC.sourceVC = self
@@ -66,11 +73,14 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
     
     //MARK: Actions
     
-    @IBAction func logout(_ sender: Any) {
+    @IBAction func logout(_ sender: Any)
+    {
         
         let user = Auth.auth().currentUser
-        if user != nil {
-            do {
+        if user != nil
+        {
+            do
+            {
                 try Auth.auth().signOut()
                 self.dismiss(animated: true, completion: nil)
             }
@@ -84,7 +94,8 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
 
     }
     
-    @IBAction func changeUsernamePressed(_ sender: UIButton) {
+    @IBAction func changeUsernamePressed(_ sender: UIButton)
+    {
 
         AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
@@ -116,18 +127,15 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
                         .setValue(newUserDict)
                 })
         }
-        
-        
-        
-        
-        
     }
     
-    @IBAction func changeEmailPressed(_ sender: UIButton) {
+    @IBAction func changeEmailPressed(_ sender: UIButton)
+    {
         
         AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (newEmail) in
             Auth.auth().currentUser?.updateEmail(to: newEmail) { (error) in
-                if error == nil {
+                if error == nil
+                {
                     guard let curUser = Auth.auth().currentUser else {return}
                     self.emailLabel.text = "e-mail: " + newEmail
                     
@@ -156,13 +164,15 @@ class SettingsViewController: UIViewController, VerifyUserDelegate {
         }
     }
     
-    @IBAction func backToMapView(_ sender: UIBarButtonItem) {
+    @IBAction func backToMapView(_ sender: UIBarButtonItem)
+    {
         self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: VerifyUserDelegate
     
-    func verificationComplete() {
+    func verificationComplete()
+    {
         self.delegate?.verificationComplete()
     }
     
