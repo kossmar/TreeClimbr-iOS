@@ -61,7 +61,7 @@ class SettingsViewControllerOld: UIViewController, VerifyUserDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
-        if segue.identifier == "toSignUp"
+        if segue.identifier == "SignUp"
         {
             
             let signUpVC = segue.destination as! SignUpViewController
@@ -89,7 +89,7 @@ class SettingsViewControllerOld: UIViewController, VerifyUserDelegate
             }
             AppData.sharedInstance.hiddenUsersArr.removeAll()
         } else {
-            performSegue(withIdentifier: "toSignUp", sender: self)
+            performSegue(withIdentifier: "SignUp", sender: self)
         }
 
     }

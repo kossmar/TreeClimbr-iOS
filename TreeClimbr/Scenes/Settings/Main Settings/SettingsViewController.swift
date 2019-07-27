@@ -10,7 +10,7 @@ import Firebase
 
 protocol SettingsDisplayLogic: class
 {
-    func displaySomething(viewModel: Settings.Something.ViewModel)
+    func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
 }
 
 class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisplayLogic
@@ -28,6 +28,10 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     var sourceVC = MapViewController()
     var delegate: VerifyUserDelegate?
+    
+    var signUpSegueId = "SignUp"
+    var logoutErrorTitleString = "An Error Occurred"
+    var logoutErrorMessageString = "Logout request could not be completed at this time. Please try again."
     
     // MARK: Object lifecycle
     
@@ -74,9 +78,8 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
-        if segue.identifier == "toSignUp"
+        if segue.identifier == signUpSegueId
         {
-            
             let signUpVC = segue.destination as! SignUpViewController
             signUpVC.sourceVC = self
             signUpVC.fromSettings = true
@@ -122,26 +125,44 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         }
     }
     
+    // MARK: Display Authentication Management
+    
+    func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
+    {
+        switch viewModel.result
+        {
+        case .logoutSuccess:
+            self.dismiss(animated: true, completion: nil)
+        case .logoutFailure:
+            AlertShow.show(inpView: self, titleStr: logoutErrorTitleString, messageStr: logoutErrorMessageString)
+            print(viewModel.error!.localizedDescription)
+        case .login:
+            performSegue(withIdentifier: signUpSegueId, sender: self)
+        }
+    }
+    
     // MARK: Actions
     
-    @IBAction func logout(_ sender: Any)
+    @IBAction func logoutPressed(_ sender: Any)
     {
         
-        let user = Auth.auth().currentUser
-        if user != nil
-        {
-            do
-            {
-                try Auth.auth().signOut()
-                self.dismiss(animated: true, completion: nil)
-            }
-            catch let error as NSError {
-                print (error.localizedDescription)
-            }
-            AppData.sharedInstance.hiddenUsersArr.removeAll()
-        } else {
-            performSegue(withIdentifier: "toSignUp", sender: self)
-        }
+        interactor?.manageAuthentication()
+        
+//        let user = Auth.auth().currentUser
+//        if user != nil
+//        {
+//            do
+//            {
+//                try Auth.auth().signOut()
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//            catch let error as NSError {
+//                print (error.localizedDescription)
+//            }
+//            AppData.sharedInstance.hiddenUsersArr.removeAll()
+//        } else {
+//            performSegue(withIdentifier: signUpSegueId, sender: self)
+//        }
         
     }
     
@@ -215,7 +236,7 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         }
     }
     
-    @IBAction func backToMapView(_ sender: UIBarButtonItem)
+    @IBAction func backToMapViewPressed(_ sender: UIBarButtonItem)
     {
         self.dismiss(animated: true, completion: nil)
     }
@@ -225,18 +246,5 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     func verificationComplete()
     {
         self.delegate?.verificationComplete()
-    }
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = Settings.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: Settings.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
     }
 }

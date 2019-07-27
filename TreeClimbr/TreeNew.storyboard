@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wm2-MY-3kG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wm2-MY-3kG">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -165,7 +165,7 @@
                         <outlet property="saveButton" destination="HEE-FY-f23" id="o7a-Nx-o7m"/>
                         <outlet property="treeImageView" destination="Rdd-MP-v0O" id="Fpg-cz-hT8"/>
                         <outlet property="treeNameTextField" destination="z6p-PS-tfZ" id="d21-W7-dxI"/>
-                        <segue destination="cOF-18-eB6" kind="presentation" identifier="toSignUp" id="dXX-c0-O4Q"/>
+                        <segue destination="cOF-18-eB6" kind="presentation" identifier="SignUp" id="dXX-c0-O4Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oay-dV-PS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
