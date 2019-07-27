@@ -1,17 +1,25 @@
 import Foundation
 import Firebase
 
-class ImageUploader {
+class ImageUploader: NSObject
+{
+    var viewController: UIViewController!
     
-    class func uploadImage(image: UIImage, tree: Tree, completion: @escaping (URL, String) -> Void) {
+    required init(viewController: UIViewController)
+    {
+        self.viewController = viewController
+    }
+    
+    func uploadImage(image: UIImage, tree: Tree, onSuccess success: @escaping (URL, String) -> Void, onFailure failure: @escaping (Error?) -> Void)
+    {
         
-        var url: URL?
+        //        var url: URL?
         var imageDBName: String?
         
         let photoData = image.jpeg(.low)
         
         let imageID = tree.treeName + "|" + NSUUID().uuidString
-//        let _: String = tree.treeName + "|" + String(describing: Date())
+        //        let _: String = tree.treeName + "|" + String(describing: Date())
         
         let storage = Storage.storage()
         let storageRef = storage.reference()
@@ -19,35 +27,57 @@ class ImageUploader {
         
         imagesRef.putData(photoData!, metadata: nil, completion: { (metadata, error) in
             
-            if let error = error {
+            if let error = error
+            {
                 print(error)
                 return
             }
             
-            if let metadata = metadata, let downloadedURL = metadata.downloadURL(), let downloadedDBName = metadata.name {
-                print(downloadedURL)
-                metadata.contentType = "image/jpeg"
-                imageDBName = downloadedDBName
-                url = downloadedURL
+            // TODO: Handle this optional metadata.storageReference properly!
+            
+            if let metadata = metadata, let downloadedDBName = metadata.name
+            {
+                //                let downloadURL = metadata.storageReference!.downloadURL
+                imagesRef.downloadURL(completion: { (downloadURL, error) in
+                    guard let downloadURL = downloadURL else
+                    {
+                        // TODO: Handle this error
+                        failure(error)
+                        print("Could not upload image")
+                        return
+                    }
+                    print(downloadURL)
+                    metadata.contentType = "image/jpeg"
+                    imageDBName = downloadedDBName
+                    //                    url = downloadURL
+                    success(downloadURL, imageDBName!)
+                })
+                //                print(downloadURL)
+                //                metadata.contentType = "image/jpeg"
+                //                imageDBName = downloadedDBName
+                //                url = downloadURL
+                //                completion(url, imageDBName!)
             }
             
-            guard let url = url else {
-                print("NO URL, BREWWW")
-                return
-            }
+            //            guard let url = url else {
+            //                print("NO URL, BREWWW")
+            //                return
+            //            }
             
-            completion(url, imageDBName!)
+            //            completion(url, imageDBName!)
         })
         
     }
     
-    class func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo], Photo) -> Void) {
+    func createNewPhotos(images: Array<UIImage>, tree: Tree, completion: @escaping ([Photo], Photo) -> Void)
+    {
         
         var tempPhotoArr = Array<Photo>()
         
         let curUser = Auth.auth().currentUser?.uid
         
-        guard let user = curUser else {
+        guard let user = curUser else
+        {
             print("not logged in")
             return
         }
@@ -59,7 +89,7 @@ class ImageUploader {
         for image in images {
             let position = images.index(of: image)
             group.enter()
-            uploadImage(image: image, tree: tree, completion: { url, imageDBName in
+            uploadImage(image: image, tree: tree, onSuccess: { url, imageDBName in
                 let urlStr = url.absoluteString
                 let dbName = imageDBName
                 let photo = Photo(URL: urlStr)
@@ -71,10 +101,17 @@ class ImageUploader {
                 }
                 group.leave()
                 
+            }, onFailure: { error in
+                AlertShow.show(inpView: self.viewController , titleStr: "Could not upload photo", messageStr: "An error occurred. Please try again")
+                if let error = error
+                {
+                    print(error.localizedDescription)
+                }
             })
         }
         
-        group.notify(queue: DispatchQueue.global()) {
+        group.notify(queue: DispatchQueue.global())
+        {
             guard let firstPhoto = firstPhoto else {return}
             completion(tempPhotoArr, firstPhoto)
         }

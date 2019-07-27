@@ -145,7 +145,8 @@ class TreeNewViewController: UIViewController, UICollectionViewDelegate, UIColle
                 tree.treeCreator = curUser.uid
                 tree.treeCreatorName = curUser.displayName!
                 
-                ImageUploader.createNewPhotos(images: self.imageArr, tree: tree) { (photos, firstPhoto) in
+                let imageUploader = ImageUploader(viewController: self)
+                imageUploader.createNewPhotos(images: self.imageArr, tree: tree) { (photos, firstPhoto) in
                     
                     PhotoManager.savePhotos(photos: photos, tree: tree) { success in
                         print("winners")

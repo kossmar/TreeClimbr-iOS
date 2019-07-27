@@ -3,38 +3,42 @@ import Firebase
 //import FirebaseAuth
 
 
-class RegisterClass: NSObject {
+class RegisterClass: NSObject
+{
     
     //   static var sharedInstance = RegisterClass()
     
     class func registerMethod(inpName: String, inpEmail: String, inpPassword: String, completion: @escaping () -> Void) {
         Auth.auth().createUser (withEmail: inpEmail,
                                 password: inpPassword)
-        { (onlineUser, error) in
-            if (error == nil) {
-                let changeRequest = onlineUser?.createProfileChangeRequest()
-                changeRequest?.displayName = inpName
+        { (authDataResult, error) in
+            if (error == nil)
+            {
+                // TODO: UPDATE optional handling
+                let user = authDataResult!.user
+                let changeRequest = user.createProfileChangeRequest()
+                changeRequest.displayName = inpName
                 
-                changeRequest?.commitChanges(completion:
+                changeRequest.commitChanges(completion:
                     { (profError) in
                         if ( profError == nil) {
                             
                             // setting local user
-                            AppData.sharedInstance.curUser = User(name: onlineUser!.displayName!,
-                                                                  email: onlineUser!.email!,
-                                                                  uid: onlineUser!.uid);
+                            AppData.sharedInstance.curUser = User(name: user.displayName!,
+                                                                  email: user.email!,
+                                                                  uid: user.uid);
                             
                             
                             
                             
                             
                             
-                            let userDict : [String : String] = ["nameKey": onlineUser!.displayName!,
-                                                                "emailKey": onlineUser!.email!,
-                                                                "uidKey": onlineUser!.uid]
+                            let userDict : [String : String] = ["nameKey": user.displayName!,
+                                                                "emailKey": user.email!,
+                                                                "uidKey": user.uid]
                             
                             AppData.sharedInstance.usersNode
-                                .child(onlineUser!.uid)
+                                .child(user.uid)
                                 .setValue(userDict)
                             
                             ReadWrite.writeUser();
