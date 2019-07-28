@@ -13,6 +13,7 @@ protocol SettingsPresentationLogic
 {
     func presentAuthenticationManagement(response: Settings.Logout.Response)
     func presentNewUsername(response: Settings.ChangeUsername.Response)
+    func presentNewEmail(response: Settings.ChangeEmail.Response)
 }
 
 class SettingsPresenter: SettingsPresentationLogic
@@ -32,5 +33,24 @@ class SettingsPresenter: SettingsPresentationLogic
     {
         let viewModel = Settings.ChangeUsername.ViewModel(result: response.result)
         viewController?.displayNewUsername(viewModel: viewModel)
+    }
+    
+    // MARK: Present New Email
+    func presentNewEmail(response: Settings.ChangeEmail.Response)
+    {
+        var viewModel = Settings.ChangeEmail.ViewModel()
+        
+        switch response.result
+        {
+        case .success(let newEmailStr):
+            viewModel.newEmailLabelStr = "e-mail: " + newEmailStr
+            viewModel.error = nil
+        case .failure(let error):
+            // TODO: add changes for different error codes
+            viewModel.newEmailLabelStr = nil
+            viewModel.error = error.localizedDescription
+        }
+
+        viewController?.displayNewEmail(viewModel: viewModel)
     }
 }

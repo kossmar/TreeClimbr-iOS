@@ -12,6 +12,7 @@ protocol SettingsDisplayLogic: class
 {
     func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
     func displayNewUsername(viewModel: Settings.ChangeUsername.ViewModel)
+    func displayNewEmail(viewModel: Settings.ChangeEmail.ViewModel)
 }
 
 class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisplayLogic
@@ -30,6 +31,7 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     var sourceVC = MapViewController()
     var delegate: VerifyUserDelegate?
     
+    // TODO: Move these variables to the data store
     var signUpSegueId = "SignUp"
     var logoutErrorTitleString = "An Error Occurred"
     var logoutErrorMessageString = "Logout request could not be completed at this time. Please try again."
@@ -103,6 +105,8 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     override func viewWillAppear(_ animated: Bool)
     {
+        
+        // TODO: Move this to the interactor
         super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
         if firUser != nil
@@ -135,74 +139,19 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     @IBAction func changeUsernamePressed(_ sender: UIButton)
     {
-        AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
+        AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (newUsernameStr) in
             
-            let request = Settings.ChangeUsername.Request(newUsername: name)
+            let request = Settings.ChangeUsername.Request(newUsernameStr: newUsernameStr)
             self.interactor?.changeUsername(request: request)
-            //
-            //            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            //            changeRequest?.displayName = name
-            //            changeRequest?.commitChanges(completion: { (error) in
-            //            })
-            //            self.welcomeLabel.text = "Welcome, " + name
-            //            CommentManager.updateUserCommentsUserName(newName: name)
-            //            PhotoManager.updateUserPhotosUserName(newName: name)
-            //            TreeManager.updateUserTreesUserName(newName: name)
-            //
-            //            guard let curUser = Auth.auth().currentUser else {return}
-            //            AppData.sharedInstance.usersNode
-            //                .child(curUser.uid)
-            //                .observeSingleEvent(of: .value, with: { (snapshot) in
-            //                    guard let userDict = snapshot.value as? NSDictionary else {return}
-            //                    let _ = userDict["nameKey"] as! String
-            //                    let userID = userDict["uidKey"] as! String
-            //                    let email = userDict["emailKey"] as! String
-            //
-            //                    let newUserDict: [String: Any] = [
-            //                        "nameKey": name,
-            //                        "uidKey": userID,
-            //                        "emailKey": email
-            //                    ]
-            //
-            //                    AppData.sharedInstance.usersNode
-            //                        .child(curUser.uid)
-            //                        .setValue(newUserDict)
-            //                })
         }
     }
     
     @IBAction func changeEmailPressed(_ sender: UIButton)
     {
         
-        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (newEmail) in
-            Auth.auth().currentUser?.updateEmail(to: newEmail) { (error) in
-                if error == nil
-                {
-                    guard let curUser = Auth.auth().currentUser else {return}
-                    self.emailLabel.text = "e-mail: " + newEmail
-                    
-                    AppData.sharedInstance.usersNode
-                        .child(curUser.uid)
-                        .observeSingleEvent(of: .value, with: { (snapshot) in
-                            guard let userDict = snapshot.value as? NSDictionary else {return}
-                            let userName = userDict["nameKey"] as! String
-                            let userID = userDict["uidKey"] as! String
-                            let _ = userDict["emailKey"] as! String
-                            
-                            let newUserDict: [String: Any] = [
-                                "nameKey": userName,
-                                "uidKey": userID,
-                                "emailKey": newEmail
-                            ]
-                            
-                            AppData.sharedInstance.usersNode
-                                .child(curUser.uid)
-                                .setValue(newUserDict)
-                        })
-                } else {
-                    print(error!)
-                }
-            }
+        AlertShow.respond(inpView: self, titleStr: "Enter New Email", messageStr: "") { (newEmailStr) in
+            let request = Settings.ChangeEmail.Request(newEmailStr: newEmailStr)
+            self.interactor?.changeEmail(request: request)
         }
     }
     
@@ -231,6 +180,7 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     func displayNewUsername(viewModel: Settings.ChangeUsername.ViewModel)
     {
+        // TODO: Update this so it copies the New Email pattern
         switch viewModel.result
         {
         case .success(let newWelcomeString):
@@ -238,6 +188,18 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         case .failure(let error):
             print(error)
             // TODO: Add Alert to inform User of the error
+        }
+    }
+    
+    // MARK: Display New Email
+    
+    func displayNewEmail(viewModel: Settings.ChangeEmail.ViewModel)
+    {
+        if let newEmailLabelStr = viewModel.newEmailLabelStr
+        {
+            self.emailLabel.text = newEmailLabelStr
+        } else if let errorStr = viewModel.error {
+            AlertShow.show(inpView: self, titleStr: "An Error Occurred", messageStr: errorStr)
         }
     }
     

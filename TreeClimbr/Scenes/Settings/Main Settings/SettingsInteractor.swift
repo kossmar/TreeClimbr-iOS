@@ -14,6 +14,7 @@ protocol SettingsBusinessLogic
 {
     func manageAuthentication()
     func changeUsername(request: Settings.ChangeUsername.Request)
+    func changeEmail(request: Settings.ChangeEmail.Request)
 }
 
 protocol SettingsDataStore
@@ -27,7 +28,6 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
     var worker = SettingsWorker()
     
     // MARK: Manage Authentication
-    
     func manageAuthentication()
     {
         worker.manageAuthentication { (result, error) in
@@ -37,7 +37,6 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
     }
     
     // MARK: Change Username
-    
     func changeUsername(request: Settings.ChangeUsername.Request)
     {
         worker.changeUsername(request: request, completion: { result in
@@ -45,4 +44,14 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
             self.presenter?.presentNewUsername(response: response)
         })
     }
+    
+    // MARK: Change Email
+    func changeEmail(request: Settings.ChangeEmail.Request)
+    {
+        worker.changeEmail(request: request, completion: { result in
+            let response = Settings.ChangeEmail.Response(result: result)
+            self.presenter?.presentNewEmail(response: response)
+        })
+    }
+    
 }

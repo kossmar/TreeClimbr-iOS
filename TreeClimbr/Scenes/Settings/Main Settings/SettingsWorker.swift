@@ -33,15 +33,12 @@ class SettingsWorker
                 try Auth.auth().signOut()
                 AppData.sharedInstance.hiddenUsersArr.removeAll()
                 completion(result.logoutSuccess, nil)
-//                self.dismiss(animated: true, completion: nil)
             }
             catch let error as NSError {
                 print (error.localizedDescription)
                 completion(result.logoutFailure, error)
             }
-//            AppData.sharedInstance.hiddenUsersArr.removeAll()
         } else {
-//            performSegue(withIdentifier: signUpSegueId, sender: self)
             completion(result.login, nil)
         }
     }
@@ -49,7 +46,7 @@ class SettingsWorker
     func changeUsername(request: Settings.ChangeUsername.Request, completion:@escaping(Result<String,Error>) -> Void)
     {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = request.newUsername
+        changeRequest?.displayName = request.newUsernameStr
         changeRequest?.commitChanges(completion: { (error) in
             guard let error = error else
             {
@@ -58,10 +55,9 @@ class SettingsWorker
             }
             completion(.failure(error))
         })
-//        self.welcomeLabel.text = "Welcome, " + request.newUsername
-        CommentManager.updateUserCommentsUserName(newName: request.newUsername)
-        PhotoManager.updateUserPhotosUserName(newName: request.newUsername)
-        TreeManager.updateUserTreesUserName(newName: request.newUsername)
+        CommentManager.updateUserCommentsUserName(newName: request.newUsernameStr)
+        PhotoManager.updateUserPhotosUserName(newName: request.newUsernameStr)
+        TreeManager.updateUserTreesUserName(newName: request.newUsernameStr)
         
         guard let curUser = Auth.auth().currentUser else {return}
         AppData.sharedInstance.usersNode
@@ -73,7 +69,7 @@ class SettingsWorker
                 let email = userDict["emailKey"] as! String
                 
                 let newUserDict: [String: Any] = [
-                    "nameKey": request.newUsername,
+                    "nameKey": request.newUsernameStr,
                     "uidKey": userID,
                     "emailKey": email
                 ]
@@ -82,7 +78,41 @@ class SettingsWorker
                     .child(curUser.uid)
                     .setValue(newUserDict)
             })
-        let newWelcomeString = welcomePrefixString + request.newUsername
+        let newWelcomeString = welcomePrefixString + request.newUsernameStr
         completion(.success(newWelcomeString))
+    }
+    
+    func changeEmail(request: Settings.ChangeEmail.Request, completion:@escaping(Result<String,Error>) -> Void)
+    {
+        Auth.auth().currentUser?.updateEmail(to: request.newEmailStr) { (error) in
+            if error == nil
+            {
+                guard let curUser = Auth.auth().currentUser else {return}
+                
+                AppData.sharedInstance.usersNode
+                    .child(curUser.uid)
+                    .observeSingleEvent(of: .value, with: { (snapshot) in
+                        guard let userDict = snapshot.value as? NSDictionary else {return}
+                        let userName = userDict["nameKey"] as! String
+                        let userID = userDict["uidKey"] as! String
+                        let _ = userDict["emailKey"] as! String
+                        
+                        let newUserDict: [String: Any] = [
+                            "nameKey": userName,
+                            "uidKey": userID,
+                            "emailKey": request.newEmailStr
+                        ]
+                        
+                        AppData.sharedInstance.usersNode
+                            .child(curUser.uid)
+                            .setValue(newUserDict)
+                        
+                        completion(.success(request.newEmailStr))
+                    })
+            } else {
+                completion(.failure(error!))
+            }
+        }
+
     }
 }

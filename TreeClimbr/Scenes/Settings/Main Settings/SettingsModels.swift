@@ -33,7 +33,7 @@ enum Settings
     {
         struct Request
         {
-            var newUsername: String
+            var newUsernameStr: String
         }
         struct Response
         {
@@ -42,6 +42,23 @@ enum Settings
         struct ViewModel
         {
             var result: Result<String, Error>
+        }
+    }
+    
+    enum ChangeEmail
+    {
+        struct Request
+        {
+            var newEmailStr: String
+        }
+        struct Response
+        {
+            var result: Result<String, Error>
+        }
+        struct ViewModel
+        {
+            var newEmailLabelStr: String?
+            var error: String?
         }
     }
 }
