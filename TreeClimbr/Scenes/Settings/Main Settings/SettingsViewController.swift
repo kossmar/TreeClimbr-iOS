@@ -11,6 +11,7 @@ import Firebase
 protocol SettingsDisplayLogic: class
 {
     func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
+    func displayNewUsername(viewModel: Settings.ChangeUsername.ViewModel)
 }
 
 class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisplayLogic
@@ -65,15 +66,15 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     // MARK: Routing
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if let scene = segue.identifier {
-//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-//            if let router = router, router.responds(to: selector) {
-//                router.perform(selector, with: segue)
-//            }
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    //    {
+    //        if let scene = segue.identifier {
+    //            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+    //            if let router = router, router.responds(to: selector) {
+    //                router.perform(selector, with: segue)
+    //            }
+    //        }
+    //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -125,79 +126,48 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         }
     }
     
-    // MARK: Display Authentication Management
-    
-    func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
-    {
-        switch viewModel.result
-        {
-        case .logoutSuccess:
-            self.dismiss(animated: true, completion: nil)
-        case .logoutFailure:
-            AlertShow.show(inpView: self, titleStr: logoutErrorTitleString, messageStr: logoutErrorMessageString)
-            print(viewModel.error!.localizedDescription)
-        case .login:
-            performSegue(withIdentifier: signUpSegueId, sender: self)
-        }
-    }
-    
     // MARK: Actions
     
     @IBAction func logoutPressed(_ sender: Any)
     {
-        
         interactor?.manageAuthentication()
-        
-//        let user = Auth.auth().currentUser
-//        if user != nil
-//        {
-//            do
-//            {
-//                try Auth.auth().signOut()
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//            catch let error as NSError {
-//                print (error.localizedDescription)
-//            }
-//            AppData.sharedInstance.hiddenUsersArr.removeAll()
-//        } else {
-//            performSegue(withIdentifier: signUpSegueId, sender: self)
-//        }
-        
     }
     
     @IBAction func changeUsernamePressed(_ sender: UIButton)
     {
-        
         AlertShow.respond(inpView: self, titleStr: "Enter New Username", messageStr: "") { (name) in
-            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-            changeRequest?.displayName = name
-            changeRequest?.commitChanges(completion: { (error) in
-            })
-            self.welcomeLabel.text = "Welcome, " + name
-            CommentManager.updateUserCommentsUserName(newName: name)
-            PhotoManager.updateUserPhotosUserName(newName: name)
-            TreeManager.updateUserTreesUserName(newName: name)
             
-            guard let curUser = Auth.auth().currentUser else {return}
-            AppData.sharedInstance.usersNode
-                .child(curUser.uid)
-                .observeSingleEvent(of: .value, with: { (snapshot) in
-                    guard let userDict = snapshot.value as? NSDictionary else {return}
-                    let _ = userDict["nameKey"] as! String
-                    let userID = userDict["uidKey"] as! String
-                    let email = userDict["emailKey"] as! String
-                    
-                    let newUserDict: [String: Any] = [
-                        "nameKey": name,
-                        "uidKey": userID,
-                        "emailKey": email
-                    ]
-                    
-                    AppData.sharedInstance.usersNode
-                        .child(curUser.uid)
-                        .setValue(newUserDict)
-                })
+            let request = Settings.ChangeUsername.Request(newUsername: name)
+            self.interactor?.changeUsername(request: request)
+            //
+            //            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            //            changeRequest?.displayName = name
+            //            changeRequest?.commitChanges(completion: { (error) in
+            //            })
+            //            self.welcomeLabel.text = "Welcome, " + name
+            //            CommentManager.updateUserCommentsUserName(newName: name)
+            //            PhotoManager.updateUserPhotosUserName(newName: name)
+            //            TreeManager.updateUserTreesUserName(newName: name)
+            //
+            //            guard let curUser = Auth.auth().currentUser else {return}
+            //            AppData.sharedInstance.usersNode
+            //                .child(curUser.uid)
+            //                .observeSingleEvent(of: .value, with: { (snapshot) in
+            //                    guard let userDict = snapshot.value as? NSDictionary else {return}
+            //                    let _ = userDict["nameKey"] as! String
+            //                    let userID = userDict["uidKey"] as! String
+            //                    let email = userDict["emailKey"] as! String
+            //
+            //                    let newUserDict: [String: Any] = [
+            //                        "nameKey": name,
+            //                        "uidKey": userID,
+            //                        "emailKey": email
+            //                    ]
+            //
+            //                    AppData.sharedInstance.usersNode
+            //                        .child(curUser.uid)
+            //                        .setValue(newUserDict)
+            //                })
         }
     }
     
@@ -241,7 +211,37 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
         self.dismiss(animated: true, completion: nil)
     }
     
-    //MARK: VerifyUserDelegate
+    // MARK: Display Authentication Management
+    
+    func displayAuthenticationManagement(viewModel: Settings.Logout.ViewModel)
+    {
+        switch viewModel.result
+        {
+        case .logoutSuccess:
+            self.dismiss(animated: true, completion: nil)
+        case .logoutFailure:
+            AlertShow.show(inpView: self, titleStr: logoutErrorTitleString, messageStr: logoutErrorMessageString)
+            print(viewModel.error!.localizedDescription)
+        case .login:
+            performSegue(withIdentifier: signUpSegueId, sender: self)
+        }
+    }
+    
+    // MARK: Display New Username
+    
+    func displayNewUsername(viewModel: Settings.ChangeUsername.ViewModel)
+    {
+        switch viewModel.result
+        {
+        case .success(let newWelcomeString):
+            self.welcomeLabel.text = newWelcomeString
+        case .failure(let error):
+            print(error)
+            // TODO: Add Alert to inform User of the error
+        }
+    }
+    
+    // MARK: VerifyUserDelegate
     
     func verificationComplete()
     {

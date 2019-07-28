@@ -19,13 +19,29 @@ enum Settings
         }
         struct Response
         {
-            let result: AuthManagementResult
-            let error: Error?
+            var result: AuthManagementResult
+            var error: Error?
         }
         struct ViewModel
         {
-            let result: AuthManagementResult
-            let error: Error?
+            var result: AuthManagementResult
+            var error: Error?
+        }
+    }
+    
+    enum ChangeUsername
+    {
+        struct Request
+        {
+            var newUsername: String
+        }
+        struct Response
+        {
+            var result: Result<String, Error>
+        }
+        struct ViewModel
+        {
+            var result: Result<String, Error>
         }
     }
 }

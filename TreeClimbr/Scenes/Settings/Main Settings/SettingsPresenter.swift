@@ -12,6 +12,7 @@ import UIKit
 protocol SettingsPresentationLogic
 {
     func presentAuthenticationManagement(response: Settings.Logout.Response)
+    func presentNewUsername(response: Settings.ChangeUsername.Response)
 }
 
 class SettingsPresenter: SettingsPresentationLogic
@@ -23,5 +24,13 @@ class SettingsPresenter: SettingsPresentationLogic
     {
         let viewModel = Settings.Logout.ViewModel(result: response.result, error: response.error)
         viewController?.displayAuthenticationManagement(viewModel: viewModel)
+    }
+    
+    // MARK: Present New Username
+    
+    func presentNewUsername(response: Settings.ChangeUsername.Response)
+    {
+        let viewModel = Settings.ChangeUsername.ViewModel(result: response.result)
+        viewController?.displayNewUsername(viewModel: viewModel)
     }
 }

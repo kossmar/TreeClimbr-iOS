@@ -13,6 +13,7 @@ import Firebase
 protocol SettingsBusinessLogic
 {
     func manageAuthentication()
+    func changeUsername(request: Settings.ChangeUsername.Request)
 }
 
 protocol SettingsDataStore
@@ -25,7 +26,7 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
     var presenter: SettingsPresentationLogic?
     var worker = SettingsWorker()
     
-    // MARK: Logout
+    // MARK: Manage Authentication
     
     func manageAuthentication()
     {
@@ -33,5 +34,15 @@ class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore
             let response = Settings.Logout.Response(result: result, error: error)
             self.presenter?.presentAuthenticationManagement(response: response)
         }
+    }
+    
+    // MARK: Change Username
+    
+    func changeUsername(request: Settings.ChangeUsername.Request)
+    {
+        worker.changeUsername(request: request, completion: { result in
+            let response = Settings.ChangeUsername.Response(result: result)
+            self.presenter?.presentNewUsername(response: response)
+        })
     }
 }
