@@ -239,6 +239,17 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         locationManager.startUpdatingLocation()
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        userCoordinate = myLocation
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        mapView.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
+        locationManager.stopUpdatingLocation()
+    }
+    
     // MARK: Actions
     
     @IBAction func login(_ sender: UIButton)
@@ -263,23 +274,11 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         performSegue(withIdentifier: "toNewTree", sender: view)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations[0]
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        userCoordinate = myLocation
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        mapView.setRegion(region, animated: true)
-        mapView.showsUserLocation = true
-        locationManager.stopUpdatingLocation()
-    }
-    
     @IBAction func menuButton(_ sender: UIButton)
     {
         
         if sideButtonsView.isHidden
         {
-            
             UIView.transition(with: sideButtonsView,
                               duration: 0.3,
                               options: .transitionFlipFromLeft,
@@ -292,7 +291,6 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
             {
                 self.menuButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
             }
-            
         } else {
             UIView.transition(with: sideButtonsView,
                               duration: 0.3,
@@ -310,7 +308,6 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
     
     func emailIsVerified()
     {
-        
         let user = Auth.auth().currentUser
         user?.reload()
         if let loggedinUser = user, let _ = user?.isEmailVerified
@@ -405,12 +402,10 @@ extension MapViewController: MKMapViewDelegate
         
         AppData.sharedInstance.treesArr = self.hideBlockedTrees()
         
-        TreeManager.read(completion: { trees in
+        TreeManager.read {
             
-            guard
-                let trees = trees else { return }
-            
-            for tree in self.treesArr {
+            for tree in self.treesArr
+            {
                 let treeLat = tree.treeLatitude
                 let treeLong = tree.treeLongitude
                 let treeAnn: TreeAnnotation = TreeAnnotation()
@@ -419,9 +414,8 @@ extension MapViewController: MKMapViewDelegate
                 treeAnn.tree = tree
                 
                 self.mapView.addAnnotation(treeAnn)
-                
             }
-        })
+        }
     }
 }
 

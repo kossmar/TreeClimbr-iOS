@@ -61,7 +61,6 @@
 		E6051A722005304100C9B288 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6051A712005304100C9B288 /* MessageUI.framework */; };
 		E6C423B52006AF5000BB823B /* HiddenUsersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */; };
 		E6C423B72006B21C00BB823B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6C423B62006B21C00BB823B /* Settings.storyboard */; };
-		E6C423BC2006B3A900BB823B /* SettingsViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */; };
 		E6CE28C01FBF76E2006ABDAB /* TreeNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */; };
 		E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */; };
 		E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */; };
@@ -163,7 +162,6 @@
 		E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TreeClimbr.entitlements; sourceTree = "<group>"; };
 		E6C423B42006AF4F00BB823B /* HiddenUsersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenUsersManager.swift; sourceTree = "<group>"; };
 		E6C423B62006B21C00BB823B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerOld.swift; sourceTree = "<group>"; };
 		E6CE28BF1FBF76E2006ABDAB /* TreeNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNewViewController.swift; sourceTree = "<group>"; };
 		E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterClass.swift; sourceTree = "<group>"; };
 		E6CE28C21FBFBB5F006ABDAB /* AlertShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertShow.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				E6C423B62006B21C00BB823B /* Settings.storyboard */,
-				E6C423BB2006B3A900BB823B /* SettingsViewControllerOld.swift */,
 				0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */,
 				0D25F5D922EAA722008469E7 /* SettingsInteractor.swift */,
 				0D25F5D722EAA721008469E7 /* SettingsWorker.swift */,
@@ -319,6 +316,26 @@
 			path = TreeClimbrUITests;
 			sourceTree = "<group>";
 		};
+		0DDD9F7222EEAD450062FCAC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
+				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
+				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0DDD9F7322EEAD5E0062FCAC /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				0DBF019D1FBF6A4200ACBB61 /* SignUp.storyboard */,
+				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
+				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
+			);
+			path = "Sign Up";
+			sourceTree = "<group>";
+		};
 		0DF12BA12247585E00DFE851 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,12 +387,8 @@
 		CAA8BB7220538CB100CCC99A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				0DBF019D1FBF6A4200ACBB61 /* SignUp.storyboard */,
-				0DF22D961FBEA64700F71C87 /* SignUpViewController.swift */,
-				0DF22D941FBEA64600F71C87 /* Login.storyboard */,
-				0DF22D951FBEA64600F71C87 /* LoginViewController.swift */,
-				0D503A251FBFCEAF00B031F8 /* LoginClass.swift */,
-				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
+				0DDD9F7322EEAD5E0062FCAC /* Sign Up */,
+				0DDD9F7222EEAD450062FCAC /* Login */,
 				CADBDECD2010242C0002750C /* VerifyUserDelegate.swift */,
 			);
 			path = Authentication;
@@ -705,7 +718,6 @@
 				0D25F5DF22EAA722008469E7 /* SettingsViewController.swift in Sources */,
 				E6CE28C81FBFBB5F006ABDAB /* User.swift in Sources */,
 				E6CE28CA1FBFBB5F006ABDAB /* Tree.swift in Sources */,
-				E6C423BC2006B3A900BB823B /* SettingsViewControllerOld.swift in Sources */,
 				0D25F5E022EAA722008469E7 /* SettingsModels.swift in Sources */,
 				E6DA00B21FCA23BD00DDE91D /* FavouritesManager.swift in Sources */,
 				CA6AF32E20253D3100BBC1E3 /* UserManager.swift in Sources */,

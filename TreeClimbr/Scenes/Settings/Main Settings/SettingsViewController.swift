@@ -78,9 +78,10 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     //        }
     //    }
     
+    // TODO: Update Routing
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
         if segue.identifier == signUpSegueId
         {
             let signUpVC = segue.destination as! SignUpViewController
@@ -105,7 +106,6 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
     
     override func viewWillAppear(_ animated: Bool)
     {
-        
         // TODO: Move this to the interactor
         super.viewWillAppear(animated)
         let firUser = Auth.auth().currentUser
@@ -115,7 +115,7 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
             self.logoutButton.title = "Logout"
             self.welcomeLabel.text = "Welcome, " + displayName + "!"
             let email = Auth.auth().currentUser?.email
-            if  email != nil
+            if email != nil
             {
                 self.emailLabel.text = "e-mail: " + email!
             }
@@ -126,7 +126,6 @@ class SettingsViewController: UIViewController, VerifyUserDelegate, SettingsDisp
             self.blockedUsersButton.isHidden = true
             self.changeNameButton.isHidden = true
             self.changeEmailButton.isHidden = true
-            
         }
     }
     

@@ -19,7 +19,6 @@ protocol SettingsBusinessLogic
 
 protocol SettingsDataStore
 {
-    //var name: String { get set }
 }
 
 class SettingsInteractor: SettingsBusinessLogic, SettingsDataStore

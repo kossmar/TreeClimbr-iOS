@@ -183,8 +183,8 @@ class TreeManager: NSObject {
         }
     }
 
-    
-    class func read(completion: @escaping ([Tree]?) -> Void) {
+//    class func read(completion: @escaping ([Tree]?) -> Void) {
+    class func read(completion: @escaping () -> Void) {
         AppData.sharedInstance
             .treeNode
             .observe (.value, with: { (snapshot) in
@@ -192,7 +192,7 @@ class TreeManager: NSObject {
                 let value = snapshot.value as? NSDictionary;
                 
                 if (value == nil) {
-                    completion(nil)
+//                    completion()
                     return
                 }
                 
@@ -240,7 +240,9 @@ class TreeManager: NSObject {
                 }
                 
                 print("\(#function) - \(AppData.sharedInstance.treesArr.count)")
-                completion(AppData.sharedInstance.treesArr)
+//                completion(AppData.sharedInstance.treesArr)
+                completion()
+
             })
     }
     

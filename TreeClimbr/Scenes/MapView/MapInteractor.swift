@@ -22,7 +22,6 @@ class MapInteractor: MapBusinessLogic, MapDataStore
 {
     var presenter: MapPresentationLogic?
     var worker: MapWorker?
-    //var name: String = ""
     
     // MARK: Load Trees
     
