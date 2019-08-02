@@ -19,16 +19,22 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
     var interactor: MapBusinessLogic?
     var router: (NSObjectProtocol & MapRoutingLogic & MapDataPassing)?
     
+    // TODO: Extract CoreLocation functions to a single LocationWorker Class!!
     var locationManager = CLLocationManager()
+    // move the user coordinate to the LocationWorker
     var userCoordinate = CLLocationCoordinate2D()
+    // move these to the dataStore
     var myAnnotation = MKPointAnnotation()
     var treeLocation = CLLocationCoordinate2D()
+    
     var justOnce = true
     var handle: AuthStateDidChangeListenerHandle?
 
-    var lat = 0.0
-    var long = 0.0
+    // TODO: Delete these
+//    var lat = 0.0
+//    var long = 0.0
     
+    // TODO: this seems like the wrong way to handle this data. Look into it more but for the time being move it to the dataStore
     var treesArr = [Tree]()
     
     // MARK: Object lifecycle
@@ -68,6 +74,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
     {
         super.viewDidLoad()
         
+        // change these with functional Programming??
         //setup side buttons
         sideButtonsView.backgroundColor = UIColor.clear.withAlphaComponent(0.4)
         sideButtonsView.layer.cornerRadius = sideButtonsView.frame.height/2
@@ -75,8 +82,10 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         
         
         setupTap()
+        // remove userLocationSetup() and run it when the app starts
         userLocationSetup()        
         
+        // TODO: definitely move this. What is it even doing? Loading trees to a singleton? Shouldn't be in the VC!!
         FavouritesManager.loadFavourites { (success) in
             return
         }
@@ -89,6 +98,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.mapViewWillStartLoadingMap(self.mapView)
         
+        // Exctract logic into worker through interactor. VC just needs to know to launch the Alert View
         if Auth.auth().currentUser == nil && justOnce {
             AlertShow.show(inpView: self, titleStr: "Careful out there!", messageStr: "Tree climbing can be dangerous. Always follow local laws and practice extreme caution when attempting to climb trees!")
             justOnce = false
@@ -101,6 +111,8 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         
         AppUtility.lockOrientation(.all)
         guard let someHandle = handle else {return}
+        
+        // TODO: Extract this out of VC
         Auth.auth().removeStateDidChangeListener(someHandle)
     }
     
@@ -110,6 +122,8 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         
         AppUtility.lockOrientation(.portrait)
         
+        
+        // TODO: Definitely move this out of the VC. maybe into the blockedUserManager. Consider combining that with the other managers somehow.
         let blockedUser = AppData.sharedInstance.blockedNode
         let user = Auth.auth().currentUser?.uid
         
@@ -129,17 +143,17 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
             }
         })
 
-        
+        // TODO: Move this to a worker
         FavouritesManager.loadFavourites { (success) in
             return
         }
         
+        // TODO: Move this to a worker
         HiddenUsersManager.loadHiddenUsers { (success) in
             return
         }
         
-        
-
+        // TODO: Move this to a worker
         emailIsVerified()
     }
     
@@ -224,7 +238,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
     //MARK: Setup map features
     
 
-    
+    // TODO: Delete this after testing functionality. It's being moved to an isolated LocationManager class
     func userLocationSetup()
     {
         locationManager.requestWhenInUseAuthorization()
@@ -239,7 +253,9 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         locationManager.startUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    // TODO: Delete this after testing functionality. It's being moved to an isolated LocationManager class
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         let location = locations[0]
         let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
         let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
@@ -257,6 +273,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         performSegue(withIdentifier: "CheckIdentity", sender: self.view)
     }
     
+    // TODO: this function is being extracted into a LocationWorker class. this IBAction should tell the interactor to ask the LocationWorker for the region
     @IBAction func centerToUser(_ sender: UIButton)
     {
         let location = mapView.userLocation
@@ -265,7 +282,6 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         let region: MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
         self.mapView.setRegion(region, animated: true)
         self.mapView.userTrackingMode = .follow
-        
     }
     
     @IBAction func addTreeToUserLoc(_ sender: UIButton)
@@ -306,6 +322,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         }
     }
     
+    // TODO: exctract this to a worked from the interactor
     func emailIsVerified()
     {
         let user = Auth.auth().currentUser
@@ -354,6 +371,8 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
 
 extension MapViewController: MKMapViewDelegate
 {
+    
+    // TODO: Move all of this to a worked through the interactor. All the ViewController needs to know about is the resulting MKAnnotationView
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         if !(annotation is TreeAnnotation)
@@ -387,6 +406,7 @@ extension MapViewController: MKMapViewDelegate
         return annView!
     }
     
+    // TODO: Where does this get moved to?
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
     {
         if control == view.rightCalloutAccessoryView
@@ -397,6 +417,7 @@ extension MapViewController: MKMapViewDelegate
         }
     }
     
+    // TODO: Move this a worked through the interactor. All the VC needs to know about is the array of TreeAnnotations
     func mapViewWillStartLoadingMap(_ mapView: MKMapView)
     {
         
@@ -421,6 +442,7 @@ extension MapViewController: MKMapViewDelegate
 
 extension MapViewController: MapFocusDelegate
 {
+    // TODO: Exctract this function. All the VC needs to know about is the region
     func focusOnTree(location: CLLocationCoordinate2D, tree: Tree)
     {
         

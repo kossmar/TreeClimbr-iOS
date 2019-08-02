@@ -37,6 +37,7 @@
 		0DCE2F321FBCDF04001A30EA /* TreeNew.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */; };
 		0DCE2F341FBD17B6001A30EA /* BasicTreeInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */; };
 		0DCE2F361FBD183E001A30EA /* BasicTreeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */; };
+		0DDD9F7622F4E5190062FCAC /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD9F7522F4E5190062FCAC /* LocationWorker.swift */; };
 		0DF12BA822475F7E00DFE851 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA222475F7E00DFE851 /* MapPresenter.swift */; };
 		0DF12BA922475F7E00DFE851 /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA322475F7E00DFE851 /* MapWorker.swift */; };
 		0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF12BA422475F7E00DFE851 /* MapRouter.swift */; };
@@ -132,6 +133,7 @@
 		0DCE2F311FBCDF04001A30EA /* TreeNew.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TreeNew.storyboard; sourceTree = "<group>"; };
 		0DCE2F331FBD17B6001A30EA /* BasicTreeInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicTreeInfoView.xib; sourceTree = "<group>"; };
 		0DCE2F351FBD183E001A30EA /* BasicTreeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeInfoView.swift; sourceTree = "<group>"; };
+		0DDD9F7522F4E5190062FCAC /* LocationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWorker.swift; sourceTree = "<group>"; };
 		0DF12BA222475F7E00DFE851 /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		0DF12BA322475F7E00DFE851 /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
 		0DF12BA422475F7E00DFE851 /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		0DCE2EFE1FBCDE44001A30EA /* TreeClimbr */ = {
 			isa = PBXGroup;
 			children = (
+				0DDD9F7422F4E4F90062FCAC /* Workers */,
 				0DBC0A7D2287DC13006F9FB3 /* Models */,
 				E62F1840200FDA89005C7999 /* TreeClimbr.entitlements */,
 				0DCE2EFF1FBCDE44001A30EA /* AppDelegate.swift */,
@@ -334,6 +337,14 @@
 				E6CE28C11FBFBB5F006ABDAB /* RegisterClass.swift */,
 			);
 			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		0DDD9F7422F4E4F90062FCAC /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				0DDD9F7522F4E5190062FCAC /* LocationWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		0DF12BA12247585E00DFE851 /* Scenes */ = {
@@ -726,6 +737,7 @@
 				0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */,
 				0D49A5901FC27A9700350FE5 /* TreeAnnotationView.swift in Sources */,
 				E6CE28C61FBFBB5F006ABDAB /* RegisterClass.swift in Sources */,
+				0DDD9F7622F4E5190062FCAC /* LocationWorker.swift in Sources */,
 				0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */,
 				0DF12BAA22475F7E00DFE851 /* MapRouter.swift in Sources */,
 				CA1F190B2006C84F00D38DE5 /* HiddenUsersTableViewCell.swift in Sources */,
