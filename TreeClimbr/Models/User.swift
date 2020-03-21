@@ -1,6 +1,7 @@
 import Foundation
 
-class User: NSObject, NSCoding {
+class User: NSObject, NSCoding
+{
     var name: String
     var email: String
     var uid: String
@@ -28,6 +29,5 @@ class User: NSObject, NSCoding {
         aCoder.encode(self.email, forKey: "emailKey");
         aCoder.encode(self.uid, forKey: "uidKey");
     }
-    
 }
 

@@ -28,8 +28,6 @@ class Photo: NSObject {
         self.photoID = "fakeID"
         self.imageDBName = ""
     }
-    
-    
 }
 
 

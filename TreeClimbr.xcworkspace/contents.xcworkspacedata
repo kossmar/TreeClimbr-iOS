@@ -2,24 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsPresenter.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsWorker.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsRouter.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsModels.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsViewController.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsInteractor.swift">
-   </FileRef>
-   <FileRef
       location = "group:TreeClimbr.xcodeproj">
    </FileRef>
    <FileRef

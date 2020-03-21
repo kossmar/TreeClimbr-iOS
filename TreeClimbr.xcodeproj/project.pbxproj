@@ -18,6 +18,7 @@
 		0D25F5DF22EAA722008469E7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */; };
 		0D25F5E022EAA722008469E7 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5DB22EAA722008469E7 /* SettingsModels.swift */; };
 		0D25F5E122EAA722008469E7 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D25F5D822EAA721008469E7 /* SettingsPresenter.swift */; };
+		0D2D89B1230A0F6F00D87FAE /* FunctionalOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D89B0230A0F6F00D87FAE /* FunctionalOperators.swift */; };
 		0D3579031FC3BAFE00F779DB /* BasicTreeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */; };
 		0D49A58C1FC2638100350FE5 /* TreeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */; };
 		0D49A58E1FC26FBD00350FE5 /* TreeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */; };
@@ -108,6 +109,7 @@
 		0D25F5D922EAA722008469E7 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsInteractor.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsInteractor.swift"; sourceTree = "<absolute>"; };
 		0D25F5DA22EAA722008469E7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsViewController.swift"; sourceTree = "<absolute>"; };
 		0D25F5DB22EAA722008469E7 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsModels.swift; path = "/Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr/TreeClimbr/Scenes/Settings/Main Settings/SettingsModels.swift"; sourceTree = "<absolute>"; };
+		0D2D89B0230A0F6F00D87FAE /* FunctionalOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionalOperators.swift; sourceTree = "<group>"; };
 		0D3579021FC3BAFE00F779DB /* BasicTreeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTreeTableViewCell.swift; sourceTree = "<group>"; };
 		0D49A58B1FC2638100350FE5 /* TreeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeDetailViewController.swift; sourceTree = "<group>"; };
 		0D49A58D1FC26FBD00350FE5 /* TreeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeAnnotation.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				0DCE2F081FBCDE44001A30EA /* LaunchScreen.storyboard */,
 				E6CE28CB1FBFBBC6006ABDAB /* GoogleService-Info.plist */,
 				0DCE2F0B1FBCDE44001A30EA /* Info.plist */,
+				0D2D89B0230A0F6F00D87FAE /* FunctionalOperators.swift */,
 			);
 			path = TreeClimbr;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				7776C77B1FCCAC20001E3357 /* PhotoFullScreenViewController.swift in Sources */,
 				0D132CFC1FC75AA800C63AC0 /* PhotoManager.swift in Sources */,
 				E6CE28C71FBFBB5F006ABDAB /* AlertShow.swift in Sources */,
+				0D2D89B1230A0F6F00D87FAE /* FunctionalOperators.swift in Sources */,
 				CA32CB57202840D6003B9AEA /* TreeManager.swift in Sources */,
 				0DCE2F001FBCDE44001A30EA /* AppDelegate.swift in Sources */,
 				0D25F5E122EAA722008469E7 /* SettingsPresenter.swift in Sources */,

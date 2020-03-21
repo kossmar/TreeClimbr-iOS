@@ -9,6 +9,4 @@ class TreeAnnotation: NSObject, MKAnnotation {
     var subtitle: String?
     var tree : Tree!
     
-    
-
 }

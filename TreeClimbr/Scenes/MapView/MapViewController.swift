@@ -84,7 +84,7 @@ class MapViewController: UIViewController, MapDisplayLogic, CLLocationManagerDel
         setupTap()
         // remove userLocationSetup() and run it when the app starts
         userLocationSetup()        
-        
+        /Users/markoss/Coding/Real Projects/TreeClimbr/TreeClimbr 1.0/TreeClimbr
         // TODO: definitely move this. What is it even doing? Loading trees to a singleton? Shouldn't be in the VC!!
         FavouritesManager.loadFavourites { (success) in
             return

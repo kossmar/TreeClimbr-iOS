@@ -146,8 +146,8 @@ class CommentManager: NSObject {
             .observeSingleEvent(of: .value , with: { (snapshot) in
                 let comments = snapshot
                     .children
-                    .flatMap { $0 as? DataSnapshot }
-                    .flatMap { $0.value as? [String:Any] }
+                    .compactMap { $0 as? DataSnapshot }
+                    .compactMap { $0.value as? [String:Any] }
                 
                 
                 // For each comment, change the associated name
